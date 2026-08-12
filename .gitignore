@@ -1,15 +1,21 @@
-# External DiffSBDD repository; keep it separate from your own project repo.
+# External DiffSBDD repository
 repos/
 
-# Model checkpoints; these are large binary files and should not go into Git.
+# Model checkpoints
 checkpoints/
 
-# Generated molecular structure files.
+# Generated molecular structure files
 *.sdf
 
-# Python cache files.
+# Allow controlled SDF test fixtures
+!tests/data/*.sdf
+
+# Python cache files
 __pycache__/
 *.pyc
 
-# macOS metadata.
+# macOS metadata
 .DS_Store
+
+# VSCode settings
+.vscode/

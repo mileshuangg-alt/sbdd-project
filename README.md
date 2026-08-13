@@ -161,6 +161,35 @@ sbdd-project/
 
 External generator repositories, model checkpoints, and generated molecular SDF files are intentionally excluded from Git.
 
+### Stage 3 — 3D / Structural Plausibility
+
+Planned for Session 5 using a pinned version of PoseBusters.
+
+Stage 3 will evaluate the **original generated 3D coordinates** rather than regenerated conformers.
+
+The evaluation will be separated into:
+
+- **Stage 3A — ligand-intrinsic structural plausibility**
+- **Stage 3B — pocket-relative structural plausibility**
+
+Stage 3B will require an explicitly prepared pocket as an evaluation input rather than silently inheriting generator-specific pocket-preparation assumptions.
+
+The full PoseBusters output will be retained for auditability.
+
+The predeclared Stage 3 hard attrition gate will use:
+
+- bond-length plausibility
+- bond-angle plausibility
+- steric-clash checks
+
+Other available structural metrics, including ring planarity, double-bond geometry, chirality, and energy-related checks, will initially be retained as diagnostics rather than attrition criteria.
+
+Any future change to the Stage 3 gate must be documented as a new versioned project decision.
+
+Initial Stage 3 input:
+
+**18 Stage-2 survivors**
+
 ## Current Development Principle
 
 The evaluation cascade is the central reusable component of the project.
@@ -178,7 +207,6 @@ Each evaluation stage should:
 
 **Current phase:** Phase 1  
 **Current generator:** DiffSBDD  
-**Completed cascade stage:** Chemical validity; molecular property profiling  
-**Next implementation:** 3D / structural plausibility evaluation
-
-See `notes/Decisions.md` for major architectural decisions and `notes/project_log.md` for development history.
+**Completed cascade stages:** Chemical validity; molecular property profiling / Rule-of-Five classification  
+**Next implementation:** Stage 3 — 3D / structural plausibility using PoseBusters  
+**Current strict cascade survival:** 18/20 (90%)

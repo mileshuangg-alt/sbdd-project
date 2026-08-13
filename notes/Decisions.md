@@ -94,3 +94,60 @@ These remain possible fallback scopes if later stages prove infeasible, particul
 - The virtual-cell-versus-structure-only DILI feasibility study has been completed.
 - Evidence shows that structure-to-cell-response mapping for arbitrary generated molecules is not sufficiently reliable.
 - The expanded scope begins to interfere with completion of the core Phase 1 cascade.
+## D003 — Define the Stage 3 structural-plausibility gate
+
+**Date:** 2026-08-13
+
+### Decision
+
+Stage 3 will evaluate 3D structural plausibility using a pinned version of PoseBusters.
+
+The full PoseBusters suite will be executed and its outputs preserved, but Stage 3 attrition will be determined only by a predeclared hard gate consisting of:
+
+- bond-length plausibility
+- bond-angle plausibility
+- steric-clash checks
+
+Ring planarity, double-bond geometry, chirality, energy-related checks, and other available PoseBusters metrics will initially be retained as diagnostics rather than hard attrition criteria.
+
+Stage 3 will be separated into:
+
+- Stage 3A — ligand-intrinsic structural plausibility
+- Stage 3B — pocket-relative structural plausibility
+
+Stage 3B must receive an explicitly prepared pocket as an input. The shared evaluator must not silently inherit DiffSBDD-specific pocket-preparation assumptions.
+
+All structural evaluation must use the generator's original generated coordinates. Conformers must not be regenerated before evaluation.
+
+The PoseBusters version will be pinned, and the implementation will be mapped against the API, check names, thresholds, and semantics of that exact release.
+
+Any future change to the hard attrition gate requires a new versioned project decision.
+
+### Rationale
+
+- Structural plausibility is distinct from chemical validity and 2D molecular-property feasibility.
+- Running the full PoseBusters suite preserves information that may become scientifically useful without allowing diagnostic metrics to redefine attrition after results are observed.
+- Declaring the hard gate before examining the 3RFM results prevents outcome-dependent threshold selection.
+- Preserving original generated coordinates evaluates generator performance rather than RDKit conformer generation or geometry optimization.
+- Separating ligand-intrinsic and pocket-relative evaluation prevents protein-preparation assumptions from being conflated with intrinsic ligand geometry.
+- Explicit prepared-pocket inputs allow DiffSBDD and FLOWR to be compared through the same structural-evaluation interface.
+- Pinning PoseBusters prevents changes in check names, defaults, thresholds, or implementation across releases from silently changing the comparison.
+
+### Alternatives considered
+
+- Treat every PoseBusters check as a hard attrition criterion.
+- Use only a subset of PoseBusters checks and discard the remaining outputs.
+- Choose the hard gate after inspecting the 3RFM results.
+- Regenerate or optimize ligand conformers before structural evaluation.
+- Allow each generator to provide its own implicitly prepared pocket.
+- Use the latest available PoseBusters release without pinning its version.
+
+These approaches were rejected because they would reduce auditability, change the object being evaluated, or weaken the apples-to-apples DiffSBDD-versus-FLOWR comparison.
+
+### Revisit when
+
+- Stage 3 diagnostics provide evidence that additional metrics should become hard gates.
+- PoseBusters changes materially enough to justify a version upgrade.
+- The same Stage 3 implementation is applied to FLOWR.
+- Prepared-pocket methodology is standardized or changed.
+- Larger benchmark sets reveal that the predeclared gate is insufficient or systematically misleading.

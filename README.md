@@ -59,7 +59,7 @@ The comparison will focus on **attrition across development-relevant stages**, r
 
 ## Current Status
 
-### Generation baseline
+### Generation Baseline
 
 DiffSBDD checkpoint inference has been successfully reproduced.
 
@@ -89,7 +89,6 @@ Initial DiffSBDD result:
 One molecule failed sanitization because of an explicit carbon valence of 5.
 
 The evaluator also successfully handles deliberately malformed SDF records without silently dropping them.
-
 
 ### Stage 2 — Molecular Property Profiling and Rule-of-Five Classification
 
@@ -122,6 +121,155 @@ Initial DiffSBDD result:
  1 Rule-of-Five flagged
     ↓
 94.74% Stage 2 zero-violation rate
+```
+
+### Stage 3 — 3D / Structural Plausibility
+
+Implemented in:
+
+`evaluation/structure.py`
+
+Stage 3 uses PoseBusters `0.6.5` to evaluate the generator's **original generated 3D coordinates** rather than regenerated or optimized conformers.
+
+The evaluation is separated into:
+
+- **Stage 3A — ligand-intrinsic structural plausibility**
+- **Stage 3B — pocket-relative structural plausibility**
+
+The predeclared hard gate evaluates:
+
+- bond-length plausibility
+- bond-angle plausibility
+- internal ligand steric clashes
+- protein-ligand steric clashes
+
+Other PoseBusters outputs are retained as diagnostics rather than hard attrition criteria.
+
+#### Stage 3A
+
+Stage 3A evaluates ligand-intrinsic geometry independently of the protein pocket.
+
+The hard gate uses:
+
+- `bond_lengths`
+- `bond_angles`
+- `internal_steric_clash`
+
+Initial DiffSBDD result:
+
+```text
+18 Stage-2 survivors
+    ↓
+16 pass Stage 3A
+ 2 fail Stage 3A
+    ↓
+88.89% Stage 3A survival
+```
+
+The two failures were:
+
+- `molecule_id=13` — failed bond-length plausibility because of one short bond outlier
+- `molecule_id=16` — failed bond-length, bond-angle, and internal steric-clash criteria
+
+The full PoseBusters Stage 3A report is preserved in:
+
+`experiments/phase1_diffsbdd/evaluation/structure_3a.csv`
+
+#### Stage 3B
+
+Stage 3B evaluates generated ligand poses relative to an explicitly prepared pocket.
+
+Pocket preparation is kept outside the shared Stage 3B evaluator so that the evaluator does not silently inherit generator-specific preprocessing assumptions.
+
+For the 3RFM baseline, the pocket is defined from:
+
+- source protein: `3rfm.pdb`
+- reference ligand: `3rfm_B_CFF.sdf`
+- standard amino acids only
+- minimum residue-atom to reference-ligand-atom distance `< 8.0 Å`
+
+This produces a 36-residue evaluation pocket while preserving the deposited protein heavy-atom coordinates.
+
+The Phase 1 baseline does not add receptor hydrogens, alter protonation, or optimize receptor geometry.
+
+The explicit pocket artifact is stored at:
+
+`experiments/phase1_diffsbdd/evaluation/prepared_3rfm_pocket.pdb`
+
+The Stage 3B hard gate uses the PoseBusters protein-ligand steric-clash result returned as:
+
+`minimum_distance_to_protein`
+
+Protein maximum-distance and volume-overlap checks remain diagnostic-only.
+
+Initial DiffSBDD result:
+
+```text
+18 Stage-2 survivors evaluated
+    ↓
+18 pass protein-ligand clash gate
+ 0 fail
+    ↓
+100% Stage 3B survival
+```
+
+The full PoseBusters Stage 3B report is preserved in:
+
+`experiments/phase1_diffsbdd/evaluation/structure_3b.csv`
+
+#### Combined Stage 3 Result
+
+The final Stage 3 decision is:
+
+```text
+stage3_passes = stage3a_passes AND stage3b_passes
+```
+
+Initial DiffSBDD result:
+
+```text
+18 Stage-2 survivors
+    ↓
+16 pass combined Stage 3
+ 2 fail combined Stage 3
+    ↓
+88.89% Stage 3 survival
+```
+
+Both final Stage 3 failures passed the pocket-relative clash gate. Their attrition therefore resulted from ligand-intrinsic structural problems rather than protein-pocket clashes.
+
+The compact downstream Stage 3 handoff is stored in:
+
+`experiments/phase1_diffsbdd/evaluation/structure.csv`
+
+### Current Attrition Cascade
+
+```text
+20 generated
+    ↓
+19 chemically valid
+    ↓
+18 zero Rule-of-Five violations
+    ↓
+16 structurally plausible
+```
+
+**Current strict cascade survival: 16/20 (80%)**
+
+## Current Development Principle
+
+The evaluation cascade is the central reusable component of the project.
+
+Each evaluation stage should:
+
+- consume standardized molecular files or standardized upstream results
+- preserve molecule-level provenance
+- record explicit pass/fail outcomes where applicable
+- preserve failure reasons
+- produce machine-readable outputs
+- avoid generator-specific assumptions
+
+Generator-specific preprocessing and model internals should remain outside the shared evaluation interface.
 
 ## Long-Term Developability Layer
 
@@ -140,16 +288,47 @@ Therefore, the virtual-cell gate must first be validated on known drugs with rea
 
 A planned feasibility study will compare structure-only and virtual-cell-informed DILI prediction using known drugs with DILIrank labels, including analysis stratified by BDDCS class.
 
+## Evaluation Environment
+
+The generator-independent evaluation cascade uses the `sbdd-eval` Conda environment.
+
+Create it with:
+
+```bash
+conda env create -f environment.yml
+conda activate sbdd-eval
+```
+
+The current environment specification pins:
+
+- Python `3.12`
+- RDKit `2026.3.5`
+- pandas `3.0.5`
+- NumPy `2.5.2`
+- PoseBusters `0.6.5`
+- BioPython `1.88`
+
+The environment is version-pinned to preserve evaluation behavior across cascade stages and future generator comparisons.
+
 ## Repository Structure
 
 ```text
 sbdd-project/
+├── environment.yml
 ├── evaluation/
 │   ├── __init__.py
-│   └── validity.py
+│   ├── validity.py
+│   ├── properties.py
+│   └── structure.py
 ├── experiments/
 │   └── phase1_diffsbdd/
 │       └── evaluation/
+│           ├── validity.csv
+│           ├── properties.csv
+│           ├── prepared_3rfm_pocket.pdb
+│           ├── structure_3a.csv
+│           ├── structure_3b.csv
+│           └── structure.csv
 ├── notes/
 │   ├── Decisions.md
 │   ├── project_log.md
@@ -161,52 +340,12 @@ sbdd-project/
 
 External generator repositories, model checkpoints, and generated molecular SDF files are intentionally excluded from Git.
 
-### Stage 3 — 3D / Structural Plausibility
-
-Planned for Session 5 using a pinned version of PoseBusters.
-
-Stage 3 will evaluate the **original generated 3D coordinates** rather than regenerated conformers.
-
-The evaluation will be separated into:
-
-- **Stage 3A — ligand-intrinsic structural plausibility**
-- **Stage 3B — pocket-relative structural plausibility**
-
-Stage 3B will require an explicitly prepared pocket as an evaluation input rather than silently inheriting generator-specific pocket-preparation assumptions.
-
-The full PoseBusters output will be retained for auditability.
-
-The predeclared Stage 3 hard attrition gate will use:
-
-- bond-length plausibility
-- bond-angle plausibility
-- steric-clash checks
-
-Other available structural metrics, including ring planarity, double-bond geometry, chirality, and energy-related checks, will initially be retained as diagnostics rather than attrition criteria.
-
-Any future change to the Stage 3 gate must be documented as a new versioned project decision.
-
-Initial Stage 3 input:
-
-**18 Stage-2 survivors**
-
-## Current Development Principle
-
-The evaluation cascade is the central reusable component of the project.
-
-Each evaluation stage should:
-
-- consume standardized molecular files or standardized upstream results
-- preserve molecule-level provenance
-- record explicit pass/fail outcomes where applicable
-- preserve failure reasons
-- produce machine-readable outputs
-- avoid generator-specific assumptions
+Evaluation outputs required to reproduce and audit cascade decisions are retained where appropriate.
 
 ## Project Status
 
 **Current phase:** Phase 1  
 **Current generator:** DiffSBDD  
-**Completed cascade stages:** Chemical validity; molecular property profiling / Rule-of-Five classification  
-**Next implementation:** Stage 3 — 3D / structural plausibility using PoseBusters  
-**Current strict cascade survival:** 18/20 (90%)
+**Completed cascade stages:** Chemical validity; molecular property profiling / Rule-of-Five classification; 3D / structural plausibility
+**Next implementation:** Stage 4 — novelty / chemical-space redundancy
+**Current strict cascade survival:** 16/20 (80%)

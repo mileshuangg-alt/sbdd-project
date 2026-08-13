@@ -90,22 +90,38 @@ One molecule failed sanitization because of an explicit carbon valence of 5.
 
 The evaluator also successfully handles deliberately malformed SDF records without silently dropping them.
 
-### Stage 2 — Planned
 
-Molecular property profiling and Rule-of-Five feasibility classification.
+### Stage 2 — Molecular Property Profiling and Rule-of-Five Classification
 
-Planned measurements include:
+Implemented in:
+
+`evaluation/properties.py`
+
+Stage 2 consumes the machine-readable Stage 1 validity results and evaluates only molecules that passed chemical validity while preserving their original molecule IDs.
+
+For each surviving molecule, it calculates:
 
 - molecular weight
 - cLogP
+- TPSA
 - hydrogen-bond donors
 - hydrogen-bond acceptors
-- TPSA
 - rotatable bonds
 - QED
 - heavy atom count
 - formal charge
-- Rule-of-Five violations
+
+Rule-of-Five criteria are also recorded individually, together with the total number of violations and a strict zero-violation classification.
+
+Initial DiffSBDD result:
+
+```text
+19 Stage-1-valid molecules
+    ↓
+18 zero Rule-of-Five violations
+ 1 Rule-of-Five flagged
+    ↓
+94.74% Stage 2 zero-violation rate
 
 ## Long-Term Developability Layer
 
@@ -162,7 +178,7 @@ Each evaluation stage should:
 
 **Current phase:** Phase 1  
 **Current generator:** DiffSBDD  
-**Completed cascade stage:** Chemical validity  
-**Next implementation:** Molecular property profiling and Rule-of-Five feasibility classification
+**Completed cascade stage:** Chemical validity; molecular property profiling  
+**Next implementation:** 3D / structural plausibility evaluation
 
 See `notes/Decisions.md` for major architectural decisions and `notes/project_log.md` for development history.

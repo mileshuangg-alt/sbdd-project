@@ -106,7 +106,7 @@ What are the molecular-property profiles of the 19 Stage-1-valid DiffSBDD molecu
 - [x] Produce a Stage 2 summary.
 - [x] Confirm Stage 2 contains no generator-specific assumptions.
 - [x] Record Stage 2 results and attrition in this log.
-- [ ] Commit and push the completed Stage 2 implementation.
+- [x] Commit and push the completed Stage 2 implementation.
 
 ---
 

@@ -271,6 +271,16 @@ Each evaluation stage should:
 
 Generator-specific preprocessing and model internals should remain outside the shared evaluation interface.
 
+### Target Selection
+
+The final biological target has not yet been locked.
+
+A target selected by the Bivona lab will take priority. Otherwise, fallback targets will be selected using a predefined rubric that separately evaluates generative tractability, developability tractability, structural evidence, and scientific information value.
+
+SOS1 is currently considered a conservative pipeline-validation candidate, while TEAD is considered a higher-information cascade stress test.
+
+If TEAD is selected, elevated downstream developability attrition due to hydrophobic-pocket-driven chemistry is a predeclared expectation rather than a post hoc explanation.
+
 ## Long-Term Developability Layer
 
 Later stages are planned to include:

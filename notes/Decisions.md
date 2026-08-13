@@ -130,7 +130,7 @@ For the Stage 3A / Stage 3B interface, the predeclared steric-clash criterion is
 - Stage 3B: PoseBusters protein–ligand `no_clashes_protein`
 
 The PoseBusters protein-distance check `not_too_far_away_protein` and protein volume-overlap check remain diagnostics and are not part of the current hard attrition gate.
-   
+
 This mapping was defined from the pinned PoseBusters 0.6.5 configuration before Stage 3B outcomes were inspected.
 
 ### Rationale
@@ -161,3 +161,37 @@ These approaches were rejected because they would reduce auditability, change th
 - The same Stage 3 implementation is applied to FLOWR.
 - Prepared-pocket methodology is standardized or changed.
 - Larger benchmark sets reveal that the predeclared gate is insufficient or systematically misleading.
+
+## D004 — Predeclare target-selection logic and TEAD developability expectation
+
+**Date:** 2026-08-13
+
+### Decision
+
+No fallback target will be locked until a predefined target-selection rubric is applied.
+
+A target selected by the Bivona lab supersedes the fallback target-selection process.
+
+The fallback rubric will score generative tractability and developability tractability separately so that target properties affecting both generation and downstream molecular properties are not counted twice.
+
+SOS1 will be considered primarily as a conservative "pipeline works" target, while TEAD will be considered as a higher-information "cascade is useful" target.
+
+If TEAD is selected, elevated downstream developability attrition is expected in advance because its deep, predominantly hydrophobic lipid pocket may favor generated chemotypes with greater lipophilic character.
+
+Accordingly, high Stage 2 property / Rule-of-Five attrition or later ADME/developability liabilities will not, by themselves, be interpreted as generator or pipeline failure.
+
+The TEAD experiment will distinguish between:
+
+- generative tractability — whether the generator produces chemically and structurally plausible molecules compatible with the TEAD pocket
+- developability tractability — whether those pocket-compatible molecules also satisfy broader physicochemical, ADME, and safety constraints
+
+Pocket-compatible generation followed by substantial downstream developability attrition will be interpreted as evidence that target-conditioned generative success and development viability are distinct objectives.
+
+This expectation is declared before target selection and before any TEAD generation or evaluation results are observed.
+
+### Revisit when
+
+- the Bivona lab provides a target
+- the predefined target-selection rubric is applied
+- structural evidence materially changes the assessment of TEAD or SOS1
+- a different fallback target clearly dominates the rubric

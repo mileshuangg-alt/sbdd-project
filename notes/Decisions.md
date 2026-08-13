@@ -94,6 +94,7 @@ These remain possible fallback scopes if later stages prove infeasible, particul
 - The virtual-cell-versus-structure-only DILI feasibility study has been completed.
 - Evidence shows that structure-to-cell-response mapping for arbitrary generated molecules is not sufficiently reliable.
 - The expanded scope begins to interfere with completion of the core Phase 1 cascade.
+
 ## D003 — Define the Stage 3 structural-plausibility gate
 
 **Date:** 2026-08-13
@@ -122,6 +123,15 @@ All structural evaluation must use the generator's original generated coordinate
 The PoseBusters version will be pinned, and the implementation will be mapped against the API, check names, thresholds, and semantics of that exact release.
 
 Any future change to the hard attrition gate requires a new versioned project decision.
+
+For the Stage 3A / Stage 3B interface, the predeclared steric-clash criterion is interpreted as:
+
+- Stage 3A: PoseBusters `internal_steric_clash`
+- Stage 3B: PoseBusters protein–ligand `no_clashes_protein`
+
+The PoseBusters protein-distance check `not_too_far_away_protein` and protein volume-overlap check remain diagnostics and are not part of the current hard attrition gate.
+   
+This mapping was defined from the pinned PoseBusters 0.6.5 configuration before Stage 3B outcomes were inspected.
 
 ### Rationale
 

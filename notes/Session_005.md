@@ -15,7 +15,7 @@
 - [x] Produce molecule-level Stage 3 results.
 - [x] Calculate the third 3RFM attrition number.
 - [x] Document results and failure modes.
-- [ ] Commit and push the completed Stage 3 implementation.
+- [x] Commit and push the completed Stage 3 implementation.
 
 ---
 

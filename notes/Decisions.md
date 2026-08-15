@@ -195,3 +195,109 @@ This expectation is declared before target selection and before any TEAD generat
 - the predefined target-selection rubric is applied
 - structural evidence materially changes the assessment of TEAD or SOS1
 - a different fallback target clearly dominates the rubric
+
+## D005 — Define Stage 4 chemical-similarity characterization
+
+**Date:** 2026-08-15
+
+### Decision
+
+Stage 4 will characterize chemical similarity and novelty without causing cascade attrition.
+
+All molecules that pass Stage 3 will proceed through Stage 4 and remain eligible for subsequent stages regardless of their similarity scores.
+
+The primary molecular representation will be:
+
+- Morgan fingerprint
+- radius = 2
+- 2048 bits
+- chirality enabled
+
+Pairwise molecular similarity will be measured using Tanimoto similarity.
+
+Stage 4 will contain three primary analyses:
+
+- Stage 4A — internal generated-set diversity
+- Stage 4B — target-space novelty
+- Stage 4C — general drug-space novelty
+
+### Stage 4A — Internal generated-set diversity
+
+Each Stage-3 survivor will be compared against the other surviving generated molecules.
+
+The analysis will preserve at minimum:
+
+- nearest generated-neighbor molecule ID
+- nearest generated-neighbor Tanimoto similarity
+
+Additional distribution-level or pairwise diagnostics may also be retained.
+
+### Stage 4B — Target-space novelty
+
+Each generated molecule will be compared against a frozen reference set of known ligands for the relevant human target.
+
+The initial reference source will be ChEMBL 37.
+
+For the 3RFM baseline, the target is the human adenosine A2A receptor.
+
+The target-ligand reference set will use a predefined, target-independent extraction rule based on:
+
+- human target
+- single-protein target assignment
+- directly measured quantitative activity
+- supported activity types such as Ki, Kd, IC50, and EC50
+- pChEMBL >= 6
+- valid standardized molecular structure
+- deduplication by standardized structure
+
+Functional direction such as agonism or antagonism will not determine inclusion by itself.
+
+The analysis will preserve at minimum:
+
+- nearest target-ligand identity
+- nearest target-ligand similarity
+- target reference-set size
+
+### Stage 4C — General drug-space novelty
+
+Each generated molecule will also be compared against a fixed reference set representing established approved-drug chemistry.
+
+The approved-drug reference set will be derived from the same frozen ChEMBL 37 release where possible.
+
+The same Stage 4C reference set will be reused across future targets and generators.
+
+The analysis will preserve at minimum:
+
+- nearest approved-drug identity
+- nearest approved-drug similarity
+
+### Conditioning-ligand diagnostic
+
+When generation used a reference ligand to define the pocket, similarity to that conditioning ligand may be recorded as an optional provenance diagnostic.
+
+For the 3RFM baseline, this is similarity to caffeine.
+
+Conditioning-ligand similarity is not a required Stage 4 metric because residue-defined pockets may not have a conditioning ligand.
+
+Pocket-residue interaction or pose-complementarity measurements are not substitutes for conditioning-ligand similarity and belong to later target-compatibility evaluation.
+
+### Interpretation
+
+Similarity values are continuous characterization features rather than pass/fail criteria.
+
+High similarity may represent chemical redundancy or proximity to established medicinal chemistry.
+
+Low similarity may represent greater novelty but may also correspond to greater distance from established chemical space.
+
+No Stage 4 similarity threshold will currently determine cascade survival.
+
+Any future conversion of Stage 4 similarity into an attrition criterion requires a new versioned project decision declared before affected results are inspected.
+
+### Revisit when
+
+- the ChEMBL reference-set extraction rules require revision
+- approved-drug reference-set construction is finalized or changed
+- Stage 4 is applied to additional biological targets
+- Stage 4 is applied to FLOWR
+- evidence supports adding alternative fingerprint representations as secondary sensitivity analyses
+- similarity is proposed as a future attrition criterion

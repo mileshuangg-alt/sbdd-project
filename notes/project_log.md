@@ -7,3 +7,4 @@
 | 003 | 2026-08-12 | Build Stage 1 of the generator-agnostic evaluation cascade: chemical validity | ✅ Complete |
 | 004 | 2026-08-12 | Build Stage 2: molecular property profiling and Rule-of-Five feasibility classification | ✅ Complete |
 | 005 | 2026-08-13 | Implement Stage 3 3D structural plausibility evaluation | ✅ |
+| 006 | 2026-08-16 | Implement Stage 4 novelty / chemical-space characterization | ✅ Complete |

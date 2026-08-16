@@ -1,6 +1,7 @@
 import csv
 from pathlib import Path
 import numpy as np
+import pandas as pd
 from rdkit import Chem, DataStructs
 from rdkit.Chem import rdFingerprintGenerator
 
@@ -132,7 +133,7 @@ def evaluate_internal_similarity(fingerprints):
 
 
 def summarize_internal_similarity(similarities):
-    """ Find the nearest generated neighbor for each molecule."""
+    """Find the nearest generated neighbor for each molecule."""
 
     nearest_neighbors = {}
 
@@ -142,17 +143,23 @@ def summarize_internal_similarity(similarities):
         similarity = comparison["similarity"]
 
         for molecule_id, neighbor_id in [
-                (molecule_id1, molecule_id2), (molecule_id2, molecule_id1)]:
-            if molecule_id not in nearest_neighbors or similarity > nearest_neighbors[
-                    molecule_id]["similarity"]:
+            (molecule_id1, molecule_id2),
+            (molecule_id2, molecule_id1),
+        ]:
+            if (
+                molecule_id not in nearest_neighbors
+                or similarity
+                > nearest_neighbors[molecule_id][
+                    "nearest_generated_similarity"
+                ]
+            ):
                 nearest_neighbors[molecule_id] = {
-                    "neighbor_id": neighbor_id,
                     "molecule_id": molecule_id,
-                    "similarity": similarity
+                    "nearest_generated_neighbor_id": neighbor_id,
+                    "nearest_generated_similarity": similarity,
                 }
-    neighbor_list = list(nearest_neighbors.values())
 
-    return neighbor_list
+    return list(nearest_neighbors.values())
 
 
 def summarize_pairwise_distribution(similarities):
@@ -183,3 +190,408 @@ def summarize_pairwise_distribution(similarities):
 
 # Stage 4A analysis complete, move on to Stage 4B analysis of novelty
 # against the reference ligand set.
+
+
+def load_target_reference_ligands(reference_csv_path):
+    """Load the reference ligand set for a given target."""
+
+    reference_csv_path = Path(reference_csv_path)
+
+    if not reference_csv_path.exists():
+        raise FileNotFoundError(
+            f"Target reference file not found: {reference_csv_path}")
+
+    reference_ligands = []
+
+    with reference_csv_path.open("r", newline="") as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader:
+            smiles = row["canonical_smiles"]
+            mol = Chem.MolFromSmiles(smiles)
+            if mol is None:
+                raise ValueError(
+                    f"Could not parse target reference structure: {smiles}")
+
+            reference_ligands.append({
+                "canonical_smiles": smiles,
+                "molecule_chembl_ids": row["molecule_chembl_ids"],
+                "mol": mol,
+            })
+    return reference_ligands
+
+
+def fingerprint_target_reference_ligands(reference_ligands):
+    """Generate Morgan fingerprints for the reference ligand set."""
+
+    generator = make_morgan_generator()
+
+    fingerprints = []
+
+    for ligand in reference_ligands:
+        mol = ligand["mol"]
+        fingerprint = generator.GetFingerprint(mol)
+        fingerprints.append({
+            "canonical_smiles": ligand["canonical_smiles"],
+            "molecule_chembl_ids": ligand["molecule_chembl_ids"],
+            "fingerprint": fingerprint,
+        })
+
+    return fingerprints
+
+
+def evaluate_target_similarity(generated_fingerprints, reference_fingerprints):
+    """Evaluate the similarity of generated molecules to the reference set."""
+
+    results = []
+
+    if not reference_fingerprints:
+        raise ValueError("Target reference ligand set is empty.")
+
+    for molecule_id, fingerprint in generated_fingerprints:
+        comparisons = []
+
+        for reference in reference_fingerprints:
+            similarity = calculate_tanimoto(
+                fingerprint, reference["fingerprint"])
+            comparisons.append({
+                "molecule_chembl_ids": reference["molecule_chembl_ids"],
+                "canonical_smiles": reference["canonical_smiles"],
+                "similarity": similarity,
+            })
+        comparisons.sort(key=lambda x: x["similarity"], reverse=True)
+
+        nearest = comparisons[0]
+        top5 = comparisons[:5]
+
+        results.append({
+            "molecule_id": molecule_id,
+            "nearest_target_ligand_ids": nearest["molecule_chembl_ids"],
+            "nearest_target_ligand_smiles": nearest["canonical_smiles"],
+            "nearest_target_similarity": nearest["similarity"],
+            "target_top5_mean_similarity": float(np.mean([c["similarity"] for c in top5])),
+            "target_reference_count": len(reference_fingerprints), })
+    return results
+
+
+def summarize_target_similarity(results):
+    """Summarize target space similarity across generated molecules."""
+
+    nearest_values = [result["nearest_target_similarity"]
+                      for result in results]
+    top5_values = [result["target_top5_mean_similarity"]
+                   for result in results]
+    results_summary = {
+        "number_molecules": len(results),
+        "mean_nearest_similarity": float(np.mean(nearest_values)),
+        "std_nearest_similarity": float(np.std(nearest_values, ddof=0)),
+        "median_nearest_similarity": float(np.median(nearest_values)),
+        "min_nearest_similarity": float(np.min(nearest_values)),
+        "max_nearest_similarity": float(np.max(nearest_values)),
+        "mean_top5_similarity": float(np.mean(top5_values)),
+        "std_top5_similarity": float(np.std(top5_values, ddof=0)),
+    }
+    return results_summary
+
+
+def save_target_similarity_results(results, output_path):
+    """Save molecule-level Stage 4B results for the target similarity to CSV."""
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    fieldnames = [
+        "molecule_id",
+        "nearest_target_ligand_ids",
+        "nearest_target_ligand_smiles",
+        "nearest_target_similarity",
+        "target_top5_mean_similarity",
+        "target_reference_count",
+    ]
+
+    with output_path.open("w", newline="") as csvfile:
+        writer = csv.DictWriter(
+            csvfile,
+            fieldnames=fieldnames,
+        )
+
+        writer.writeheader()
+
+        writer.writerows(results)
+    print(f"Saved Stage 4B target similarity results to {output_path}")
+
+
+def load_approved_drug_reference(reference_csv_path):
+    """Load the frozen approved-drug reference set."""
+
+    reference_csv_path = Path(reference_csv_path)
+
+    if not reference_csv_path.exists():
+        raise FileNotFoundError(
+            f"Approved-drug reference file not found: "
+            f"{reference_csv_path}"
+        )
+
+    approved_drugs = []
+
+    with reference_csv_path.open("r", newline="") as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader:
+            smiles = row["canonical_smiles"]
+
+            mol = Chem.MolFromSmiles(smiles)
+
+            if mol is None:
+                raise ValueError(
+                    f"Could not parse approved-drug structure: {smiles}"
+                )
+            approved_drugs.append({
+                "canonical_smiles": smiles,
+                "parent_molecule_chembl_id": row["parent_molecule_chembl_id"],
+                "parent_pref_name": row["parent_pref_name"],
+                "approved_chembl_ids": row["approved_chembl_ids"],
+                "approved_pref_names": row["approved_pref_names"],
+                "first_approvals": row["first_approvals"],
+                "withdrawn_flags": row["withdrawn_flags"],
+                "mol": mol,
+            })
+    return approved_drugs
+
+
+def fingerprint_approved_drugs(approved_drugs):
+    """Generate Morgan fingerprints for approved-drug reference structures."""
+
+    generator = make_morgan_generator()
+
+    fingerprints = []
+
+    for drug in approved_drugs:
+        fingerprint = generator.GetFingerprint(drug["mol"])
+        fingerprints.append({
+            "parent_molecule_chembl_id": drug["parent_molecule_chembl_id"],
+            "parent_pref_name": drug["parent_pref_name"],
+            "approved_chembl_ids": drug["approved_chembl_ids"],
+            "approved_pref_names": drug["approved_pref_names"],
+            "first_approvals": drug["first_approvals"],
+            "withdrawn_flags": drug["withdrawn_flags"],
+            "canonical_smiles": drug["canonical_smiles"],
+            "fingerprint": fingerprint,
+
+        })
+
+    return fingerprints
+
+
+def evaluate_approved_drug_similarity(
+        generated_fingerprints,
+        approved_fingerprints):
+    """Compare generated molecules against approved-drug chemical space."""
+
+    if not approved_fingerprints:
+        raise ValueError("Approved-drug reference set is empty.")
+
+    results = []
+
+    for molecule_id, fingerprint in generated_fingerprints:
+        comparisons = []
+
+        for approved_drug in approved_fingerprints:
+            similarity = calculate_tanimoto(
+                fingerprint,
+                approved_drug["fingerprint"]
+            )
+
+            comparisons.append({
+                "parent_molecule_chembl_id":
+                    approved_drug["parent_molecule_chembl_id"],
+                "parent_pref_name":
+                    approved_drug["parent_pref_name"],
+                "approved_chembl_ids":
+                    approved_drug["approved_chembl_ids"],
+                "approved_pref_names":
+                    approved_drug["approved_pref_names"],
+                "first_approvals":
+                    approved_drug["first_approvals"],
+                "withdrawn_flags":
+                    approved_drug["withdrawn_flags"],
+                "canonical_smiles":
+                    approved_drug["canonical_smiles"],
+                "similarity":
+                    similarity,
+            })
+
+        comparisons.sort(
+            key=lambda x: x["similarity"],
+            reverse=True
+        )
+
+        nearest = comparisons[0]
+        top5 = comparisons[:5]
+
+        results.append({
+            "molecule_id":
+                molecule_id,
+            "nearest_approved_parent_id":
+                nearest["parent_molecule_chembl_id"],
+            "nearest_approved_parent_name":
+                nearest["parent_pref_name"],
+            "nearest_approved_drug_ids":
+                nearest["approved_chembl_ids"],
+            "nearest_approved_drug_names":
+                nearest["approved_pref_names"],
+            "nearest_approved_drug_smiles":
+                nearest["canonical_smiles"],
+            "nearest_approved_first_approvals":
+                nearest["first_approvals"],
+            "nearest_approved_withdrawn_flags":
+                nearest["withdrawn_flags"],
+            "nearest_approved_similarity":
+                nearest["similarity"],
+            "approved_top5_mean_similarity":
+                float(np.mean([
+                    comparison["similarity"]
+                    for comparison in top5
+                ])),
+            "approved_reference_count":
+                len(approved_fingerprints),
+        })
+
+    return results
+
+
+def summarize_approved_drug_similarity(results):
+    """Summarize approved-drug-space simiarity across generated molecules."""
+
+    nearest_values = [
+        result["nearest_approved_similarity"]
+        for result in results
+    ]
+
+    top5_values = [
+        result["approved_top5_mean_similarity"]
+        for result in results
+    ]
+
+    results_summary = {
+        "number_molecules": len(results),
+        "mean_nearest_similarity": float(np.mean(nearest_values)),
+        "std_nearest_similarity": float(np.std(nearest_values, ddof=0)),
+        "median_nearest_similarity": float(np.median(nearest_values)),
+        "min_nearest_similarity": float(np.min(nearest_values)),
+        "max_nearest_similarity": float(np.max(nearest_values)),
+        "mean_top5_similarity": float(np.mean(top5_values)),
+        "std_top5_similarity": float(np.std(top5_values, ddof=0)),
+    }
+
+    return results_summary
+
+
+def save_approved_drug_similarity_results(results, output_path):
+    """Save molecule-level Stage 4B results for the approved-drug similarity to CSV."""
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    fieldnames = [
+        "molecule_id",
+        "nearest_approved_parent_id",
+        "nearest_approved_parent_name",
+        "nearest_approved_drug_ids",
+        "nearest_approved_drug_names",
+        "nearest_approved_drug_smiles",
+        "nearest_approved_first_approvals",
+        "nearest_approved_withdrawn_flags",
+        "nearest_approved_similarity",
+        "approved_top5_mean_similarity",
+        "approved_reference_count",
+    ]
+
+    with output_path.open("w", newline="") as csvfile:
+        writer = csv.DictWriter(
+            csvfile,
+            fieldnames=fieldnames,
+        )
+
+        writer.writeheader()
+
+        writer.writerows(results)
+    print(f"Saved Stage 4B approved-drug similarity results to {output_path}")
+
+
+def save_internal_similarity_pairs(similarities, output_path):
+    """Save all Stage 4A pairwise generated-molecule similarities."""
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    pd.DataFrame(similarities).to_csv(
+        output_path,
+        index=False,
+    )
+
+    print(
+        f"Saved Stage 4A pairwise similarities to "
+        f"{output_path}"
+    )
+
+
+def save_internal_similarity_results(results, output_path):
+    """Save molecule-level Stage 4A nearest-neighbor results."""
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    pd.DataFrame(results).to_csv(
+        output_path,
+        index=False,
+    )
+
+    print(
+        f"Saved Stage 4A molecule-level results to "
+        f"{output_path}"
+    )
+
+
+def combine_novelty_results(
+        stage4a_csv_path,
+        stage4b_csv_path,
+        stage4c_csv_path):
+    """Combine Stage 4A, 4B, and 4C results by molecule ID."""
+
+    stage4a = pd.read_csv(stage4a_csv_path)
+    stage4b = pd.read_csv(stage4b_csv_path)
+    stage4c = pd.read_csv(stage4c_csv_path)
+
+    combined = stage4a.merge(
+        stage4b,
+        on="molecule_id",
+        how="outer",
+        validate="one_to_one",
+    )
+
+    combined = combined.merge(
+        stage4c,
+        on="molecule_id",
+        how="outer",
+        validate="one_to_one",
+    )
+
+    return combined
+
+
+def save_combined_novelty_results(results, output_path):
+    """Save the combined Stage 4 novelty results."""
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    results.to_csv(
+        output_path,
+        index=False,
+    )
+
+    print(
+        f"Combined Stage 4 results saved to: "
+        f"{output_path}"
+    )

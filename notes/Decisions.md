@@ -301,3 +301,94 @@ Any future conversion of Stage 4 similarity into an attrition criterion requires
 - Stage 4 is applied to FLOWR
 - evidence supports adding alternative fingerprint representations as secondary sensitivity analyses
 - similarity is proposed as a future attrition criterion
+
+## D006 — Stage 4 is non-attritional chemical-space characterization
+
+**Decision:** Stage 4 will characterize and rank surviving molecules in multiple chemical reference spaces without applying a hard novelty attrition threshold.
+
+All Stage 4 comparisons use the same molecular representation:
+
+- Morgan fingerprint
+- radius = 2
+- 2048 bits
+- chirality enabled
+- Tanimoto similarity
+
+Stage 4 is divided into:
+
+### Stage 4A — Internal generated-set similarity
+
+Generated molecules are compared against the other surviving generated molecules.
+
+Outputs include:
+
+- full pairwise similarity distribution
+- nearest generated neighbor per molecule
+
+This measures internal redundancy within the generated set.
+
+### Stage 4B — Known target-ligand-space similarity
+
+Generated molecules are compared against a frozen reference set of known ligands for the current target.
+
+For the Phase 1 A2A baseline, the reference is derived from ChEMBL 37 using:
+
+- target: CHEMBL251
+- organism: Homo sapiens
+- target type: SINGLE PROTEIN
+- activity types: Ki, Kd, IC50, EC50
+- non-null standardized activity values
+- standard relation in `=`, `<`, `<=`
+- pChEMBL >= 6.0
+- RDKit canonical-structure deduplication
+
+The resulting frozen A2A reference contains 5,344 unique structures.
+
+Stage 4B measures proximity to **known target-associated ligand chemistry**. Reference ligands do not need to be approved drugs.
+
+### Stage 4C — Approved-drug-space similarity
+
+Generated molecules are compared against a frozen target-independent reference of approved small-molecule chemistry from ChEMBL 37.
+
+Initial selection:
+
+- `max_phase = 4`
+- `molecule_type = Small molecule`
+
+Approved salts and alternative forms are normalized to their ChEMBL parent structures where possible. Structures are canonicalized with RDKit and deduplicated by canonical structure.
+
+Approved records without a resolvable molecular structure cannot participate in fingerprint-based chemical-space analysis and are explicitly counted as structurally unevaluable reference records.
+
+The resulting frozen reference contains:
+
+- 2,198 unique parent-normalized approved-drug structures
+- 158 approved records excluded because no usable structure could be resolved
+
+Withdrawal status and first-approval information are retained as descriptive provenance and do not affect similarity calculations or reference inclusion.
+
+Stage 4C measures proximity to **established approved-drug chemistry across targets**, not target-specific ligand chemistry.
+
+### Reference-data policy
+
+Live database access is separated from evaluation.
+
+ChEMBL is used only to construct versioned reference artifacts. Normal Stage 4 evaluation consumes frozen local reference files so that:
+
+- generator comparisons use identical reference populations
+- database updates cannot silently change results
+- network availability does not affect normal evaluation
+- ChEMBL-specific retrieval logic remains outside the generator-independent evaluator
+
+Current reference release:
+
+`ChEMBL 37`
+
+Future reference updates must be versioned rather than silently replacing the current reference sets.
+
+### Attrition policy
+
+Stage 4 applies no hard similarity threshold.
+
+All 16 molecules entering Stage 4 remain eligible downstream.
+
+Any future introduction of a Stage 4 similarity-based attrition threshold must be documented as a new versioned project decision.

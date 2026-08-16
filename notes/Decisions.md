@@ -593,3 +593,856 @@ empirical null percentile
 ```
 
 This preserves both convention-anchored cheminformatics interpretation and the empirical rarity of the observed similarity within the relevant frozen reference space.
+
+## D007 — Predeclare Stage 5 target-compatibility methodology
+
+**Date:** 2026-08-16
+
+**Status:** PENDING VALIDATION
+
+### Decision
+
+Stage 5 will evaluate **target compatibility**: whether a generated molecule's existing 3D pose expresses a credible, target-specific interaction pattern within the intended binding site.
+
+Stage 5 is explicitly distinct from Stage 3B.
+
+```text
+Stage 3B
+"Is this pose physically plausible relative to the pocket?"
+→ primarily tests protein-ligand steric compatibility
+
+Stage 5
+"Does this physically plausible pose make target-relevant interactions
+consistent with credible recognition by the intended binding site?"
+```
+
+Passing Stage 3B is therefore necessary but not sufficient evidence of target compatibility.
+
+The primary Stage 5 gate material will be **target-specific interaction recovery**.
+
+Pose/contact geometry will provide secondary gate evidence.
+
+Docking scores, approximate binding energies, and fast rescoring functions may be retained for characterization and ranking but will **never certify target compatibility or determine the Stage 5 hard gate**.
+
+If target-specific interaction recovery cannot be computed robustly, Stage 5 implementation stops for methodological review rather than falling back to a docking-score gate.
+
+The final Stage 5 gate will not be frozen until the interaction reader, docking protocol, and candidate gate formulations pass the predeclared validation sequence below.
+
+No DiffSBDD Stage 5 baseline results may be inspected before that validation sequence is complete.
+
+---
+
+### Generator parity
+
+DiffSBDD and FLOWR will be evaluated under the **identical frozen Stage 5 protocol**.
+
+This includes the same:
+
+- receptor preparation
+- ligand preparation
+- protonation policy
+- docking engine and parameters
+- search box
+- pose allowance
+- interaction reader
+- target anchor definitions
+- positive and negative controls
+- gate formulation
+- characterization metrics
+
+Generator identity must not alter Stage 5 methodology.
+
+The purpose of this decision is therefore not only to define target compatibility, but to protect the fairness of the eventual DiffSBDD-versus-FLOWR comparison.
+
+---
+
+## Stage 5 target-interaction definition
+
+Target-relevant interactions must be derived from experimentally determined A2A receptor-ligand complexes and recorded with structural provenance.
+
+They must not be defined from memory of 3RFM or selected after generated-molecule results are inspected.
+
+For the 3RFM / human A2A baseline, the initial experimental reference complexes are:
+
+| Ligand | ChEMBL ID | Experimental A2A complex |
+| --- | --- | --- |
+| XAC | CHEMBL273094 | PDB 3REY |
+| Vipadenant | CHEMBL447664 | PDB 5OLH |
+| Tozadenant | CHEMBL2105747 | PDB 5OLO |
+
+All three ligands occur in the frozen Stage 4B A2A target-ligand reference.
+
+The crystallographic 3RFM caffeine ligand remains a structural/pocket anchor but is not part of the formal positive-control panel because the Stage 4B frozen target reference requires pChEMBL >= 6.0.
+
+### Core A2A recognition anchors
+
+Published structural evidence across the experimental complexes supports a cross-chemotype A2A recognition core centered on:
+
+- **Phe168** — aromatic / hydrophobic core recognition
+- **Asn253^6.55** — polar hydrogen-bond anchoring
+
+These two residues define the initial core target-interaction anchors.
+
+Supporting interactions that may provide additional target-compatibility evidence include:
+
+- Met177
+- Trp246
+- Leu249
+- His250^6.52
+- Thr256^6.58 where chemotype-appropriate
+- Met270
+- Ile274
+
+Supporting contacts are not automatically mandatory individually.
+
+Stage 5 must test target recognition rather than exact imitation of one reference ligand's complete interaction fingerprint.
+
+The experimental PDB IDs, ligand identities, and interaction anchors above are part of the frozen methodology provenance.
+
+---
+
+## Predeclared control panel
+
+Controls are nominated **before candidate Stage 5 gate formulations are evaluated**.
+
+A candidate metric does not earn hard-gate status merely because it appears chemically reasonable.
+
+It must demonstrate proof of life against the predeclared controls before being trusted on generated molecules.
+
+### Positive controls
+
+The formal positive controls are:
+
+1. XAC — CHEMBL273094
+2. Vipadenant — CHEMBL447664
+3. Tozadenant — CHEMBL2105747
+
+These represent experimentally supported human A2A ligand chemistry and span multiple chemotypes.
+
+Their experimental complexes provide structural provenance for the target-recognition anchors.
+
+### Negative controls
+
+The initial negative panel consists of chemically varied approved drugs whose established pharmacology provides no reason to expect recognition of the A2A orthosteric site:
+
+1. Imatinib — CHEMBL941
+2. Oseltamivir — CHEMBL1229
+3. Warfarin — CHEMBL1464
+4. Apixaban — CHEMBL231779
+5. Sildenafil — CHEMBL192
+
+These are described as **predeclared unrelated-target negatives**, not proven A2A nonbinders.
+
+The negative panel must not be changed after Stage 5 control results are inspected merely to improve apparent separation.
+
+A negative control must also receive a fair opportunity to explore the A2A pocket. Deliberately placing a negative in an obviously clashing pose would test Stage 3B rather than Stage 5 and is therefore not an acceptable Stage 5 negative-control procedure.
+
+---
+
+# Frozen Stage 5 pose-generation protocol
+
+The docking protocol is used as a **pose-generation mechanism**.
+
+Its scoring function is not treated as evidence that a molecule binds the target.
+
+### Docking engine
+
+AutoDock Vina 1.2.x will be used, with the exact patch version pinned when the Stage 5 environment is finalized.
+
+Frozen search parameters:
+
+```text
+Scoring function:
+Vina
+
+Receptor:
+rigid
+
+Exhaustiveness:
+32
+
+Random seed:
+20260816
+
+Maximum retained poses:
+20
+
+Energy range:
+5 kcal/mol
+```
+
+Vina scores may be retained for characterization and ranking only.
+
+They do not contribute to Stage 5 pass/fail status.
+
+---
+
+## Protein preparation
+
+Protein structures will be protonated using:
+
+```text
+PDB2PQR
++
+PROPKA
++
+pH 7.4
+```
+
+Experimental protein heavy-atom coordinates will be preserved.
+
+Protein heavy atoms will not be geometry-minimized before Stage 5 evaluation.
+
+The receptor will then be converted to the required docking representation using Meeko.
+
+The protonation / tautomer assignment of **His250^6.52** will be explicitly recorded for:
+
+- 3REY
+- 5OLH
+- 5OLO
+- 3RFM
+
+because His250 participates in the A2A ligand-recognition environment and hidden differences in its protonation state could alter interaction interpretation.
+
+The pH 7.4 preparation condition is a standardized physiological preparation policy, not a claim that every microscopic protonation state within the binding pocket is known with certainty.
+
+---
+
+## Ligand preparation
+
+Ligands will be prepared using:
+
+```text
+Molscrub
+pH 7.4
+one protonation / tautomer state per molecule
+```
+
+followed by Meeko preparation for docking.
+
+Each molecule receives exactly **one** prepared state during the initial Stage 5 protocol.
+
+Multiple protonation or tautomer states will not be enumerated because doing so would give some molecules more opportunities than others to satisfy the gate.
+
+For experimental positive controls, the prepared state must remain chemically consistent with the ligand identity in the crystallographic complex.
+
+If the frozen preparation policy produces an obviously inappropriate state for a known positive, this is treated as a **preparation-protocol failure** and Stage 5 stops for review rather than manually repairing that molecule.
+
+---
+
+## Search-box definition
+
+Search boxes are defined from experimental ligand coordinates **before docking results are inspected**.
+
+All boxes use:
+
+```text
+20 Å × 20 Å × 20 Å
+```
+
+### Native redocking validation
+
+For each experimental positive:
+
+```text
+XAC        → 3REY
+Vipadenant → 5OLH
+Tozadenant → 5OLO
+```
+
+the search-box center is the centroid of that complex's crystallographic ligand.
+
+The numerical XYZ center coordinates must be calculated once and recorded before the corresponding docking output is inspected.
+
+The box center must not be adjusted after any failed or successful docking result.
+
+### Common Stage 5 control experiment
+
+After docking validation succeeds, the positive and negative control panel will be docked into one common receptor:
+
+```text
+3RFM
+```
+
+The common search-box center will be the centroid of crystallographic caffeine in 3RFM.
+
+That center will likewise be calculated once before the control experiment and will not be adjusted after results are inspected.
+
+The same common 3RFM receptor and search region will later be used wherever docking-derived Stage 5 characterization is applied consistently to generator outputs.
+
+---
+
+# Validation sequence
+
+Stage 5 validation proceeds in a fixed order.
+
+```text
+1. Interaction-reader proof of life
+        ↓
+2. Docking-protocol proof of life
+        ↓
+3. Positive / negative control panel
+        ↓
+4. Candidate formulation ledger
+        ↓
+5. Freeze final Stage 5 gate
+        ↓
+6. Evaluate 16-molecule DiffSBDD baseline
+        ↓
+7. Later evaluate FLOWR under identical protocol
+```
+
+A later layer cannot compensate for failure of an earlier layer.
+
+---
+
+# Validation Layer 1 — Interaction-reader proof of life
+
+The primary interaction reader will be:
+
+```text
+ProLIF
+explicit-hydrogen workflow
+```
+
+PLIP may be retained as an independent diagnostic or sensitivity analysis, but ProLIF is the primary Stage 5 interaction-fingerprint candidate.
+
+Before any redocking validation is performed, ProLIF must demonstrate that it can recover the published A2A recognition anchors from the **true deposited experimental poses**.
+
+The native complexes are:
+
+```text
+3REY — XAC
+5OLH — Vipadenant
+5OLO — Tozadenant
+```
+
+The crystallographic ligand coordinates are preserved during this test.
+
+The structures are prepared under the frozen Stage 5 preparation policy:
+
+```text
+protein:
+PDB2PQR / PROPKA
+pH 7.4
+experimental protein heavy atoms preserved
+His250 state recorded
+
+ligand:
+Molscrub
+pH 7.4
+one state
+experimental ligand pose preserved
+
+reader:
+ProLIF
+explicit hydrogens
+```
+
+For each complex, ProLIF must recover:
+
+```text
+Phe168
+AND
+Asn253
+```
+
+The interaction type must also be recorded rather than reducing the result to residue presence alone.
+
+### Reader-validation ledger
+
+| Complex | Ligand | Phe168 detected? | Phe168 interaction type(s) | Asn253 detected? | Asn253 interaction type(s) | Reader pass? |
+| --- | --- | --- | --- | --- | --- | --- |
+| 3REY | XAC | Pending | Pending | Pending | Pending | Pending |
+| 5OLH | Vipadenant | Pending | Pending | Pending | Pending | Pending |
+| 5OLO | Tozadenant | Pending | Pending | Pending | Pending | Pending |
+
+Reader proof of life requires:
+
+```text
+3 / 3 native complexes
+→ Phe168 recovered
+→ Asn253 recovered
+```
+
+If ProLIF fails to recover either published core anchor from any correctly prepared native complex:
+
+**STOP Stage 5.**
+
+Do not proceed to redocking.
+
+The failure must first be attributed to:
+
+- protein preparation
+- ligand preparation
+- protonation
+- hydrogen placement
+- atom typing
+- ProLIF interaction definitions
+- or the interaction reader itself
+
+The interaction definition must not be weakened merely to obtain a passing reader result.
+
+---
+
+# Validation Layer 2 — Docking-protocol proof of life
+
+Only after the interaction reader passes 3/3 native complexes may the docking protocol be tested.
+
+The experimental ligands will be removed from their deposited poses and independently self-redocked into their own cognate receptor structures:
+
+```text
+XAC        → 3REY
+Vipadenant → 5OLH
+Tozadenant → 5OLO
+```
+
+The experimental ligand pose is retained only as the validation reference.
+
+It is not supplied to the docking search.
+
+For each redocking experiment, up to 20 poses are retained.
+
+### Redocking success criterion
+
+A complex passes docking validation only if at least one retained pose satisfies:
+
+```text
+symmetry-aware heavy-atom RMSD
+to crystallographic ligand pose
+<= 2.0 Å
+
+AND
+
+Phe168 anchor recovered
+
+AND
+
+Asn253 anchor recovered
+```
+
+The validated ProLIF interaction reader is used for anchor recovery.
+
+All three experimental positives must pass.
+
+```text
+3 / 3 pass
+→ docking protocol earns permission
+  to generate Stage 5 control poses
+
+< 3 / 3 pass
+→ STOP
+→ docking protocol is not validated
+```
+
+A favorable Vina score cannot rescue a failed RMSD or interaction-recovery result.
+
+---
+
+## Redocking validation ledger
+
+For each experimental complex, record:
+
+- crystallographic box-center XYZ coordinates
+- best symmetry-aware heavy-atom RMSD
+- rank of the first successful pose within the retained 20-pose ensemble
+- Phe168 recovery
+- Asn253 recovery
+- relevant interaction types
+- Vina score of the successful pose, for description only
+- final validation outcome
+
+| Complex | Ligand | Best RMSD | First successful pose rank | Phe168 | Asn253 | Vina score | Validation |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| 3REY | XAC | Pending | Pending | Pending | Pending | Pending | Pending |
+| 5OLH | Vipadenant | Pending | Pending | Pending | Pending | Pending | Pending |
+| 5OLO | Tozadenant | Pending | Pending | Pending | Pending | Pending | Pending |
+
+The rank of the successful pose is **not a pass/fail criterion**.
+
+It is retained as a search-quality diagnostic.
+
+For example:
+
+```text
+native-like solution at rank 1
+→ strong pose-search / ranking behavior
+
+native-like solution only near rank 20
+→ protocol technically recovered the pose
+→ weaker confidence that the same search
+  will reliably identify useful poses for novel chemistry
+```
+
+---
+
+# Validation Layer 3 — Common 3RFM control experiment
+
+Only after the interaction reader and docking protocol both pass their complete validation requirements may the predeclared positive/negative panel be evaluated.
+
+All controls are independently docked into:
+
+```text
+the same prepared 3RFM receptor
+the same fixed 3RFM caffeine-centered search box
+the same preparation policy
+the same docking parameters
+the same 20-pose allowance
+the same interaction reader
+```
+
+Experimental positive poses are **not** supplied to the control experiment.
+
+This removes the crystallographic-pose advantage and gives positive and negative controls the same opportunity to explore the 3RFM pocket.
+
+For each control molecule, target-interaction evidence may be evaluated across the fixed retained pose ensemble.
+
+A molecule's interaction evidence may be represented by its best qualifying interaction-recovery pose among the fixed 20 generated poses.
+
+Vina score may determine the docking engine's search/output ordering but is not part of the Stage 5 gate.
+
+---
+
+# Candidate Stage 5 gate material
+
+## Primary — target-specific interaction recovery
+
+The primary candidate gate material is recovery of target-relevant A2A interactions.
+
+Candidate formulations may include:
+
+- recovery of one or more predeclared core anchor interactions
+- recovery of Asn253 plus evidence of the Phe168/core-recognition region
+- weighted recovery of the broader target interaction set
+- residue + interaction-type fingerprint similarity to experimental A2A complexes
+- consensus interaction recovery across multiple experimental target ligands
+
+Interaction recovery should be represented at least at the:
+
+```text
+residue
++
+interaction type
+```
+
+level.
+
+Generic total-contact counts are insufficient.
+
+For example:
+
+```text
+Asn253 — hydrogen bond recovered
+```
+
+is target-specific evidence.
+
+By contrast:
+
+```text
+7 total hydrogen bonds
+```
+
+does not establish that the molecule is engaging target-relevant residues.
+
+---
+
+## Secondary — pose/contact geometry
+
+Pose/contact geometry may provide secondary gate evidence.
+
+Candidate measurements include:
+
+- ligand occupancy within the intended binding region
+- fraction of ligand atoms participating in protein contacts
+- contact with predeclared binding-site residues
+- distances to target anchor residues
+- gross displacement from the experimentally defined orthosteric region
+
+These measurements can identify poses that technically avoid steric clashes but fail to occupy or engage the intended binding site.
+
+Generic contact count alone cannot substitute for target-specific interaction recovery.
+
+---
+
+# Characterization only — docking and binding-energy scores
+
+Docking scores, empirical binding-energy scores, and fast rescoring functions are **characterization and ranking features only**.
+
+They may be retained for:
+
+- ranking Stage 5 survivors
+- prioritization
+- generator comparison
+- sensitivity analysis
+- descriptive characterization
+
+They may never certify Stage 5 target compatibility.
+
+A favorable docking score cannot compensate for failure to recover target-relevant interactions.
+
+A less favorable docking score does not automatically invalidate an otherwise credible interaction pattern.
+
+---
+
+# Candidate formulation ledger
+
+No exact Stage 5 Boolean gate is frozen yet.
+
+Candidate formulations are tested only after:
+
+```text
+interaction reader passes 3/3 native complexes
+
+AND
+
+docking protocol passes 3/3 self-redocking tests
+```
+
+Every tested formulation must be recorded, including unsuccessful formulations.
+
+For every candidate formulation, D007 will record the complete control outcome:
+
+```text
+Positive controls:
+XAC
+Vipadenant
+Tozadenant
+
+Negative controls:
+Imatinib
+Oseltamivir
+Warfarin
+Apixaban
+Sildenafil
+```
+
+Example ledger structure:
+
+| Formulation | XAC | Vipadenant | Tozadenant | Imatinib | Oseltamivir | Warfarin | Apixaban | Sildenafil | Eligible? |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |
+| B | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |
+| C | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |
+
+A candidate formulation remains eligible for the hard gate only if it **cleanly separates the complete predeclared control panel**:
+
+```text
+all positive controls
+→ pass
+
+all negative controls
+→ fail
+```
+
+A formulation that fails this requirement is retained in the methodology ledger as a rejected candidate rather than silently disappearing.
+
+This record is required so that later methodology can defensibly state:
+
+> The selected gate formulation was chosen because it separated predeclared known controls before generated molecules were inspected.
+
+The formulation may not be selected based on DiffSBDD or FLOWR outcomes.
+
+---
+
+# Parameter-lock rule
+
+The Stage 5 methodology is locked hierarchically.
+
+### Reader lock
+
+Once the first native-complex ProLIF validation is executed, the frozen preparation and interaction-reader configuration is locked.
+
+Any change to:
+
+- pH
+- protonation procedure
+- hydrogen handling
+- ligand state handling
+- ProLIF interaction definitions
+- interaction distance criteria
+- interaction angular criteria
+- anchor interpretation
+
+creates a **new named methodology candidate**.
+
+The complete 3/3 native-reader validation must then restart and be recorded separately.
+
+### Docking lock
+
+Once the first docking-validation run is executed, all frozen docking parameters are locked.
+
+A failed or successful redocking result cannot trigger an undocumented adjustment to:
+
+- receptor preparation
+- ligand preparation
+- search-box center
+- search-box dimensions
+- exhaustiveness
+- random seed
+- pose count
+- energy range
+- receptor flexibility
+- scoring function
+- or pose-selection policy
+
+Any proposed change creates a **new named docking-protocol candidate**.
+
+The complete 3/3 self-redocking validation must then restart and be recorded separately.
+
+### Control/gate lock
+
+Once the common control experiment begins:
+
+- positive controls are fixed
+- negative controls are fixed
+- the 3RFM receptor is fixed
+- the search box is fixed
+- preparation is fixed
+- docking is fixed
+- the interaction reader is fixed
+
+Candidate gate formulations may only be evaluated through the predeclared formulation ledger.
+
+No parameter may be altered in response to a failed or successful control merely to improve separation.
+
+---
+
+# Failure policy
+
+If any validation layer fails, Stage 5 stops at that layer.
+
+```text
+Native reader failure
+→ reader/preparation problem
+→ do not dock
+
+Native reader passes
+but self-redocking fails
+→ pose-generation problem
+→ do not run control panel
+
+Reader + redocking pass
+but controls cannot be separated
+→ gate formulation inadequate
+→ do not evaluate generated molecules
+```
+
+Stage 5 must not respond to failure by:
+
+- substituting docking score as the hard gate
+- choosing a metric after inspecting generated molecules
+- manually altering individual positive controls
+- changing search boxes after seeing docking output
+- giving different ligands different numbers of protonation states
+- silently redocking or optimizing generated poses and treating them as generator output
+- weakening the gate to obtain a desired survival rate
+
+Any methodological revision must be explicit and must restart the affected validation layer.
+
+---
+
+# Relationship to generated poses
+
+The primary Stage 5 target-compatibility evaluation remains conceptually focused on the **generator's existing pose**.
+
+Docking is introduced here primarily to:
+
+1. validate that the pose-generation protocol can reproduce known A2A binding modes;
+2. place the positive and negative control panel fairly into one common receptor;
+3. provide optional standardized pose-based characterization where explicitly defined.
+
+Docking must not silently replace the generator's original coordinates when the Stage 5 hard gate is intended to evaluate generator pose quality.
+
+Any later decision to apply redocking as a separate rescue, ranking, or standardized-binding-mode analysis must remain distinct from the primary generator-pose evaluation.
+
+---
+
+# Relationship to Stage 4
+
+Stage 4 and Stage 5 provide complementary evidence.
+
+```text
+Stage 4B extrapolative
++
+Stage 5 target-compatible
+→ novel target chemistry with independent
+  target-level corroboration
+
+Stage 4B extrapolative
++
+Stage 5 incompatible
+→ unsupported target-space extrapolation
+
+Stage 4B established
++
+Stage 5 target-compatible
+→ precedent-backed target chemistry
+
+Stage 4B established
++
+Stage 5 incompatible
+→ 2D target-ligand similarity does not rescue
+  an incompatible target pose
+```
+
+Stage 4 similarity therefore remains characterization rather than a binding proxy.
+
+D006 remains in force: whenever Stage 4 similarity labels are reported in future result artifacts or summaries, the corresponding empirical null percentile must accompany the label.
+
+---
+
+# Current validation status
+
+At the time this decision is written:
+
+```text
+Stage 5 protocol specification:
+FROZEN PENDING VALIDATION
+
+Interaction-reader proof of life:
+PENDING
+
+3/3 experimental self-redocking validation:
+PENDING
+
+Common positive/negative control panel:
+PENDING
+
+Candidate formulation ledger:
+PENDING
+
+Final Stage 5 hard gate:
+NOT YET FROZEN
+
+16-molecule DiffSBDD Stage 5 baseline:
+NOT PERMITTED YET
+
+FLOWR Stage 5 evaluation:
+FUTURE — MUST USE IDENTICAL FINAL PROTOCOL
+```
+
+D007 remains stamped **PENDING VALIDATION** until:
+
+1. ProLIF recovers Phe168 and Asn253 from all three prepared native experimental complexes;
+2. all three experimental positives self-redock with at least one retained pose satisfying <=2.0 Å symmetry-aware heavy-atom RMSD plus Phe168 and Asn253 recovery;
+3. the successful-pose rank and validation metrics are recorded for each self-redock;
+4. the predeclared positive/negative control panel is evaluated under the common 3RFM protocol;
+5. every tested gate formulation and its complete control outcomes are recorded;
+6. a formulation cleanly separating all predeclared positives and negatives is identified.
+
+Only then will the final Stage 5 hard gate be frozen and the 16-molecule DiffSBDD baseline become eligible for evaluation.
+
+### Revisit when
+
+- the interaction-reader proof-of-life test has been completed;
+- the 3/3 self-redocking validation has been completed;
+- the common 3RFM control panel has been evaluated;
+- the formulation ledger is complete;
+- no candidate formulation cleanly separates the controls;
+- preparation or protonation policy requires revision;
+- the docking protocol fails native-pose recovery;
+- the interaction reader fails published-anchor recovery;
+- Stage 5 is ready to be applied to DiffSBDD;
+- Stage 5 is later applied to FLOWR;
+- evidence supports changing the target-interaction definition or adding secondary characterization metrics.

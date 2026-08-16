@@ -482,6 +482,8 @@ Under the predefined fingerprint representation, the surviving DiffSBDD molecule
 
 Similarity values across Stage 4A, 4B, and 4C should not be interpreted as directly equivalent novelty thresholds because the comparison populations differ substantially in size and chemical composition.
 
+Stage 4 similarity reading bands were predeclared before the FLOWR comparison using convention-anchored upper boundaries and reference-specific null-calibrated lower boundaries; see **D006** in `notes/Decisions.md` for the frozen bands, null calibration, and interpretation rules.
+
 ### Stage 4 Attrition
 
 Stage 4 is intentionally non-attritional.

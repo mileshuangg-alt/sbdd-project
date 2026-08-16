@@ -154,6 +154,36 @@ This mapping was defined from the pinned PoseBusters 0.6.5 configuration before 
 
 These approaches were rejected because they would reduce auditability, change the object being evaluated, or weaken the apples-to-apples DiffSBDD-versus-FLOWR comparison.
 
+### Stage 3B positive-control validation
+
+A positive control was constructed before relying on the 3RFM Stage 3B result in future generator comparisons.
+
+The control was generated from a real Stage 3 survivor (`molecule_id = 0`). Its molecular geometry was preserved by rigid translation, while ligand atom 0 was translated directly onto the nitrogen atom of TYR 9 in chain A of the prepared 3RFM pocket.
+
+This deliberately created a protein–ligand steric clash without altering the ligand's internal geometry.
+
+The unchanged Stage 3B evaluator produced:
+
+```text
+minimum_distance_to_protein:   False
+smallest_distance_protein:     0.0 Å
+num_pairwise_clashes_protein:  9
+most_extreme_clash_protein:    True
+stage3b_passes:                False
+```
+Therefore, the deliberately clashing positive control was rejected by the existing Stage 3B hard gate.
+
+This provides positive-control evidence that the Stage 3B protein–ligand steric-clash gate is capable of firing. The original 18/18 3RFM Stage 3B pass result can therefore be interpreted as an observed absence of gate-triggering clashes in that baseline set rather than evidence of an inactive gate.
+
+The validation also clarified PoseBusters 0.6.5 output naming. D003 originally referred to the intended protein–ligand clash criterion as `no_clashes_protein`. In the pinned PoseBusters 0.6.5 full report used by the implementation, the corresponding Boolean output consumed by the existing gate is `minimum_distance_to_protein`, while underlying clash diagnostics include `smallest_distance_protein`, `num_pairwise_clashes_protein`, and `most_extreme_clash_protein`.
+
+The positive control empirically confirmed the intended relationship: forcing a zero-distance protein–ligand overlap produced nine detected pairwise clashes, set `most_extreme_clash_protein = True`, flipped `minimum_distance_to_protein = False`, and therefore produced `stage3b_passes = False`.
+
+Positive-control artifacts are retained separately from experimental outputs under:
+
+`tests/stage3b_positive_control/`
+
+
 ### Revisit when
 
 - Stage 3 diagnostics provide evidence that additional metrics should become hard gates.
@@ -392,3 +422,174 @@ Stage 4 applies no hard similarity threshold.
 All 16 molecules entering Stage 4 remain eligible downstream.
 
 Any future introduction of a Stage 4 similarity-based attrition threshold must be documented as a new versioned project decision.
+
+### Predeclared Stage 4 similarity reading bands
+
+Before the FLOWR comparison, Stage 4 similarity interpretation is frozen using a hybrid framework:
+
+- upper boundaries are universal and convention-anchored
+- lower boundaries are calibrated to the empirical null distribution of each frozen reference set
+
+These bands are **interpretive priors, never filters or attrition thresholds**.
+
+Stage 4B and Stage 4C labels remain separate because proximity to known target-ligand chemistry and proximity to approved-drug chemistry represent different forms of chemical precedent.
+
+#### Frozen reading bands
+
+| Reference space | Statistic | Extrapolative / corroboration required | Novel-but-grounded | Established / high precedent |
+| --- | --- | ---: | ---: | ---: |
+| Stage 4B — target ligands | Nearest similarity | < 0.2727 | 0.2727 to < 0.40 | >= 0.40 |
+| Stage 4B — target ligands | Top-5 mean similarity | < 0.2118 | 0.2118 to < 0.30 | >= 0.30 |
+| Stage 4C — approved drugs | Nearest similarity | < 0.1690 | 0.1690 to < 0.40 | >= 0.40 |
+| Stage 4C — approved drugs | Top-5 mean similarity | < 0.1284 | 0.1284 to < 0.30 | >= 0.30 |
+
+Interpretation:
+
+- **Established / high precedent** indicates that the generated molecule occupies chemical space with substantial structural precedent in the relevant reference.
+- **Novel-but-grounded** indicates structural novelty while remaining above the similarity expected from the reference's random-pair background.
+- **Extrapolative / corroboration required** indicates that the molecule lies sufficiently far from established reference chemistry that stronger independent downstream evidence is required before the extrapolation is trusted.
+
+An extrapolative label does **not** imply that a molecule is chemically implausible or that it should be removed from the cascade.
+
+Instead, it changes the evidentiary burden downstream.
+
+For example:
+
+- Stage 4B extrapolative chemistry places greater evidentiary weight on later target-compatibility results.
+- Stage 4C extrapolative chemistry places greater evidentiary weight on later developability, ADME, and safety characterization.
+- A molecule that is extrapolative in both spaces requires convergent downstream support but is not automatically rejected.
+- High similarity in both spaces provides stronger chemical precedent but may reduce the strength of a structural-novelty claim.
+
+Stage 4B and Stage 4C labels must not be collapsed into a single novelty score.
+
+### Null calibration
+
+The lower boundaries were calibrated against empirical random-similarity null distributions constructed from the exact frozen ChEMBL 37 reference artifacts used by Stage 4.
+
+Reproducibility parameters:
+
+```text
+Random seed:
+20260816
+
+Random within-reference pairs per reference:
+1,000,000
+
+Random five-pair means per reference:
+200,000
+
+Stage 4B reference:
+references/chembl37/ADORA2A_target_ligands.csv
+
+Stage 4C reference:
+references/chembl37/approved_drugs.csv
+
+Fingerprint:
+Morgan radius 2
+2048 bits
+chirality enabled
+
+Similarity:
+Tanimoto
+
+```
+
+#### Boundary null percentiles
+
+Stage 4B — target-ligand reference:
+
+```text
+Nearest lower boundary:
+0.2727
+95th null percentile by construction
+
+Nearest upper boundary:
+0.40
+98.33rd null percentile
+
+Top-5 mean lower boundary:
+0.2118
+95th null percentile by construction
+
+Top-5 mean upper boundary:
+0.30
+99.83rd null percentile
+```
+
+Stage 4C — approved-drug reference:
+
+```text
+Nearest lower boundary:
+0.1690
+95th null percentile by construction
+
+Nearest upper boundary:
+0.40
+99.85th null percentile
+
+Top-5 mean lower boundary:
+0.1284
+95th null percentile by construction
+
+Top-5 mean upper boundary:
+0.30
+approximately the 99.9995th null percentile
+```
+
+The reference-specific lower boundaries are necessary because the two frozen chemical reference spaces have different background similarity distributions.
+
+In particular, a fixed nearest-neighbor lower boundary of 0.20 lies at only the **87.69th percentile** of the A2A random-pair null, meaning that roughly 12% of random within-reference comparisons exceed it. A fixed 0.20 lower boundary on this dense, scaffold-concentrated reference would therefore misclassify too much chance-level similarity as chemically grounded.
+
+Accordingly, "grounded" is anchored to the chance distribution of the specific frozen reference rather than to one universal lower Tanimoto value.
+
+### 3RFM sanity preview
+
+Under the frozen framework, the current 3RFM baseline reads as follows:
+
+**The Stage 4B nearest-similarity mean of 0.225 is below the target-reference null-calibrated lower boundary of 0.2727 and therefore reads as extrapolative / corroboration required, while the Stage 4C nearest-similarity mean of 0.246 remains novel-but-grounded.**
+
+The Stage 4B nearest grounded band is intentionally narrow:
+
+```text
+0.2727 to < 0.40
+```
+
+Therefore, many FLOWR molecules may be expected to read as extrapolative on the Stage 4B nearest-neighbor statistic. For a novelty-seeking generator, this posture is expected and is **not itself evidence of generator failure**. Such molecules instead carry a greater requirement for independent downstream corroboration.
+
+### Reference-version rule
+
+The null-calibrated lower boundaries belong to these exact frozen reference sets.
+
+If either:
+
+- the frozen target-ligand reference set changes, or
+- the frozen approved-drug reference set changes,
+
+the corresponding null distribution must be recomputed and new lower boundaries derived from the new reference's empirical 95th percentile.
+
+Reference-specific lower boundaries must not be carried forward automatically to a new target, reference release, or modified reference population.
+
+The universal convention-anchored upper boundaries remain:
+
+```text
+Nearest similarity >= 0.40
+Top-5 mean similarity >= 0.30
+```
+
+unless a future versioned project decision explicitly changes them.
+
+### Reporting rule
+
+Whenever a Stage 4 similarity label is reported in future result artifacts or summaries, its **null percentile must be reported alongside the label**.
+
+The similarity value, interpretive label, and null percentile therefore remain distinguishable:
+
+```text
+similarity value
++
+reference-specific interpretive label
++
+empirical null percentile
+```
+
+This preserves both convention-anchored cheminformatics interpretation and the empirical rarity of the observed similarity within the relevant frozen reference space.

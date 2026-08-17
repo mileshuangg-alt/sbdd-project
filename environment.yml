@@ -12,3 +12,7 @@ dependencies:
   - pip:
       - posebusters==0.6.5
       - biopython==1.88
+      - pdb2pqr==3.7.1
+      - prolif==2.2.0
+      - meeko==0.7.1
+      - molscrub==0.2.2

@@ -830,6 +830,115 @@ If the frozen preparation policy produces an obviously inappropriate state for a
 
 ---
 
+### Native-reader versus docking ligand preparation
+
+The frozen ligand-preparation policy has two coordinate-handling paths because the two validation tasks ask different questions.
+
+**Native interaction-reader proof of life**
+
+For deposited experimental complexes, experimental heavy-atom geometry is part of the ground truth and must be preserved.
+
+Molscrub 0.2.2 was empirically tested with `--ph 7.4 --skip_tautomers --skip_gen3d`. It correctly produced a single pH-7.4 chemical state but replaced the deposited 3D coordinates with a 2D depiction. Therefore, Molscrub coordinates are not trusted for native-reader validation.
+
+For native reader controls:
+
+1. RCSB CCD chemistry is combined with the deposited ligand coordinates.
+2. Molscrub assigns one pH-7.4 state with tautomer enumeration disabled.
+3. The prepared heavy-atom graph is mapped back to the validated native ligand graph.
+4. Deposited heavy-atom coordinates are restored through that graph mapping.
+5. Only hydrogen coordinates are generated afterward.
+6. Heavy-atom coordinate preservation is asserted before ProLIF is run.
+
+**Docking validation and common control-panel docking**
+
+For Vina runs, initial ligand coordinates are not evidence because Vina regenerates the binding pose. Molscrub output coordinates therefore do not need restoration before docking, provided the frozen single-state chemistry assertions pass.
+
+The same pH-7.4 state policy and tautomer restriction apply in both paths; only coordinate preservation differs.
+
+Before ProLIF native-reader validation, each restored experimental ligand must also pass a geometric sanity check showing that its aromatic/core region remains in contact range of Phe168 and that a chemically eligible polar atom remains within hydrogen-bond distance of Asn253. This geometric check verifies preservation of the published pocket occupancy; ProLIF remains responsible for the subsequent interaction-type assignment.
+
+### Native interaction-reader validation — COMPLETE
+
+**Status: PASS (3/3)**
+
+Before ProLIF was permitted to judge redocked, control-panel, or generated poses, the interaction-reader layer was tested against the untouched crystallographic poses of the three predeclared experimental A2A positive controls.
+
+Results:
+
+| PDB | Ligand | Phe168 | Asn253 | Result |
+|---|---|---|---|---|
+| 3REY | XAC | Hydrophobic, VdWContact | HBAcceptor, VdWContact | PASS |
+| 5OLH | Vipadenant / 9XT | PiStacking, VdWContact | HBAcceptor, HBDonor, VdWContact | PASS |
+| 5OLO | Tozadenant / 9XW | Hydrophobic, PiStacking, VdWContact | HBAcceptor, HBDonor, VdWContact | PASS |
+
+ProLIF therefore recovered both predeclared A2A anchor residues in 3/3 experimentally determined positive complexes.
+
+#### Native-reader preparation refinement
+
+Validation exposed preparation behaviors that required deterministic handling before the reader could be trusted.
+
+For native-reader controls, deposited receptor and ligand heavy-atom geometry is experimentally authoritative.
+
+Receptor alternate locations are resolved before preparation by highest occupancy; occupancy ties prefer altloc A, followed by lexical order if required.
+
+PDB2PQR 3.7.1 / PROPKA 3.5.1 at pH 7.4 supplies receptor protonation-state assignment and generated hydrogens. After preparation, every selected deposited receptor heavy atom is restored to its experimental coordinate. Hydrogens attached to a restored heavy atom are rigidly translated by the same vector as their parent so the PDB2PQR-generated local X-H geometry is retained.
+
+PROPKA assigns protonation states on the pre-restoration geometry. The observed preparation-induced displacement was side-chain-scale, so state assignment is treated as unaffected.
+
+Pre-restoration maximum deposited-heavy-atom displacement:
+
+- 3REY: 0.000000 Å
+- 5OLH: 0.000000 Å
+- 5OLO: 1.354101 Å
+
+Persisted post-restoration maximum displacement:
+
+- 3REY: 0.000000 Å
+- 5OLH: 0.000000 Å
+- 5OLO: 0.000000 Å
+
+The nontrivial 5OLO movement was localized to ASN284, including OD1 = 1.258351 Å and ND2 = 1.354101 Å.
+
+His250 was ND1-protonated / NE2-unprotonated in all three receptors. PROPKA pKa values were 3.87 (3REY), 3.71 (5OLH), and 3.81 (5OLO).
+
+Molscrub supplies ligand pH-7.4 state assignment but is not trusted for crystallographic coordinates in the native-reader proof-of-life path. Native ligand heavy-atom coordinates are restored by graph mapping after state assignment. This restoration requirement is specific to native-reader controls; docking regenerates ligand poses.
+
+#### ProLIF adapter refinement
+
+The validated restored receptor artifacts are not altered for ProLIF.
+
+A temporary reader-only adapter:
+
+- converts PDB2PQR fixed-column records to an MDAnalysis-compatible representation;
+- maps genuine negative deposited residue numbers into a reserved positive range only for ProLIF (`GLY A -1 -> GLY A 10001`);
+- explicitly verifies that Phe168 and Asn253 retain their biological numbering;
+- removes geometrically inferred H-H bonds;
+- resolves multiple inferred hydrogen parents only when exactly one same-residue heavy-atom parent exists;
+- fails rather than guessing if hydrogen-parent assignment remains ambiguous.
+
+After topology cleanup, every explicit receptor hydrogen had exactly one heavy-atom parent in all three positive controls.
+
+Observed topology cleanup:
+
+- 3REY: 0 H-H bonds; 0 false inter-residue H bonds
+- 5OLH: 1 H-H bond; 0 false inter-residue H bonds
+- 5OLO: 1 H-H bond; 1 false inter-residue H bond
+
+The 5OLO false inter-residue inference connected ASN144 HD22 to PRO139 O at 1.421 Å; the chemically local ASN144 ND2 parent at 1.001 Å was retained.
+
+These rules are universal adapter rules, not residue-specific exceptions.
+
+### Validation state after reader proof of life
+
+1. Native interaction-reader proof of life — **PASS, 3/3**
+2. Cognate self-redocking — **PENDING**
+3. Common-3RFM positive/negative control panel — **PENDING**
+4. Gate-formulation ledger — **PENDING**
+5. Final Stage 5 hard gate — **NOT FROZEN**
+6. DiffSBDD 16-molecule Stage 5 baseline — **NOT YET PERMITTED**
+
+No docking score, binding-energy score, interaction formulation, or generated-molecule result has been promoted to a Stage 5 hard gate.
+
 ## Search-box definition
 
 Search boxes are defined from experimental ligand coordinates **before docking results are inspected**.

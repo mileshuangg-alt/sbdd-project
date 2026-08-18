@@ -1,0 +1,325 @@
+====================================================================================
+-------------------------------ring property (I)------------------------------------
+
+               Ring 1               
+
+    1     1     9  C009
+    1     2    10  C010
+    1     3    11  C011
+    1     4    12  C012
+    1     5    13  C013
+    1     6    14  C014
+
+               Ring 2               
+
+    2     1    15  C015
+    2     2    16  N016
+    2     3    17  N017
+    2     4    18  C018
+    2     5    19  C019
+
+               Ring 3               
+
+    3     1    18  C018
+    3     2    19  C019
+    3     3    20  N020
+    3     4    21  C021
+    3     5    22  C022
+    3     6    25  N025
+
+====================================================================================
+-------------------------------ring property (II)------------------------------------
+atom[ 9] (C009) belongs to one member of 6-membered  ring (No  1)
+atom[10] (C010) belongs to one member of 6-membered  ring (No  1)
+atom[11] (C011) belongs to one member of 6-membered  ring (No  1)
+atom[12] (C012) belongs to one member of 6-membered  ring (No  1)
+atom[13] (C013) belongs to one member of 6-membered  ring (No  1)
+atom[14] (C014) belongs to one member of 6-membered  ring (No  1)
+atom[15] (C015) belongs to one member of 5-membered  ring (No  2)
+atom[16] (N016) belongs to one member of 5-membered  ring (No  2)
+atom[17] (N017) belongs to one member of 5-membered  ring (No  2)
+atom[18] (C018) belongs to one member of 5-membered  ring (No  2)
+atom[19] (C019) belongs to one member of 5-membered  ring (No  2)
+atom[18] (C018) belongs to one member of 6-membered  ring (No  3)
+atom[19] (C019) belongs to one member of 6-membered  ring (No  3)
+atom[20] (N020) belongs to one member of 6-membered  ring (No  3)
+atom[21] (C021) belongs to one member of 6-membered  ring (No  3)
+atom[22] (C022) belongs to one member of 6-membered  ring (No  3)
+atom[25] (N025) belongs to one member of 6-membered  ring (No  3)
+
+====================================================================================
+-------------------------------ring property (III)-----------------------------------
+atom[ 1] (C001) is not in any ring (nr[1]=1)
+atom[ 2] (N002) is not in any ring (nr[2]=1)
+atom[ 3] (C003) is not in any ring (nr[3]=1)
+atom[ 4] (N004) is not in any ring (nr[4]=1)
+atom[ 5] (C005) is not in any ring (nr[5]=1)
+atom[ 6] (O006) is not in any ring (nr[6]=1)
+atom[ 7] (C007) is not in any ring (nr[7]=1)
+atom[ 8] (O008) is not in any ring (nr[8]=1)
+atom[ 9] (C009) involves in 1 6-member of ring(s)
+atom[10] (C010) involves in 1 6-member of ring(s)
+atom[11] (C011) involves in 1 6-member of ring(s)
+atom[12] (C012) involves in 1 6-member of ring(s)
+atom[13] (C013) involves in 1 6-member of ring(s)
+atom[14] (C014) involves in 1 6-member of ring(s)
+atom[15] (C015) involves in 1 5-member of ring(s)
+atom[16] (N016) involves in 1 5-member of ring(s)
+atom[17] (N017) involves in 1 5-member of ring(s)
+atom[18] (C018) involves in 1 5-member of ring(s)
+atom[18] (C018) involves in 1 6-member of ring(s)
+atom[19] (C019) involves in 1 5-member of ring(s)
+atom[19] (C019) involves in 1 6-member of ring(s)
+atom[20] (N020) involves in 1 6-member of ring(s)
+atom[21] (C021) involves in 1 6-member of ring(s)
+atom[22] (C022) involves in 1 6-member of ring(s)
+atom[23] (C023) is not in any ring (nr[23]=1)
+atom[24] (O024) is not in any ring (nr[24]=1)
+atom[25] (N025) involves in 1 6-member of ring(s)
+atom[26] (O026) is not in any ring (nr[26]=1)
+atom[27] (C027) is not in any ring (nr[27]=1)
+atom[28] (C028) is not in any ring (nr[28]=1)
+atom[29] (C029) is not in any ring (nr[29]=1)
+atom[30] (C030) is not in any ring (nr[30]=1)
+atom[31] (C031) is not in any ring (nr[31]=1)
+atom[32] (H032) is not in any ring (nr[32]=1)
+atom[33] (H033) is not in any ring (nr[33]=1)
+atom[34] (H034) is not in any ring (nr[34]=1)
+atom[35] (H035) is not in any ring (nr[35]=1)
+atom[36] (H036) is not in any ring (nr[36]=1)
+atom[37] (H037) is not in any ring (nr[37]=1)
+atom[38] (H038) is not in any ring (nr[38]=1)
+atom[39] (H039) is not in any ring (nr[39]=1)
+atom[40] (H040) is not in any ring (nr[40]=1)
+atom[41] (H041) is not in any ring (nr[41]=1)
+atom[42] (H042) is not in any ring (nr[42]=1)
+atom[43] (H043) is not in any ring (nr[43]=1)
+atom[44] (H044) is not in any ring (nr[44]=1)
+atom[45] (H045) is not in any ring (nr[45]=1)
+atom[46] (H046) is not in any ring (nr[46]=1)
+atom[47] (H047) is not in any ring (nr[47]=1)
+atom[48] (H048) is not in any ring (nr[48]=1)
+atom[49] (H049) is not in any ring (nr[49]=1)
+atom[50] (H050) is not in any ring (nr[50]=1)
+atom[51] (H051) is not in any ring (nr[51]=1)
+atom[52] (H052) is not in any ring (nr[52]=1)
+atom[53] (H053) is not in any ring (nr[53]=1)
+atom[54] (H054) is not in any ring (nr[54]=1)
+atom[55] (H055) is not in any ring (nr[55]=1)
+atom[56] (H056) is not in any ring (nr[56]=1)
+atom[57] (H057) is not in any ring (nr[57]=1)
+atom[58] (H058) is not in any ring (nr[58]=1)
+atom[59] (H059) is not in any ring (nr[59]=1)
+atom[60] (H060) is not in any ring (nr[60]=1)
+
+====================================================================================
+-------------------------------aromatic property------------------------------------
+atom[ 9] (C009) is in 1 pure aromatic ring(s) (AR1)
+atom[10] (C010) is in 1 pure aromatic ring(s) (AR1)
+atom[11] (C011) is in 1 pure aromatic ring(s) (AR1)
+atom[12] (C012) is in 1 pure aromatic ring(s) (AR1)
+atom[13] (C013) is in 1 pure aromatic ring(s) (AR1)
+atom[14] (C014) is in 1 pure aromatic ring(s) (AR1)
+atom[15] (C015) is in 1 planar ring(s) (AR2)
+atom[16] (N016) is in 1 planar ring(s) (AR2)
+atom[17] (N017) is in 1 planar ring(s) (AR2)
+atom[18] (C018) is in 1 planar ring(s) (AR2)
+atom[18] (C018) is in 1 planar ring(s), which has/have "outside" bonds (AR3)
+atom[19] (C019) is in 1 planar ring(s) (AR2)
+atom[19] (C019) is in 1 planar ring(s), which has/have "outside" bonds (AR3)
+atom[20] (N020) is in 1 planar ring(s), which has/have "outside" bonds (AR3)
+atom[21] (C021) is in 1 planar ring(s), which has/have "outside" bonds (AR3)
+atom[22] (C022) is in 1 planar ring(s), which has/have "outside" bonds (AR3)
+atom[25] (N025) is in 1 planar ring(s), which has/have "outside" bonds (AR3)
+
+====================================================================================
+-------------------------------electronic property----------------------------------
+atom [ 1] (C001) is not an electron-withdrew atom
+atom [ 2] (N002) is an electron-withdrew atom
+atom [ 3] (C003) is not an electron-withdrew atom
+atom [ 4] (N004) is an electron-withdrew atom
+atom [ 5] (C005) is not an electron-withdrew atom
+atom [ 6] (O006) is an electron-withdrew atom
+atom [ 7] (C007) is not an electron-withdrew atom
+atom [ 8] (O008) is an electron-withdrew atom
+atom [ 9] (C009) is not an electron-withdrew atom
+atom [10] (C010) is not an electron-withdrew atom
+atom [11] (C011) is not an electron-withdrew atom
+atom [12] (C012) is not an electron-withdrew atom
+atom [13] (C013) is not an electron-withdrew atom
+atom [14] (C014) is not an electron-withdrew atom
+atom [15] (C015) is not an electron-withdrew atom
+atom [16] (N016) is an electron-withdrew atom
+atom [17] (N017) is an electron-withdrew atom
+atom [18] (C018) is not an electron-withdrew atom
+atom [19] (C019) is not an electron-withdrew atom
+atom [20] (N020) is an electron-withdrew atom
+atom [21] (C021) is not an electron-withdrew atom
+atom [22] (C022) is not an electron-withdrew atom
+atom [23] (C023) is not an electron-withdrew atom
+atom [24] (O024) is an electron-withdrew atom
+atom [25] (N025) is an electron-withdrew atom
+atom [26] (O026) is an electron-withdrew atom
+atom [27] (C027) is not an electron-withdrew atom
+atom [28] (C028) is not an electron-withdrew atom
+atom [29] (C029) is not an electron-withdrew atom
+atom [30] (C030) is not an electron-withdrew atom
+atom [31] (C031) is not an electron-withdrew atom
+atom [32] (H032) is not an electron-withdrew atom
+atom [33] (H033) is not an electron-withdrew atom
+atom [34] (H034) is not an electron-withdrew atom
+atom [35] (H035) is not an electron-withdrew atom
+atom [36] (H036) is not an electron-withdrew atom
+atom [37] (H037) is not an electron-withdrew atom
+atom [38] (H038) is not an electron-withdrew atom
+atom [39] (H039) is not an electron-withdrew atom
+atom [40] (H040) is not an electron-withdrew atom
+atom [41] (H041) is not an electron-withdrew atom
+atom [42] (H042) is not an electron-withdrew atom
+atom [43] (H043) is not an electron-withdrew atom
+atom [44] (H044) is not an electron-withdrew atom
+atom [45] (H045) is not an electron-withdrew atom
+atom [46] (H046) is not an electron-withdrew atom
+atom [47] (H047) is not an electron-withdrew atom
+atom [48] (H048) is not an electron-withdrew atom
+atom [49] (H049) is not an electron-withdrew atom
+atom [50] (H050) is not an electron-withdrew atom
+atom [51] (H051) is not an electron-withdrew atom
+atom [52] (H052) is not an electron-withdrew atom
+atom [53] (H053) is not an electron-withdrew atom
+atom [54] (H054) is not an electron-withdrew atom
+atom [55] (H055) is not an electron-withdrew atom
+atom [56] (H056) is not an electron-withdrew atom
+atom [57] (H057) is not an electron-withdrew atom
+atom [58] (H058) is not an electron-withdrew atom
+atom [59] (H059) is not an electron-withdrew atom
+atom [60] (H060) is not an electron-withdrew atom
+
+====================================================================================
+--------------------------------connectivity property-------------------------------
+atom[ 1] (C001)     2  N002
+atom[ 1] (C001)     3  C003
+atom[ 1] (C001)    32  H032
+atom[ 1] (C001)    33  H033
+atom[ 2] (N002)     1  C001
+atom[ 2] (N002)    34  H034
+atom[ 2] (N002)    35  H035
+atom[ 2] (N002)    36  H036
+atom[ 3] (C003)     1  C001
+atom[ 3] (C003)     4  N004
+atom[ 3] (C003)    37  H037
+atom[ 3] (C003)    38  H038
+atom[ 4] (N004)     3  C003
+atom[ 4] (N004)     5  C005
+atom[ 4] (N004)    39  H039
+atom[ 5] (C005)     4  N004
+atom[ 5] (C005)     6  O006
+atom[ 5] (C005)     7  C007
+atom[ 6] (O006)     5  C005
+atom[ 7] (C007)     5  C005
+atom[ 7] (C007)     8  O008
+atom[ 7] (C007)    40  H040
+atom[ 7] (C007)    41  H041
+atom[ 8] (O008)     7  C007
+atom[ 8] (O008)     9  C009
+atom[ 9] (C009)     8  O008
+atom[ 9] (C009)    10  C010
+atom[ 9] (C009)    11  C011
+atom[10] (C010)     9  C009
+atom[10] (C010)    12  C012
+atom[10] (C010)    42  H042
+atom[11] (C011)     9  C009
+atom[11] (C011)    13  C013
+atom[11] (C011)    43  H043
+atom[12] (C012)    10  C010
+atom[12] (C012)    14  C014
+atom[12] (C012)    44  H044
+atom[13] (C013)    11  C011
+atom[13] (C013)    14  C014
+atom[13] (C013)    45  H045
+atom[14] (C014)    12  C012
+atom[14] (C014)    13  C013
+atom[14] (C014)    15  C015
+atom[15] (C015)    14  C014
+atom[15] (C015)    16  N016
+atom[15] (C015)    17  N017
+atom[16] (N016)    15  C015
+atom[16] (N016)    18  C018
+atom[17] (N017)    15  C015
+atom[17] (N017)    19  C019
+atom[17] (N017)    46  H046
+atom[18] (C018)    16  N016
+atom[18] (C018)    20  N020
+atom[18] (C018)    19  C019
+atom[19] (C019)    17  N017
+atom[19] (C019)    18  C018
+atom[19] (C019)    21  C021
+atom[20] (N020)    18  C018
+atom[20] (N020)    22  C022
+atom[20] (N020)    23  C023
+atom[21] (C021)    19  C019
+atom[21] (C021)    24  O024
+atom[21] (C021)    25  N025
+atom[22] (C022)    20  N020
+atom[22] (C022)    25  N025
+atom[22] (C022)    26  O026
+atom[23] (C023)    20  N020
+atom[23] (C023)    27  C027
+atom[23] (C023)    47  H047
+atom[23] (C023)    48  H048
+atom[24] (O024)    21  C021
+atom[25] (N025)    21  C021
+atom[25] (N025)    22  C022
+atom[25] (N025)    28  C028
+atom[26] (O026)    22  C022
+atom[27] (C027)    23  C023
+atom[27] (C027)    29  C029
+atom[27] (C027)    49  H049
+atom[27] (C027)    50  H050
+atom[28] (C028)    25  N025
+atom[28] (C028)    30  C030
+atom[28] (C028)    51  H051
+atom[28] (C028)    52  H052
+atom[29] (C029)    27  C027
+atom[29] (C029)    53  H053
+atom[29] (C029)    54  H054
+atom[29] (C029)    55  H055
+atom[30] (C030)    28  C028
+atom[30] (C030)    31  C031
+atom[30] (C030)    56  H056
+atom[30] (C030)    57  H057
+atom[31] (C031)    30  C030
+atom[31] (C031)    58  H058
+atom[31] (C031)    59  H059
+atom[31] (C031)    60  H060
+atom[32] (H032)     1  C001
+atom[33] (H033)     1  C001
+atom[34] (H034)     2  N002
+atom[35] (H035)     2  N002
+atom[36] (H036)     2  N002
+atom[37] (H037)     3  C003
+atom[38] (H038)     3  C003
+atom[39] (H039)     4  N004
+atom[40] (H040)     7  C007
+atom[41] (H041)     7  C007
+atom[42] (H042)    10  C010
+atom[43] (H043)    11  C011
+atom[44] (H044)    12  C012
+atom[45] (H045)    13  C013
+atom[46] (H046)    17  N017
+atom[47] (H047)    23  C023
+atom[48] (H048)    23  C023
+atom[49] (H049)    27  C027
+atom[50] (H050)    27  C027
+atom[51] (H051)    28  C028
+atom[52] (H052)    28  C028
+atom[53] (H053)    29  C029
+atom[54] (H054)    29  C029
+atom[55] (H055)    29  C029
+atom[56] (H056)    30  C030
+atom[57] (H057)    30  C030
+atom[58] (H058)    31  C031
+atom[59] (H059)    31  C031
+atom[60] (H060)    31  C031
+----------------------------------------END-----------------------------------------
+

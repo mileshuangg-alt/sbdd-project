@@ -1,0 +1,58 @@
+AutoDock Vina v1.2.7
+#################################################################
+# If you used AutoDock Vina in your work, please cite:          #
+#                                                               #
+# J. Eberhardt, D. Santos-Martins, A. F. Tillack, and S. Forli  #
+# AutoDock Vina 1.2.0: New Docking Methods, Expanded Force      #
+# Field, and Python Bindings, J. Chem. Inf. Model. (2021)       #
+# DOI 10.1021/acs.jcim.1c00203                                  #
+#                                                               #
+# O. Trott, A. J. Olson,                                        #
+# AutoDock Vina: improving the speed and accuracy of docking    #
+# with a new scoring function, efficient optimization and       #
+# multithreading, J. Comp. Chem. (2010)                         #
+# DOI 10.1002/jcc.21334                                         #
+#                                                               #
+# Please see https://github.com/ccsb-scripps/AutoDock-Vina for  #
+# more information.                                             #
+#################################################################
+
+Scoring function : vina
+Rigid receptor: references/stage5/docking/3REY/3REY_receptor.pdbqt
+Ligand: references/stage5/docking/3REY/3REY_XAC.pdbqt
+Grid center: X 49.5358 Y 23.2146 Z 34.7641
+Grid size  : X 20 Y 20 Z 20
+Grid space : 0.375
+Exhaustiveness: 32
+CPU: 0
+Verbosity: 1
+
+Computing Vina grid ... done.
+Performing docking (random seed: 20260816) ... 
+0%   10   20   30   40   50   60   70   80   90   100%
+|----|----|----|----|----|----|----|----|----|----|
+***************************************************
+
+mode |   affinity | dist from best mode
+     | (kcal/mol) | rmsd l.b.| rmsd u.b.
+-----+------------+----------+----------
+   1       -7.219          0          0
+   2       -7.204      3.751      11.15
+   3       -7.176      1.885      2.279
+   4       -7.149      1.508      3.228
+   5       -7.149       2.04      3.999
+   6       -7.147      2.279      4.335
+   7       -7.047      2.538      10.14
+   8        -7.02      5.219      6.462
+   9       -6.972      2.731      4.523
+  10       -6.823      5.695      10.28
+  11       -6.816      5.962      9.623
+  12       -6.792      5.236      10.18
+  13       -6.724      4.984      6.275
+  14       -6.719      5.287      10.01
+  15       -6.688      2.634      3.328
+  16       -6.632      2.571      10.43
+  17       -6.623      2.147       2.92
+  18         -6.6      5.125      10.76
+  19       -6.565      5.791      10.02
+  20       -6.557      6.378      10.33

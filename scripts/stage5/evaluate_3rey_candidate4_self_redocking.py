@@ -1,0 +1,391 @@
+from pathlib import Path
+import math
+import re
+
+from meeko import PDBQTMolecule, RDKitMolCreate
+import prolif as plf
+from rdkit import Chem
+from rdkit.Chem import rdMolAlign
+
+from test_native_reader_controls import (
+    find_anchor_interactions,
+    interaction_names,
+    load_protein,
+    run_interaction_reader,
+)
+
+
+ROOT = Path("references/stage5")
+
+POSES_PDBQT = (
+    ROOT
+    / "docking"
+    / "candidate4"
+    / "3REY"
+    / "3REY_XAC_poses.pdbqt"
+)
+
+PREPARED_LIGAND_PDBQT = (
+    ROOT
+    / "docking"
+    / "3REY"
+    / "3REY_XAC.pdbqt"
+)
+
+NATIVE_LIGAND_SDF = (
+    ROOT
+    / "native_complexes"
+    / "3REY"
+    / "3REY_XAC_native_pH7.4_restored.sdf"
+)
+
+NATIVE_RECEPTOR_PQR = (
+    ROOT
+    / "native_complexes"
+    / "3REY"
+    / "3REY_receptor_pH7.4_restored.pqr"
+)
+
+MAX_POSES = 20
+ENERGY_WINDOW = 5.0
+RMSD_CUTOFF = 2.0
+
+EXPECTED_ANCHOR_CLASSES = {
+    "phe168": {
+        "Hydrophobic",
+        "VdWContact",
+    },
+    "asn253": {
+        "HBAcceptor",
+        "VdWContact",
+    },
+}
+
+
+def parse_model_blocks(path):
+    text = path.read_text()
+    blocks = re.findall(
+        r"MODEL\s+\d+\n(.*?)ENDMDL",
+        text,
+        flags=re.DOTALL,
+    )
+
+    if not blocks:
+        raise AssertionError("No MODEL blocks found.")
+
+    if len(blocks) > MAX_POSES:
+        raise AssertionError(
+            f"Expected at most {MAX_POSES} MODEL blocks, "
+            f"found {len(blocks)}."
+        )
+
+    return blocks
+
+
+def parse_index_map_from_text(text):
+    pairs = []
+
+    for line in text.splitlines():
+        if not line.startswith("REMARK INDEX MAP"):
+            continue
+
+        values = [int(value) for value in line.split()[3:]]
+
+        if len(values) % 2 != 0:
+            raise AssertionError(
+                "REMARK INDEX MAP contains an odd number "
+                "of integers."
+            )
+
+        for index in range(0, len(values), 2):
+            pairs.append((values[index], values[index + 1]))
+
+    if not pairs:
+        raise AssertionError("No REMARK INDEX MAP records found.")
+
+    return tuple(pairs)
+
+
+def parse_minimized_affinity(block):
+    matches = []
+
+    for line in block.splitlines():
+        if line.startswith("REMARK minimizedAffinity"):
+            fields = line.split()
+            if len(fields) != 3:
+                raise AssertionError(
+                    "Malformed REMARK minimizedAffinity line: "
+                    f"{line}"
+                )
+            value = float(fields[2])
+            if not math.isfinite(value):
+                raise AssertionError(
+                    "Non-finite minimizedAffinity value: "
+                    f"{line}"
+                )
+            matches.append(value)
+
+    if len(matches) != 1:
+        raise AssertionError(
+            "Expected exactly one REMARK minimizedAffinity line "
+            f"per MODEL, found {len(matches)}."
+        )
+
+    return matches[0]
+
+
+def load_native_ligand():
+    native = Chem.SDMolSupplier(
+        str(NATIVE_LIGAND_SDF),
+        removeHs=False,
+    )[0]
+
+    if native is None:
+        raise ValueError(f"Failed to load native ligand: {NATIVE_LIGAND_SDF}")
+
+    return native
+
+
+def reconstruct_poses(pose_count):
+    pdbqt_mol = PDBQTMolecule.from_file(
+        str(POSES_PDBQT),
+        poses_to_read=pose_count,
+    )
+
+    parsed_count = pdbqt_mol._pose_data["n_poses"]
+    if parsed_count != pose_count:
+        raise AssertionError(
+            f"Expected {pose_count} parsed poses, found {parsed_count}."
+        )
+
+    molecules = RDKitMolCreate.from_pdbqt_mol(pdbqt_mol)
+
+    if len(molecules) != 1 or molecules[0] is None:
+        raise AssertionError("Expected exactly one reconstructed ligand molecule.")
+
+    pose_mol = molecules[0]
+
+    if pose_mol.GetNumConformers() != pose_count:
+        raise AssertionError(
+            f"Expected {pose_count} reconstructed conformers, "
+            f"found {pose_mol.GetNumConformers()}."
+        )
+
+    return pose_mol
+
+
+def assert_index_maps_are_stable(blocks):
+    prepared_map = parse_index_map_from_text(PREPARED_LIGAND_PDBQT.read_text())
+
+    for rank, block in enumerate(blocks, start=1):
+        pose_map = parse_index_map_from_text(block)
+
+        if pose_map != prepared_map:
+            raise AssertionError(
+                f"Pose {rank} index map differs from prepared ligand."
+            )
+
+    return prepared_map
+
+
+def copy_single_conformer(mol, conformer_index):
+    single = Chem.Mol(mol)
+    conformer = Chem.Conformer(mol.GetConformer(conformer_index))
+
+    single.RemoveAllConformers()
+    single.AddConformer(conformer, assignId=True)
+
+    return single
+
+
+def calculate_rmsd_by_pose(pose_mol, native, pose_count):
+    pose_heavy = Chem.RemoveHs(pose_mol)
+    native_heavy = Chem.RemoveHs(native)
+
+    rmsds = []
+    for conformer_index in range(pose_count):
+        rmsd = rdMolAlign.CalcRMS(
+            pose_heavy,
+            native_heavy,
+            conformer_index,
+            0,
+            symmetrizeConjugatedTerminalGroups=True,
+        )
+        rmsds.append(float(rmsd))
+
+    return rmsds
+
+
+def evaluate_pose_interactions(protein, pose_mol, conformer_index):
+    single = copy_single_conformer(pose_mol, conformer_index)
+    ligand = plf.Molecule.from_rdkit(single)
+    interactions = run_interaction_reader(protein, ligand)
+
+    phe168 = find_anchor_interactions(interactions, "PHE", 168)
+    asn253 = find_anchor_interactions(interactions, "ASN", 253)
+
+    phe168_interactions = interaction_names(phe168)
+    asn253_interactions = interaction_names(asn253)
+
+    return {
+        "phe168_recovered": EXPECTED_ANCHOR_CLASSES["phe168"] <= phe168_interactions,
+        "phe168_interactions": sorted(phe168_interactions),
+        "asn253_recovered": EXPECTED_ANCHOR_CLASSES["asn253"] <= asn253_interactions,
+        "asn253_interactions": sorted(asn253_interactions),
+    }
+
+
+def validate_chemistry(pose_mol, native):
+    pose_heavy = Chem.RemoveHs(pose_mol)
+    native_heavy = Chem.RemoveHs(native)
+
+    pose_smiles = Chem.MolToSmiles(
+        pose_heavy,
+        canonical=True,
+        isomericSmiles=True,
+    )
+    native_smiles = Chem.MolToSmiles(
+        native_heavy,
+        canonical=True,
+        isomericSmiles=True,
+    )
+
+    if pose_smiles != native_smiles:
+        raise AssertionError(
+            "Reconstructed pose chemistry differs from native XAC: "
+            f"{pose_smiles} != {native_smiles}"
+        )
+
+    formal_charge = Chem.GetFormalCharge(pose_mol)
+    if formal_charge != 1:
+        raise AssertionError(
+            f"Reconstructed formal charge is {formal_charge}, expected +1."
+        )
+
+    heavy_atoms = pose_mol.GetNumHeavyAtoms()
+    if heavy_atoms != 31:
+        raise AssertionError(
+            f"Reconstructed heavy-atom count is {heavy_atoms}, expected 31."
+        )
+
+    return {
+        "heavy_smiles": pose_smiles,
+        "formal_charge": formal_charge,
+        "heavy_atoms": heavy_atoms,
+    }
+
+
+def main():
+    for path in (
+        POSES_PDBQT,
+        PREPARED_LIGAND_PDBQT,
+        NATIVE_LIGAND_SDF,
+        NATIVE_RECEPTOR_PQR,
+    ):
+        if not path.exists() or path.stat().st_size == 0:
+            raise FileNotFoundError(f"Required non-empty input missing: {path}")
+
+    blocks = parse_model_blocks(POSES_PDBQT)
+    pose_count = len(blocks)
+    minimized_affinities = [
+        parse_minimized_affinity(block)
+        for block in blocks
+    ]
+    best_empirical = min(minimized_affinities)
+    eligibility_threshold = best_empirical + ENERGY_WINDOW
+    eligible = [
+        affinity <= eligibility_threshold
+        for affinity in minimized_affinities
+    ]
+
+    index_map = assert_index_maps_are_stable(blocks)
+
+    native = load_native_ligand()
+    pose_mol = reconstruct_poses(pose_count)
+    chemistry = validate_chemistry(pose_mol, native)
+
+    protein_results = load_protein(NATIVE_RECEPTOR_PQR)
+    protein = protein_results["protein"]
+
+    rmsds = calculate_rmsd_by_pose(pose_mol, native, pose_count)
+
+    results = []
+    first_success = None
+    for conformer_index in range(pose_count):
+        interaction_result = evaluate_pose_interactions(
+            protein,
+            pose_mol,
+            conformer_index,
+        )
+        rank = conformer_index + 1
+        rmsd_pass = rmsds[conformer_index] <= RMSD_CUTOFF
+        pose_pass = (
+            eligible[conformer_index]
+            and rmsd_pass
+            and interaction_result["phe168_recovered"]
+            and interaction_result["asn253_recovered"]
+        )
+        result = {
+            "rank": rank,
+            "minimized_affinity": minimized_affinities[conformer_index],
+            "eligible": eligible[conformer_index],
+            "rmsd": rmsds[conformer_index],
+            "rmsd_pass": rmsd_pass,
+            "pose_pass": pose_pass,
+            **interaction_result,
+        }
+        results.append(result)
+
+        if pose_pass and first_success is None:
+            first_success = rank
+
+    print("Candidate-4 3REY / XAC self-redocking validation")
+    print("=" * 72)
+    print("Parsed poses:", pose_count)
+    print("Index-map pairs:", len(index_map))
+    print("Heavy-atom canonical SMILES:", chemistry["heavy_smiles"])
+    print("Formal charge:", chemistry["formal_charge"])
+    print("Heavy atoms:", chemistry["heavy_atoms"])
+    print("Best empirical minimizedAffinity:", f"{best_empirical:.3f}")
+    print("5 kcal/mol eligibility threshold:", f"{eligibility_threshold:.3f}")
+    print("Eligible poses:", sum(eligible))
+    print("Required Phe168 classes:", sorted(EXPECTED_ANCHOR_CLASSES["phe168"]))
+    print("Required Asn253 classes:", sorted(EXPECTED_ANCHOR_CLASSES["asn253"]))
+    print("Native receptor:", NATIVE_RECEPTOR_PQR)
+    print("Anchor numbering audit:", protein_results["anchor_audit"])
+    print()
+    print(
+        "Rank,MinimizedAffinity,Eligible,RMSD,Phe168Recovered,"
+        "Phe168Interactions,Asn253Recovered,"
+        "Asn253Interactions,PosePass"
+    )
+
+    for result in results:
+        print(
+            f"{result['rank']},"
+            f"{result['minimized_affinity']:.3f},"
+            f"{result['eligible']},"
+            f"{result['rmsd']:.3f},"
+            f"{result['phe168_recovered']},"
+            f"{';'.join(result['phe168_interactions'])},"
+            f"{result['asn253_recovered']},"
+            f"{';'.join(result['asn253_interactions'])},"
+            f"{result['pose_pass']}"
+        )
+
+    print()
+    if first_success is None:
+        print(
+            "CANDIDATE-4 3REY / XAC RESULT: FAIL "
+            "(no eligible retained pose satisfied RMSD <= 2.0 A "
+            "AND Phe168 native pattern AND Asn253 native pattern)"
+        )
+    else:
+        print(
+            "CANDIDATE-4 3REY / XAC RESULT: PASS "
+            f"(first successful pose rank: {first_success})"
+        )
+
+
+if __name__ == "__main__":
+    main()

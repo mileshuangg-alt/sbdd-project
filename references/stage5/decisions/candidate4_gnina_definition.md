@@ -199,6 +199,92 @@ must be recorded in the run report.
 `<GPU_ID>` is an available GPU selected at execution time and recorded
 in the run report.
 
+### Pre-execution implementation clarification
+
+The first attempted Candidate-4 invocation did **not** dock. It failed
+during command-line parsing because GNINA v1.3.3 rejected the Vina-specific
+option:
+
+``` text
+Command line parse error:
+unrecognised option '--energy_range'
+```
+
+No search, scoring, pose generation, or output interpretation occurred.
+Candidate-4 run count therefore remains zero.
+
+The compatibility audit found that GNINA v1.3.3 has no native
+`--energy_range` option, including hidden or configuration-file options.
+This is an implementation mismatch, not a scientific protocol revision.
+
+The frozen Candidate-4 retained-pose policy remains:
+
+``` text
+5 kcal/mol retained-pose eligibility
+```
+
+Because GNINA cannot apply that window internally, the policy is
+implemented deterministically after GNINA generation:
+
+1. GNINA generates at most 20 poses.
+2. `--num_modes` remains 20 and is **not** increased.
+3. For each generated pose, read the empirical / Vina-family affinity
+   reported by GNINA in PDBQT output as:
+
+   ``` text
+   REMARK minimizedAffinity <float>
+   ```
+
+   Example:
+
+   ``` text
+   MODEL 1
+   REMARK minimizedAffinity -8.53218269
+   ...
+   ENDMDL
+   ```
+
+   GNINA v1.3.3 source `result_info::write` writes this field
+   unconditionally for every normal output `MODEL`. It is the empirical /
+   Vina-family affinity, not a CNN-derived quantity. CNN quantities are
+   serialized separately as `REMARK CNNscore` and `REMARK CNNaffinity`.
+4. Define the best empirical affinity as the minimum empirical affinity
+   among generated poses.
+5. A pose is eligible only if its empirical affinity is within 5.0
+   kcal/mol of that best empirical affinity.
+6. Only eligible poses enter the existing RMSD + ProLIF Layer-2
+   evaluation.
+
+Vina's `--energy_range` keeps poses within 5 kcal/mol of the best
+empirical affinity; the Candidate-4 post-filter applies the identical
+relative window to the identical affinity quantity, after generation
+rather than during retention, so the retained-pose bar is unchanged.
+
+CNNscore ordering is preserved as GNINA output ranking. CNNscore remains
+descriptive / ranking evidence only and never determines Layer-2 pass/fail.
+
+The implementation is also clarified to explicitly pin:
+
+``` text
+--min_rmsd_filter 1
+--addH false
+--device 0
+```
+
+Physical GPU selection is controlled by:
+
+``` text
+CUDA_VISIBLE_DEVICES=<GPU_ID>
+```
+
+and the physical GPU ID must be recorded in the execution report.
+
+The CNN identifier `all_default_to_default_1_3_3` must be confirmed
+verbatim against the installed GNINA binary's help text or startup banner
+before execution. If the installed identifier differs, the observed string
+must be recorded as a lock-field correction before any docking run. Nothing
+is treated as pinned unless it has been observed on the actual install.
+
 ``` bash
 CUDA_VISIBLE_DEVICES=<GPU_ID> \
 apptainer exec --nv gnina_v1.3.3.sif \
@@ -217,14 +303,27 @@ gnina \
   --exhaustiveness 32 \
   --seed 20260816 \
   --num_modes 20 \
-  --energy_range 5 \
+  --min_rmsd_filter 1 \
+  --addH false \
+  --device 0 \
   --out <PROJECT_ROOT>/references/stage5/docking/candidate4/3REY/3REY_XAC_poses.pdbqt \
   --log <PROJECT_ROOT>/references/stage5/docking/candidate4/3REY/3REY_XAC_gnina.log
 ```
 
 Before interpreting the run, record/verify the GNINA version, SIF hash,
 CNN ensemble, rescore mode, CNNscore sorting, frozen search arguments,
-rigid receptor, and GPU used.
+rigid receptor, explicit hydrogen handling, `--min_rmsd_filter`, the
+empirical-affinity field used for the retained-pose post-filter, and GPU
+used.
+
+The evaluator must apply the deterministic 5 kcal/mol eligibility filter
+before reporting Layer-2 pass/fail. The minimal evaluator change is to
+parse exactly one `REMARK minimizedAffinity <float>` line from each generated
+`MODEL`, compute the best empirical affinity as the minimum
+`minimizedAffinity` among generated poses, and exclude poses outside
+`best_empirical + 5.0` kcal/mol from RMSD + ProLIF pass/fail evaluation.
+Do not use `REMARK CNNscore` or `REMARK CNNaffinity` for this eligibility
+filter.
 
 If the executable rejects a frozen option or changes its semantics,
 execution stops for review rather than silently substituting another

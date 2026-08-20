@@ -142,6 +142,21 @@ def run_pdb2pqr(pdb_id, raw_pdb):
         / f"{pdb_id}_receptor_pH7.4.log"
     )
 
+    return run_pdb2pqr_to_paths(
+        raw_pdb,
+        output_pqr,
+        output_log,
+    )
+
+
+def run_pdb2pqr_to_paths(raw_pdb, output_pqr, output_log):
+    """Prepare one receptor PDB with the frozen pH-7.4 workflow."""
+
+    output_pqr.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
     command = [
         "pdb2pqr",
         "--ff=AMBER",

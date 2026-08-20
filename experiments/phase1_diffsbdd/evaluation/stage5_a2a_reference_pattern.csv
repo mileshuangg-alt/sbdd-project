@@ -1,0 +1,17 @@
+molecule_id,phe168_interactions,asn253_interactions,phe168_reference_feature,asn253_reference_feature,a2a_reference_pattern,claims_status,pose_basis
+0,Hydrophobic;VdWContact,HBAcceptor;VdWContact,True,True,True,claims capped pending gate validation,generator-provided coordinates
+1,Hydrophobic,VdWContact,True,False,False,claims capped pending gate validation,generator-provided coordinates
+2,Hydrophobic;VdWContact,VdWContact,True,False,False,claims capped pending gate validation,generator-provided coordinates
+3,Hydrophobic,HBAcceptor;VdWContact,True,True,True,claims capped pending gate validation,generator-provided coordinates
+5,Hydrophobic;VdWContact,,True,False,False,claims capped pending gate validation,generator-provided coordinates
+6,,HBAcceptor;VdWContact,False,True,False,claims capped pending gate validation,generator-provided coordinates
+7,Hydrophobic;VdWContact,VdWContact,True,False,False,claims capped pending gate validation,generator-provided coordinates
+8,Hydrophobic,,True,False,False,claims capped pending gate validation,generator-provided coordinates
+9,Hydrophobic,,True,False,False,claims capped pending gate validation,generator-provided coordinates
+10,Hydrophobic,VdWContact,True,False,False,claims capped pending gate validation,generator-provided coordinates
+11,Hydrophobic,VdWContact,True,False,False,claims capped pending gate validation,generator-provided coordinates
+12,Hydrophobic,,True,False,False,claims capped pending gate validation,generator-provided coordinates
+14,Hydrophobic,,True,False,False,claims capped pending gate validation,generator-provided coordinates
+17,Hydrophobic;VdWContact,VdWContact,True,False,False,claims capped pending gate validation,generator-provided coordinates
+18,Hydrophobic;VdWContact,HBAcceptor;VdWContact,True,True,True,claims capped pending gate validation,generator-provided coordinates
+19,Hydrophobic,,True,False,False,claims capped pending gate validation,generator-provided coordinates

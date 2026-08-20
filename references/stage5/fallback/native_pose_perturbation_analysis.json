@@ -1,0 +1,1406 @@
+[
+  {
+    "pdb_id": "3REY",
+    "axis": 1,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 7.944109290391274e-15,
+    "max_internal_distance_change": 7.105427357601002e-15,
+    "minimum_protein_distance": 1.7437591947924527,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.429319226428971
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.4579964263286764
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.2956170251803036
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.085088473993503
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 1,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 2.1316282072803006e-14,
+    "max_internal_distance_change": 8.881784197001252e-15,
+    "minimum_protein_distance": 1.666746772185456,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.997943272829735
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.5262669318162505
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.6908520898898933
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.4379995134059387
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 1,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 3.552713678800501e-15,
+    "max_internal_distance_change": 1.0658141036401503e-14,
+    "minimum_protein_distance": 1.479430113769139,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 5.54639143671567
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.6001882642449266
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 3.1677353452019448
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.8806094796033297
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 1,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 1.6280579355608324e-14,
+    "max_internal_distance_change": 7.993605777301127e-15,
+    "minimum_protein_distance": 1.0868761365161395,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 6.312092560683798
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.7161740079188617
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 3.9467222047362798
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.631736232424939
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 2,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 7.944109290391274e-15,
+    "max_internal_distance_change": 8.881784197001252e-15,
+    "minimum_protein_distance": 1.3648370395619163,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 3.118060219971323
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.9702845179577215
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.079618668548751
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.9123117331687562
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 2,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 1.5888218580782548e-14,
+    "max_internal_distance_change": 7.105427357601002e-15,
+    "minimum_protein_distance": 0.8869204701636008,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 2.366176850966825
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.663645053319671
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.416890516002748
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.211840746097682
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 2,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 1.2809491335957507e-14,
+    "max_internal_distance_change": 7.105427357601002e-15,
+    "minimum_protein_distance": 0.3124013498359134,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 1.6119560789109524
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.5328091590024626
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.9471182330277395
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.697325489145107
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 2,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 1.2306961192854808e-14,
+    "max_internal_distance_change": 7.105427357601002e-15,
+    "minimum_protein_distance": 0.3103222968476166,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 0.6269354894470994
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.719567982982191
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 3.9040399935260006
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.617000438855168
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 3,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 2.1316282072803006e-14,
+    "max_internal_distance_change": 8.881784197001252e-15,
+    "minimum_protein_distance": 1.133557332026125,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 3.775770014158763
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.338431982045779
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.8659872994549636
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.581757364795717
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 3,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 1.0048591735576161e-14,
+    "max_internal_distance_change": 8.881784197001252e-15,
+    "minimum_protein_distance": 0.8306885079595147,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 3.903907589328653
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.4154039198976696
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 3.756698133879209
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.425465712787442
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 3,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 7.105427357601002e-15,
+    "max_internal_distance_change": 7.993605777301127e-15,
+    "minimum_protein_distance": 0.06646126821421645,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.214961144630975
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.617894115838082
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 4.6582620650209865
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 5.318353162295272
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "3REY",
+    "axis": 3,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 3.552713678800501e-15,
+    "max_internal_distance_change": 7.549516567451064e-15,
+    "minimum_protein_distance": 0.47037699744095957,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.925841546682369
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.101115640003255
+          }
+        ]
+      },
+      "asn253": {
+        "HBAcceptor": [
+          {
+            "minimum_distance": 5.9772276257338754
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 6.662454870704184
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 1,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 5.329070518200751e-15,
+    "minimum_protein_distance": 1.5972026143271392,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.359779949825495
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.8399877213095017
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.5972026143271392
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.305557434081942
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.305557434081942
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 1,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 3.552713678800501e-15,
+    "max_internal_distance_change": 5.329070518200751e-15,
+    "minimum_protein_distance": 1.5305267398337996,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.066379765929864
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.059318001662282
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.7959534285943317
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.3212462786450563
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.3212462786450563
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 1,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 4.440892098500626e-15,
+    "minimum_protein_distance": 1.275848157266313,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 2.806685387000193
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.3690639769551347
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.2727620412550156
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.394634699852933
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.394634699852933
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 1,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 3.552713678800501e-15,
+    "minimum_protein_distance": 1.128003966693028,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 2.572566527519463
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.9378955961939606
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 3.2108277748907406
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.5963485628599283
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.5963485628599283
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 2,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 4.440892098500626e-15,
+    "minimum_protein_distance": 1.640072219098224,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.37094572150263
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.45098457969018
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.640072219098224
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.3248573931604226
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.3248573931604226
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 2,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 4.440892098500626e-15,
+    "minimum_protein_distance": 1.0301150410887594,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.379479793875584
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.2843872901141973
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.7581365669293019
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.5257080424781644
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.5257080424781644
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 2,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 8.881784197001252e-16,
+    "max_internal_distance_change": 3.552713678800501e-15,
+    "minimum_protein_distance": 0.5554943410881227,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.449890285819339
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.272770843744432
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.0866701281855997
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.900315363102811
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.900315363102811
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 2,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 4.440892098500626e-15,
+    "max_internal_distance_change": 3.552713678800501e-15,
+    "minimum_protein_distance": 0.5230857535931095,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.6580392414116067
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.542319276758371
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.7882264234145615
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 3.6471631285005714
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.6471631285005714
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 3,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 3.552713678800501e-15,
+    "minimum_protein_distance": 1.3610715113124678,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.388066258348238
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.8615759057423316
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.342759822233111
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.525677121654846
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.525677121654846
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 3,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 3.552713678800501e-15,
+    "minimum_protein_distance": 0.7305523860453734,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.3553011893851075
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.9903532166299476
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 3.14066885567728
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.926687422957995
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.926687422957995
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 3,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 4.440892098500626e-15,
+    "minimum_protein_distance": 0.8870674502187892,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.3278431745794523
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.1218755255413817
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 4.019409413761945
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 3.465781593914926
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.465781593914926
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLH",
+    "axis": 3,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 3.66205343881779e-15,
+    "max_internal_distance_change": 3.552713678800501e-15,
+    "minimum_protein_distance": 0.5226515506339563,
+    "anchor_measurements": {
+      "phe168": {
+        "PiStacking": [
+          {
+            "minimum_distance": 3.1890603618425573
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.3155076587697545
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 5.3623019941348735
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 4.393633484110843
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.393633484110843
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 1,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 8.563440298696854e-14,
+    "max_internal_distance_change": 2.6645352591003757e-14,
+    "minimum_protein_distance": 1.1830120667294626,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.1428179383301895
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.2120268223173043
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.117427975199527
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.7502300220859377
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.164662357429765
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.100945295229963
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 1,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 8.556067554929069e-14,
+    "max_internal_distance_change": 2.5757174171303632e-14,
+    "minimum_protein_distance": 0.5216661465333797,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.216346432239646
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.1376463622457065
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.9163607478582323
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.839688432428844
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.346155018758313
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.025012064765091
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 1,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 5.955433342649105e-14,
+    "max_internal_distance_change": 2.3092638912203256e-14,
+    "minimum_protein_distance": 0.8063924225639261,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.283519792504081
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.0803080670210727
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.786978932298213
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.013668303618831
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.600007451783457
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.9900409955022695
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 1,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 8.82475770564939e-14,
+    "max_internal_distance_change": 2.6645352591003757e-14,
+    "minimum_protein_distance": 0.7846414564841128,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.368712303884103
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.032031996619533
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 2.7561704049712987
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.3807590624894956
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 3.0619994610518453
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.019006109128149
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 2,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 5.684341886080802e-14,
+    "max_internal_distance_change": 2.842170943040401e-14,
+    "minimum_protein_distance": 1.549419767935912,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.437092064532546
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.496576850051823
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.180343471757977
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.7712519256665322
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.1416339170994383
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.1664836056683745
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 2,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 5.706503147070311e-14,
+    "max_internal_distance_change": 2.7533531010703882e-14,
+    "minimum_protein_distance": 0.8743032317052041,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.803206130868754
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.5197073532123127
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.9590060044538395
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 1.8670170959640844
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.2070709161358315
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.2256993022747924
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 2,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 8.709584642567778e-14,
+    "max_internal_distance_change": 2.4868995751603507e-14,
+    "minimum_protein_distance": 0.6594836844916854,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 5.154563564559502
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.53333938208169
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 5.701154042382657
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.0336776004434403
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.2746264232813695
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.3831574324626548
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 2,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 6.325426871983402e-14,
+    "max_internal_distance_change": 2.842170943040401e-14,
+    "minimum_protein_distance": 0.3698180733440727,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 5.639318705753627
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.5806477431844157
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 6.7327669170195215
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.3729822137517953
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.3752860696299503
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.764794532868694
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 3,
+    "angle_degrees": 10.0,
+    "centroid_displacement": 1.1396405548925828e-13,
+    "max_internal_distance_change": 2.6645352591003757e-14,
+    "minimum_protein_distance": 1.3902126129883485,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.287333611065162
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.3183672151804764
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.521662204312437
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.094779535300098
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 1.926722691181635
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.879782066469945
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 3,
+    "angle_degrees": 20.0,
+    "centroid_displacement": 5.955433342649105e-14,
+    "max_internal_distance_change": 2.4868995751603507e-14,
+    "minimum_protein_distance": 1.0979113638108706,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.5182086382456
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.3480193258375515
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 3.8090967316418816
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.4974196142233076
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 1.8877466060356793
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.518815088592712
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 3,
+    "angle_degrees": 30.0,
+    "centroid_displacement": 9.050708060596688e-14,
+    "max_internal_distance_change": 2.4868995751603507e-14,
+    "minimum_protein_distance": 0.9850309823772773,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 4.749786868497075
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.387895128512454
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.198487443551663
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 2.931211699013188
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 1.9716417776342121
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 5.124409463691254
+          }
+        ]
+      }
+    }
+  },
+  {
+    "pdb_id": "5OLO",
+    "axis": 3,
+    "angle_degrees": 45.0,
+    "centroid_displacement": 9.298341530198968e-14,
+    "max_internal_distance_change": 2.6645352591003757e-14,
+    "minimum_protein_distance": 0.8463266566706048,
+    "anchor_measurements": {
+      "phe168": {
+        "Hydrophobic": [
+          {
+            "minimum_distance": 5.084208615718884
+          }
+        ],
+        "PiStacking": [
+          {
+            "minimum_distance": 3.4634289804921017
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 4.8974504147367455
+          }
+        ]
+      },
+      "asn253": {
+        "HBDonor": [
+          {
+            "minimum_distance": 3.5934247663977863
+          }
+        ],
+        "HBAcceptor": [
+          {
+            "minimum_distance": 2.287689504031432
+          }
+        ],
+        "VdWContact": [
+          {
+            "minimum_distance": 5.959473474368674
+          }
+        ]
+      }
+    }
+  }
+]

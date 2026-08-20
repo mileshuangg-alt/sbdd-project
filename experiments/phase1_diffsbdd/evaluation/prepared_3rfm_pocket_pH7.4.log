@@ -1,0 +1,777 @@
+INFO:PDB2PQR v3.7.1: biomolecular structure conversion software.
+INFO:Please cite:  Jurrus E, et al.  Improvements to the APBS biomolecular solvation software suite.  Protein Sci 27 112-128 (2018).
+INFO:Please cite:  Dolinsky TJ, et al.  PDB2PQR: expanding and upgrading automated preparation of biomolecular structures for molecular simulations. Nucleic Acids Res 35 W522-W525 (2007).
+INFO:Checking and transforming input arguments.
+INFO:Loading topology files.
+INFO:Loading molecule: experiments/phase1_diffsbdd/evaluation/prepared_3rfm_pocket_altloc_resolved.pdb
+INFO:Setting up molecule.
+INFO:Created biomolecule object with 36 residues and 286 atoms.
+INFO:Setting termini states for biomolecule chains.
+WARNING:Gap in backbone detected between TYR A 9 and ALA A 59!
+WARNING:Gap in backbone detected between ILE A 60 and PHE A 62!
+WARNING:Gap in backbone detected between ILE A 64 and ILE A 66!
+WARNING:Gap in backbone detected between SER A 67 and ILE A 80!
+WARNING:Gap in backbone detected between ALA A 81 and VAL A 84!
+WARNING:Gap in backbone detected between LEU A 85 and ALA A 88!
+WARNING:Gap in backbone detected between ALA A 88 and LEU A 167!
+WARNING:Gap in backbone detected between ASP A 170 and VAL A 172!
+WARNING:Gap in backbone detected between VAL A 172 and MET A 174!
+WARNING:Gap in backbone detected between MET A 174 and MET A 177!
+WARNING:Gap in backbone detected between MET A 177 and ASN A 181!
+WARNING:Gap in backbone detected between ASN A 181 and TRP A 246!
+WARNING:Gap in backbone detected between TRP A 246 and LEU A 249!
+WARNING:Gap in backbone detected between HIS A 250 and ILE A 252!
+WARNING:Gap in backbone detected between ASN A 253 and THR A 256!
+WARNING:Gap in backbone detected between THR A 256 and ALA A 265!
+WARNING:Gap in backbone detected between ALA A 265 and LEU A 267!
+WARNING:Gap in backbone detected between LEU A 267 and MET A 270!
+WARNING:Gap in backbone detected between TYR A 271 and ALA A 273!
+WARNING:Gap in backbone detected between VAL A 275 and ALA A 277!
+INFO:Loading forcefield.
+INFO:Loading hydrogen topology definitions.
+WARNING:Missing atom OXT in residue HIS A 278
+WARNING:Missing atom OXT in residue HIS A 278
+INFO:Attempting to repair 1 missing atoms in biomolecule.
+WARNING:Missing atom OXT in residue HIS A 278
+INFO:Added atom OXT to residue HIS A 278 at coordinates 18.784, -29.895, -38.331
+INFO:Updating disulfide bridges.
+INFO:Assigning titration states with PROPKA.
+INFO:
+propka3.5.1                                                                                  2026-08-20
+
+-------------------------------------------------------------------------------
+--                                                                           --
+--  PROPKA: A PROTEIN PKA PREDICTOR                                          --
+--                                                                           --
+--  VERSION 1.0,  04/25/2004,  IOWA CITY                                     --
+--  BY HUI LI                                                                --
+--                                                                           --
+--  VERSION 2.0,  11/05/2007, IOWA CITY/COPENHAGEN                           --
+--  BY DELPHINE C. BAS AND DAVID M. ROGERS                                   --
+--                                                                           --
+--  VERSION 3.0,  01/06/2011, COPENHAGEN                                     --
+--  BY MATS H.M. OLSSON AND CHRESTEN R. SONDERGARD                           --
+--                                                                           --
+--  VERSION 3.1,  07/01/2011, COPENHAGEN                                     --
+--  BY CHRESTEN R. SONDERGARD AND MATS H.M. OLSSON                           --
+--                                                                           --
+--  VERSION 3.2,  06/17/2020, PLANET EARTH                                   --
+--  SEE ABOVE FOR AUTHORS                                                    --
+--                                                                           --
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+References:
+
+Very Fast Empirical Prediction and Rationalization of Protein pKa Values.
+Hui Li, Andrew D. Robertson and Jan H. Jensen. PROTEINS: Structure, Function,
+and Bioinformatics. 61:704-721 (2005)
+
+Very Fast Prediction and Rationalization of pKa Values for Protein-Ligand
+Complexes.  Delphine C. Bas, David M. Rogers and Jan H. Jensen.  PROTEINS:
+Structure, Function, and Bioinformatics 73:765-783 (2008)
+
+PROPKA3: Consistent Treatment of Internal and Surface Residues in Empirical
+pKa predictions.  Mats H.M. Olsson, Chresten R. Sondergard, Michal Rostkowski,
+and Jan H. Jensen.  Journal of Chemical Theory and Computation, 7(2):525-537
+(2011)
+
+Improved Treatment of Ligands and Coupling Effects in Empirical Calculation
+and Rationalization of pKa Values.  Chresten R. Sondergaard, Mats H.M. Olsson,
+Michal Rostkowski, and Jan H. Jensen.  Journal of Chemical Theory and
+Computation, (2011)
+-------------------------------------------------------------------------------
+
+
+
+WARNING:Missing atoms or failed protonation for ALA  59 A (BBN) -- please check the structure
+WARNING:Group (BBN) for    13-   N    59-ALA (A) [  17.084  -40.965  -36.570] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1    59-ALA (A) [  17.495  -41.437  -35.777] H
+WARNING:                 0-  H2    59-ALA (A) [  17.815  -40.549  -37.130] H
+WARNING:                13-   N    59-ALA (A) [  17.084  -40.965  -36.570] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1    59-ALA (A) [  17.495  -41.437  -35.777] H
+WARNING:                 0-  H2    59-ALA (A) [  17.815  -40.549  -37.130] H
+WARNING:                13-   N    59-ALA (A) [  17.084  -40.965  -36.570] N
+WARNING:Missing atoms or failed protonation for PHE  62 A (BBN) -- please check the structure
+WARNING:Group (BBN) for    26-   N    62-PHE (A) [  13.018  -41.870  -38.846] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1    62-PHE (A) [  13.376  -42.771  -39.129] H
+WARNING:                 0-  H2    62-PHE (A) [  13.743  -41.355  -38.368] H
+WARNING:                26-   N    62-PHE (A) [  13.018  -41.870  -38.846] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1    62-PHE (A) [  13.376  -42.771  -39.129] H
+WARNING:                 0-  H2    62-PHE (A) [  13.743  -41.355  -38.368] H
+WARNING:                26-   N    62-PHE (A) [  13.018  -41.870  -38.846] N
+WARNING:Missing atoms or failed protonation for ILE  66 A (BBN) -- please check the structure
+WARNING:Group (BBN) for    50-   N    66-ILE (A) [   6.982  -41.217  -38.881] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1    66-ILE (A) [   7.063  -42.221  -38.961] H
+WARNING:                 0-  H2    66-ILE (A) [   7.870  -40.829  -38.597] H
+WARNING:                50-   N    66-ILE (A) [   6.982  -41.217  -38.881] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1    66-ILE (A) [   7.063  -42.221  -38.961] H
+WARNING:                 0-  H2    66-ILE (A) [   7.870  -40.829  -38.597] H
+WARNING:                50-   N    66-ILE (A) [   6.982  -41.217  -38.881] N
+WARNING:Missing atoms or failed protonation for ILE  80 A (BBN) -- please check the structure
+WARNING:Group (BBN) for    64-   N    80-ILE (A) [  10.324  -45.386  -31.697] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1    80-ILE (A) [  10.346  -46.371  -31.921] H
+WARNING:                 0-  H2    80-ILE (A) [   9.450  -45.164  -31.243] H
+WARNING:                64-   N    80-ILE (A) [  10.324  -45.386  -31.697] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1    80-ILE (A) [  10.346  -46.371  -31.921] H
+WARNING:                 0-  H2    80-ILE (A) [   9.450  -45.164  -31.243] H
+WARNING:                64-   N    80-ILE (A) [  10.324  -45.386  -31.697] N
+WARNING:Missing atoms or failed protonation for VAL  84 A (BBN) -- please check the structure
+WARNING:Group (BBN) for    77-   N    84-VAL (A) [  14.388  -39.676  -30.797] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1    84-VAL (A) [  14.317  -39.853  -29.805] H
+WARNING:                 0-  H2    84-VAL (A) [  15.004  -40.357  -31.217] H
+WARNING:                77-   N    84-VAL (A) [  14.388  -39.676  -30.797] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1    84-VAL (A) [  14.317  -39.853  -29.805] H
+WARNING:                 0-  H2    84-VAL (A) [  15.004  -40.357  -31.217] H
+WARNING:                77-   N    84-VAL (A) [  14.388  -39.676  -30.797] N
+WARNING:Missing atoms or failed protonation for ALA  88 A (BBN) -- please check the structure
+WARNING:Group (BBN) for    92-   N    88-ALA (A) [  18.809  -35.912  -28.628] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1    88-ALA (A) [  18.849  -36.525  -27.827] H
+WARNING:                 0-  H2    88-ALA (A) [  19.644  -36.031  -29.184] H
+WARNING:                92-   N    88-ALA (A) [  18.809  -35.912  -28.628] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1    88-ALA (A) [  18.849  -36.525  -27.827] H
+WARNING:                 0-  H2    88-ALA (A) [  19.644  -36.031  -29.184] H
+WARNING:                92-   N    88-ALA (A) [  18.809  -35.912  -28.628] N
+WARNING:Missing atoms or failed protonation for LEU 167 A (BBN) -- please check the structure
+WARNING:Group (BBN) for    97-   N   167-LEU (A) [   1.141  -41.854  -33.552] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   167-LEU (A) [   1.137  -42.018  -32.555] H
+WARNING:                 0-  H2   167-LEU (A) [   1.956  -42.287  -33.961] H
+WARNING:                97-   N   167-LEU (A) [   1.141  -41.854  -33.552] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   167-LEU (A) [   1.137  -42.018  -32.555] H
+WARNING:                 0-  H2   167-LEU (A) [   1.956  -42.287  -33.961] H
+WARNING:                97-   N   167-LEU (A) [   1.141  -41.854  -33.552] N
+WARNING:Missing atoms or failed protonation for VAL 172 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   133-   N   172-VAL (A) [   2.523  -39.675  -27.196] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   172-VAL (A) [   2.599  -40.679  -27.115] H
+WARNING:                 0-  H2   172-VAL (A) [   2.775  -39.393  -28.133] H
+WARNING:               133-   N   172-VAL (A) [   2.523  -39.675  -27.196] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   172-VAL (A) [   2.599  -40.679  -27.115] H
+WARNING:                 0-  H2   172-VAL (A) [   2.775  -39.393  -28.133] H
+WARNING:               133-   N   172-VAL (A) [   2.523  -39.675  -27.196] N
+WARNING:Missing atoms or failed protonation for MET 174 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   140-   N   174-MET (A) [   1.913  -34.663  -23.122] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   174-MET (A) [   1.822  -34.923  -22.150] H
+WARNING:                 0-  H2   174-MET (A) [   2.572  -35.280  -23.575] H
+WARNING:               140-   N   174-MET (A) [   1.913  -34.663  -23.122] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   174-MET (A) [   1.822  -34.923  -22.150] H
+WARNING:                 0-  H2   174-MET (A) [   2.572  -35.280  -23.575] H
+WARNING:               140-   N   174-MET (A) [   1.913  -34.663  -23.122] N
+WARNING:Missing atoms or failed protonation for MET 177 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   148-   N   177-MET (A) [   6.880  -33.815  -22.041] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   177-MET (A) [   7.060  -34.794  -22.211] H
+WARNING:                 0-  H2   177-MET (A) [   5.918  -33.605  -22.267] H
+WARNING:               148-   N   177-MET (A) [   6.880  -33.815  -22.041] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   177-MET (A) [   7.060  -34.794  -22.211] H
+WARNING:                 0-  H2   177-MET (A) [   5.918  -33.605  -22.267] H
+WARNING:               148-   N   177-MET (A) [   6.880  -33.815  -22.041] N
+WARNING:Missing atoms or failed protonation for ASN 181 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   156-   N   181-ASN (A) [  10.757  -33.138  -19.616] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   181-ASN (A) [  10.590  -34.116  -19.429] H
+WARNING:                 0-  H2   181-ASN (A) [   9.890  -32.694  -19.883] H
+WARNING:               156-   N   181-ASN (A) [  10.757  -33.138  -19.616] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   181-ASN (A) [  10.590  -34.116  -19.429] H
+WARNING:                 0-  H2   181-ASN (A) [   9.890  -32.694  -19.883] H
+WARNING:               156-   N   181-ASN (A) [  10.757  -33.138  -19.616] N
+WARNING:Missing atoms or failed protonation for TRP 246 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   164-   N   246-TRP (A) [  16.349  -25.376  -31.000] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   246-TRP (A) [  16.917  -24.853  -30.349] H
+WARNING:                 0-  H2   246-TRP (A) [  15.827  -24.736  -31.581] H
+WARNING:               164-   N   246-TRP (A) [  16.349  -25.376  -31.000] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   246-TRP (A) [  16.917  -24.853  -30.349] H
+WARNING:                 0-  H2   246-TRP (A) [  15.827  -24.736  -31.581] H
+WARNING:               164-   N   246-TRP (A) [  16.349  -25.376  -31.000] N
+WARNING:Missing atoms or failed protonation for LEU 249 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   178-   N   249-LEU (A) [  10.971  -25.020  -31.241] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   249-LEU (A) [  11.164  -24.730  -30.293] H
+WARNING:                 0-  H2   249-LEU (A) [  10.468  -24.288  -31.721] H
+WARNING:               178-   N   249-LEU (A) [  10.971  -25.020  -31.241] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   249-LEU (A) [  11.164  -24.730  -30.293] H
+WARNING:                 0-  H2   249-LEU (A) [  10.468  -24.288  -31.721] H
+WARNING:               178-   N   249-LEU (A) [  10.971  -25.020  -31.241] N
+WARNING:Missing atoms or failed protonation for ILE 252 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   196-   N   252-ILE (A) [   6.734  -23.697  -29.140] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   252-ILE (A) [   7.263  -24.519  -28.887] H
+WARNING:                 0-  H2   252-ILE (A) [   6.551  -23.147  -28.313] H
+WARNING:               196-   N   252-ILE (A) [   6.734  -23.697  -29.140] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   252-ILE (A) [   7.263  -24.519  -28.887] H
+WARNING:                 0-  H2   252-ILE (A) [   6.551  -23.147  -28.313] H
+WARNING:               196-   N   252-ILE (A) [   6.734  -23.697  -29.140] N
+WARNING:Missing atoms or failed protonation for THR 256 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   212-   N   256-THR (A) [   0.890  -24.616  -26.903] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   256-THR (A) [   1.073  -24.433  -25.927] H
+WARNING:                 0-  H2   256-THR (A) [   0.571  -23.768  -27.350] H
+WARNING:               212-   N   256-THR (A) [   0.890  -24.616  -26.903] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   256-THR (A) [   1.073  -24.433  -25.927] H
+WARNING:                 0-  H2   256-THR (A) [   0.571  -23.768  -27.350] H
+WARNING:               212-   N   256-THR (A) [   0.890  -24.616  -26.903] N
+WARNING:Missing atoms or failed protonation for ALA 265 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   219-   N   265-ALA (A) [  -0.452  -24.794  -32.990] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   265-ALA (A) [  -0.561  -25.789  -32.856] H
+WARNING:                 0-  H2   265-ALA (A) [  -1.351  -24.381  -33.194] H
+WARNING:               219-   N   265-ALA (A) [  -0.452  -24.794  -32.990] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   265-ALA (A) [  -0.561  -25.789  -32.856] H
+WARNING:                 0-  H2   265-ALA (A) [  -1.351  -24.381  -33.194] H
+WARNING:               219-   N   265-ALA (A) [  -0.452  -24.794  -32.990] N
+WARNING:Missing atoms or failed protonation for LEU 267 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   224-   N   267-LEU (A) [   0.453  -27.318  -39.031] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   267-LEU (A) [   0.417  -27.280  -38.022] H
+WARNING:                 0-  H2   267-LEU (A) [  -0.462  -27.548  -39.392] H
+WARNING:               224-   N   267-LEU (A) [   0.453  -27.318  -39.031] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   267-LEU (A) [   0.417  -27.280  -38.022] H
+WARNING:                 0-  H2   267-LEU (A) [  -0.462  -27.548  -39.392] H
+WARNING:               224-   N   267-LEU (A) [   0.453  -27.318  -39.031] N
+WARNING:Missing atoms or failed protonation for MET 270 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   232-   N   270-MET (A) [   4.739  -26.508  -37.868] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   270-MET (A) [   4.401  -25.739  -37.307] H
+WARNING:                 0-  H2   270-MET (A) [   3.990  -26.854  -38.451] H
+WARNING:               232-   N   270-MET (A) [   4.739  -26.508  -37.868] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   270-MET (A) [   4.401  -25.739  -37.307] H
+WARNING:                 0-  H2   270-MET (A) [   3.990  -26.854  -38.451] H
+WARNING:               232-   N   270-MET (A) [   4.739  -26.508  -37.868] N
+WARNING:Missing atoms or failed protonation for ALA 273 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   252-   N   273-ALA (A) [   9.760  -26.186  -37.325] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   273-ALA (A) [   9.586  -27.115  -37.681] H
+WARNING:                 0-  H2   273-ALA (A) [  10.367  -25.690  -37.962] H
+WARNING:               252-   N   273-ALA (A) [   9.760  -26.186  -37.325] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   273-ALA (A) [   9.586  -27.115  -37.681] H
+WARNING:                 0-  H2   273-ALA (A) [  10.367  -25.690  -37.962] H
+WARNING:               252-   N   273-ALA (A) [   9.760  -26.186  -37.325] N
+WARNING:Missing atoms or failed protonation for ALA 277 A (BBN) -- please check the structure
+WARNING:Group (BBN) for   272-   N   277-ALA (A) [  15.408  -28.429  -35.856] N
+WARNING:Expected 2 interaction atoms for acids, found:
+WARNING:                 0-  H1   277-ALA (A) [  14.952  -29.035  -36.522] H
+WARNING:                 0-  H2   277-ALA (A) [  16.079  -27.846  -36.336] H
+WARNING:               272-   N   277-ALA (A) [  15.408  -28.429  -35.856] N
+WARNING:Expected 2 interaction atoms for bases, found:
+WARNING:                 0-  H1   277-ALA (A) [  14.952  -29.035  -36.522] H
+WARNING:                 0-  H2   277-ALA (A) [  16.079  -27.846  -36.336] H
+WARNING:               272-   N   277-ALA (A) [  15.408  -28.429  -35.856] N
+INFO:Coupling map:
+
+INFO:Calculating pKas for Conformation container 1A with 355 atoms and 83 groups
+INFO:pKa determinants:
+
+---------  -----   ------   ---------------------    --------------    --------------    --------------
+                            DESOLVATION  EFFECTS       SIDECHAIN          BACKBONE        COULOMBIC
+ RESIDUE    pKa    BURIED     REGULAR      RE        HYDROGEN BOND     HYDROGEN BOND      INTERACTION
+---------  -----   ------   ---------   ---------    --------------    --------------    --------------
+
+ASP 170 A   4.10     0 %    0.30  109   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.00 XXX   0 X
+
+GLU 169 A   4.45     0 %    0.36  191   0.00    0    0.00 XXX   0 X   -0.73 GLU 169 A    0.32 ASP 170 A
+
+C-  278 A   3.19     0 %    0.18  133   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X   -0.20 HIS 278 A
+
+HIS 250 A   6.33     0 %   -0.29  164   0.00    0    0.00 XXX   0 X    0.12 TRP 246 A    0.00 XXX   0 X
+
+HIS 278 A   6.28     0 %   -0.41  207   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.20 C-  278 A
+
+TYR   9 A  10.43     0 %    0.41  203   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.03 TYR 271 A
+
+TYR 271 A  10.08     0 %    0.08  102   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.00 XXX   0 X
+
+N+    9 A   7.94     0 %   -0.06   98   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.00 XXX   0 X
+
+
+INFO:pKa summary:
+--------------------------------------------------------------------------------------------------------
+SUMMARY OF THIS PREDICTION
+       Group      pKa  model-pKa   ligand atom-type
+   ASP 170 A     4.10       3.80                      
+   GLU 169 A     4.45       4.50                      
+   C-  278 A     3.19       3.20                      
+   HIS 250 A     6.33       6.50                      
+   HIS 278 A     6.28       6.50                      
+   TYR   9 A    10.43      10.00                      
+   TYR 271 A    10.08      10.00                      
+   N+    9 A     7.94       8.00                      
+
+INFO:PROPKA information:
+--------------------------------------------------------------------------------------------------------
+Free energy of   folding (kcal/mol) as a function of pH (using neutral reference)
+  0.00      0.88
+  1.00      0.88
+  2.00      0.88
+  3.00      0.91
+  4.00      1.06
+  5.00      1.16
+  6.00      1.05
+  7.00      0.78
+  8.00      0.65
+  9.00      0.64
+ 10.00      0.87
+ 11.00      1.20
+ 12.00      1.29
+ 13.00      1.30
+ 14.00      1.30
+
+The pH of optimum stability is  8.6 for which the free energy is    0.6 kcal/mol at 298K
+Could not determine pH values where the free energy is within 80 % of minimum
+Could not determine the pH-range where the free energy is negative
+
+
+Protein charge of folded and unfolded state as a function of pH
+    pH  unfolded  folded
+  0.00      3.00    3.00
+  0.10      3.00    3.00
+  0.20      3.00    3.00
+  0.30      3.00    3.00
+  0.40      3.00    3.00
+  0.50      3.00    3.00
+  0.60      3.00    3.00
+  0.70      3.00    3.00
+  0.80      2.99    3.00
+  0.90      2.99    2.99
+  1.00      2.99    2.99
+  1.10      2.99    2.99
+  1.20      2.99    2.99
+  1.30      2.98    2.98
+  1.40      2.98    2.98
+  1.50      2.97    2.98
+  1.60      2.97    2.97
+  1.70      2.96    2.96
+  1.80      2.95    2.95
+  1.90      2.94    2.94
+  2.00      2.92    2.93
+  2.10      2.90    2.91
+  2.20      2.88    2.89
+  2.30      2.85    2.86
+  2.40      2.82    2.83
+  2.50      2.78    2.79
+  2.60      2.73    2.75
+  2.70      2.67    2.70
+  2.80      2.60    2.64
+  2.90      2.53    2.57
+  3.00      2.45    2.50
+  3.10      2.35    2.42
+  3.20      2.25    2.33
+  3.30      2.14    2.23
+  3.40      2.03    2.13
+  3.50      1.91    2.02
+  3.60      1.78    1.91
+  3.70      1.66    1.79
+  3.80      1.53    1.67
+  3.90      1.40    1.55
+  4.00      1.28    1.42
+  4.10      1.15    1.29
+  4.20      1.03    1.16
+  4.30      0.91    1.03
+  4.40      0.80    0.90
+  4.50      0.69    0.77
+  4.60      0.59    0.65
+  4.70      0.50    0.54
+  4.80      0.41    0.44
+  4.90      0.33    0.34
+  5.00      0.25    0.25
+  5.10      0.18    0.17
+  5.20      0.12    0.09
+  5.30      0.05    0.01
+  5.40     -0.01   -0.07
+  5.50     -0.07   -0.15
+  5.60     -0.13   -0.23
+  5.70     -0.20   -0.32
+  5.80     -0.28   -0.42
+  5.90     -0.36   -0.52
+  6.00     -0.45   -0.63
+  6.10     -0.55   -0.75
+  6.20     -0.66   -0.87
+  6.30     -0.77   -0.99
+  6.40     -0.89   -1.12
+  6.50     -1.02   -1.24
+  6.60     -1.14   -1.36
+  6.70     -1.27   -1.47
+  6.80     -1.39   -1.58
+  6.90     -1.50   -1.67
+  7.00     -1.61   -1.76
+  7.10     -1.71   -1.85
+  7.20     -1.80   -1.93
+  7.30     -1.89   -2.00
+  7.40     -1.98   -2.08
+  7.50     -2.06   -2.15
+  7.60     -2.14   -2.22
+  7.70     -2.22   -2.30
+  7.80     -2.30   -2.37
+  7.90     -2.38   -2.44
+  8.00     -2.46   -2.51
+  8.10     -2.53   -2.58
+  8.20     -2.60   -2.64
+  8.30     -2.67   -2.70
+  8.40     -2.74   -2.76
+  8.50     -2.80   -2.81
+  8.60     -2.86   -2.86
+  8.70     -2.92   -2.90
+  8.80     -2.97   -2.95
+  8.90     -3.03   -2.99
+  9.00     -3.08   -3.03
+  9.10     -3.15   -3.07
+  9.20     -3.21   -3.12
+  9.30     -3.28   -3.17
+  9.40     -3.36   -3.22
+  9.50     -3.45   -3.28
+  9.60     -3.54   -3.35
+  9.70     -3.65   -3.43
+  9.80     -3.76   -3.52
+  9.90     -3.87   -3.61
+ 10.00     -3.99   -3.71
+ 10.10     -4.11   -3.82
+ 10.20     -4.22   -3.93
+ 10.30     -4.33   -4.04
+ 10.40     -4.43   -4.15
+ 10.50     -4.52   -4.26
+ 10.60     -4.60   -4.36
+ 10.70     -4.67   -4.45
+ 10.80     -4.72   -4.54
+ 10.90     -4.78   -4.61
+ 11.00     -4.82   -4.68
+ 11.10     -4.85   -4.73
+ 11.20     -4.88   -4.78
+ 11.30     -4.90   -4.82
+ 11.40     -4.92   -4.86
+ 11.50     -4.94   -4.88
+ 11.60     -4.95   -4.91
+ 11.70     -4.96   -4.92
+ 11.80     -4.97   -4.94
+ 11.90     -4.98   -4.95
+ 12.00     -4.98   -4.96
+ 12.10     -4.98   -4.97
+ 12.20     -4.99   -4.98
+ 12.30     -4.99   -4.98
+ 12.40     -4.99   -4.98
+ 12.50     -4.99   -4.99
+ 12.60     -4.99   -4.99
+ 12.70     -5.00   -4.99
+ 12.80     -5.00   -4.99
+ 12.90     -5.00   -5.00
+ 13.00     -5.00   -5.00
+ 13.10     -5.00   -5.00
+ 13.20     -5.00   -5.00
+ 13.30     -5.00   -5.00
+ 13.40     -5.00   -5.00
+ 13.50     -5.00   -5.00
+ 13.60     -5.00   -5.00
+ 13.70     -5.00   -5.00
+ 13.80     -5.00   -5.00
+ 13.90     -5.00   -5.00
+ 14.00     -5.00   -5.00
+The pI is  5.31 (folded) and  5.39 (unfolded)
+
+--------------------------------------------------------------------------------------------------------
+INFO:Applying pKa values at a pH of 7.40:
+INFO:Adding hydrogens to biomolecule.
+INFO:Optimizing hydrogen bonds
+INFO:Initializing water bonding optimization...
+INFO:Applying force field to biomolecule states.
+INFO:Regenerating headers.
+INFO:Regenerating PDB lines.
+WARNING:Ignoring 466 header lines in output.
+oms for bases, found:
+2026-08-20 13:54:53,150 WARNING:group.py:404:set_interaction_atoms:                 0-  H1   256-THR (A) [   1.073  -24.433  -25.927] H
+2026-08-20 13:54:53,150 WARNING:group.py:404:set_interaction_atoms:                 0-  H2   256-THR (A) [   0.571  -23.768  -27.350] H
+2026-08-20 13:54:53,150 WARNING:group.py:404:set_interaction_atoms:               212-   N   256-THR (A) [   0.890  -24.616  -26.903] N
+2026-08-20 13:54:53,150 WARNING:group.py:385:set_interaction_atoms:Missing atoms or failed protonation for ALA 265 A (BBN) -- please check the structure
+2026-08-20 13:54:53,150 WARNING:group.py:386:set_interaction_atoms:Group (BBN) for   219-   N   265-ALA (A) [  -0.452  -24.794  -32.990] N
+2026-08-20 13:54:53,150 WARNING:group.py:393:set_interaction_atoms:Expected 2 interaction atoms for acids, found:
+2026-08-20 13:54:53,150 WARNING:group.py:397:set_interaction_atoms:                 0-  H1   265-ALA (A) [  -0.561  -25.789  -32.856] H
+2026-08-20 13:54:53,150 WARNING:group.py:397:set_interaction_atoms:                 0-  H2   265-ALA (A) [  -1.351  -24.381  -33.194] H
+2026-08-20 13:54:53,150 WARNING:group.py:397:set_interaction_atoms:               219-   N   265-ALA (A) [  -0.452  -24.794  -32.990] N
+2026-08-20 13:54:53,150 WARNING:group.py:400:set_interaction_atoms:Expected 2 interaction atoms for bases, found:
+2026-08-20 13:54:53,150 WARNING:group.py:404:set_interaction_atoms:                 0-  H1   265-ALA (A) [  -0.561  -25.789  -32.856] H
+2026-08-20 13:54:53,150 WARNING:group.py:404:set_interaction_atoms:                 0-  H2   265-ALA (A) [  -1.351  -24.381  -33.194] H
+2026-08-20 13:54:53,150 WARNING:group.py:404:set_interaction_atoms:               219-   N   265-ALA (A) [  -0.452  -24.794  -32.990] N
+2026-08-20 13:54:53,151 WARNING:group.py:385:set_interaction_atoms:Missing atoms or failed protonation for LEU 267 A (BBN) -- please check the structure
+2026-08-20 13:54:53,151 WARNING:group.py:386:set_interaction_atoms:Group (BBN) for   224-   N   267-LEU (A) [   0.453  -27.318  -39.031] N
+2026-08-20 13:54:53,151 WARNING:group.py:393:set_interaction_atoms:Expected 2 interaction atoms for acids, found:
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:                 0-  H1   267-LEU (A) [   0.417  -27.280  -38.022] H
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:                 0-  H2   267-LEU (A) [  -0.462  -27.548  -39.392] H
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:               224-   N   267-LEU (A) [   0.453  -27.318  -39.031] N
+2026-08-20 13:54:53,151 WARNING:group.py:400:set_interaction_atoms:Expected 2 interaction atoms for bases, found:
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:                 0-  H1   267-LEU (A) [   0.417  -27.280  -38.022] H
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:                 0-  H2   267-LEU (A) [  -0.462  -27.548  -39.392] H
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:               224-   N   267-LEU (A) [   0.453  -27.318  -39.031] N
+2026-08-20 13:54:53,151 WARNING:group.py:385:set_interaction_atoms:Missing atoms or failed protonation for MET 270 A (BBN) -- please check the structure
+2026-08-20 13:54:53,151 WARNING:group.py:386:set_interaction_atoms:Group (BBN) for   232-   N   270-MET (A) [   4.739  -26.508  -37.868] N
+2026-08-20 13:54:53,151 WARNING:group.py:393:set_interaction_atoms:Expected 2 interaction atoms for acids, found:
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:                 0-  H1   270-MET (A) [   4.401  -25.739  -37.307] H
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:                 0-  H2   270-MET (A) [   3.990  -26.854  -38.451] H
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:               232-   N   270-MET (A) [   4.739  -26.508  -37.868] N
+2026-08-20 13:54:53,151 WARNING:group.py:400:set_interaction_atoms:Expected 2 interaction atoms for bases, found:
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:                 0-  H1   270-MET (A) [   4.401  -25.739  -37.307] H
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:                 0-  H2   270-MET (A) [   3.990  -26.854  -38.451] H
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:               232-   N   270-MET (A) [   4.739  -26.508  -37.868] N
+2026-08-20 13:54:53,151 WARNING:group.py:385:set_interaction_atoms:Missing atoms or failed protonation for ALA 273 A (BBN) -- please check the structure
+2026-08-20 13:54:53,151 WARNING:group.py:386:set_interaction_atoms:Group (BBN) for   252-   N   273-ALA (A) [   9.760  -26.186  -37.325] N
+2026-08-20 13:54:53,151 WARNING:group.py:393:set_interaction_atoms:Expected 2 interaction atoms for acids, found:
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:                 0-  H1   273-ALA (A) [   9.586  -27.115  -37.681] H
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:                 0-  H2   273-ALA (A) [  10.367  -25.690  -37.962] H
+2026-08-20 13:54:53,151 WARNING:group.py:397:set_interaction_atoms:               252-   N   273-ALA (A) [   9.760  -26.186  -37.325] N
+2026-08-20 13:54:53,151 WARNING:group.py:400:set_interaction_atoms:Expected 2 interaction atoms for bases, found:
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:                 0-  H1   273-ALA (A) [   9.586  -27.115  -37.681] H
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:                 0-  H2   273-ALA (A) [  10.367  -25.690  -37.962] H
+2026-08-20 13:54:53,151 WARNING:group.py:404:set_interaction_atoms:               252-   N   273-ALA (A) [   9.760  -26.186  -37.325] N
+2026-08-20 13:54:53,152 WARNING:group.py:385:set_interaction_atoms:Missing atoms or failed protonation for ALA 277 A (BBN) -- please check the structure
+2026-08-20 13:54:53,152 WARNING:group.py:386:set_interaction_atoms:Group (BBN) for   272-   N   277-ALA (A) [  15.408  -28.429  -35.856] N
+2026-08-20 13:54:53,152 WARNING:group.py:393:set_interaction_atoms:Expected 2 interaction atoms for acids, found:
+2026-08-20 13:54:53,152 WARNING:group.py:397:set_interaction_atoms:                 0-  H1   277-ALA (A) [  14.952  -29.035  -36.522] H
+2026-08-20 13:54:53,152 WARNING:group.py:397:set_interaction_atoms:                 0-  H2   277-ALA (A) [  16.079  -27.846  -36.336] H
+2026-08-20 13:54:53,152 WARNING:group.py:397:set_interaction_atoms:               272-   N   277-ALA (A) [  15.408  -28.429  -35.856] N
+2026-08-20 13:54:53,152 WARNING:group.py:400:set_interaction_atoms:Expected 2 interaction atoms for bases, found:
+2026-08-20 13:54:53,152 WARNING:group.py:404:set_interaction_atoms:                 0-  H1   277-ALA (A) [  14.952  -29.035  -36.522] H
+2026-08-20 13:54:53,152 WARNING:group.py:404:set_interaction_atoms:                 0-  H2   277-ALA (A) [  16.079  -27.846  -36.336] H
+2026-08-20 13:54:53,152 WARNING:group.py:404:set_interaction_atoms:               272-   N   277-ALA (A) [  15.408  -28.429  -35.856] N
+2026-08-20 13:54:53,153 INFO:conformation_container.py:124:find_covalently_coupled_groups:Coupling map:
+
+2026-08-20 13:54:53,153 INFO:conformation_container.py:213:calculate_pka:Calculating pKas for Conformation container 1A with 355 atoms and 83 groups
+2026-08-20 13:54:53,156 INFO:output.py:225:print_pka_section:pKa determinants:
+
+---------  -----   ------   ---------------------    --------------    --------------    --------------
+                            DESOLVATION  EFFECTS       SIDECHAIN          BACKBONE        COULOMBIC
+ RESIDUE    pKa    BURIED     REGULAR      RE        HYDROGEN BOND     HYDROGEN BOND      INTERACTION
+---------  -----   ------   ---------   ---------    --------------    --------------    --------------
+
+ASP 170 A   4.10     0 %    0.30  109   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.00 XXX   0 X
+
+GLU 169 A   4.45     0 %    0.36  191   0.00    0    0.00 XXX   0 X   -0.73 GLU 169 A    0.32 ASP 170 A
+
+C-  278 A   3.19     0 %    0.18  133   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X   -0.20 HIS 278 A
+
+HIS 250 A   6.33     0 %   -0.29  164   0.00    0    0.00 XXX   0 X    0.12 TRP 246 A    0.00 XXX   0 X
+
+HIS 278 A   6.28     0 %   -0.41  207   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.20 C-  278 A
+
+TYR   9 A  10.43     0 %    0.41  203   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.03 TYR 271 A
+
+TYR 271 A  10.08     0 %    0.08  102   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.00 XXX   0 X
+
+N+    9 A   7.94     0 %   -0.06   98   0.00    0    0.00 XXX   0 X    0.00 XXX   0 X    0.00 XXX   0 X
+
+
+2026-08-20 13:54:53,156 INFO:output.py:227:print_pka_section:pKa summary:
+--------------------------------------------------------------------------------------------------------
+SUMMARY OF THIS PREDICTION
+       Group      pKa  model-pKa   ligand atom-type
+   ASP 170 A     4.10       3.80                      
+   GLU 169 A     4.45       4.50                      
+   C-  278 A     3.19       3.20                      
+   HIS 250 A     6.33       6.50                      
+   HIS 278 A     6.28       6.50                      
+   TYR   9 A    10.43      10.00                      
+   TYR 271 A    10.08      10.00                      
+   N+    9 A     7.94       8.00                      
+
+2026-08-20 13:54:53,159 INFO:main.py:648:non_trivial:PROPKA information:
+--------------------------------------------------------------------------------------------------------
+Free energy of   folding (kcal/mol) as a function of pH (using neutral reference)
+  0.00      0.88
+  1.00      0.88
+  2.00      0.88
+  3.00      0.91
+  4.00      1.06
+  5.00      1.16
+  6.00      1.05
+  7.00      0.78
+  8.00      0.65
+  9.00      0.64
+ 10.00      0.87
+ 11.00      1.20
+ 12.00      1.29
+ 13.00      1.30
+ 14.00      1.30
+
+The pH of optimum stability is  8.6 for which the free energy is    0.6 kcal/mol at 298K
+Could not determine pH values where the free energy is within 80 % of minimum
+Could not determine the pH-range where the free energy is negative
+
+
+Protein charge of folded and unfolded state as a function of pH
+    pH  unfolded  folded
+  0.00      3.00    3.00
+  0.10      3.00    3.00
+  0.20      3.00    3.00
+  0.30      3.00    3.00
+  0.40      3.00    3.00
+  0.50      3.00    3.00
+  0.60      3.00    3.00
+  0.70      3.00    3.00
+  0.80      2.99    3.00
+  0.90      2.99    2.99
+  1.00      2.99    2.99
+  1.10      2.99    2.99
+  1.20      2.99    2.99
+  1.30      2.98    2.98
+  1.40      2.98    2.98
+  1.50      2.97    2.98
+  1.60      2.97    2.97
+  1.70      2.96    2.96
+  1.80      2.95    2.95
+  1.90      2.94    2.94
+  2.00      2.92    2.93
+  2.10      2.90    2.91
+  2.20      2.88    2.89
+  2.30      2.85    2.86
+  2.40      2.82    2.83
+  2.50      2.78    2.79
+  2.60      2.73    2.75
+  2.70      2.67    2.70
+  2.80      2.60    2.64
+  2.90      2.53    2.57
+  3.00      2.45    2.50
+  3.10      2.35    2.42
+  3.20      2.25    2.33
+  3.30      2.14    2.23
+  3.40      2.03    2.13
+  3.50      1.91    2.02
+  3.60      1.78    1.91
+  3.70      1.66    1.79
+  3.80      1.53    1.67
+  3.90      1.40    1.55
+  4.00      1.28    1.42
+  4.10      1.15    1.29
+  4.20      1.03    1.16
+  4.30      0.91    1.03
+  4.40      0.80    0.90
+  4.50      0.69    0.77
+  4.60      0.59    0.65
+  4.70      0.50    0.54
+  4.80      0.41    0.44
+  4.90      0.33    0.34
+  5.00      0.25    0.25
+  5.10      0.18    0.17
+  5.20      0.12    0.09
+  5.30      0.05    0.01
+  5.40     -0.01   -0.07
+  5.50     -0.07   -0.15
+  5.60     -0.13   -0.23
+  5.70     -0.20   -0.32
+  5.80     -0.28   -0.42
+  5.90     -0.36   -0.52
+  6.00     -0.45   -0.63
+  6.10     -0.55   -0.75
+  6.20     -0.66   -0.87
+  6.30     -0.77   -0.99
+  6.40     -0.89   -1.12
+  6.50     -1.02   -1.24
+  6.60     -1.14   -1.36
+  6.70     -1.27   -1.47
+  6.80     -1.39   -1.58
+  6.90     -1.50   -1.67
+  7.00     -1.61   -1.76
+  7.10     -1.71   -1.85
+  7.20     -1.80   -1.93
+  7.30     -1.89   -2.00
+  7.40     -1.98   -2.08
+  7.50     -2.06   -2.15
+  7.60     -2.14   -2.22
+  7.70     -2.22   -2.30
+  7.80     -2.30   -2.37
+  7.90     -2.38   -2.44
+  8.00     -2.46   -2.51
+  8.10     -2.53   -2.58
+  8.20     -2.60   -2.64
+  8.30     -2.67   -2.70
+  8.40     -2.74   -2.76
+  8.50     -2.80   -2.81
+  8.60     -2.86   -2.86
+  8.70     -2.92   -2.90
+  8.80     -2.97   -2.95
+  8.90     -3.03   -2.99
+  9.00     -3.08   -3.03
+  9.10     -3.15   -3.07
+  9.20     -3.21   -3.12
+  9.30     -3.28   -3.17
+  9.40     -3.36   -3.22
+  9.50     -3.45   -3.28
+  9.60     -3.54   -3.35
+  9.70     -3.65   -3.43
+  9.80     -3.76   -3.52
+  9.90     -3.87   -3.61
+ 10.00     -3.99   -3.71
+ 10.10     -4.11   -3.82
+ 10.20     -4.22   -3.93
+ 10.30     -4.33   -4.04
+ 10.40     -4.43   -4.15
+ 10.50     -4.52   -4.26
+ 10.60     -4.60   -4.36
+ 10.70     -4.67   -4.45
+ 10.80     -4.72   -4.54
+ 10.90     -4.78   -4.61
+ 11.00     -4.82   -4.68
+ 11.10     -4.85   -4.73
+ 11.20     -4.88   -4.78
+ 11.30     -4.90   -4.82
+ 11.40     -4.92   -4.86
+ 11.50     -4.94   -4.88
+ 11.60     -4.95   -4.91
+ 11.70     -4.96   -4.92
+ 11.80     -4.97   -4.94
+ 11.90     -4.98   -4.95
+ 12.00     -4.98   -4.96
+ 12.10     -4.98   -4.97
+ 12.20     -4.99   -4.98
+ 12.30     -4.99   -4.98
+ 12.40     -4.99   -4.98
+ 12.50     -4.99   -4.99
+ 12.60     -4.99   -4.99
+ 12.70     -5.00   -4.99
+ 12.80     -5.00   -4.99
+ 12.90     -5.00   -5.00
+ 13.00     -5.00   -5.00
+ 13.10     -5.00   -5.00
+ 13.20     -5.00   -5.00
+ 13.30     -5.00   -5.00
+ 13.40     -5.00   -5.00
+ 13.50     -5.00   -5.00
+ 13.60     -5.00   -5.00
+ 13.70     -5.00   -5.00
+ 13.80     -5.00   -5.00
+ 13.90     -5.00   -5.00
+ 14.00     -5.00   -5.00
+The pI is  5.31 (folded) and  5.39 (unfolded)
+
+--------------------------------------------------------------------------------------------------------
+2026-08-20 13:54:53,159 INFO:biomolecule.py:797:apply_pka_values:Applying pKa values at a pH of 7.40:
+2026-08-20 13:54:53,159 INFO:main.py:661:non_trivial:Adding hydrogens to biomolecule.
+2026-08-20 13:54:53,177 INFO:main.py:666:non_trivial:Optimizing hydrogen bonds
+2026-08-20 13:54:53,177 INFO:__init__.py:375:initialize_wat_optimization:Initializing water bonding optimization...
+2026-08-20 13:54:53,183 INFO:main.py:678:non_trivial:Applying force field to biomolecule states.
+2026-08-20 13:54:53,183 INFO:main.py:725:non_trivial:Regenerating headers.
+2026-08-20 13:54:53,183 INFO:main.py:750:non_trivial:Regenerating PDB lines.
+2026-08-20 13:54:53,185 WARNING:main.py:326:print_pqr:Ignoring 466 header lines in output.

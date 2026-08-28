@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/mnt/nfs/CX900004_DS117/dock385/dock3-release/zinc22-3d/strain/Torsion_Strain.py", line 84, in <module>
+    from TL_Functions import *
+  File "/mnt/nfs/CX900004_DS117/dock385/dock3-release/zinc22-3d/strain/TL_Functions.py", line 55, in <module>
+    from rdkit import Chem #The module with the RDKit functions we will need
+    ^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'rdkit'

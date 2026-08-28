@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/mnt/nfs/CX900004_DS117/dock385/dock3-release/zinc22-3d/strain/add_strain_info.py", line 67, in <module>
+    main()
+  File "/mnt/nfs/CX900004_DS117/dock385/dock3-release/zinc22-3d/strain/add_strain_info.py", line 24, in main
+    os.chdir(strainfilter_path)
+FileNotFoundError: [Errno 2] No such file or directory: '/nfs/ex5/work/jklyu/strainfilter/'

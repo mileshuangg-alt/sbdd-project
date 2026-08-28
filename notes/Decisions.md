@@ -1773,3 +1773,290 @@ The A2A definition must not be recalibrated using DiffSBDD or FLOWR outcomes.
 - Stage 5 is applied to FLOWR;
 - Stage 5 is instantiated for a new target;
 - future work formally reopens independent docking or receptor-flexibility validation.
+
+## D009 — Qualify the DOCK lineage for Stage-5 adversarial-pose generation and retain Vina as the production default
+
+**Decision date:** 2026-08-27  
+**Status:** ACTIVE
+
+### Decision
+
+The Shoichet/Kuntz **DOCK lineage is qualified for its planned Stage-5 role as an independent adversarial-pose source** in the A2A ProLIF proof-of-discrimination program.
+
+This qualification is based on successful cognate self-redocking of the 3REY/XAC system.
+
+Under the frozen DOCK search and strain settings, the qualified canonical XAC DB2 produced three retained poses. All three were native-like relative to the deposited 3REY XAC pose:
+
+```text
+Rank 1:
+heavy-atom RMSD = 0.592 Å
+
+Rank 2:
+heavy-atom RMSD = 0.563 Å
+
+Rank 3:
+heavy-atom RMSD = 0.560 Å
+```
+
+These are direct receptor-frame RMSDs without post-hoc ligand superposition.
+
+Therefore:
+
+**DOCK A2A implementation proof of life: ESTABLISHED**
+
+This qualification establishes that the implemented DOCK search can access the experimental XAC binding basin in the 3REY A2A system.
+
+It does not establish that every DOCK-generated alternative pose is an eligible Stage-5 negative.
+
+Negative eligibility remains governed by the frozen P1–P4 doctrine established for Stage-5 gate validation.
+
+---
+
+### Amendment to the earlier docking-validation conclusion
+
+D007 recorded the original independent docking-validation arm as:
+
+**CLOSED — DOCUMENTED NEGATIVE RESULT**
+
+That conclusion remains historically accurate for the docking implementations tested prospectively at that time:
+
+- AutoDock Vina;
+- AM1-BCC intervention;
+- smina / Vinardo;
+- GNINA CNN rescoring;
+- considered but unexecuted limited receptor flexibility.
+
+However, Session 009 subsequently established that an independent docking implementation can recover the 3REY/XAC experimental binding mode when the DOCK lineage is correctly prepared and qualified.
+
+The earlier zero-pose DOCK diagnostic result must not be interpreted as evidence that DOCK itself could not recover XAC.
+
+Its root cause was invalid ligand DB2 strain metadata:
+
+```text
+total strain = +9999.990
+max strain   = +9999.990
+```
+
+against the frozen DOCK thresholds:
+
+```text
+total_strain = 8
+max_strain   = 3
+```
+
+DOCK therefore rejected the handcrafted ligand set through its strain bookkeeping before a viable pose could be retained.
+
+The canonical strain calculation subsequently produced:
+
+```text
+total strain = 6.180
+max strain   = 2.910
+```
+
+which passes the unchanged frozen thresholds.
+
+Accordingly, the current methodological record is:
+
+> **The original Vina/Vinardo/GNINA docking-validation experiment remains a documented negative result, but independent docking as a methodological concept is no longer considered globally unqualified. The separately implemented and prospectively qualified DOCK lineage has established system-specific proof of life for 3REY/XAC.**
+
+D007 is not rewritten retrospectively. D009 records the later evidence that changes the current interpretation.
+
+---
+
+### Qualified XAC lineage
+
+The qualified DOCK proof-of-life control uses the canonical XAC reconstruction derived from the wwPDB Chemical Component Dictionary and reconciled to the deposited 3REY ligand coordinates.
+
+The qualified species is:
+
+```text
+formula: C21H28N6O4
+formal/system charge: 0
+heavy atoms: 31
+hydrogens: 28
+total atoms: 59
+bonds: 61
+```
+
+The qualified preparation lineage is:
+
+```text
+wwPDB XAC CCD
+→ deposited 3REY coordinates
+→ RDKit reconstruction
+→ SDF
+→ Antechamber SYBYL typing
+→ AMSOL
+→ canonical torsional strain
+→ mol2db2_py3_strain
+→ audited DB2
+→ DOCK
+```
+
+Coordinate preservation through the final DB2 was:
+
+```text
+all-atom RMSD:   0.000000 Å
+heavy-atom RMSD: 0.000000 Å
+maximum delta:   0.000000 Å
+```
+
+The earlier proposed +1 / 60-atom XAC reconstruction is superseded for this qualification record and must not be presented as the lineage that produced the successful DOCK proof of life.
+
+---
+
+### Production docking-backend policy
+
+**AutoDock Vina remains the production pose-generation default for the upcoming ProLIF proof-of-discrimination cycle.**
+
+DOCK is not promoted to the production default on the basis of the single 3REY/XAC qualification result.
+
+The reasons are methodological:
+
+1. the ProLIF validation cycle should not change its production pose generator in response to a newly obtained control result;
+2. Vina remains operationally simpler for routine generated-molecule pose generation;
+3. DOCK currently provides valuable methodological independence as an adversarial-pose lineage;
+4. one successful DOCK cognate-redocking case is insufficient to establish comparative superiority.
+
+The current roles are therefore:
+
+```text
+Vina:
+production pose-generation default
+
+DOCK:
+qualified independent adversarial-pose lineage
+and candidate future docking backend
+
+ProLIF:
+frozen primary interaction reader
+
+PLIP / qualified equivalent:
+post-validation independent interaction witness
+```
+
+These roles remain logically separate.
+
+---
+
+### Docking-backend independence
+
+The evaluation architecture remains docking-engine agnostic.
+
+Docking implementations must communicate with downstream evaluation through stable molecular and pose artifacts rather than implementation-specific internals.
+
+A docking backend earns authority through explicit qualification in its intended role.
+
+Successful qualification of one backend does not permanently privilege that backend, and qualification on one target does not establish universal docking performance.
+
+The same implementation-agnostic principle applies to:
+
+- molecular generators;
+- docking engines;
+- interaction readers and fingerprinters;
+- independent witnesses.
+
+One qualified default may occupy each production slot while alternative implementations remain swappable behind the corresponding interface.
+
+---
+
+### Future Vina-versus-DOCK robustness benchmark
+
+A matched Vina-versus-DOCK experiment is reserved for post-ProLIF-validation robustness analysis.
+
+The benchmark will use:
+
+- the same receptors;
+- the same experimental ligands;
+- the same crystallographic references.
+
+At minimum it will compare:
+
+- best-pose heavy-atom RMSD;
+- top-ranked-pose heavy-atom RMSD;
+- success rate at RMSD <= 2.0 Å;
+- docking failure rate;
+- pose diversity;
+- runtime and operational cost.
+
+The primary methodological question is not:
+
+> “Which docking engine wins?”
+
+The primary question is:
+
+> **“Is the downstream ProLIF interaction evidence materially sensitive to the pose-generation engine?”**
+
+Concordant Vina and DOCK conclusions strengthen the robustness of the interaction evidence.
+
+Discordant conclusions identify pose-generator dependence that must be reported and characterized.
+
+Only after this matched benchmark exists may evidence support reconsidering DOCK for promotion to the primary production docking backend.
+
+No comparative claim that DOCK is superior to Vina, or Vina superior to DOCK, is currently authorized.
+
+---
+
+### Relationship to ProLIF proof-of-discrimination
+
+DOCK qualification does not itself establish ProLIF discrimination.
+
+Its purpose is to qualify one independent source of physically plausible adversarial pose candidates.
+
+A DOCK-generated pose enters the primary ProLIF validation panel only if it independently satisfies the frozen negative-eligibility doctrine:
+
+```text
+P1 — physically admissible
+
+P2 — genuinely alternative, with a near-native solution
+     demonstrated in the same search
+
+P3 — negative status not attributable solely to the
+     generating model
+
+P4 — preferred adversarial strengthening when the
+     alternative is ranked/scored at or above the
+     sampled near-native solution
+```
+
+The successful XAC self-redocking provides direct evidence that the qualified DOCK implementation can access the native binding basin in this system.
+
+This strengthens the same-search native-sampling requirement underlying P2 but does not itself establish P2 for any future negative candidate.
+
+ProLIF output remains forbidden from determining negative-panel membership.
+
+---
+
+### Limitations
+
+The present DOCK qualification rests on one highly controlled cognate-redocking case:
+
+```text
+3REY / XAC
+```
+
+The result is strong within that system:
+
+```text
+3 / 3 retained poses native-like
+best direct-frame heavy-atom RMSD = 0.560 Å
+```
+
+but it does not establish performance across:
+
+- additional A2A chemotypes;
+- other targets;
+- arbitrary generated molecules;
+- alternative protonation states;
+- broader receptor conformational variation.
+
+The qualification therefore authorizes DOCK's planned Stage-5 adversarial-pose role within the current validation program but does not establish general superiority or universal production readiness.
+
+### Revisit when
+
+- the frozen A2A ProLIF proof-of-discrimination panel has been constructed;
+- DOCK-derived candidate negatives are evaluated under P1–P4;
+- the ProLIF validation result is locked;
+- the matched Vina-versus-DOCK robustness benchmark is performed;
+- evidence supports promoting DOCK to a production or second-pass docking backend;
+- DOCK is qualified on additional A2A chemotypes or additional targets.

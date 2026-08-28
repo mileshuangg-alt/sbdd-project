@@ -1,0 +1,75 @@
+DOCK v. 3.8.0, compiled 20220919  
+DOCK compiled for bitsize 64,       
+DOCK subversion revision:           
+CPU, Date, and Time: n4pu04 20260827 190231.1
+ minimization is on
+Solvation type: context-dependent ligand desolvation
+using_gist == no. Do not sort the confs in db2, if gist is
+ not used
+Ligands will NOT be recombined (NO mix-n-match)
+Internal Distance Clashes checked
+Experimental premax scoring will NOT be used
+Clusters/Additional Match Spheres scoring will not be used
+No a* search, normal search used
+:dislim =  0.0500 maxnodes =    4 minnodes =    4
+ Matching method number             2  will be used
+:disstep =  0.0500 dismax =  0.5000 matchgoal =     1000
+ timeout =     10.00000    
+Receptor spheres: ../dockfiles/matching_spheres.sph
+Input ligand: -
+ DelPhi/Qnifft gridsize is            79
+ Receptor desolvation not being used
+vdW parms: ../dockfiles/vdw.parms.amb.mindock
+ a maximum of   10.0 in vdw energy score is allowed for any flexible group
+ a maximum of   10.0 in vdw energy score is allowed for the whole rigid component
+ a maximum of  100.0 in total energy score is allowed for any pose written to mol2.
+ natmin =     4  natmax =   100
+ number of poses saved during processing   =    20
+ number of poses written    =    20
+ OUTDOCK will be updated every N numbers of lines, N =   100
+ hydrogens always written out
+ trilinear interpolation is always done
+ the receptor desolvation will be scaled by     0.000000    
+ gistvolume = 0.0 (defult) --> 
+ Gist-voxel volume will be calulated based on dxfile.
+min seed =       777
+ the ligand internal energy scaled by the factor     0.000000    
+ Receptor grids for Group#:             1
+Desolvation grid: ../dockfiles/ligand.desolv.heavy
+Additional hydrogen desolvation grid: ../dockfiles/ligand.desolv.hydrogen
+DelPhi grid: ../dockfiles/trim.electrostatics.phi
+Rec Desolv is not being used
+ Gist grid not used. 0 or " " given.
+bumpmap filename: ../dockfiles/vdw.bmp
+vdw filename: ../dockfiles/vdw.vdw
+receptor energy:  0.0000
+ Only poses with a score better than    1.0000000E+07 
+  will be written to disk. Use with caution for retrospective calculations, 
+ Intended use is for prospective calculations. 
+ min grid limits:    36.46900        8.465000        17.21700    
+ max grid limits:    63.46900        35.96500        54.28544    
+ first set of grids read successfully
+   12 colors used in receptor sphere file
+Receptor spheres:   31
+ cluster    1 with   31 spheres
+ 9001 9002 9003 9004 9005 9006 9007 9008 9009 9010 9011 9012 9013 9014 9015
+ 9016 9017 9018 9019 9020 9021 9022 9023 9024 9025 9026 9027 9028 9029 9030
+ 9031
+ 
+ test           -1
+output file: test.mol2.gz                                                                    
+ maximum receptor sphere-sphere distance    18.77483    
+  mol#           id_num     flexiblecode  matched    nscored    time hac    setnum    matnum   rank charge    elect +  gist +   vdW + psol +  asol + tStrain + mStrain + rec_d + r_hyd =    Total
+     1              MOL 1                    4070      56902    0.04  31         1       439      1      0.00     0.62    0.00  -29.83   5.54   -2.96    6.18    2.91    0.00    0.00    -26.62
+     1              MOL 1                    4070      56902    0.04  31         1      1145      2      0.00     0.56    0.00  -29.73   5.55   -2.96    6.18    2.91    0.00    0.00    -26.59
+     1              MOL 1                    4070      56902    0.04  31         1         1      3      0.00     0.52    0.00  -29.63   5.52   -2.96    6.18    2.91    0.00    0.00    -26.55
+ close the file: -
+ total minimization steps =           249
+ total number of hierarchies:             1
+ total number of orients (matches):          4070
+ total number of conformations (sets):             2
+ total number of nodes (confs):            28
+ total number of complexes:                      4070
+ end of file encountered
+Date and Time: 20260827 190231.4
+elapsed time (sec):        0.3000  (hour):     0.0001

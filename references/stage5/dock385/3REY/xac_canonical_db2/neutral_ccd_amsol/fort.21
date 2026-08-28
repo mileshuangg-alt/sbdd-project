@@ -1,0 +1,3 @@
+CHARGE=0 AM1 1SCF TLIMIT=15 GEO-OK SM5.42R                                      
+& SOLVNT=GENORG IOFR=1.4345 ALPHA=0.00 BETA=0.00 GAMMA=38.93                    
+& DIELEC=2.06 FACARB=0.00 FEHALO=0.00 DEV                                       

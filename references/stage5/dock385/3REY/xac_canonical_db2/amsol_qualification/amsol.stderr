@@ -1,0 +1,12 @@
+/mnt/nfs/CX900004_DS1/conda-envs/zinc22-3d/bin/wrapped_progs/antechamber: Fatal Error!
+Weird atomic valence (5) for atom (ID: 21, Name: C021).
+       Possible open valence.
+/mnt/nfs/CX900004_DS1/conda-envs/zinc22-3d/bin/wrapped_progs/antechamber: Fatal Error!
+Cannot open file (/mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/dock385/3REY/xac_canonical_db2/amsol_qualification/temp_AtomTypesFixed_bad_coord.mol2) with mode (r).
+No such file or directory
+==============================
+*** Open Babel Error  in OpenAndSetFormat
+  Cannot open /mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/dock385/3REY/xac_canonical_db2/amsol_qualification/temp_AtomTypesFixed.mol2
+0 molecules converted
+python: can't open file '/mnt/nfs/CX900004_DS117/dock385/dock3-release/zinc22-3d/ligand/amsol/make_amsol71_input.py3.py': [Errno 2] No such file or directory
+/bin/bash: line 1: temp.in-wat: No such file or directory

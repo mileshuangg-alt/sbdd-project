@@ -1,0 +1,44 @@
+'temp.mol2' -> 'XAC.0.mol2'
+'temp.smi' -> 'XAC.0.smi'
+
+Welcome to antechamber 22.0: molecular input file processor.
+
+Info: acdoctor mode is on: check and diagnose problems in the input file.
+Info: The atom type is set to sybyl; the options available to the -at flag are
+      gaff, gaff2, amber, bcc, and sybyl.
+
+-- Check Format for mol2 File --
+   Status: pass
+-- Check Unusual Elements --
+   Status: pass
+-- Check Open Valences --
+Warning: The number of bonds (3) for atom (ID: 17, Name: N017) does not match
+         the connectivity (2) for atom type (N.ar) defined in CORR_NAME_TYPE.DAT.
+Warning: The number of bonds (3) for atom (ID: 20, Name: N020) does not match
+         the connectivity (2) for atom type (N.ar) defined in CORR_NAME_TYPE.DAT.
+Warning: The number of bonds (3) for atom (ID: 25, Name: N025) does not match
+         the connectivity (2) for atom type (N.ar) defined in CORR_NAME_TYPE.DAT.
+But, you may safely ignore the warnings if your molecule
+         uses atom names or element names as atom types.
+-- Check Geometry --
+      for those bonded   
+      for those not bonded   
+Warning: Close ( 1.32) nonbonded atoms (ID: 1, Name: C001) and (ID: 38, Name: H038).
+Warning: Close ( 1.32) nonbonded atoms (ID: 3, Name: C003) and (ID: 33, Name: H033).
+Warning: Close ( 1.32) nonbonded atoms (ID: 8, Name: O008) and (ID: 41, Name: H041).
+Warning: Close ( 1.32) nonbonded atoms (ID: 23, Name: C023) and (ID: 50, Name: H050).
+Warning: Close ( 1.32) nonbonded atoms (ID: 27, Name: C027) and (ID: 48, Name: H048).
+Warning: Close ( 1.32) nonbonded atoms (ID: 29, Name: C029) and (ID: 50, Name: H050).
+Warning: Close ( 1.32) nonbonded atoms (ID: 31, Name: C031) and (ID: 57, Name: H057).
+-- Check Weird Bonds --
+
+Welcome to antechamber 22.0: molecular input file processor.
+
+Info: acdoctor mode is on: check and diagnose problems in the input file.
+Info: The atom type is set to gaff; the options available to the -at flag are
+      gaff, gaff2, amber, bcc, and sybyl.
+
+-- Check Format for mol2 File --
+   Status: pass
+ running AMSOL7.1: SM5.42R (in water solvent) 
+AMSOL water calculation failed or stalled. Aborting

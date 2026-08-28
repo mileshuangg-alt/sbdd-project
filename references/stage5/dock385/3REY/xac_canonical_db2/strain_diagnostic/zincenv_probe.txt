@@ -1,0 +1,2 @@
+/mnt/nfs/CX900004_DS1/conda-envs/zinc22-3d/bin/python
+rdkit ok

@@ -1,0 +1,3 @@
+/mnt/nfs/CX900004_DS1/conda-envs/zinc22-3d/bin/wrapped_progs/antechamber: Fatal Error!
+Weird atomic valence (5) for atom (ID: 21, Name: C021).
+       Possible open valence.

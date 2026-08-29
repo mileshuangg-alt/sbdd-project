@@ -1,0 +1,38 @@
+Candidate-4 3REY / XAC self-redocking validation
+========================================================================
+Parsed poses: 20
+Index-map pairs: 36
+Heavy-atom canonical SMILES: CCCn1c(=O)c2[nH]c(-c3ccc(OCC(=O)NCC[NH3+])cc3)nc2n(CCC)c1=O
+Formal charge: 1
+Heavy atoms: 31
+Best empirical minimizedAffinity: -7.304
+5 kcal/mol eligibility threshold: -2.304
+Eligible poses: 20
+Required Phe168 classes: ['Hydrophobic', 'VdWContact']
+Required Asn253 classes: ['HBAcceptor', 'VdWContact']
+Native receptor: references/stage5/native_complexes/3REY/3REY_receptor_pH7.4_restored.pqr
+Anchor numbering audit: {168: 'PHE', 253: 'ASN'}
+
+Rank,MinimizedAffinity,Eligible,RMSD,Phe168Recovered,Phe168Interactions,Asn253Recovered,Asn253Interactions,PosePass
+1,-6.596,True,9.370,True,Hydrophobic;VdWContact,False,,False
+2,-6.495,True,6.540,False,VdWContact,False,VdWContact,False
+3,-6.480,True,8.592,False,Hydrophobic,True,HBAcceptor;VdWContact,False
+4,-6.705,True,6.886,True,Hydrophobic;VdWContact,False,,False
+5,-6.770,True,8.531,False,Hydrophobic,False,,False
+6,-6.592,True,6.365,False,,False,,False
+7,-6.803,True,7.950,False,,False,,False
+8,-6.702,True,9.079,False,,False,,False
+9,-6.603,True,9.046,True,Hydrophobic;VdWContact,False,,False
+10,-6.753,True,4.119,False,,False,,False
+11,-6.331,True,8.717,False,Hydrophobic,False,,False
+12,-6.915,True,9.966,True,Hydrophobic;VdWContact,False,VdWContact,False
+13,-6.985,True,1.678,False,,False,,False
+14,-6.633,True,3.380,False,,False,,False
+15,-6.752,True,5.148,False,Hydrophobic,False,VdWContact,False
+16,-6.706,True,6.793,True,Hydrophobic;VdWContact,False,,False
+17,-7.304,True,9.971,False,Hydrophobic,False,,False
+18,-7.008,True,2.222,False,Hydrophobic,False,,False
+19,-6.597,True,9.634,True,Hydrophobic;VdWContact,False,VdWContact,False
+20,-7.176,True,10.988,True,Hydrophobic;VdWContact,False,HBDonor;VdWContact,False
+
+CANDIDATE-4 3REY / XAC RESULT: FAIL (no eligible retained pose satisfied RMSD <= 2.0 A AND Phe168 native pattern AND Asn253 native pattern)

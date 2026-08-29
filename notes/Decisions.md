@@ -2060,3 +2060,21 @@ The qualification therefore authorizes DOCK's planned Stage-5 adversarial-pose r
 - the matched Vina-versus-DOCK robustness benchmark is performed;
 - evidence supports promoting DOCK to a production or second-pass docking backend;
 - DOCK is qualified on additional A2A chemotypes or additional targets.
+
+## D — 2026-08-28 — Stage 5 negative-panel construction after Graves null
+
+**Decision:** Close the strict Graves geometric-decoy program as a preregistered null and do not tune or reopen it during the current Stage-5 validation cycle. Build the negative panel from experimentally established human-A2A negatives whose status is fixed independently of ProLIF, while retaining a requirement for at least two genuinely unrelated generator families before the blind ProLIF POD.
+
+**Locked details:**
+
+- Graves geometric alternatives require strictly `RMSD > 3.0 Å`; native-like is `RMSD ≤ 2.0 Å`; a Graves scoring decoy additionally requires a score better than the best native-like pose.
+- The completed null ladder is: cognate XAC/3REY native-only; cognate 9XT/5OLH native-only; 9XT→3REY cross-dock gross alternatives but no native-like sampling; XAC→5OLH cross-dock zero saved poses due to bump. No third direction or parameter tuning is permitted.
+- The 5OLH→3REY reference-frame transform is frozen from 281 whole-receptor Cα pairs with post-fit RMSD 0.893302 Å and det(R)=1. The receptor Cα RMSD is reported alongside cross-docked ligand RMSDs and is not subtracted from ligand RMSD thresholds.
+- P3 experimental-negative candidates are frozen as S-ENBA and N6-cyclooctyladenosine from Gao et al. 2003 human adenosine-receptor binding data, both with hA2A `Ki >10,000 nM` and nanomolar hA1 affinity. Candidate identity/status was fixed before generation and cannot be replaced based on downstream convenience or ProLIF behavior.
+- P1 is frozen as PoseBusters 0.6.5 with shipped `dock.yml`, original generated coordinates, no repair/minimization, `mol_true=None`, qualified receptor as `mol_cond`, and preserved full reports.
+- N6-cyclooctyladenosine DOCK rank 1 is a qualified independent negative: P3 PASS, P1 PASS, DOCK score -27.96, zero protein clashes, ProLIF-unseen.
+- S-ENBA's frozen DOCK branch produced no saved poses due to bump and is not to be rerun or tuned.
+- Fresh Vina 1.2.7 poses for the experimental negatives are retained as ProLIF-unseen secondary/generalization controls only. Vina is a familiar/development lineage and does **not** satisfy the second independent-generator requirement.
+- ProLIF remains embargoed from all new negatives until one additional P1-qualified negative from a genuinely unrelated generator family is obtained and exact panel membership is frozen.
+- Session 011 should obtain that second-family negative with OpenCode, apply frozen P1, freeze the panel, then perform the blind frozen-ProLIF POD. Independent-witness concordance remains post-validation work.
+- Preserve all intermediate, failed, null, and validation artifacts from Session 010.

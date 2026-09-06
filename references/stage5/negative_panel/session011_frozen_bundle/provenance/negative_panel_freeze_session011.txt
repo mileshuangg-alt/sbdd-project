@@ -1,0 +1,90 @@
+SESSION 011 NEGATIVE-PANEL FREEZE
+Date: 2026-09-06
+
+PURPOSE
+Freeze the negative panel before lifting the ProLIF embargo.
+
+PANEL MEMBERSHIP
+
+1. DOCK-family negative
+   Candidate: P3-002 N6-cyclooctyladenosine
+   InChIKey: TUBLKCBQFVQEOG-SCFUHWHPSA-N
+   Biological status: human hA2A Ki >10,000 nM
+   Generator lineage: DOCK 3.8.5
+   Representative: rank 1
+   Representative path:
+   /mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/negative_panel/p3_candidates/P3-002_N6-cyclooctyladenosine/p1_posebusters_dock/poses/rank_01.mol2
+   SHA-256:
+   a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf
+   DOCK score: -27.96
+   P1: PASS
+   Protein clashes: 0
+   ProLIF exposure before freeze: NONE
+
+2. rDock-family negative
+   Candidate: P3-002 N6-cyclooctyladenosine
+   InChIKey: TUBLKCBQFVQEOG-SCFUHWHPSA-N
+   Biological status: human hA2A Ki >10,000 nM
+   Generator lineage: rDock v24.04.204-legacy
+   Git commit: 3c029ecc65898166b234716b1609fb46212cbc6d
+   Representative: sole generated pose
+   Representative path:
+   /mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/negative_panel/rdock_session011/P3-002_N6-cyclooctyladenosine_rdock.sd
+   SHA-256:
+   731661a5096209b80a56f6ecd48d520c69c834b949b3d456bd0101a5de48f81a
+   rDock score: -10.5896
+   P1: PASS
+   Protein clashes: 0
+   ProLIF exposure before freeze: NONE
+
+rDock production inputs
+   Ligand SD:
+   /mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/negative_panel/rdock_session011/P3-002_N6-cyclooctyladenosine.sd
+   SHA-256:
+   04cf1e3c931a3f8039b0791da6b477dfc11f1f6ce863df6173ec6b0eab9d8fc7
+
+   rDock parameter file:
+   /mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/negative_panel/rdock_session011/3REY_rdock.prm
+   SHA-256:
+   f5141e07c86292518d2df30e88e2815ca3d518cbd0ee527e2de8436341b1139c
+
+   rDock receptor MOL2:
+   /mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/negative_panel/rdock_session011/3REY_rec_for_rdock.mol2
+   SHA-256:
+   8ab3ac4b1d8e0f383e1026dc62fbeff33d760c9f9c8eb31ee45ee08121f25d20
+
+   Reference ligand:
+   /mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/negative_panel/rdock_session011/XAC_reference.sd
+   SHA-256:
+   2be99a4a0659c986c9ec4e9789b36ed8b91d82169acd288b433dd8a3efeaf4ef
+
+FROZEN RDOCK PRODUCTION SETTINGS
+   Standard protocol:
+   /mnt/nfs/CX900004_DS117/src/rdock/data/scripts/dock.prm
+   Run count: 1
+   Seed: 20260906
+   Cavity volume: 2139.75 A^3
+   Cavity count: 1
+   Cavity center: (50.2752, 23.4218, 37.3767)
+
+POSEBUSTERS P1
+   Version: 0.6.5
+   Configuration: shipped dock.yml
+   Original generated coordinates: YES
+   Repair/minimization: NONE
+   mol_true: None
+   mol_cond: qualified 3REY receptor
+   full_report: True
+
+PROLIF STATUS
+   ProLIF 2.2.0 remains frozen as the interaction reader.
+   ProLIF was not used for negative-panel membership selection.
+   The new negative-panel representatives were not exposed to ProLIF before this freeze.
+
+VINA STATUS
+   Fresh Vina experimental-negative poses are retained as secondary/generalization controls.
+   Vina is NOT a member of the second-independent-generator requirement because it participated in earlier ProLIF development.
+
+FROZEN DECISIONS
+   The negative panel is frozen with the two representatives above.
+   No further generator search, rDock tuning, Graves/DOCK reopening, or ProLIF-conditioned membership selection is permitted for this panel.

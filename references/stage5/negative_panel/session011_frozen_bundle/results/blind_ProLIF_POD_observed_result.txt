@@ -1,0 +1,44 @@
+SESSION 011 — BLIND FROZEN-PROLIF POD RESULT
+
+Instrument:
+ProLIF 2.2.0
+
+Frozen reader route:
+3REY_receptor_pH7.4_restored.pqr
+-> load_protein() from test_native_reader_controls.py
+-> MDAnalysis
+-> plf.Molecule.from_mda()
+-> plf.Fingerprint().generate(..., metadata=True)
+
+Frozen A2A recognition definition:
+(Phe168 Hydrophobic OR PiStacking)
+AND
+(Asn253 HBAcceptor)
+
+DOCK representative:
+Phe168 = VdWContact
+Asn253 = none
+Residue 75 contact = none
+Frozen A2A recognition pattern reproduced = NO
+
+rDock representative:
+Phe168 = none
+Asn253 = none
+Residue 75 contact = none
+Frozen A2A recognition pattern reproduced = NO
+
+Bounded claim:
+Molecule-level discrimination was demonstrated for one experimentally
+established hA2A-negative molecule represented under two docking routes,
+DOCK and rDock.
+
+This result does not establish pose sensitivity and does not establish
+general discrimination across negative chemotypes.
+
+Blindness:
+Panel membership was frozen before either new negative representative was
+exposed to ProLIF.
+
+Archival note:
+This file transcribes the completed blind read. ProLIF was not rerun to
+create this record.

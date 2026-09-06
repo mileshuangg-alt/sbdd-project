@@ -1,0 +1,38 @@
+SESSION 011 — RDOCK POSEBUSTERS P1 RESULT
+
+Instrument:
+PoseBusters 0.6.5
+Configuration: shipped dock.yml
+mol_true: None
+mol_cond: qualified 3REY receptor
+full_report: True
+Original generated coordinates; no repair or minimization.
+
+Representative:
+P3-002 N6-cyclooctyladenosine
+rDock sole generated pose
+
+Observed:
+sanitization = True
+inchi_convertible = True
+all_atoms_connected = True
+no_radicals = True
+bond_lengths = True
+bond_angles = True
+internal_steric_clash = True
+aromatic_ring_flatness = True
+non-aromatic_ring_non-flatness = True
+double_bond_flatness = True
+internal_energy = True
+protein-ligand_maximum_distance = True
+smallest_distance_protein = 2.607812 A
+num_pairwise_clashes_protein = 0
+volume_overlap_protein = 0.009972
+
+Verdict:
+P1 PASS
+
+Archival note:
+The full dataframe was printed during the completed qualification but was not
+persisted. This file transcribes the completed observed result. PoseBusters
+was not rerun to create this record.

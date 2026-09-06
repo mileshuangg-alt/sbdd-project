@@ -2237,3 +2237,313 @@ Until those conditions are met, do not reopen the completed Graves/DOCK
 null ladder, retune the frozen DOCK searches, substitute new
 experimental negatives based on convenience, or expose the current
 negative candidates to ProLIF.
+
+## D011 — Establish bounded A2A molecule-level discrimination from the frozen experimental-negative panel
+
+**Decision date:** 2026-09-06  
+**Status:** ACTIVE
+
+### Decision
+
+The frozen A2A ProLIF validation program has established **molecule-level discrimination for one experimentally established human-A2A-negative molecule represented under two independent docking routes**.
+
+The validated negative molecule is:
+
+- **P3-002 — N6-cyclooctyladenosine**;
+- human A2A `Ki >10,000 nM`;
+- negative status fixed from experimental human receptor binding data before pose generation or ProLIF exposure.
+
+Two independently generated, P1-qualified representatives were frozen before the blind ProLIF read:
+
+1. **DOCK 3.8.5 lineage — rank 1**;
+2. **rDock lineage — sole retained production pose**.
+
+Both representatives were selected without ProLIF information and passed the frozen PoseBusters 0.6.5 `dock.yml` physical-plausibility instrument with zero protein pairwise clashes.
+
+The blind read used the **unchanged historical ProLIF 2.2.0 interaction-reader route** recovered from `scripts/stage5/test_native_reader_controls.py`:
+
+```text
+validated restored receptor PQR
+-> temporary MDAnalysis-compatible reader representation
+-> deterministic inferred-topology cleanup
+-> plf.Molecule.from_mda()
+-> plf.Fingerprint()
+-> Fingerprint.generate(..., metadata=True)
+```
+
+The frozen A2A recognition definition remained:
+
+```text
+(Phe168 Hydrophobic OR PiStacking)
+AND
+(Asn253 HBAcceptor)
+```
+
+`VdWContact` remains characterization output and does not independently satisfy the Phe168 recognition requirement.
+
+Blind negative results:
+
+```text
+DOCK P3-002:
+Phe168 = VdWContact
+Asn253 = none
+Frozen A2A pattern = NOT REPRODUCED
+
+rDock P3-002:
+Phe168 = none
+Asn253 = none
+Frozen A2A pattern = NOT REPRODUCED
+```
+
+A pre-read residue-75 guard was applied because the historical restored PQR and the rDock receptor PDB differed maximally at residue 75 CD2 during receptor-artifact comparison. Neither blind pose contacted residue 75.
+
+Therefore:
+
+> **Molecule-level discrimination is established for one experimentally established hA2A-negative molecule under two independent docking routes.**
+
+This decision **does not establish pose sensitivity**. The two poses belong to the same molecular negative and therefore must not be counted as two independent molecular negatives.
+
+This decision also **does not establish general discrimination across negative chemotypes**, broad A2A nonbinders, arbitrary generated molecules, other targets, or alternative receptor preparations.
+
+### Claim boundary
+
+The permitted claim is:
+
+> **The frozen ProLIF A2A recognition implementation distinguished one experimentally established hA2A-negative molecule from the predeclared A2A recognition pattern when that molecule was represented by independently generated P1-qualified DOCK and rDock poses.**
+
+The following stronger claims are not permitted from this evidence:
+
+- ProLIF has established pose-level sensitivity;
+- DOCK and rDock provide two independent molecular-negative observations;
+- the gate has established general specificity across negative chemotypes;
+- every A2A nonbinder will fail the recognition pattern;
+- failure to reproduce the pattern proves experimental nonbinding;
+- the result transfers to another target or receptor implementation;
+- DOCK is superior to rDock, Vina, or another pose generator;
+- the generated poses are uniquely correct or thermodynamically preferred.
+
+### Relationship to prior A2A validation
+
+The prior native interaction-reader proof of life remains frozen:
+
+```text
+3REY / XAC:       PASS
+5OLH / Vipadenant: PASS
+5OLO / Tozadenant: PASS
+
+Native positive sensitivity:
+3 / 3 PASS
+```
+
+D008 previously recorded A2A hard-gate discrimination as **NOT ESTABLISHED** because only positive sensitivity had been demonstrated and the rigid-rotation negative-control strategy failed to produce a suitable universal plausible negative.
+
+D010 then froze an experimental-negative path in which negative molecular status was established independently of ProLIF and panel membership was frozen before ProLIF exposure.
+
+Session 011 completed that prospective path by:
+
+- qualifying rDock as the second unrelated pose-generation lineage for the frozen panel;
+- obtaining a P1-qualified rDock representative for P3-002 without tuning after the production result;
+- freezing the DOCK and rDock panel representatives before ProLIF exposure;
+- performing the blind read through the unchanged historical ProLIF instrument;
+- observing failure of the frozen A2A recognition pattern under both docking routes.
+
+The new evidence therefore resolves the specific Session-010 blocker and establishes discrimination **at the bounded molecule-level scope stated above**.
+
+It does not retroactively convert the failed rigid-rotation study into a successful pose-discrimination experiment and does not reopen the completed Graves geometric-decoy null.
+
+### rDock lineage and production freeze
+
+The second unrelated pose-generation lineage was rDock.
+
+Frozen implementation provenance:
+
+```text
+rDock tag:
+v24.04.204-legacy
+
+Git commit:
+3c029ecc65898166b234716b1609fb46212cbc6d
+```
+
+The built executable reported `v26.09-alpha` / `libRbt.so/26.09/alpha`; this metadata discrepancy is retained as observed provenance and was not modified. The pinned Git checkout and passing bundled tests define the implementation provenance.
+
+The standard supplied free-docking protocol was used without scientific-parameter tuning.
+
+Production cavity:
+
+```text
+cavities: 1
+volume: 2139.75 A^3
+center: (50.2752, 23.4218, 37.3767)
+```
+
+Production run:
+
+```text
+ligand: P3-002 N6-cyclooctyladenosine
+run count: 1
+seed: 20260906
+retained SD records: 1
+rDock SCORE: -10.5896
+```
+
+The sole rDock pose passed the frozen PoseBusters P1 instrument with:
+
+```text
+num_pairwise_clashes_protein = 0
+smallest_distance_protein = 2.607812 A
+```
+
+No rDock tuning, rerun, alternate generator search, or ProLIF-conditioned pose selection was performed after the production result.
+
+### Frozen panel provenance
+
+DOCK representative:
+
+```text
+P3-002 N6-cyclooctyladenosine
+DOCK 3.8.5
+rank 1
+DOCK score = -27.96
+P1 = PASS
+protein clashes = 0
+SHA-256 = a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf
+```
+
+rDock representative:
+
+```text
+P3-002 N6-cyclooctyladenosine
+rDock
+sole production pose
+rDock SCORE = -10.5896
+P1 = PASS
+protein clashes = 0
+SHA-256 = 731661a5096209b80a56f6ecd48d520c69c834b949b3d456bd0101a5de48f81a
+```
+
+The panel-freeze manifest was written before the blind ProLIF read.
+
+```text
+negative_panel_freeze_session011.txt
+SHA-256 = 7dcd620b4f4ad428c2375aff6adb308ef23dfb6ba5e069a6dbcdbe7a8b518bef
+```
+
+### Receptor-artifact comparison and loader decision
+
+During Session 011, a proposed direct-RDKit receptor-loading route was investigated because the rDock receptor PDB lacked explicit `CONECT` records and failed the MDAnalysis inferred-topology conversion route.
+
+Before any blind read, the historical restored PQR and rDock receptor PDB were compared by matching heavy atoms on residue number plus atom name.
+
+Observed:
+
+```text
+PQR heavy atoms: 2251
+PDB heavy atoms: 2250
+matched heavy atoms: 2250
+PQR-only atom: SER305 OXT
+PDB-only atoms: none
+mean matched-heavy-atom coordinate deviation: 0.006478297 A
+maximum deviation: 2.312129322 A
+maximum-deviation atom: residue 75 CD2
+```
+
+Because the receptor artifacts were not coordinate-identical, the direct-RDKit route was **not substituted for the historical instrument**.
+
+The blind POD instead used the exact historical PQR/MDAnalysis reader route. The direct-RDKit receptor route therefore contributes no negative-panel evidence to D011.
+
+The residue-75 guard was retained for the blind read. Neither negative contacted residue 75.
+
+### Historical proof-of-life artifact retention defect
+
+The original prepared XAC SDF expected by the historical native-reader script:
+
+```text
+3REY_XAC_native_pH7.4_restored.sdf
+```
+
+was not found in the retained project filesystem during Session 011.
+
+This is recorded as an artifact-retention defect. It does not erase the retained Session-007/008 record of the completed 3/3 native ProLIF proof of life, but it prevents byte-for-byte reconstruction of that historical XAC input from the retained validation bundle.
+
+The missing XAC SDF was **not regenerated** during Session 011.
+
+The project-wide preservation rule remains in force: intermediate and validation artifacts must be retained until the relevant stage is finalized and frozen.
+
+### Relationship to Stage 5
+
+A2A remains a **Level-1** target under D008 because direct experimental cognate target-ligand complexes are available.
+
+Positive sensitivity remains established from the frozen native controls.
+
+D011 adds bounded negative-discrimination evidence at the molecule level.
+
+Stage-5 reporting must preserve the distinction between:
+
+- demonstrated native-positive sensitivity;
+- demonstrated molecule-level discrimination for P3-002 under two docking routes;
+- unestablished pose-level sensitivity;
+- unestablished broad negative-chemotype specificity.
+
+No Stage-5 implementation for another target inherits this validation automatically.
+
+### Alternatives considered
+
+The following were not adopted during Session 011:
+
+- use the direct-RDKit receptor route for the blind negative read;
+- regenerate the missing historical XAC SDF and treat it as the original proof-of-life input;
+- reopen the Graves geometric-decoy program;
+- tune rDock after observing its production result;
+- rerun rDock to obtain additional poses;
+- substitute Vina as the second independent generator family;
+- use FLOWR or DiffSBDD to construct the validation panel;
+- expose candidate negatives to ProLIF before panel freeze;
+- count the two docking routes as two independent molecular negatives;
+- claim pose sensitivity from the two-route result.
+
+These alternatives were rejected because they would change the frozen instrument, weaken blindness, reopen completed validation branches, contaminate the later generator-comparison arm, or exceed the evidence actually obtained.
+
+### Current status
+
+As of 2026-09-06:
+
+```text
+A2A interaction evidence:
+LEVEL 1
+
+Native positive sensitivity:
+ESTABLISHED — 3/3 experimental positives
+
+Experimental-negative panel:
+FROZEN
+
+Independent pose-generation routes represented:
+DOCK + rDock
+
+Experimental negative molecules represented:
+1 — P3-002 N6-cyclooctyladenosine
+
+Blind ProLIF POD:
+COMPLETE
+
+Molecule-level discrimination for P3-002:
+ESTABLISHED UNDER TWO DOCKING ROUTES
+
+Pose-level sensitivity:
+NOT ESTABLISHED
+
+General negative-chemotype discrimination:
+NOT ESTABLISHED
+```
+
+### Revisit when
+
+- additional experimentally established A2A-negative chemotypes are prospectively added under a new validation plan;
+- a future experiment is explicitly designed to test pose-level sensitivity;
+- post-validation independent-witness concordance is performed;
+- Stage 5 is applied to FLOWR through the frozen generator-independent pathway;
+- the Stage-5 implementation is instantiated for another target;
+- new evidence justifies broadening or narrowing the permitted discrimination claim.
+
+Until then, do not inflate the Session-011 result beyond **one experimental negative molecule under two independent docking routes**, and do not reopen the completed Graves/DOCK null or tune the frozen rDock result.

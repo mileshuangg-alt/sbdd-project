@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "decision_id": "D017",
+  "purpose": "read_only_construct_boundary_audit",
+  "constructs": [
+    {
+      "structure_id": "3EML",
+      "source_mmcif": "structures/raw/3EML.cif",
+      "author_chain": "A",
+      "canonical_fasta": "canonical_sequences/ADORA2A_P29274.fasta"
+    },
+    {
+      "structure_id": "7XY7",
+      "source_mmcif": "structures/raw/7XY7.cif",
+      "author_chain": "R",
+      "canonical_fasta": "canonical_sequences/ADORA2B_P29275.fasta"
+    },
+    {
+      "structure_id": "9EHS",
+      "source_mmcif": "structures/raw/9EHS.cif",
+      "author_chain": "R",
+      "canonical_fasta": "canonical_sequences/ADORA3_P0DMS8.fasta"
+    }
+  ]
+}

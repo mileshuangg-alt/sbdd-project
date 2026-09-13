@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "decision_id": "D017",
+  "status": "FROZEN",
+  "alignment": {
+    "software": "US-align",
+    "version": "20220227",
+    "source_archive_sha256": "3c6348e7d45105ade2f0fe80437a36b4e7bfdb92cdb6872a6f4912dcd24d0f8d",
+    "source_sha256": "4518d1e85bfccea3ff40de8fbf0b248faf8ebe4695d0d8b6f15f3625593c4427",
+    "executable_sha256": "26ba8b626cf2600321941f0a138ada60505626e858948b5285c66f33097ee55f",
+    "compiler": "Apple clang 17.0.0",
+    "molecule_type": "prot",
+    "multimer_mode": 0,
+    "chain_mode": 2,
+    "representative_atom": " CA ",
+    "input_contract": "single_chain_pdb",
+    "invocation": [
+      "USalign",
+      "{target_chain_pdb}",
+      "{homolog_chain_pdb}",
+      "-mol",
+      "prot",
+      "-mm",
+      "0",
+      "-ter",
+      "2",
+      "-atom",
+      " CA ",
+      "-m",
+      "{matrix_output}",
+      "-o",
+      "{superposition_prefix}"
+    ]
+  },
+  "pocket_definition": {
+    "source": "experimentally_bound_homolog_ligand",
+    "distance_cutoff_angstrom": 4.5,
+    "atom_type": "heavy_atoms"
+  },
+  "measurements": {
+    "sequence_identity_basis": "mapped_pocket_residue_pairs",
+    "rmsd_atom": "CA",
+    "rmsd_frame": "optimal_local_superposition",
+    "mapping_coverage_required_output": true
+  },
+  "state_assignment": {
+    "allowed_values": [
+      "ACTIVE",
+      "INACTIVE",
+      "UNKNOWN"
+    ],
+    "default": "UNKNOWN",
+    "authority": "primary_structural_publication_and_pdb_annotation"
+  },
+  "review_visualization": {
+    "required": true,
+    "gating": false,
+    "renderer": "PyMOL",
+    "renderer_version": "3.1.0",
+    "preserve_raw_usalign_pml": true,
+    "whole_structure_image": true,
+    "pocket_focused_image": true
+  },
+  "conservation_gate": {
+    "status": "UNEVALUABLE_PENDING_D018",
+    "sequence_identity_threshold": null,
+    "rmsd_threshold_angstrom": null,
+    "minimum_mapped_residues": null,
+    "minimum_mapping_coverage": null
+  }
+}

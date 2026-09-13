@@ -1,0 +1,2 @@
+Warning! Missing one of the following _atom_site data items: group_PDB, label_atom_id, label_comp_id, auth_asym_id/label_asym_id, auth_seq_id/label_seq_id, Cartn_x, Cartn_y, Cartn_z
+Warning! Cannot parse file: references/stage5/d017/receptor_inputs/2YDV_A.cif. Chain number 0.

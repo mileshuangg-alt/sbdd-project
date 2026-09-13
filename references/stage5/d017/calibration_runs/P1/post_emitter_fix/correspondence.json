@@ -1,0 +1,6718 @@
+{
+  "alignment_length": 314,
+  "target_residue_count": 307,
+  "homolog_residue_count": 288,
+  "mapped_residue_pair_count": 281,
+  "columns": [
+    {
+      "alignment_column": 1,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "3",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 3
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "5",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 60
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 2,
+      "target_alignment_residue": "M",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "4",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 4
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "6",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 61
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 3,
+      "target_alignment_residue": "-",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": " ",
+      "target_residue": null,
+      "homolog_residue": {
+        "chain": "R",
+        "number": "7",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 62
+      },
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 4,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "5",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 5
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "8",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 63
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 5,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "Q",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "6",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 6
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "9",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 64
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 6,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "7",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 7
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "10",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 65
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 7,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "8",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 8
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "11",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 66
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 8,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "9",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 9
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "12",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 67
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 9,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "10",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 10
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "13",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 68
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 10,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "11",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 11
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "14",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 69
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 11,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "12",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 12
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "15",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 70
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 12,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "13",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 13
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "16",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 71
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 13,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "14",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 14
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "17",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 72
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 14,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "15",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 15
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "18",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 73
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 15,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "16",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 16
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "19",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 74
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 16,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "17",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 17
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "20",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 75
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 17,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "18",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 18
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "21",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 76
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 18,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "19",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 19
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "22",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 77
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 19,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "20",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 20
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "23",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 78
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 20,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "21",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 21
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "24",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 79
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 21,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "22",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 22
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "25",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 80
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 22,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "23",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 23
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "26",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 81
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 23,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "24",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 24
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "27",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 82
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 24,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "25",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 25
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "28",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 83
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 25,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "26",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 26
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "29",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 84
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 26,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "27",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 27
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "30",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 85
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 27,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "28",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 28
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "31",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 86
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 28,
+      "target_alignment_residue": "W",
+      "homolog_alignment_residue": "W",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "29",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 29
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "32",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 87
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 29,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "30",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 30
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "33",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 88
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 30,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "31",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 31
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "34",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 89
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 31,
+      "target_alignment_residue": "W",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "32",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 32
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "35",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 90
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 32,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "33",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 33
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "36",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 91
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 33,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "34",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 34
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "37",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 92
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 34,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "Q",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "35",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 35
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "38",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 93
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 35,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "36",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 36
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "39",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 94
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 36,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "37",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 37
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "40",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 95
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 37,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "38",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 38
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "41",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 96
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 38,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "D",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "39",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 39
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "42",
+        "insertion_code": "",
+        "name": "ASP",
+        "label_sequence_id": 97
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 39,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "40",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 40
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "43",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 98
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 40,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "41",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 41
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "44",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 99
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 41,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "42",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 42
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "45",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 100
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 42,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "43",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 43
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "46",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 101
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 43,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "44",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 44
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "47",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 102
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 44,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "45",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 45
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "48",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 103
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 45,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "46",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 46
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "49",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 104
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 46,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "47",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 47
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "50",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 105
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 47,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "48",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 48
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "51",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 106
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 48,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "49",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 49
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "52",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 107
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 49,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "50",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 50
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "53",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 108
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 50,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "51",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 51
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "54",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 109
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 51,
+      "target_alignment_residue": "D",
+      "homolog_alignment_residue": "D",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "52",
+        "insertion_code": "",
+        "name": "ASP",
+        "label_sequence_id": 52
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "55",
+        "insertion_code": "",
+        "name": "ASP",
+        "label_sequence_id": 110
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 52,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "53",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 53
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "56",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 111
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 53,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "54",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 54
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "57",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 112
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 54,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "55",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 55
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "58",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 113
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 55,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "56",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 56
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "59",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 114
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 56,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "57",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 57
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "60",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 115
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 57,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "58",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 58
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "61",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 116
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 58,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "59",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 59
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "62",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 117
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 59,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "60",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 60
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "63",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 118
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 60,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "61",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 61
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "64",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 119
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 61,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "62",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 62
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "65",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 120
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 62,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "63",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 63
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "66",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 121
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 63,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "64",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 64
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "67",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 122
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 64,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "65",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 65
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "68",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 123
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 65,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "66",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 66
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "69",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 124
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 66,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "67",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 67
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "70",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 125
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 67,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "68",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 68
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "71",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 126
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 68,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "69",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 69
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "72",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 127
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 69,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "70",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 70
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "73",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 128
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 70,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "Q",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "71",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 71
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "74",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 129
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 71,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "72",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 72
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "75",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 130
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 72,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "73",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 73
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "76",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 131
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 73,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "74",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 74
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "77",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 132
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 74,
+      "target_alignment_residue": "H",
+      "homolog_alignment_residue": "H",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "75",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 75
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "78",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 133
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 75,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "76",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 76
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "79",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 134
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 76,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "77",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 77
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "80",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 135
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 77,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "78",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 78
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "81",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 136
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 78,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "79",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 79
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "82",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 137
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 79,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "80",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 80
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "83",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 138
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 80,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "81",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 81
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "84",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 139
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 81,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "82",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 82
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "85",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 140
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 82,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "83",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 83
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "86",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 141
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 83,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "84",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 84
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "87",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 142
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 84,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "85",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 85
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "88",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 143
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 85,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "86",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 86
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "89",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 144
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 86,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "87",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 87
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "90",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 145
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 87,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "88",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 88
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "91",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 146
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 88,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "Q",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "89",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 89
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "92",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 147
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 89,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "90",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 90
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "93",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 148
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 90,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "91",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 91
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "94",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 149
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 91,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "92",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 92
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "95",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 150
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 92,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "93",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 93
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "96",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 151
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 93,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "94",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 94
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "97",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 152
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 94,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "95",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 95
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "98",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 153
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 95,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "96",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 96
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "99",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 154
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 96,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "97",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 97
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "100",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 155
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 97,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "98",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 98
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "101",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 156
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 98,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "99",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 99
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "102",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 157
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 99,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "100",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 100
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "103",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 158
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 100,
+      "target_alignment_residue": "D",
+      "homolog_alignment_residue": "D",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "101",
+        "insertion_code": "",
+        "name": "ASP",
+        "label_sequence_id": 101
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "104",
+        "insertion_code": "",
+        "name": "ASP",
+        "label_sequence_id": 159
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 101,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "102",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 102
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "105",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 160
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 102,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "103",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 103
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "106",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 161
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 103,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "104",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 104
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "107",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 162
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 104,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "105",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 105
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "108",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 163
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 105,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "106",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 106
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "109",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 164
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 106,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "107",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 107
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "110",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 165
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 107,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "108",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 108
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "111",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 166
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 108,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "109",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 109
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "112",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 167
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 109,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "110",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 110
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "113",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 168
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 110,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "111",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 111
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "114",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 169
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 111,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "112",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 112
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "115",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 170
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 112,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "113",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 113
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "116",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 171
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 113,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "114",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 114
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "117",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 172
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 114,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "115",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 115
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "118",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 173
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 115,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "116",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 116
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "119",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 174
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 116,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "117",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 117
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "120",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 175
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 117,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "118",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 118
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "121",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 176
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 118,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "119",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 119
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "122",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 177
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 119,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "120",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 120
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "123",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 178
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 120,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "121",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 121
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "124",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 179
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 121,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "122",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 122
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "125",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 180
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 122,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "123",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 123
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "126",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 181
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 123,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "124",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 124
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "127",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 182
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 124,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "125",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 125
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "128",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 183
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 125,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "126",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 126
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "129",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 184
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 126,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "127",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 127
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "130",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 185
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 127,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "128",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 128
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "131",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 186
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 128,
+      "target_alignment_residue": "W",
+      "homolog_alignment_residue": "W",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "129",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 129
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "132",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 187
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 129,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "130",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 130
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "133",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 188
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 130,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "131",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 131
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "134",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 189
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 131,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "132",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 132
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "135",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 190
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 132,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "133",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 133
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "136",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 191
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 133,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "134",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 134
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "137",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 192
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 134,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "135",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 135
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "138",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 193
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 135,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "136",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 136
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "139",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 194
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 136,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "137",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 137
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "140",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 195
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 137,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "138",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 138
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "141",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 196
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 138,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "139",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 139
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "142",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 197
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 139,
+      "target_alignment_residue": "M",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "140",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 140
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "143",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 198
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 140,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "141",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 141
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "144",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 199
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 141,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "142",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 142
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "145",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 200
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 142,
+      "target_alignment_residue": "W",
+      "homolog_alignment_residue": "W",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "143",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 143
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "146",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 201
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 143,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "144",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 144
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "147",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 202
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 144,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "145",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 145
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "148",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 203
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 145,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "146",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 146
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "149",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 204
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 146,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "147",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 147
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "150",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 205
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 147,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "148",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 148
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "151",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 206
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 148,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "149",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 149
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "152",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 207
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 149,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "150",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 150
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "153",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 208
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 150,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "151",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 151
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "154",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 209
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 151,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "152",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 152
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "155",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 210
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 152,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "W",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "153",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 153
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "156",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 211
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 153,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "154",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 154
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 154,
+      "target_alignment_residue": "H",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "155",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 155
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 155,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "156",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 156
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 156,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "157",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 157
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 157,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "158",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 158
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 158,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "159",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 159
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 159,
+      "target_alignment_residue": "-",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": " ",
+      "target_residue": null,
+      "homolog_residue": {
+        "chain": "R",
+        "number": "157",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 212
+      },
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 160,
+      "target_alignment_residue": "-",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": " ",
+      "target_residue": null,
+      "homolog_residue": {
+        "chain": "R",
+        "number": "158",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 213
+      },
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 161,
+      "target_alignment_residue": "-",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": " ",
+      "target_residue": null,
+      "homolog_residue": {
+        "chain": "R",
+        "number": "159",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 214
+      },
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 162,
+      "target_alignment_residue": "-",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": " ",
+      "target_residue": null,
+      "homolog_residue": {
+        "chain": "R",
+        "number": "160",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 215
+      },
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 163,
+      "target_alignment_residue": "-",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": " ",
+      "target_residue": null,
+      "homolog_residue": {
+        "chain": "R",
+        "number": "161",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 216
+      },
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 164,
+      "target_alignment_residue": "-",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": " ",
+      "target_residue": null,
+      "homolog_residue": {
+        "chain": "R",
+        "number": "162",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 217
+      },
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 165,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "160",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 160
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "163",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 218
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 166,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "161",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 161
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "164",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 219
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 167,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "162",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 162
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "165",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 220
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 168,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "163",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 163
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "166",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 221
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 169,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "164",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 164
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "167",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 222
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 170,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "165",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 165
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "168",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 223
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 171,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "166",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 166
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "169",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 224
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 172,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "167",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 167
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "170",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 225
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 173,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "168",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 168
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "171",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 226
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 174,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "169",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 169
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "172",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 227
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 175,
+      "target_alignment_residue": "D",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "170",
+        "insertion_code": "",
+        "name": "ASP",
+        "label_sequence_id": 170
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "173",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 228
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 176,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "171",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 171
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "174",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 229
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 177,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "172",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 172
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "175",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 230
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 178,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "173",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 173
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "176",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 231
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 179,
+      "target_alignment_residue": "M",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "174",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 174
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "177",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 232
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 180,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "175",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 175
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "178",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 233
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 181,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "176",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 176
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "179",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 234
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 182,
+      "target_alignment_residue": "M",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "177",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 177
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "180",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 235
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 183,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "178",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 178
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "181",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 236
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 184,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "179",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 179
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "182",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 237
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 185,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "180",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 180
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "183",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 238
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 186,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "181",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 181
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "184",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 239
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 187,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "182",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 182
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "185",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 240
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 188,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "183",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 183
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "186",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 241
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 189,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "184",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 184
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "187",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 242
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 190,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "W",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "185",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 185
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "188",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 243
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 191,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "186",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 186
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "189",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 244
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 192,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "187",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 187
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "190",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 245
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 193,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "188",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 188
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "191",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 246
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 194,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "189",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 189
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "192",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 247
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 195,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "190",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 190
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "193",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 248
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 196,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "191",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 191
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "194",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 249
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 197,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "192",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 192
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "195",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 250
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 198,
+      "target_alignment_residue": "M",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "193",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 193
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "196",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 251
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 199,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "194",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 194
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "197",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 252
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 200,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "195",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 195
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "198",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 253
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 201,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "196",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 196
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "199",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 254
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 202,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "197",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 197
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "200",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 255
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 203,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "198",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 198
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "201",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 256
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 204,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "199",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 199
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "202",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 257
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 205,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "200",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 200
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "203",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 258
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 206,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "201",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 201
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "204",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 259
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 207,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "202",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 202
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "205",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 260
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 208,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "203",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 203
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "206",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 261
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 209,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "204",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 204
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "207",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 262
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 210,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "205",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 205
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "208",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 263
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 211,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "206",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 206
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "209",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 264
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 212,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "Q",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "207",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 207
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "210",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 265
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 213,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "208",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 208
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "211",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 266
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 214,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "209",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 209
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "212",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 267
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 215,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "210",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 210
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "213",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 268
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 216,
+      "target_alignment_residue": "M",
+      "homolog_alignment_residue": "Q",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "211",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 211
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "223",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 278
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 217,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "212",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 212
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 218,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "213",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 213
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 219,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "214",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 214
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 220,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "223",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 223
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "224",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 279
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 221,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "224",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 224
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "225",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 280
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 222,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "225",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 225
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "226",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 281
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 223,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "226",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 226
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "227",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 282
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 224,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "227",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 227
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "228",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 283
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 225,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "E",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "228",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 228
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "229",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 284
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 226,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "229",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 229
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "230",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 285
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 227,
+      "target_alignment_residue": "H",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "230",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 230
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "231",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 286
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 228,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ".",
+      "target_residue": {
+        "chain": "A",
+        "number": "231",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 231
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "232",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 287
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 229,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "232",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 232
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "233",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 288
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 230,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "233",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 233
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "234",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 289
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 231,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "234",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 234
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "235",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 290
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 232,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "235",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 235
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "236",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 291
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 233,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "236",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 236
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "237",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 292
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 234,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "237",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 237
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "238",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 293
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 235,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "238",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 238
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "239",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 294
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 236,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "239",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 239
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "240",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 295
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 237,
+      "target_alignment_residue": "G",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "240",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 240
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "241",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 296
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 238,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "241",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 241
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "242",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 297
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 239,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "242",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 242
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "243",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 298
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 240,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "243",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 243
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "244",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 299
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 241,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "244",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 244
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "245",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 300
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 242,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "245",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 245
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "246",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 301
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 243,
+      "target_alignment_residue": "W",
+      "homolog_alignment_residue": "W",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "246",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 246
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "247",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 302
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 244,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "247",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 247
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "248",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 303
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 245,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "248",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 248
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "249",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 304
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 246,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "249",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 249
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "250",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 305
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 247,
+      "target_alignment_residue": "H",
+      "homolog_alignment_residue": "H",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "250",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 250
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "251",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 306
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 248,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "251",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 251
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "252",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 307
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 249,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "252",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 252
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "253",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 308
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 250,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "253",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 253
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "254",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 309
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 251,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "254",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 254
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "255",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 310
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 252,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "255",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 255
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "256",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 311
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 253,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "256",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 256
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "257",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 312
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 254,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "257",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 257
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "258",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 313
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 255,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "258",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 258
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "259",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 314
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 256,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "259",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 259
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "260",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 315
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 257,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "260",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 260
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "261",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 316
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 258,
+      "target_alignment_residue": "D",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "261",
+        "insertion_code": "",
+        "name": "ASP",
+        "label_sequence_id": 261
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "262",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 317
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 259,
+      "target_alignment_residue": "C",
+      "homolog_alignment_residue": "C",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "262",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 262
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "263",
+        "insertion_code": "",
+        "name": "CYS",
+        "label_sequence_id": 318
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 260,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "H",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "263",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 263
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "264",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 319
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 261,
+      "target_alignment_residue": "H",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "264",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 264
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 262,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "265",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 265
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "265",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 320
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 263,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "266",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 266
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "266",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 321
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 264,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "267",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 267
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "267",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 322
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 265,
+      "target_alignment_residue": "W",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "268",
+        "insertion_code": "",
+        "name": "TRP",
+        "label_sequence_id": 268
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "268",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 323
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 266,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "269",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 269
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "269",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 324
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 267,
+      "target_alignment_residue": "M",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "270",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 270
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "270",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 325
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 268,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "271",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 271
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "271",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 326
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 269,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "272",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 272
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "272",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 327
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 270,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "273",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 273
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "273",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 328
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 271,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "274",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 274
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "274",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 329
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 272,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "275",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 275
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "275",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 330
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 273,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "276",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 276
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "276",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 331
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 274,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "277",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 277
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "277",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 332
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 275,
+      "target_alignment_residue": "H",
+      "homolog_alignment_residue": "H",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "278",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 278
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "278",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 333
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 276,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "G",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "279",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 279
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "279",
+        "insertion_code": "",
+        "name": "GLY",
+        "label_sequence_id": 334
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 277,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "280",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 280
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "280",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 335
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 278,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "S",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "281",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 281
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "281",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 336
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 279,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "282",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 282
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "282",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 337
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 280,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "M",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "283",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 283
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "283",
+        "insertion_code": "",
+        "name": "MET",
+        "label_sequence_id": 338
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 281,
+      "target_alignment_residue": "N",
+      "homolog_alignment_residue": "N",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "284",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 284
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "284",
+        "insertion_code": "",
+        "name": "ASN",
+        "label_sequence_id": 339
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 282,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "P",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "285",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 285
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "285",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 340
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 283,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "286",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 286
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "286",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 341
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 284,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "287",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 287
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "287",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 342
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 285,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "Y",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "288",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 288
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "288",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 343
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 286,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "A",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "289",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 289
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "289",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 344
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 287,
+      "target_alignment_residue": "Y",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "290",
+        "insertion_code": "",
+        "name": "TYR",
+        "label_sequence_id": 290
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "290",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 345
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 288,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "291",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 291
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "291",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 346
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 289,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "I",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "292",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 292
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "292",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 347
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 290,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "Q",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "293",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 293
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "293",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 348
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 291,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "294",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 294
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "294",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 349
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 292,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "295",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 295
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "295",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 350
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 293,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "R",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "296",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 296
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "296",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 351
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 294,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "V",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "297",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 297
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "297",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 352
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 295,
+      "target_alignment_residue": "T",
+      "homolog_alignment_residue": "T",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "298",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 298
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "298",
+        "insertion_code": "",
+        "name": "THR",
+        "label_sequence_id": 353
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 296,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "F",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "299",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 299
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "299",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 354
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 297,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "L",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "300",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 300
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "300",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 355
+      },
+      "mapped_pair": true,
+      "identical": false
+    },
+    {
+      "alignment_column": 298,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "K",
+      "usalign_annotation": ":",
+      "target_residue": {
+        "chain": "A",
+        "number": "301",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 301
+      },
+      "homolog_residue": {
+        "chain": "R",
+        "number": "301",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 356
+      },
+      "mapped_pair": true,
+      "identical": true
+    },
+    {
+      "alignment_column": 299,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "302",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 302
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 300,
+      "target_alignment_residue": "I",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "303",
+        "insertion_code": "",
+        "name": "ILE",
+        "label_sequence_id": 303
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 301,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "304",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 304
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 302,
+      "target_alignment_residue": "S",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "305",
+        "insertion_code": "",
+        "name": "SER",
+        "label_sequence_id": 305
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 303,
+      "target_alignment_residue": "H",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "306",
+        "insertion_code": "",
+        "name": "HIS",
+        "label_sequence_id": 306
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 304,
+      "target_alignment_residue": "V",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "307",
+        "insertion_code": "",
+        "name": "VAL",
+        "label_sequence_id": 307
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 305,
+      "target_alignment_residue": "L",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "308",
+        "insertion_code": "",
+        "name": "LEU",
+        "label_sequence_id": 308
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 306,
+      "target_alignment_residue": "R",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "309",
+        "insertion_code": "",
+        "name": "ARG",
+        "label_sequence_id": 309
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 307,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "310",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 310
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 308,
+      "target_alignment_residue": "Q",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "311",
+        "insertion_code": "",
+        "name": "GLN",
+        "label_sequence_id": 311
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 309,
+      "target_alignment_residue": "E",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "312",
+        "insertion_code": "",
+        "name": "GLU",
+        "label_sequence_id": 312
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 310,
+      "target_alignment_residue": "P",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "313",
+        "insertion_code": "",
+        "name": "PRO",
+        "label_sequence_id": 313
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 311,
+      "target_alignment_residue": "F",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "314",
+        "insertion_code": "",
+        "name": "PHE",
+        "label_sequence_id": 314
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 312,
+      "target_alignment_residue": "K",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "315",
+        "insertion_code": "",
+        "name": "LYS",
+        "label_sequence_id": 315
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 313,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "316",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 316
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    },
+    {
+      "alignment_column": 314,
+      "target_alignment_residue": "A",
+      "homolog_alignment_residue": "-",
+      "usalign_annotation": " ",
+      "target_residue": {
+        "chain": "A",
+        "number": "317",
+        "insertion_code": "",
+        "name": "ALA",
+        "label_sequence_id": 317
+      },
+      "homolog_residue": null,
+      "mapped_pair": false,
+      "identical": false
+    }
+  ]
+}

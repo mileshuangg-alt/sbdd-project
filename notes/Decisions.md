@@ -2547,3 +2547,1764 @@ NOT ESTABLISHED
 - new evidence justifies broadening or narrowing the permitted discrimination claim.
 
 Until then, do not inflate the Session-011 result beyond **one experimental negative molecule under two independent docking routes**, and do not reopen the completed Graves/DOCK null or tune the frozen rDock result.
+
+## D012 — A2A Stage-5 molecule-level discrimination authority
+
+**Decision date:** 2026-09-06
+
+**Status:** PROPOSED — PENDING APPROVAL
+
+### Decision
+
+D008's A2A hard-attrition criterion is amended in light of the completed Session-011 validation program.
+
+For the A2A Stage-5 implementation, **established molecule-level discrimination is sufficient to authorize molecule-level target–ligand interaction claims**. Demonstration of pose sensitivity is not required for molecule-level discrimination authority.
+
+This amendment is specific to the authority established by the frozen A2A validation evidence and does not establish broader pose-level or specificity claims.
+
+### Session-011 discrimination evidence
+
+Session 011 evaluated one experimentally established human-A2A-negative molecule, **P3-002 N6-cyclooctyladenosine**, represented by P1-qualified poses generated through two independent docking routes:
+
+* DOCK 3.8.5;
+* rDock.
+
+Neither representation reproduced the frozen A2A reference-recognition pattern:
+
+**Phe168:** Hydrophobic OR PiStacking
+
+AND
+
+**Asn253:** HBAcceptor
+
+**VdWContact is characterization only and cannot satisfy the Phe168 criterion.**
+
+The supported validation result is therefore:
+
+**Molecule-level discrimination: ESTABLISHED for the tested A2A-negative molecule across two independent docking routes.**
+
+Pose sensitivity was tested through the Session-011 validation program but **was not demonstrated**.
+
+Accordingly:
+
+**Pose sensitivity: NOT DEMONSTRATED**
+
+This result must not be represented as evidence of general discrimination across negative chemotypes, general sensitivity/specificity, or arbitrary pose-level discrimination.
+
+### A2A claims-cap amendment
+
+The D008 status:
+
+**CLAIMS CAPPED PENDING GATE VALIDATION**
+
+is lifted **for molecule-level claims only**, on the basis of the bounded Session-011 discrimination evidence.
+
+The lifted cap does not authorize:
+
+* pose-sensitivity claims;
+* pose-level discrimination claims;
+* general negative-chemotype discrimination claims;
+* general sensitivity or specificity claims;
+* universal ProLIF specificity claims;
+* transfer of A2A validation authority to another target.
+
+Those claims remain prohibited unless separately established.
+
+### DiffSBDD Stage-5 interpretation
+
+The existing DiffSBDD Stage-5 evaluation remains unchanged.
+
+The 16 Stage-3-surviving DiffSBDD molecules were evaluated using their original molecule IDs, unmodified generator-provided coordinates, the interaction-ready 3RFM receptor, the frozen ProLIF interaction-reading pathway, and the frozen A2A reference-recognition definition.
+
+Observed results remain:
+
+* Phe168 reference feature reproduced: **15/16**
+* Asn253 reference feature reproduced: **4/16**
+* complete A2A reference pattern reproduced: **3/16**
+
+Complete-pattern reproductions:
+
+* molecule ID **0**
+* molecule ID **3**
+* molecule ID **18**
+
+The Stage-5 result is reported as:
+
+**3/16 generator-provided DiffSBDD poses reproduced the predeclared A2A reference-recognition pattern (IDs 0, 3, and 18).**
+
+The remaining 13 molecules are retained as **non-reproducing characterization evidence**. They are not classified as Stage-5 failures and are not removed from the baseline on the basis of non-reproduction.
+
+Accordingly, D012 does **not** convert the existing DiffSBDD characterization result into a `3 PASS / 13 FAIL` attrition result.
+
+### Relationship to D008
+
+D008 remains the governing Stage-5 target–ligand interaction evidence framework except for the A2A hard-attrition validation criterion amended here.
+
+The D008 requirement:
+
+**“Hard attrition additionally requires established discrimination using plausible-but-wrong negative poses.”**
+
+is amended for the validated A2A implementation such that **molecule-level discrimination authority may be established by experimentally supported molecular negatives represented through independently generated, physically plausible pose-generation routes, without requiring demonstrated pose sensitivity.**
+
+This amendment does not collapse Stage 3 and Stage 5. Physical plausibility remains a geometry-layer requirement, while Stage 5 remains the target–ligand interaction evidence layer.
+
+### Generator parity
+
+This decision does not alter generator parity.
+
+DiffSBDD and FLOWR must be evaluated through the same frozen A2A Stage-5 implementation, including the same:
+
+* target evidence assignment;
+* A2A reference-recognition definition;
+* interaction-ready target representation;
+* ProLIF interaction-reading pathway;
+* molecule-level claim authority;
+* reporting language and claim prohibitions.
+
+The A2A definition and validation criterion must not be recalibrated using DiffSBDD or FLOWR outcomes.
+
+### Claim boundary
+
+Following D012, the A2A Stage-5 implementation supports **bounded molecule-level interaction claims based on reproduction or non-reproduction of the frozen A2A recognition pattern**.
+
+It does not support claims that the reader can discriminate arbitrary correct and incorrect poses, that non-reproduction establishes general molecular inactivity, or that the validated observations define general sensitivity or specificity.
+
+**Molecule-level claims cap: LIFTED**
+
+**Pose-level claims: PROHIBITED**
+
+**Pose-sensitivity claims: PROHIBITED**
+
+**General specificity claims: PROHIBITED**
+
+**General negative-chemotype discrimination claims: PROHIBITED**
+
+---
+
+### Governing principle
+
+**Molecule-level discrimination authority must remain bounded to the level of discrimination actually demonstrated.**
+
+For A2A, Session 011 establishes molecule-level discrimination authority without establishing pose sensitivity or general specificity. Stage-5 reporting must preserve that distinction.
+
+Non-reproduction of the frozen A2A reference-recognition pattern is therefore reportable molecule-level interaction evidence, but it does not by itself establish molecular inactivity and does not convert a generated molecule into a Stage-5 failure.
+
+---
+
+### Revisit when
+
+* a defensible A2A pose-sensitivity validation is completed;
+* discrimination is demonstrated across additional independent experimentally supported A2A-negative chemotypes;
+* evidence becomes sufficient to estimate or claim general Stage-5 sensitivity or specificity;
+* new target–ligand evidence changes the frozen A2A recognition definition or evidence package;
+* Stage 5 is applied to FLOWR and an implementation issue requires reconsideration of generator parity;
+* Stage 5 is instantiated for a new target;
+* future work formally proposes changing the distinction between pattern non-reproduction, molecule-level interpretation, and hard attrition.
+
+## D013 — PLIP independent Stage-5 witness selection
+
+**Decision date:** 2026-09-06
+
+**Status:** ACTIVE
+
+### Decision
+
+**PLIP is selected as the independent Stage-5 interaction witness** for the frozen A2A validation and concordance program.
+
+PLIP remains separate from the frozen ProLIF verdict instrument. ProLIF defines the Stage-5 interaction result; PLIP provides an independent witness of the same experimental structures and, after qualification, may be used to measure concordance with the frozen ProLIF observations.
+
+PLIP qualification must be completed before PLIP concordance is treated as evidence.
+
+### Alternatives assessment
+
+The alternatives pass considered serious independent interaction-analysis approaches, including **Arpeggio**, **ODDT interaction fingerprints**, and a **minimal RDKit geometric contact scorer**.
+
+PLIP was selected because its interaction vocabulary maps directly onto the frozen A2A recognition roles with minimal analyst-defined translation, including:
+
+* Hydrophobic contacts;
+* Pi-stacking;
+* Hydrogen-bond interactions.
+
+The selection is **not** based on Arpeggio being scientifically inferior.
+
+Arpeggio provides a broader interatomic-contact vocabulary and remains a scientifically viable alternative. Its broader ontology is useful for questions concerning interaction-repertoire characterization rather than the narrowly defined independent-witness role.
+
+### Arpeggio status
+
+Arpeggio is therefore **UNREJECTED**.
+
+It is retained as the preferred candidate for a future **non-verdict interaction-characterization lane**, including:
+
+* DiffSBDD-versus-FLOWR interaction-repertoire comparison;
+* exploratory characterization of alternative interaction networks;
+* future targets for which no frozen recognition definition yet exists.
+
+Arpeggio must not define, modify, or rescue the frozen A2A Stage-5 verdict.
+
+### Qualification requirement
+
+PLIP must first be qualified against the frozen experimental A2A positive panel:
+
+* **3REY / XAC**
+* **5OLH / Vipadenant**
+* **5OLO / Tozadenant**
+
+Qualification uses the retained experimental structures without modification.
+
+The qualification must not:
+
+* modify experimental coordinates;
+* tune PLIP parameters against ProLIF output;
+* redefine the frozen A2A recognition pattern;
+* use ProLIF results to select or modify PLIP interaction calls.
+
+PLIP and ProLIF results must be recorded independently, with concordance reported as **measured**, not assumed.
+
+### Input principle
+
+The least-transformative input route is the retained experimental protein–ligand complex structure supplied directly to PLIP.
+
+No structure rebuilding, ligand regeneration, coordinate repair, minimization, reprotonation, recharging, or other scientific transformation may be introduced merely to accommodate PLIP.
+
+The missing historical prepared 3REY/XAC ligand SDF must not be regenerated for this qualification. Where the retained native experimental complex structure is available, that retained structure is the authoritative qualification input.
+
+### Target-specific implementation
+
+The PLIP witness implementation must remain generator-independent.
+
+Target-specific content, including:
+
+* Phe168;
+* Asn253;
+* 3REY;
+* 3RFM;
+* experimental positive-panel membership;
+
+must reside in frozen configuration or artifact files and **must not be hardcoded in executable scripts**.
+
+The PLIP implementation may read those frozen definitions as inputs, but the target-specific constants themselves must remain outside code.
+
+### Relationship to the frozen ProLIF instrument
+
+ProLIF 2.2.0 remains the frozen Stage-5 interaction reader and verdict instrument.
+
+PLIP does not replace ProLIF, alter ProLIF parameters, modify the frozen A2A recognition definition, or establish an alternative Stage-5 gate.
+
+Following successful independent qualification, PLIP may provide witness evidence and concordance analysis only.
+
+### Generator parity
+
+When used beyond qualification, PLIP must operate on the same generator-independent molecule–pose evaluation objects used by the Stage-5 cascade.
+
+The witness must not introduce generator-specific preprocessing or interpretation.
+
+### Governing principle
+
+**The independent witness tests the frozen interaction interpretation; it does not redefine the instrument or the gate.**
+
+PLIP is selected for methodological independence and direct mapping to the frozen A2A interaction roles, while broader alternatives such as Arpeggio remain available for future non-verdict characterization.
+
+### Revisit when
+
+* PLIP cannot be independently qualified on the frozen experimental A2A positive panel;
+* PLIP's implementation requires a structural transformation inconsistent with the frozen qualification constraints;
+* a future decision requires broader interaction-repertoire characterization rather than independent witnessing;
+* Arpeggio or another independent method becomes necessary for a documented scientific question not adequately addressed by PLIP;
+* Stage 5 is instantiated for a new target with interaction roles not adequately represented by the existing witness vocabulary.
+
+## D014 — PLIP independent Stage-5 witness qualification and concordance
+
+**Decision date:** 2026-09-06
+
+**Status:** ACTIVE
+
+### Decision
+
+The PLIP independent Stage-5 witness program for the frozen A2A implementation is complete.
+
+PLIP 3.0.1 is established as a **qualified independent interaction witness** for the tested A2A panel.
+
+ProLIF 2.2.0 remains the frozen Stage-5 verdict instrument. PLIP does not replace ProLIF, redefine the frozen A2A recognition pattern, or independently determine Stage-5 molecule disposition.
+
+### Witness qualification
+
+PLIP was qualified prospectively against the frozen experimental A2A positive panel:
+
+* 3REY / XAC;
+* 5OLH / Vipadenant (9XT);
+* 5OLO / Tozadenant (9XW).
+
+Before measurement, witness concordance was defined against the frozen A2A recognition roles:
+
+**Phe168:** Hydrophobic OR PiStacking
+
+AND
+
+**Asn253:** HBAcceptor
+
+For the Asn253 role, directional concordance required:
+
+**protein Asn253 = acceptor; ligand = donor**
+
+VdWContact is characterization only and cannot satisfy the Phe168 criterion.
+
+PLIP qualification used:
+
+* PLIP 3.0.1;
+* Open Babel 3.2.1;
+* retained raw experimental complex PDBs;
+* `--nofix`;
+* PLIP default hydrogen addition;
+* PLIP default interaction thresholds;
+* one run per experimental complex;
+* XML as the authoritative machine-readable result;
+* TXT as the human-readable report;
+* retained PLIP-generated protonated structures.
+
+No PLIP parameter was tuned against ProLIF output.
+
+Measured qualification result:
+
+* 3REY / XAC: **PASS**
+* 5OLH / Vipadenant: **PASS**
+* 5OLO / Tozadenant: **PASS**
+
+Therefore:
+
+**PLIP POSITIVE QUALIFICATION: 3/3 PASS**
+
+The two instruments used independent preparation pipelines. The frozen ProLIF proof-of-life used the pH7.4-restored receptor pathway, whereas PLIP analyzed the retained raw experimental complexes using PLIP's own hydrogen-addition procedure.
+
+### Frozen negative-panel concordance
+
+Following positive qualification, PLIP was applied once to each frozen Session-011 negative representative:
+
+* P3-002 N6-cyclooctyladenosine — DOCK rank-1 representative;
+* P3-002 N6-cyclooctyladenosine — rDock representative.
+
+These are two independently generated pose representations of **one experimentally established human-A2A-negative molecule**.
+
+PLIP reported for the DOCK representative:
+
+* Phe168 frozen role: **NOT REPRODUCED**
+* Asn253 frozen role: **NOT REPRODUCED**
+* complete A2A recognition pattern: **NOT REPRODUCED**
+
+The frozen ProLIF result for the same representative was also complete-pattern **NOT REPRODUCED**.
+
+PLIP reported for the rDock representative:
+
+* Phe168 frozen role: **NOT REPRODUCED**
+* Asn253 frozen role: **NOT REPRODUCED**
+* complete A2A recognition pattern: **NOT REPRODUCED**
+
+The frozen ProLIF result for the same representative was also complete-pattern **NOT REPRODUCED**.
+
+Therefore:
+
+**PLIP–ProLIF complete-pattern concordance on the frozen negative representatives: 2/2**
+
+### Adapter-preservation audit
+
+The frozen negative ligand representatives required derived protein–ligand complex PDB adapters for PLIP.
+
+The authoritative frozen ligand artifacts were not modified.
+
+For both derived PLIP complexes, the ligand adapter audit demonstrated:
+
+* 27/27 frozen ligand heavy atoms preserved;
+* identical heavy-atom element ordering;
+* unique ligand-component identification;
+* maximum absolute per-coordinate deviation: **0.000500 Å**;
+* maximum heavy-atom Euclidean displacement: **<0.001 Å**.
+
+The observed ligand-coordinate differences are limited to PDB serialization rounding.
+
+The receptor adapter audit demonstrated, independently for the DOCK and rDock derived complexes:
+
+* frozen receptor atoms: **4568**
+* adapter receptor atoms: **4568**
+* matched atoms: **4568**
+* source-only atoms: **0**
+* adapter-only atoms: **0**
+* mean Euclidean coordinate deviation: **0.000000 Å**
+* maximum Euclidean coordinate deviation: **0.000000 Å**
+* maximum absolute XYZ deviation: **0.000000 Å**
+
+The receptor representation is therefore coordinate-identical to its frozen source in both derived PLIP complex inputs.
+
+The complete adapter audit establishes preservation of the frozen negative-pose geometry to serialization-rounding precision for the ligand and exact coordinate identity for the receptor.
+
+### Supported witness statement
+
+The supported result is:
+
+**PLIP independently reproduced the frozen A2A recognition pattern in 3/3 experimental cognate complexes and, after qualification, concorded with ProLIF in finding non-reproduction of that pattern for both frozen DOCK- and rDock-generated representations of P3-002 N6-cyclooctyladenosine.**
+
+This establishes independent-instrument concordance for the tested frozen panel.
+
+### Claim boundary
+
+D014 does **not** establish:
+
+* pose sensitivity;
+* general pose-level discrimination;
+* general negative-chemotype discrimination;
+* general Stage-5 sensitivity or specificity;
+* universal ProLIF specificity;
+* universal PLIP specificity;
+* equivalence of ProLIF and PLIP interaction ontologies;
+* transfer of A2A witness qualification to another target.
+
+The two negative representatives remain two pose-generation-route representations of **one experimental negative molecule**, not two independent negative chemotypes.
+
+PLIP agreement does not enlarge the molecule-level claim authority established by D012 beyond the evidence actually tested.
+
+### Instrument roles
+
+The Stage-5 instrument hierarchy remains:
+
+**ProLIF 2.2.0 — frozen verdict instrument**
+
+**PLIP 3.0.1 — qualified independent witness**
+
+PLIP concordance may strengthen confidence in a measured Stage-5 interaction interpretation but cannot redefine, rescue, or override the frozen ProLIF result.
+
+### Implementation rule
+
+The PLIP witness implementation remains generator-independent and config-driven.
+
+Target-specific content, including target residues, target structures, ligand identities, panel membership, recognition roles, and directional requirements, must remain in frozen configuration or artifact files and must not be hardcoded in executable scripts.
+
+### Governing principle
+
+**Independent concordance strengthens confidence in the tested interaction interpretation without expanding the claim beyond the evidence independently witnessed.**
+
+### Revisit when
+
+* pose sensitivity is independently demonstrated;
+* additional experimentally supported A2A-negative chemotypes are evaluated through the frozen witness framework;
+* evidence becomes sufficient to support general sensitivity or specificity claims;
+* a material ProLIF–PLIP discordance is observed on a future frozen evaluation panel;
+* the frozen A2A recognition definition materially changes;
+* Stage 5 is instantiated for a new target and requires target-specific witness qualification;
+* a future non-verdict interaction-characterization lane is formally introduced.
+
+## D015 — P2Rank selection for Level-3 predicted-pocket characterization
+
+**Decision date:** 2026-09-06
+
+**Status:** PROPOSED — PENDING APPROVAL
+
+### Decision
+
+**P2Rank is selected as the primary predicted-pocket method for the D008 Level-3 lane.**
+
+Its role is limited to **predicted-pocket characterization** for structurally defined targets lacking sufficient target–ligand interaction evidence for compatibility assessment.
+
+P2Rank output does not constitute target–ligand interaction evidence and does not define a Stage-5 compatibility gate.
+
+### Selection rationale
+
+A literature-backed alternatives assessment considered established pocket/site-detection approaches including:
+
+* P2Rank;
+* fpocket;
+* DoGSiteScorer;
+* ConCavity;
+* LIGSITEcsc;
+* DeepSite;
+* PASS;
+* CASTp;
+* SiteMap.
+
+P2Rank was selected because its standalone, ranked ligand-binding-site prediction workflow maps directly onto the D008 Level-3 requirement to:
+
+* nominate candidate binding sites;
+* characterize predicted pocket location and geometry;
+* provide a predicted-pocket artifact usable by Stage 3B;
+* operate efficiently in an automated, generator-independent evaluation pipeline.
+
+The selection does **not** establish that P2Rank is scientifically superior to other established pocket-prediction methods.
+
+### Alternatives status
+
+**fpocket remains UNREJECTED** and is retained as the preferred geometry-first alternative.
+
+Its geometry-based approach may be useful if P2Rank proves operationally unsuitable or if a future scientific question requires an independent geometric pocket-characterization perspective.
+
+Other literature-supported alternatives considered in the selection pass remain **UNREJECTED** unless a future documented requirement or evaluation provides a specific reason to reject them.
+
+### Level-3 role
+
+P2Rank may be used to:
+
+* nominate one or more candidate pockets;
+* rank predicted pockets;
+* record predicted-pocket location;
+* characterize available pocket geometry/prediction outputs;
+* provide predicted-pocket coordinates as the pocket artifact for Stage 3B.
+
+Every resulting site must be labeled:
+
+**PREDICTED POCKET**
+
+P2Rank output must not:
+
+* establish a target-recognition pattern;
+* establish target compatibility;
+* establish target incompatibility;
+* upgrade a target from Level 3;
+* authorize a Stage-5 interaction gate;
+* rescue the Level-3 `INCONCLUSIVE` verdict.
+
+### Stage-3 / Stage-5 separation
+
+For a Level-3 target:
+
+**Stage-5 VERDICT:** `INCONCLUSIVE`
+
+**Stage-5 LANE:** evaluation continues as `INTERACTION-UNVERIFIED`
+
+A P2Rank-predicted pocket may be supplied to Stage 3B for geometry-only evaluation of generator-provided poses.
+
+Any resulting Stage-3B assessment remains a physical/geometric plausibility result and must not be represented as target–ligand interaction evidence.
+
+### Implementation requirements
+
+The P2Rank implementation must remain generator-independent.
+
+Target-specific content, including target identifiers, structures, selected predicted-pocket artifacts, and any target-specific downstream configuration, must reside in frozen configuration or artifact files and must not be hardcoded in executable scripts.
+
+P2Rank predictions must be retained as artifacts with sufficient provenance to reproduce the prediction, including software version, input structure identity, invocation/configuration, and relevant output files.
+
+No target-specific P2Rank parameter tuning may be performed using generated-molecule outcomes.
+
+### Governing principle
+
+**A predicted pocket preserves evaluation opportunity; it does not manufacture interaction evidence.**
+
+P2Rank provides a structurally useful hypothesis for the Level-3 lane while the Stage-5 verdict continues to record the underlying interaction-evidence gap.
+
+### Revisit when
+
+* P2Rank proves operationally unsuitable for the generator-independent Stage-5 pipeline;
+* a Level-3 target exposes a pocket-prediction limitation material to downstream Stage-3B evaluation;
+* an independent geometry-first pocket characterization is required;
+* evidence supports reconsidering fpocket or another unrejected alternative;
+* new comparative pocket-prediction evidence materially changes the implementation choice;
+* qualifying target–ligand evidence upgrades a Level-3 target and removes the need for the predicted-pocket lane.
+ 
+D015 — P2Rank selection for Level-3 predicted-pocket characterization
+
+Decision date: 2026-09-06
+
+Status: ACTIVE — IMPLEMENTATION FROZEN
+
+Decision
+
+P2Rank is selected as the primary predicted-pocket method for the D008 Level-3 lane.
+
+Its role is limited to predicted-pocket characterization for structurally defined targets lacking sufficient target–ligand interaction evidence for compatibility assessment.
+
+P2Rank output does not constitute target–ligand interaction evidence and does not define a Stage-5 compatibility gate.
+
+Selection rationale
+
+A literature-backed alternatives assessment considered established pocket/site-detection approaches including:
+
+P2Rank;
+fpocket;
+DoGSiteScorer;
+ConCavity;
+LIGSITEcsc;
+DeepSite;
+PASS;
+CASTp;
+SiteMap.
+
+P2Rank was selected because its standalone, ranked ligand-binding-site prediction workflow maps directly onto the D008 Level-3 requirement to:
+
+nominate candidate binding sites;
+characterize predicted pocket location and geometry;
+provide a predicted-pocket artifact usable by Stage 3B;
+operate efficiently in an automated, generator-independent evaluation pipeline.
+
+The selection does not establish that P2Rank is scientifically superior to other established pocket-prediction methods.
+
+Alternatives status
+
+fpocket remains UNREJECTED and is retained as the preferred geometry-first alternative.
+
+Its geometry-based approach may be useful if P2Rank proves operationally unsuitable or if a future scientific question requires an independent geometric pocket-characterization perspective.
+
+Other literature-supported alternatives considered in the selection pass remain UNREJECTED unless a future documented requirement or evaluation provides a specific reason to reject them.
+
+Level-3 role
+
+P2Rank may be used to:
+
+nominate one or more candidate pockets;
+rank predicted pockets;
+record predicted-pocket location;
+characterize available pocket geometry/prediction outputs;
+define an atom-level predicted-pocket selection from which the residue-complete pocket artifact is materialized for generation conditioning and Stage 3B.
+
+Every resulting site must be labeled:
+
+PREDICTED POCKET
+
+P2Rank output must not:
+
+establish a target-recognition pattern;
+establish target compatibility;
+establish target incompatibility;
+upgrade a target from Level 3;
+authorize a Stage-5 interaction gate;
+rescue the Level-3 INCONCLUSIVE verdict.
+Stage-3 / Stage-5 separation
+
+For a Level-3 target:
+
+Stage-5 VERDICT: INCONCLUSIVE
+
+Stage-5 LANE: evaluation continues as INTERACTION-UNVERIFIED
+
+A P2Rank-predicted pocket may be supplied to Stage 3B for geometry-only evaluation of generator-provided poses.
+
+Any resulting Stage-3B assessment remains a physical/geometric plausibility result and must not be represented as target–ligand interaction evidence.
+
+Pocket conditioning and evaluation parity
+
+For a pocket-conditioned generator operating on a Level-3 target, the predicted pocket used for primary Stage-3B evaluation must be the same frozen pocket artifact used to condition generation.
+
+The conditioning pocket must be selected and frozen before generated-molecule outcomes are inspected.
+
+Its provenance must record:
+
+the target structure used for pocket prediction;
+the P2Rank implementation/version and invocation;
+the native P2Rank prediction outputs;
+the predicted-pocket identifier and rank;
+the rule by which that pocket was selected;
+the frozen selection-config identity and content hash;
+the exact pocket artifact supplied to the generator.
+
+The same frozen pocket artifact then defines the primary Stage-3B geometric reference for that generated cohort.
+
+Other P2Rank-nominated sites may be retained and reported as PREDICTED POCKET characterization.
+
+Evaluation of generated poses against a predicted site that did not condition generation is permitted only as a separately labeled cross-pocket characterization and must not replace or modify the primary Stage-3B result.
+
+Cross-pocket characterization cannot establish target compatibility, rescue the Level-3 INCONCLUSIVE verdict, or be used post hoc to select a more favorable pocket for a generated cohort.
+
+For generator comparisons, the conditioning/evaluation relationship must be held constant: each generator is evaluated relative to the same pocket artifact that defined its generation task.
+
+Where generators are being directly compared on the same target, the preferred design is to supply the same frozen conditioning pocket to both generators whenever their interfaces permit it.
+
+Predicted-pocket structural representation
+
+The native P2Rank surf_atom_ids define the atom-level selection for the configured predicted pocket. These identifiers are mapped to PDB atom serial numbers in the authoritative source target structure.
+
+P2Rank determines pocket membership; the source PDB remains authoritative for structural identity and coordinates.
+
+The selected surface atoms are used to identify every source-PDB residue touched by at least one selected atom.
+
+The derived structural pocket artifact must then contain all original ATOM records belonging to every touched residue. It must not contain only the P2Rank-selected surface atoms.
+
+This residue-complete expansion is required to preserve parity with the existing crystallographic pocket representation consumed by Stage 3B and to prevent downstream tools from operating on incomplete protein residues.
+
+The materialization step must:
+
+retain complete touched residues;
+preserve source-PDB atom identities;
+preserve source-PDB atom ordering within each retained residue;
+preserve source-PDB coordinates unchanged;
+introduce no new geometric pocket definition or coordinate transformation.
+
+P2Rank's original atom-level selection remains recorded separately in provenance metadata.
+
+Implementation requirements
+
+The P2Rank implementation must remain generator-independent.
+
+Target-specific content, including target identifiers, structures, selected predicted-pocket artifacts, pocket-selection rules, and target-specific downstream configuration, must reside in frozen configuration or artifact files and must not be hardcoded in executable scripts.
+
+Pocket selection must be configuration-driven. The generic implementation must not automatically select:
+
+rank 1;
+the highest-scoring pocket;
+the highest-probability pocket;
+a pocket favored by generated-molecule outcomes.
+
+P2Rank predictions must be retained unchanged as artifacts with sufficient provenance to reproduce the prediction, including:
+
+software version;
+input structure identity and SHA-256;
+invocation/configuration;
+native predictions output and SHA-256;
+native residues output and SHA-256;
+selected-pocket native fields;
+selected surf_atom_ids;
+materialized residue identities;
+frozen selection-config identity and SHA-256.
+
+No target-specific P2Rank parameter tuning may be performed using generated-molecule outcomes.
+
+Frozen implementation
+
+The D015 predicted-pocket artifact adapter is implemented in:
+
+evaluation/p2rank_pocket.py
+evaluation/pocket_models.py
+
+The implementation uses explicit typed representations for P2Rank pockets, residue identities, frozen pocket selections, file provenance, pocket lineage, and predicted-pocket metadata.
+
+The frozen scientific transformation is:
+
+native P2Rank prediction → frozen configured selection → source-PDB atom mapping → touched source-PDB residues → complete source-PDB residues → invariant validation → predicted-pocket PDB + provenance metadata
+
+The implementation does not calculate a new pocket score, volume, radius, or geometric boundary.
+
+Implementation qualification
+
+The bundled P2Rank 1fbl.pdb example was used only as an implementation fixture. It does not constitute target-specific scientific validation and does not establish a general pocket-selection rule.
+
+For the configured fixture pocket:
+
+P2Rank selected 40 surface atoms;
+those atoms mapped to 18 source-PDB residues;
+residue-complete expansion produced 150 source-PDB ATOM records.
+
+The complete-residue invariant was verified:
+
+the derived artifact contained exactly the residues touched by the P2Rank atom selection;
+no unrelated residues were introduced;
+every selected residue was complete;
+atom membership, ordering, identity, and coordinates matched the authoritative source PDB.
+
+All 150 derived ATOM records were independently confirmed to occur verbatim in the source PDB.
+
+Formal deterministic tests:
+
+P2Rank-specific tests: 16/16 PASS
+full repository suite at qualification: 34/34 PASS
+
+The test suite covers native prediction parsing, malformed/missing columns, frozen selection, missing and ambiguous selection, missing source-PDB atom IDs, empty atom selection, atom-to-residue mapping, complete-residue expansion, exact source-record preservation, invariant validation, metadata construction and serialization, configuration loading, and provenance hashing.
+
+Deterministic materialization
+
+Repeated construction from identical inputs produced byte-identical structural and metadata artifacts.
+
+Fixture predicted-pocket PDB SHA-256:
+
+022946b4becaf2fe39881ba83d37a8c46de740d4b33333e449584cdd182da0d5
+
+Fixture metadata JSON SHA-256:
+
+3df2157651734770d7aca5d61575bbe8ea86a99aa2707e6f183ece51e0551827
+
+P2Rank 2.5.1 distribution archive SHA-256:
+
+30e20b05ca2f89e239ea6ec8efc312f08da26802b04ea0da49351d90ca70f593
+
+These fixture artifact hashes document deterministic implementation qualification; they are not target-specific scientific reference values.
+
+Governing principle
+
+A predicted pocket preserves evaluation opportunity; it does not manufacture interaction evidence.
+
+P2Rank provides a structurally useful hypothesis for the Level-3 lane while the Stage-5 verdict continues to record the underlying interaction-evidence gap.
+
+For pocket-conditioned generation, the primary geometry evaluation remains anchored to the same prospectively frozen pocket that defined the generation task.
+
+Scope boundary
+
+D015 freezes the Level-3 predicted-pocket method and artifact-construction semantics. It does not establish:
+
+that P2Rank identifies the biologically relevant pocket for a particular target;
+a universal rank-1 or highest-probability selection policy;
+target binding;
+target engagement;
+target compatibility;
+affinity;
+functional modulation;
+biological relevance of a predicted site.
+
+Target-specific pocket selection remains a prospective scientific decision recorded in frozen target configuration.
+
+Revisit when
+P2Rank proves operationally unsuitable for the generator-independent Stage-5 pipeline;
+a Level-3 target exposes a pocket-prediction limitation material to downstream Stage-3B evaluation;
+an independent geometry-first pocket characterization is required;
+evidence supports reconsidering fpocket or another unrejected alternative;
+new comparative pocket-prediction evidence materially changes the implementation choice;
+a generator cannot consume the same frozen conditioning-pocket representation required for generator parity;
+a scientific question requires cross-pocket characterization beyond the primary conditioning pocket;
+qualifying target–ligand evidence upgrades a Level-3 target and removes the need for the predicted-pocket lane.
+
+## D016 — Binding-affinity label gates for Level-2 homolog calibration
+
+**Decision date:** 2026-09-09
+
+**Status:** ACTIVE — FROZEN
+
+### Decision
+
+A global three-band binding-affinity labeling rule is frozen for the Level-2 homolog calibration set.
+
+The gates are:
+
+- **Positive:** `Ki < 50 nM`
+- **Middle:** `50 nM <= Ki <= 100 nM`
+- **Negative:** `Ki > 100 nM`
+
+Accordingly:
+
+- **N = 50 nM**
+- **M = 100 nM**
+
+These thresholds are global across all receptors and must never be tuned per receptor, target, homolog pair, ligand, or generated cohort.
+
+The middle band is deliberately ungraded. Entries in the middle band retain their raw Ki values and are designated **probe-only**. They must not be converted to positive or negative labels and must not contribute to pass/fail calibration.
+
+The three-band rule preserves uncertainty rather than forcing measurements near the decision region into binary classes.
+
+### Scope
+
+D016 defines the experimental binding labels used to calibrate the Level-2 homolog correspondence procedure.
+
+It does **not** define:
+
+- `pocket_sequence_identity` thresholds;
+- `pocket_superposition_rmsd` thresholds;
+- minimum mapped-residue counts;
+- the final definition of `pocket_conserved`;
+- the Level-2 apo-pocket method;
+- any Stage-5 compatibility gate.
+
+Those decisions remain separate.
+
+D016 does not modify D015. The D015 Level-3 P2Rank predicted-pocket contract and the D016 Level-2 homolog binding-label contract are separate contracts and must never be merged.
+
+### Frozen label source
+
+The label source is the following frozen affinity dataset.
+
+There are **13 adopted measured or censored affinity entries** represented in the receptor matrix below. Cells marked `NA` are explicitly excluded and must not be imputed, graded, or included in denominators.
+
+| Compound | hA1 Ki (nM) | hA2A Ki (nM) | hA2B Ki (nM) | hA3 Ki (nM) | Adopted source / status |
+|---|---:|---:|---:|---:|---|
+| **NECA** | **6.8** | **2.2** | **NA** | **16.0** | hA1/hA2A/hA3 values adopted from Gao et al. 2004, PMID 15476669. The row carries an explicit **single-lab limitation**. hA2B is excluded: the Gao 140 nM value is EC50 rather than Ki, while the separately reported 1,890 nM value derives from a different A2B radioligand context and is retained only as contextual evidence. |
+| **CCPA** | **0.83** | **2,270** | **18,800** | **38** | Frozen literature values. Cross-assay/provenance limitations remain attached where applicable. |
+| **CGS21680** | **289** | **27** | **>10,000** | **67** | Frozen literature values. `>10,000` remains a censored observation and must not be converted to exactly 10,000 nM. Cross-assay/provenance limitations remain attached where applicable. |
+| **ZM241385** | **NA** | **1.6** | **NA** | **743** | Selectivity-informed calibration row: potent hA2A binding provides the within-family positive while weak hA3 binding provides the discrimination negative. The hA2A/hA3 comparison remains usable but provenance-flagged; excluded receptors must not be imputed. |
+
+The previously discussed NECA/hA2B measurements are not part of the adopted Ki dataset and cannot place either gate.
+
+### Gao et al. 2004 limitation
+
+The adopted NECA hA1, hA2A, and hA3 values come from Gao et al. 2004 (PMID 15476669).
+
+They satisfy the frozen functionally-equivalent-protocol definition used during calibration:
+
+- same research program and study;
+- competition radioligand binding;
+- recombinant human receptors;
+- same expression background;
+- agonist radioligands throughout;
+- receptor values reported within the same study.
+
+Receptor-specific agonist tracers are permitted because a single radioligand does not provide equivalent binding measurements across all adenosine receptor subtypes.
+
+A bounded literature search did not identify an independent laboratory dataset satisfying the full protocol definition for the positive NECA comparisons. The NECA positive calibration therefore carries an explicit **single-lab limitation**.
+
+This limitation was accepted because the observed positive/negative separation is substantially larger than the documented assay-context effect and because Stage-5 Level-2 evidence remains characterization-only.
+
+### Assay-comparability rule
+
+Assay comparability is evaluated **within a compound row**, not across the entire table.
+
+Labels compare the same compound across receptor subtypes. Where a row is used to establish a cross-receptor relationship, the preferred evidence is:
+
+- the same study;
+- the same measurement modality;
+- the same recombinant-human expression background;
+- functionally equivalent radioligand-binding protocols.
+
+Different compound rows may originate from different experimental studies or protocols.
+
+The frozen N and M gates are nevertheless global. They must not be adjusted to accommodate a particular assay, compound, receptor, or target.
+
+No cross-assay absolute comparison beyond application of the frozen gates is authorized.
+
+The calibration provenance tiers are:
+
+- **Tier 1:** functionally equivalent within-row protocol;
+- **Tier 2:** cross-assay row whose separation is substantially larger than the documented assay-context effect; usable but explicitly flagged;
+- **Tier 3:** cross-assay/context-sensitive row capable of moving across a candidate gate; context only and unable to place a threshold.
+
+### Frozen labels at N=50 / M=100
+
+Applying the frozen rule to the 13 adopted entries gives:
+
+- hA1: **2 positive / 1 negative / 0 middle**
+- hA2A: **3 positive / 1 negative / 0 middle**
+- hA2B: **0 positive / 2 negative / 0 middle**
+- hA3: **2 positive / 1 negative / 1 middle**
+
+Total:
+
+- **7 positive**
+- **5 negative**
+- **1 middle**
+- **13 adopted entries**
+- **12/13 graded = 92.3%**
+
+The single middle-band entry is retained as probe-only with its raw Ki.
+
+### Robustness appendix
+
+Sensitivity was evaluated over:
+
+- `N in {10, 25, 50, 75}`
+- `M in {100, 250, 500, 1000}`
+- only combinations satisfying `N < M`
+
+using only the frozen 13-entry affinity dataset.
+
+Each receptor cell below is reported as `positive / negative / middle`.
+
+| N | M | hA1 | hA2A | hA2B | hA3 | Total | Graded |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 10 | 100 | 2/1/0 | 2/1/1 | 0/2/0 | 0/1/3 | 4/5/4 | 69.2% |
+| 10 | 250 | 2/1/0 | 2/1/1 | 0/2/0 | 0/1/3 | 4/5/4 | 69.2% |
+| 10 | 500 | 2/0/1 | 2/1/1 | 0/2/0 | 0/1/3 | 4/4/5 | 61.5% |
+| 10 | 1000 | 2/0/1 | 2/1/1 | 0/2/0 | 0/0/4 | 4/3/6 | 53.8% |
+| 25 | 100 | 2/1/0 | 2/1/1 | 0/2/0 | 1/1/2 | 5/5/3 | 76.9% |
+| 25 | 250 | 2/1/0 | 2/1/1 | 0/2/0 | 1/1/2 | 5/5/3 | 76.9% |
+| 25 | 500 | 2/0/1 | 2/1/1 | 0/2/0 | 1/1/2 | 5/4/4 | 69.2% |
+| 25 | 1000 | 2/0/1 | 2/1/1 | 0/2/0 | 1/0/3 | 5/3/5 | 61.5% |
+| **50** | **100** | **2/1/0** | **3/1/0** | **0/2/0** | **2/1/1** | **7/5/1** | **92.3%** |
+| 50 | 250 | 2/1/0 | 3/1/0 | 0/2/0 | 2/1/1 | 7/5/1 | 92.3% |
+| 50 | 500 | 2/0/1 | 3/1/0 | 0/2/0 | 2/1/1 | 7/4/2 | 84.6% |
+| 50 | 1000 | 2/0/1 | 3/1/0 | 0/2/0 | 2/0/2 | 7/3/3 | 76.9% |
+| 75 | 100 | 2/1/0 | 3/1/0 | 0/2/0 | 3/1/0 | 8/5/0 | 100.0% |
+| 75 | 250 | 2/1/0 | 3/1/0 | 0/2/0 | 3/1/0 | 8/5/0 | 100.0% |
+| 75 | 500 | 2/0/1 | 3/1/0 | 0/2/0 | 3/1/0 | 8/4/1 | 92.3% |
+| 75 | 1000 | 2/0/1 | 3/1/0 | 0/2/0 | 3/0/1 | 8/3/2 | 84.6% |
+
+#### Cliff analysis
+
+The following requested grid gates fall within 20% of an adopted measured Ki:
+
+- **N=25:** CGS21680/hA2A = 27 nM. As N rises across 27 nM, the label changes **middle -> positive**.
+- **N=75:** CGS21680/hA3 = 67 nM. As N rises across 67 nM, the label changes **middle -> positive**.
+- **M=250:** CGS21680/hA1 = 289 nM. As M rises across 289 nM, the label changes **negative -> middle**.
+
+No adopted measured Ki lies within 20% of either frozen gate:
+
+- **N=50 nM**
+- **M=100 nM**
+
+The censored CGS21680/hA2B `>10,000 nM` value is not treated as a numerical cliff.
+
+### Robustness rationale
+
+`N=50 nM` and `M=100 nM` were selected because the reference cell lies in a stable region of the frozen affinity table.
+
+Moving M from 100 to 250 changes no labels. The nearest grid cliffs occur at N=25, N=75, and M=250 rather than at the frozen gates.
+
+The frozen rule grades **92.3%** of adopted entries while retaining an explicit middle band rather than forcing every observation into a binary class.
+
+The gates are therefore frozen as a global calibration contract, not optimized per receptor or target.
+
+### Fail-loudly behavior
+
+N and M are mandatory frozen configuration values.
+
+If either threshold is:
+
+- absent;
+- null;
+- malformed;
+- inconsistent with `N < M`; or
+- not traceable to the frozen D016 configuration,
+
+the calibration is **UNEVALUABLE** and execution must fail loudly.
+
+No executable code may supply default values for N or M.
+
+Missing affinity measurements must remain missing. They must not be imputed, converted to middle-band observations, or included in denominators.
+
+Censored measurements must remain censored.
+
+### Configuration provenance
+
+D016 must have its **own frozen configuration artifact**, separate from D015 and all target-specific configuration.
+
+That artifact must encode at minimum:
+
+- decision identifier `D016`;
+- schema version;
+- `N = 50`;
+- `M = 100`;
+- units `nM`;
+- strict positive comparison `< N`;
+- strict negative comparison `> M`;
+- middle-band treatment `probe-only`;
+- missing-value treatment;
+- frozen affinity-table identity.
+
+The configuration's SHA-256 must be recorded after the exact config file is materialized.
+
+**Frozen D016 config SHA-256:** `PENDING MATERIALIZATION`
+
+### Governing principle
+
+**Binding labels are global calibration evidence, not target-specific tuning parameters.**
+
+The middle band preserves uncertainty; it is not a reservoir from which convenient positive or negative labels may be selected.
+
+### Lessons
+
+An earlier sensitivity grid ran on reconstructed NECA values (14/20/25 nM) of unknown provenance and was caught and superseded; all calibration inputs must therefore come exclusively from the adopted frozen affinity table.
+
+### Revisit when
+
+- new primary human adenosine-receptor affinity data materially challenge the frozen 13-entry calibration table;
+- an independent laboratory produces functionally equivalent parallel binding measurements that resolve the Gao et al. 2004 single-lab limitation;
+- evidence shows that either frozen gate (`N = 50 nM` or `M = 100 nM`) lies near a reproducible assay-dependent classification cliff;
+- the documented assay-context effect is shown to be materially larger than the approximately four-fold effect considered during calibration;
+- additional qualified calibration data materially reduce or eliminate the separation between the positive and negative classes;
+- the middle band proves too narrow or too broad to preserve genuinely ambiguous measurements as probe-only;
+- a frozen gate causes systematic receptor-, ligand-, or assay-specific misclassification that cannot be addressed through provenance labeling alone;
+- the Level-2 homolog structural calibration demonstrates that the frozen binding labels do not provide a usable known-answer reference for `pocket_sequence_identity` and `pocket_superposition_rmsd`;
+- a change to the binding-label contract is scientifically justified by new evidence and is recorded prospectively rather than introduced as target-specific tuning.
+## D017 — Structural homolog-pocket correspondence measurement for Level-2
+
+**Decision date:** 2026-09-10
+
+**Status:** ACTIVE — FROZEN / EXECUTABLE
+
+### Decision
+
+The Level-2 homolog branch will measure structural correspondence between an experimentally ligand-bound homolog pocket and the corresponding target pocket using a fixed, auditable structural-alignment and residue-mapping procedure.
+
+D017 freezes the **measurement definition only**.
+
+It does **not** define:
+
+- the `pocket_sequence_identity` threshold;
+- the `pocket_superposition_rmsd` threshold;
+- the minimum mapped-residue requirement;
+- the minimum pocket-coverage requirement;
+- the Boolean definition of `pocket_conserved`.
+
+Those remain explicitly **UNSET** and require a subsequent decision after the frozen D017 calibration measurements exist.
+
+### Scope
+
+D017 applies only to the **D008 Level-2 homolog-supported branch**.
+
+The homolog site is derived from an experimentally ligand-occupied homolog structure.
+
+No de novo pocket predictor is used to define the homolog site for this branch.
+
+D017 does not modify D015. D015 governs the separate Level-3 P2Rank predicted-pocket contract.
+
+D016 governs the separate frozen binding-affinity labels used as known answers for homolog calibration.
+
+The D015, D016, and D017 contracts are separate and must not be merged.
+
+### Structural aligner
+
+The target and ligand-bound homolog structures are aligned with:
+
+**US-align, version 20220227**
+
+US-align provides pairwise structural alignment through optimization of a TM-score objective and produces the residue correspondence required by the D017 procedure.
+
+Reference:
+
+Zhang C, Shine M, Pyle AM, Zhang Y. **US-align: universal structure alignments of proteins, nucleic acids, and macromolecular complexes.** *Nature Methods.* 2022;19:1109–1115. DOI: `10.1038/s41592-022-01585-1`. PMID: 36038728.
+
+The alignment is performed as a protein-chain structural alignment.
+
+The D017 US-align invocation is frozen as:
+
+`USalign target_chain.pdb homolog_chain.pdb -mol prot -mm 0 -ter 2 -atom " CA " -m {matrix_output} -o {superposition_prefix}`
+
+The input contract requires **single-chain PDB files** for both target and homolog.
+
+The exact biological chain represented by each input file must be recorded for every run.
+
+The frozen alignment parameters are:
+
+- molecule type: `prot`;
+- multimer mode: `0`;
+- chain mode: `2`;
+- representative protein atom: `CA`;
+- input representation: single-chain PDB;
+- sequence-independent structural alignment;
+- transformation-matrix output enabled;
+- US-align superposition-artifact output enabled.
+
+No undocumented alignment parameter changes are permitted.
+
+Loop regions, including extracellular loops such as ECL2 where relevant to adenosine receptors, must not be manually remapped or edited after inspection of pocket similarity.
+
+The complete per-residue correspondence produced from the alignment must be retained so that loop-region assignments, gaps, and disputed correspondences remain auditable.
+
+### Configuration provenance
+
+The frozen generic D017 instrument configuration is:
+
+`references/stage5/d017/usalign_20220227_config.json`
+
+**Frozen D017 US-align config SHA-256:**
+
+`c4420efec72ca257d5c13c786fa90bcd435c0aa2a410ea06438fc383df68fa23`
+
+The configuration-materialization record is:
+
+`references/stage5/d017/materialization_20260910.txt`
+
+**D017 configuration-materialization log SHA-256:**
+
+`07e4e115d9fd81c4d4bdb520f87956edf000e3e8bbf342df24600750261c91b3`
+
+The frozen US-align software provenance is:
+
+- US-align version: `20220227`;
+- source archive SHA-256: `3c6348e7d45105ade2f0fe80437a36b4e7bfdb92cdb6872a6f4912dcd24d0f8d`;
+- `USalign.cpp` SHA-256: `4518d1e85bfccea3ff40de8fbf0b248faf8ebe4695d0d8b6f15f3625593c4427`;
+- compiled executable SHA-256: `26ba8b626cf2600321941f0a138ada60505626e858948b5285c66f33097ee55f`;
+- compiler: Apple clang 17.0.0 (`clang-1700.6.3.2`);
+- build architecture: `arm64-apple-darwin25.5.0`.
+
+The archived US-align distribution was qualified using its bundled `PDB1.pdb` and `PDB2.pdb` structures as software-only smoke fixtures.
+
+The qualification run:
+
+- returned exit code `0`;
+- reported aligned length of 119 residues;
+- reported global alignment RMSD of 2.20 Å;
+- reported sequence identity of 0.824 over aligned residues;
+- produced the requested rotation/translation matrix;
+- produced the documented `-o` superposition and PyMOL artifacts.
+
+No D017 calibration row was executed during software qualification.
+
+### Pocket residue definition
+
+The homolog pocket is defined from the experimentally bound ligand in the ligand-bound homolog structure.
+
+A homolog residue belongs to the pocket when **any residue heavy atom lies within 4.5 Å of any ligand heavy atom**.
+
+The 4.5 Å cutoff is applied before structural correspondence is evaluated and is applied identically across all calibration rows.
+
+Hydrogen atoms do not define pocket membership under this rule.
+
+The resulting homolog pocket residue set must be recorded explicitly.
+
+The corresponding target pocket is obtained only by mapping those homolog pocket residues through the frozen target/homolog structural alignment.
+
+No target-side de novo pocket prediction may redefine or expand the transferred homolog site.
+
+### Structure selection rule
+
+For each calibration comparison, use the **highest-resolution experimentally determined ligand-bound structure that satisfies the required receptor, ligand, and conformational-state criteria**.
+
+The exact PDB identifier and biological chain used for every target and homolog structure must be recorded in the calibration artifact.
+
+Where the exact ligand-bound homolog structure does not exist, a documented agonist proxy may define the site only where the frozen calibration record permits that proxy.
+
+Proxy use must be recorded explicitly.
+
+Where no usable ligand-bound homolog structure or permitted proxy exists, the calibration row is **UNRUNNABLE** and is dropped rather than patched.
+
+No structure may be substituted after inspection of the resulting D017 measurements merely because another structure produces a more favorable correspondence.
+
+### State assignment
+
+Each target and homolog structure receives one conformational-state label:
+
+- `ACTIVE`;
+- `INACTIVE`;
+- `UNKNOWN`.
+
+State assignment authority is the **primary structural publication together with the corresponding PDB-entry annotation**.
+
+When the primary structural publication explicitly assigns the deposited receptor to an active or inactive conformational state, that assignment is used.
+
+Where the publication and PDB annotation do not support a defensible state assignment, the structure is labeled:
+
+`UNKNOWN`
+
+No state is inferred solely from ligand identity or agonist/antagonist naming.
+
+The default for an unassigned structure is therefore **UNKNOWN**.
+
+The target and homolog state assignments and their supporting provenance must be retained.
+
+### State matching
+
+Where possible, target and homolog structures must be compared within the same conformational state.
+
+Every result must record:
+
+- `target_state`;
+- `homolog_state`;
+- `state_match`.
+
+If the assigned states differ:
+
+`state_match = false`
+
+and the comparison is labeled:
+
+**STATE-MIXED**
+
+The structural measurements may still be calculated and retained, but a state-mixed RMSD must not be interpreted as a pure measure of homolog-pocket conservation.
+
+If positive and negative calibration classes separate partly according to conformational-state composition, D018 must identify that confound rather than attributing the separation entirely to pocket sequence or geometry.
+
+Relevant primary structural evidence includes:
+
+Oshima HS, Ogawa A, Sano FK, Akasaka H, Kawakami T, Iwama A, Okamoto HH, Nagiri C, Wei FY, Shihoya W, Nureki O. **Structural insights into the agonist selectivity of the adenosine A3 receptor.** *Nature Communications.* 2024;15:9294. DOI: `10.1038/s41467-024-53473-1`. PMID: 39511145.
+
+### Pocket residue correspondence
+
+US-align establishes the structural correspondence between the frozen target and homolog chains.
+
+For each ligand-defined homolog pocket residue, the corresponding aligned target residue is identified when one exists.
+
+Each homolog pocket residue is recorded as either:
+
+- **mapped** to a target residue; or
+- **unmapped**.
+
+Unmapped residues remain explicit in the record and are never imputed.
+
+The complete per-residue mapping must be retained as an audit artifact.
+
+This requirement is particularly important for flexible or structurally divergent regions where different alignment procedures may assign different correspondences.
+
+### Pocket sequence identity
+
+Define:
+
+`pocket_sequence_identity = identical mapped pocket-residue pairs / total mapped pocket-residue pairs`
+
+Only mapped pocket-residue pairs enter this numerator and denominator.
+
+The following must all be reported:
+
+- number of identical mapped residue pairs;
+- total number of mapped pocket-residue pairs;
+- resulting `pocket_sequence_identity`.
+
+Homolog pocket residues without a target correspondence do not enter the identity denominator, but remain explicitly represented in the mandatory coverage measurement.
+
+No global target/homolog sequence identity may substitute for this local pocket measurement.
+
+### Pocket superposition RMSD
+
+`pocket_superposition_rmsd` is calculated over the **mapped pocket Cα pairs after optimal local superposition of those mapped Cα atoms**.
+
+The RMSD is therefore measured in the locally optimized pocket-superposition frame.
+
+It is **not** calculated as displacement of the mapped pocket atoms in the global US-align coordinate frame.
+
+The exact mapped Cα pair set used for the calculation must be retained.
+
+The optimal local-superposition transformation must also be retained in the calculation artifact.
+
+No side-chain atoms or ligand atoms enter the primary D017 RMSD metric.
+
+The use of residue-level local pocket correspondence and Cα geometry has precedent in local binding-site alignment methodology:
+
+Brylinski M. **eMatchSite: sequence order-independent structure alignments of ligand binding pockets in protein models.** *PLoS Computational Biology.* 2014;10(9):e1003829. DOI: `10.1371/journal.pcbi.1003829`. PMID: 25232727. PMCID: PMC4168975.
+
+D017 does not adopt eMatchSite itself; it remains an unrejected alternative local-site correspondence method.
+
+### Mandatory coverage output
+
+Every D017 correspondence result must report:
+
+- total homolog pocket residues;
+- mapped pocket residues;
+- unmapped pocket residues;
+- mapping coverage;
+- identical mapped residue pairs;
+- `pocket_sequence_identity`;
+- `pocket_superposition_rmsd`.
+
+Define:
+
+`mapping_coverage = mapped homolog pocket residues / total homolog pocket residues`
+
+Coverage must always be reported jointly with sequence identity and RMSD.
+
+Sequence identity calculated only over mapped residues can be artificially inflated when correspondence is lossy.
+
+RMSD can likewise appear artificially favorable if poorly corresponding pocket residues fail to map and disappear from the calculation.
+
+Coverage is therefore a mandatory measurement output, not an optional diagnostic.
+
+D017 does not freeze a minimum acceptable coverage.
+
+### Visual review artifacts
+
+Every D017 correspondence run must retain human-review visualization artifacts in addition to the numerical measurements.
+
+US-align's frozen `-o` output is retained unchanged as the raw visualization artifact.
+
+The frozen review renderer is:
+
+**PyMOL 3.1.0**
+
+PyMOL is used only to render the already-generated structural superposition for human review.
+
+The review artifact set must include:
+
+- the raw US-align superposed structure;
+- the raw US-align PyMOL scripts;
+- a whole-structure superposition image;
+- a pocket-focused superposition image.
+
+The pocket-focused image must make the ligand-defined homolog pocket and its mapped target residues visually inspectable.
+
+The review rendering should distinguish the two structures sufficiently to expose local deviations and loop-region correspondence rather than allowing one opaque structure to completely occlude the other.
+
+The visualization is **review-only and non-gating**.
+
+A rendered image must never:
+
+- define residue correspondence;
+- alter `pocket_sequence_identity`;
+- alter `pocket_superposition_rmsd`;
+- alter mapping coverage;
+- determine `pocket_conserved`;
+- rescue or reject a calibration result.
+
+The quantitative D017 measurements remain authoritative.
+
+### Required raw artifacts
+
+Each D017 correspondence run must retain:
+
+- target structure identity;
+- target structure SHA-256;
+- homolog structure identity;
+- homolog structure SHA-256;
+- target PDB identifier and chain;
+- homolog PDB identifier and chain;
+- target-state assignment and provenance;
+- homolog-state assignment and provenance;
+- `state_match`;
+- ligand identity;
+- exact-ligand or proxy status;
+- ligand-defined homolog pocket residue list;
+- 4.5 Å pocket-definition parameters;
+- US-align version;
+- frozen US-align configuration identity and SHA-256;
+- complete US-align stdout;
+- US-align transformation-matrix output;
+- raw US-align superposition artifacts;
+- raw US-align PyMOL scripts;
+- whole-structure review image;
+- pocket-focused review image;
+- complete per-residue correspondence mapping;
+- mapped pocket residues;
+- unmapped pocket residues;
+- mapped Cα pair set;
+- optimal local-superposition transformation;
+- total homolog pocket residues;
+- mapped pocket residues;
+- unmapped pocket residues;
+- mapping coverage;
+- identical mapped residue pairs;
+- `pocket_sequence_identity`;
+- `pocket_superposition_rmsd`.
+
+Intermediate and validation artifacts are retained until the relevant Stage-5 work is finalized and frozen.
+
+### Conservation gate separation
+
+D017 does not assign `pocket_conserved`.
+
+Until D018 freezes the required structural thresholds and any required minimum mapping/coverage criteria:
+
+`pocket_conserved = UNEVALUABLE`
+
+is the only valid state.
+
+No executable code may supply default values for:
+
+- sequence-identity threshold;
+- RMSD threshold;
+- minimum mapped-residue count;
+- minimum coverage.
+
+No placeholder values such as 0.7 sequence identity or 2.0 Å RMSD may appear as executable defaults.
+
+An implementation attempting to produce Boolean `pocket_conserved` without the D018 criteria must fail loudly.
+
+### Relationship to D008
+
+The frozen D017 measurements provide the structural evidence required by the existing D008 Level-2 homolog route.
+
+The relevant outputs are:
+
+- `pocket_sequence_identity`;
+- `pocket_superposition_rmsd`;
+- mapping coverage and its raw counts;
+- state-match provenance.
+
+The existing D008 field:
+
+`pocket_conserved`
+
+may only become Boolean after D018 freezes the conservation rule.
+
+While `pocket_conserved` remains `UNEVALUABLE`, the D008 router must refuse to classify the homolog-supported case as Level 2.
+
+It must not silently interpret an unset value as either conserved or non-conserved.
+
+### Alternative methods
+
+Local pocket-alignment methods remain serious alternatives to the D017 global-alignment-plus-local-measurement procedure.
+
+eMatchSite remains **UNREJECTED**.
+
+Brylinski M. **eMatchSite: sequence order-independent structure alignments of ligand binding pockets in protein models.** *PLoS Computational Biology.* 2014;10(9):e1003829. DOI: `10.1371/journal.pcbi.1003829`. PMID: 25232727. PMCID: PMC4168975.
+
+eMatchSite constructs sequence-order-independent local binding-site alignments and provides an alternative framework for local site correspondence.
+
+D017 selects US-align for the frozen target/homolog chain correspondence because the present Level-2 procedure requires an explicit, auditable target/homolog residue mapping from which the already-defined D008 measurements can be derived.
+
+This decision does **not** establish that US-align is scientifically superior to eMatchSite or other established local-site comparison methods.
+
+Any future replacement of the D017 correspondence procedure requires its own documented decision.
+
+### Conformational-state confounding
+
+Adenosine-receptor binding pockets can differ between receptor conformational states.
+
+The calibration must therefore preserve conformational-state provenance rather than allowing active/inactive structural differences to be silently absorbed into `pocket_superposition_rmsd`.
+
+Relevant primary structural evidence includes:
+
+Oshima HS, Ogawa A, Sano FK, Akasaka H, Kawakami T, Iwama A, Okamoto HH, Nagiri C, Wei FY, Shihoya W, Nureki O. **Structural insights into the agonist selectivity of the adenosine A3 receptor.** *Nature Communications.* 2024;15:9294. DOI: `10.1038/s41467-024-53473-1`. PMID: 39511145.
+
+If the eventual positive and negative calibration classes separate partly because of active/inactive state composition rather than homolog-pocket conservation, D018 must explicitly identify that confound.
+
+### Governing principle
+
+**Measure local pocket correspondence first; decide what counts as conserved separately.**
+
+The D017 measurement procedure must remain independent of the D016 binding answer used to calibrate it.
+
+D018 may inspect the frozen D017 measurements together with the frozen D016 known-answer labels.
+
+D017 itself may not be altered after inspecting which measurement definition best separates those labels.
+
+### 2026-09-10 structure-selection amendment
+
+D017 was revisited under its existing trigger:
+
+**a new experimentally determined structure materially changes the available same-state calibration structure set.**
+
+The 2025 human A3 structural series materially changed the available Level-2 homolog calibration structures. The previously considered A3 structures 8YH0 and 8YH2 were verified as *Ovis aries* rather than human and are excluded from the frozen calibration manifest.
+
+This revisit changes **structure selection and provenance only**. The frozen D017 alignment, pocket-definition, residue-mapping, coverage, sequence-identity, and local Cα RMSD measurement procedures are unchanged.
+
+#### Proxy rule
+
+Where the exact ligand-bound homolog structure is unavailable, a documented proxy ligand of the **same pharmacological class as the calibration ligand** is permitted when it provides a state-matched structure:
+
+- agonist calibration ligand → agonist proxy;
+- antagonist calibration ligand → antagonist proxy.
+
+Every proxy must be recorded explicitly as a proxy.
+
+A proxy may not be selected after inspection of D017 measurements because it produces more favorable correspondence.
+
+#### Structure selection
+
+For exact-ligand rows, use the highest-resolution experimentally determined structure containing the required receptor and ligand and satisfying the required conformational-state criteria.
+
+For permitted proxy rows, use the highest-resolution experimentally determined structure containing the approved proxy ligand and satisfying the required receptor and conformational-state criteria.
+
+Where no qualifying exact structure or permitted proxy exists, the row is `UNRUNNABLE` and is dropped rather than patched.
+
+#### State annotation
+
+The frozen state enum remains:
+
+- `ACTIVE`;
+- `INACTIVE`;
+- `UNKNOWN`.
+
+Publication-specific wording is retained separately in the provenance annotation.
+
+Accordingly, 4UG2 is normalized to:
+
+`ACTIVE`
+
+while the publication wording:
+
+`active-like`
+
+is retained verbatim in its state-annotation field.
+
+No fourth conformational-state category is introduced.
+
+#### Species provenance
+
+Every D017 structure manifest entry must record species at the **gene-source level**.
+
+Human structures are expected for the frozen adenosine-receptor calibration.
+
+If a future comparison necessarily contains different gene-source species, it must be labeled:
+
+`SPECIES-MIXED`
+
+Species mismatch is treated as an explicit structural-calibration confound on the same footing as `STATE-MIXED`.
+
+A non-human structure must never be silently represented as human.
+
+#### A3 manifest correction
+
+The previously considered 8YH0 and 8YH2 A3 structures are excluded because their receptor gene source is *Ovis aries*.
+
+For P3, the human A3 adenosine-bound structure 9EBH replaces 8YH0 as the same-class agonist proxy.
+
+For N3, the human A3 antagonist-bound structure 9EHS replaces 8YH2 as the same-class antagonist proxy.
+
+N3 therefore changes from the previously contemplated state-mixed comparison to an inactive/inactive, human/human comparison.
+
+This correction occurred **before any D017 calibration structure was downloaded or measured** and therefore does not constitute outcome-driven structure selection.
+
+### 2026-09-11 construct-boundary and manifest amendment
+
+D017 was revisited following the completed read-only construct-boundary audit.
+
+The amendment changes only the definition and provenance of the derived receptor-only alignment inputs. The US-align procedure, 4.5 Å pocket definition, residue correspondence, coverage, sequence-identity, and local Cα RMSD measurement procedures remain unchanged.
+
+#### Equivalent-chain selection
+
+Where multiple equivalent receptor chains satisfy all frozen structure, species, ligand, and state requirements, select the **lexicographically first author chain ID**.
+
+For 4UG2, receptor chains A and B both contain the exact calibration ligand CGS21680. Chain A is therefore selected deterministically.
+
+The alternative eligible chain and ligand instance remain recorded in the manifest provenance.
+
+#### Canonical-mapped residue rule
+
+A coordinate-bearing deposited residue enters the D017 receptor-alignment input when its **position maps uniquely to the frozen canonical human receptor sequence**.
+
+Mapping is **position-only**.
+
+The deposited amino-acid identity does not need to match the canonical identity for retention.
+
+Therefore:
+
+- a coordinate-bearing residue with a unique canonical position is retained even when its deposited identity differs from canonical;
+- the retained residue receives a **mutation flag** when deposited identity differs from canonical;
+- engineered insertions and other coordinate-bearing residues without a unique canonical position are excluded from the D017 receptor-alignment input;
+- excluded engineered/noncanonical coordinates remain in the authoritative raw mmCIF artifact.
+
+No coordinate or atom identity is altered during extraction.
+
+#### Pocket mutation provenance
+
+For every retained residue, the derived mapping records:
+
+- deposited author residue identifier;
+- deposited residue identity;
+- canonical receptor position;
+- canonical residue identity;
+- mutation flag.
+
+If an identity mismatch occurs for a residue belonging to the D017 ligand-defined pocket under the frozen 4.5 Å heavy-atom rule, the mismatch must be explicitly called out in the D017 revisit log for the affected calibration row in addition to being retained in the derived mapping artifact.
+
+#### Derived author-to-canonical residue map
+
+The author-to-canonical residue map is a **derived frozen artifact** and is part of the provenance required to reproduce the D017 receptor-alignment inputs.
+
+The mapping artifact must record, at minimum:
+
+- source structure identity and SHA-256;
+- selected author chain;
+- canonical sequence identity and SHA-256;
+- deposited author residue identifiers;
+- canonical positions;
+- deposited and canonical residue identities;
+- mutation flags;
+- excluded coordinate-bearing residues;
+- mapping status.
+
+The mapping artifact must be hashed and its SHA-256 recorded alongside the frozen calibration-structure manifest hash before any D017 alignment is executed.
+
+**Mapping-artifact SHA-256:** `PENDING MATERIALIZATION`
+
+No D017 alignment may run until this mapping artifact has been materialized, validated, hashed, and recorded here.
+
+#### Frozen manifest and canonical-sequence provenance
+
+The fully verified D017 calibration-structure manifest is:
+
+`references/stage5/d017/calibration_structure_manifest.json`
+
+**Manifest SHA-256:**
+
+`f3b477b23c0505845367cb28383ca024e5692ec8a13f2696de3c04fef8b77b5d`
+
+The frozen canonical human receptor sequences are:
+
+- **ADORA2A / UniProt P29274**  
+  SHA-256: `fa327e00c2245b9aa5aa65816f078bdd5664de1531fb8404c2b5f60d8e96f239`
+- **ADORA2B / UniProt P29275**  
+  SHA-256: `4a6c391c07cdd34d0050367c9312638f37a74fa2215f1a01fb7dc63073c15b77`
+- **ADORA3 / UniProt P0DMS8**  
+  SHA-256: `b117a029664c0025d6b833df72fef925dbd4f70936ee9a04ec09254edd59af92`
+
+The frozen D017 measurement configuration remains:
+
+`c4420efec72ca257d5c13c786fa90bcd435c0aa2a410ea06438fc383df68fa23`
+
+The materialization record remains:
+
+`07e4e115d9fd81c4d4bdb520f87956edf000e3e8bbf342df24600750261c91b3`
+
+### 2026-09-11 alignment-input representation amendment
+
+D017 was revisited after implementation exposed a conflict between the frozen exact-coordinate requirement and standard PDB fixed-width coordinate precision.
+
+The 9EHS deposited coordinates contain values exceeding the precision representable without alteration in standard PDB coordinate fields. Converting these coordinates to standard PDB format would therefore require rounding or another coordinate-changing transformation.
+
+Because D017 requires exact preservation of deposited coordinates, **standard PDB is not an acceptable scientific alignment-input representation**.
+
+This amendment changes only the derived alignment-input representation. The structural measurement definitions remain unchanged.
+
+#### Alignment input format
+
+The D017 alignment input contract is changed from:
+
+`single_chain_pdb`
+
+to:
+
+`single_chain_pdbx_mmcif`
+
+The derived receptor-only alignment input must therefore be a **single-chain PDBx/mmCIF file** containing only the canonical-mapped receptor coordinates required by D017.
+
+The authoritative raw deposited mmCIF remains unchanged.
+
+The derived single-chain mmCIF must preserve:
+
+- deposited atom coordinates exactly;
+- deposited atom identity;
+- deposited residue identity;
+- author chain identifier;
+- author residue number;
+- insertion code;
+- atom naming and ordering insofar as supported by the mmCIF representation.
+
+No coordinate rounding, truncation, reparameterization, or coordinate-space transformation is permitted during extraction.
+
+US-align 20220227 accepts PDBx/mmCIF input directly, so this amendment does not change the frozen alignment software or alignment method.
+
+#### PDB compatibility
+
+Standard PDB files may still be generated as **secondary human-review artifacts** where useful, but they are not the authoritative D017 alignment inputs and must never replace the exact-coordinate mmCIF inputs.
+
+Any PDB rendering or visualization artifact must remain explicitly downstream of the exact-coordinate alignment input.
+
+A PDB conversion that changes coordinate values must be recorded as a derived visualization artifact and must not be used as the scientific source for D017 measurements.
+
+#### Configuration provenance
+
+The previous D017 configuration identified the input contract as:
+
+`single_chain_pdb`
+
+That configuration is superseded by this amendment.
+
+A new D017 configuration must be materialized with the input contract:
+
+`single_chain_pdbx_mmcif`
+
+and its SHA-256 must replace the prior D017 configuration hash before any calibration alignment is executed.
+
+The previous configuration and hash remain retained as historical provenance.
+
+#### Measurement invariance
+
+This amendment does not change:
+
+- target/homolog structure selection;
+- equivalent-chain selection;
+- species/state requirements;
+- canonical position-only residue mapping;
+- mutation-flag behavior;
+- 4.5 Å homolog-pocket definition;
+- per-residue correspondence;
+- mapping coverage;
+- `pocket_sequence_identity`;
+- local Cα superposition;
+- `pocket_superposition_rmsd`;
+- visual-review role.
+
+The amendment exists solely to ensure that the frozen measurement procedure operates on exact deposited coordinates.
+
+Completed the frozen 4.5 Å mutation-pocket audit.
+
+Added:
+
+- [audit implementation](/Users/mileshuang/Desktop/sbdd-project/evaluation/d017_mutation_pocket_audit.py)
+- [materialization script](/Users/mileshuang/Desktop/sbdd-project/scripts/stage5/audit_d017_mutation_pockets.py)
+- [updated focused tests](/Users/mileshuang/Desktop/sbdd-project/tests/test_d017_construct_audit.py)
+- [machine-readable audit artifact](/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/receptor_inputs/mutation_pocket_audit.json)
+
+Artifact SHA-256: `63a723e48b99231277a8402f428b1814888020b940570d4a8c3c0e1b6acb3bb0`
+
+| Structure / mutation | Pocket? | Min distance | Minimizing raw atom pair |
+|---|---:|---:|---|
+| 2YDV A48 `ALA → L` | No | 13.591461 Å | `O` [348] → `NEC C52` [2459] |
+| 2YDV A54 `LEU → A` | No | 11.103732 Å | `O` [384] → `NEC O2'` [2465] |
+| 2YDV A65 `ALA → T` | No | 9.654675 Å | `C` [461] → `NEC C2` [2474] |
+| 2YDV A89 `ALA → Q` | Yes | 3.972587 Å | `N` [628] → `NEC C52` [2459] |
+| 2YDV A154 `ALA → N` | No | 17.560295 Å | `N` [1122] → `NEC N1` [2473] |
+| 4UG2 A48 `ALA → L` | No | 13.338007 Å | `O` [328] → `NGI C1` [4430] |
+| 4UG2 A54 `LEU → A` | No | 10.892390 Å | `O` [364] → `NGI O4` [4441] |
+| 4UG2 A65 `ALA → T` | No | 7.661646 Å | `O` [442] → `NGI C12` [4454] |
+| 4UG2 A89 `ALA → Q` | Yes | 3.879394 Å | `N` [608] → `NGI C1` [4430] |
+| 4UG2 A154 `ALA → N` | No | 12.966958 Å | `N` [1102] → `NGI C18` [4460] |
+| 9EHS R97 `ARG → S` | No | 8.437770 Å | `NH2` [4886] → `A1BII C1` [7181] |
+| 9EHS R160 `ALA → N` | No | 20.480164 Å | `C` [5403] → `A1BII C16` [7185] |
+
+The artifact records the full `_atom_site` source IDs plus author and label identifiers, coordinates, mapping provenance, raw-structure hashes, and frozen manifest/mapping-artifact hashes.
+
+Tests: focused suite 11 passed; full suite 45 passed. No ambiguity found. No US-align or D017 calibration was run, no D018 threshold was introduced, and no frozen artifact was modified.
+
+### Governing principle
+
+**Measure local pocket correspondence from reproducible receptor inputs; do not let engineered construct sequence or post hoc structural choices define the correspondence.**
+
+The receptor alignment input is determined mechanically from the frozen canonical position map. Deposited residue identity is preserved and flagged when it differs from canonical; engineered or otherwise noncanonical positions remain excluded from the alignment input but preserved in the raw source artifact.
+
+### Revisit when
+
+- US-align produces unstable or materially non-reproducible pocket mappings for the frozen calibration set;
+- loop-region correspondence, including ECL2 where relevant, materially determines calibration outcomes in a way that makes the frozen chain-alignment procedure unsuitable;
+- state-mixed comparisons materially confound the calibration;
+- eMatchSite or another qualified local pocket-alignment method demonstrates materially better validated correspondence for this exact task;
+- a new experimentally determined structure materially changes the available same-state calibration structure set;
+- the 4.5 Å ligand-contact pocket definition proves inadequate for the target family;
+- D018 demonstrates that the frozen D017 measurements cannot support a defensible conservation rule;
+- new evidence shows that mapped Cα local RMSD is insufficient for the intended Level-2 characterization claim;
+- a change to the measurement contract is scientifically justified and recorded prospectively rather than introduced after inspection of favorable calibration outcomes.

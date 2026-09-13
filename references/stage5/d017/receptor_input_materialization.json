@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "decision_id": "D017",
+  "active_config": "usalign_20220227_config_v2.json",
+  "active_config_sha256": "6b98a09dcdc103a9c86aa640bc68a72e1685528ff7b5848df326048a99b2d6e6",
+  "manifest_sha256": "f3b477b23c0505845367cb28383ca024e5692ec8a13f2696de3c04fef8b77b5d",
+  "construct_selection": "construct_boundary_audit_selection.json"
+}

@@ -1,0 +1,35 @@
+D017 US-align configuration materialization
+Date: 2026-09-10
+
+Decision: D017
+
+US-align:
+  Version: 20220227
+  Source archive SHA-256: 3c6348e7d45105ade2f0fe80437a36b4e7bfdb92cdb6872a6f4912dcd24d0f8d
+  USalign.cpp SHA-256: 4518d1e85bfccea3ff40de8fbf0b248faf8ebe4695d0d8b6f15f3625593c4427
+  Executable SHA-256: 26ba8b626cf2600321941f0a138ada60505626e858948b5285c66f33097ee55f
+  Compiler: Apple clang 17.0.0 (clang-1700.6.3.2)
+  Architecture: arm64-apple-darwin25.5.0
+
+Frozen configuration:
+  Path: references/stage5/d017/usalign_20220227_config.json
+  SHA-256: c4420efec72ca257d5c13c786fa90bcd435c0aa2a410ea06438fc383df68fa23
+
+Software qualification:
+  Bundled PDB1.pdb / PDB2.pdb used as software-only smoke fixture.
+  US-align exit code: 0
+  Aligned length: 119 residues
+  Reported global alignment RMSD: 2.20 Angstrom
+  Sequence identity over aligned residues: 0.824
+  Rotation/translation matrix artifact produced.
+  US-align -o superposition artifacts produced.
+
+Visual review qualification:
+  Renderer: PyMOL 3.1.0
+  US-align-generated PyMOL script executed successfully.
+  PNG review artifact produced successfully.
+  Visualization is review-only and non-gating.
+
+Scientific calibration:
+  No D017 calibration row was executed during materialization.
+  No D018 conservation thresholds were defined or evaluated.

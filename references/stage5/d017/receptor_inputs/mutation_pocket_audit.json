@@ -1,0 +1,905 @@
+{
+  "schema_version": 1,
+  "decision_id": "D017",
+  "artifact_type": "FROZEN_4_5_ANGSTROM_MUTATION_POCKET_AUDIT",
+  "inputs": {
+    "mapping_artifact": {
+      "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/receptor_inputs/position_only_mapping.json",
+      "sha256": "f63dc90146de8e53346ad418644dcb615223fa1d883141ab50bdf48b17f9bdc8"
+    },
+    "manifest": {
+      "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/calibration_structure_manifest.json",
+      "sha256": "f3b477b23c0505845367cb28383ca024e5692ec8a13f2696de3c04fef8b77b5d"
+    }
+  },
+  "mutation_audits": [
+    {
+      "structure_id": "2YDV",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NEC",
+        "author_chain": "A",
+        "author_residue_number": "400"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "48",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 48
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 48,
+        "canonical_residue": "L",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          345,
+          346,
+          347,
+          348,
+          349
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 13.591460738272396,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "348",
+          "group": "ATOM",
+          "element": "O",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "48",
+          "author_insertion_code": "?",
+          "author_atom": "O",
+          "label_chain": "A",
+          "label_sequence_id": "48",
+          "coordinates": [
+            "28.246",
+            "25.805",
+            "-14.517"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "2459",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "NEC",
+          "author_chain": "A",
+          "author_residue_number": "400",
+          "author_insertion_code": "?",
+          "author_atom": "C52",
+          "label_chain": "B",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "32.457",
+            "13.305",
+            "-11.239"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/2YDV.cif",
+        "sha256": "6957703aa88ede652c5e9d8850193c7ccd4348e7c54fe34f7f2867b1a8ec664f"
+      }
+    },
+    {
+      "structure_id": "2YDV",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NEC",
+        "author_chain": "A",
+        "author_residue_number": "400"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "54",
+          "insertion_code": "",
+          "name": "LEU",
+          "label_sequence_id": 54
+        },
+        "deposited_residue": "LEU",
+        "canonical_position": 54,
+        "canonical_residue": "A",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 11.103732075297927,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "384",
+          "group": "ATOM",
+          "element": "O",
+          "author_component": "LEU",
+          "author_chain": "A",
+          "author_residue_number": "54",
+          "author_insertion_code": "?",
+          "author_atom": "O",
+          "label_chain": "A",
+          "label_sequence_id": "54",
+          "coordinates": [
+            "34.464",
+            "21.492",
+            "-20.642"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "2465",
+          "group": "HETATM",
+          "element": "O",
+          "author_component": "NEC",
+          "author_chain": "A",
+          "author_residue_number": "400",
+          "author_insertion_code": "?",
+          "author_atom": "O2'",
+          "label_chain": "B",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "31.889",
+            "10.877",
+            "-18.646"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/2YDV.cif",
+        "sha256": "6957703aa88ede652c5e9d8850193c7ccd4348e7c54fe34f7f2867b1a8ec664f"
+      }
+    },
+    {
+      "structure_id": "2YDV",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NEC",
+        "author_chain": "A",
+        "author_residue_number": "400"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "65",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 65
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 65,
+        "canonical_residue": "T",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          459,
+          460,
+          461,
+          462,
+          463
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 9.654675188736283,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "461",
+          "group": "ATOM",
+          "element": "C",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "65",
+          "author_insertion_code": "?",
+          "author_atom": "C",
+          "label_chain": "A",
+          "label_sequence_id": "65",
+          "coordinates": [
+            "37.989",
+            "8.820",
+            "-26.735"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "2474",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "NEC",
+          "author_chain": "A",
+          "author_residue_number": "400",
+          "author_insertion_code": "?",
+          "author_atom": "C2",
+          "label_chain": "B",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "32.873",
+            "5.499",
+            "-19.251"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/2YDV.cif",
+        "sha256": "6957703aa88ede652c5e9d8850193c7ccd4348e7c54fe34f7f2867b1a8ec664f"
+      }
+    },
+    {
+      "structure_id": "2YDV",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NEC",
+        "author_chain": "A",
+        "author_residue_number": "400"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "89",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 89
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 89,
+        "canonical_residue": "Q",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          628,
+          629,
+          630,
+          631,
+          632
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 3.9725871922463822,
+      "in_ligand_defined_pocket": true,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "628",
+          "group": "ATOM",
+          "element": "N",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "89",
+          "author_insertion_code": "?",
+          "author_atom": "N",
+          "label_chain": "A",
+          "label_sequence_id": "89",
+          "coordinates": [
+            "32.987",
+            "17.162",
+            "-12.029"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "2459",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "NEC",
+          "author_chain": "A",
+          "author_residue_number": "400",
+          "author_insertion_code": "?",
+          "author_atom": "C52",
+          "label_chain": "B",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "32.457",
+            "13.305",
+            "-11.239"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/2YDV.cif",
+        "sha256": "6957703aa88ede652c5e9d8850193c7ccd4348e7c54fe34f7f2867b1a8ec664f"
+      }
+    },
+    {
+      "structure_id": "2YDV",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NEC",
+        "author_chain": "A",
+        "author_residue_number": "400"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "154",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 154
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 154,
+        "canonical_residue": "N",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          1122,
+          1123,
+          1124,
+          1125,
+          1126
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 17.560294758346174,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "1122",
+          "group": "ATOM",
+          "element": "N",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "154",
+          "author_insertion_code": "?",
+          "author_atom": "N",
+          "label_chain": "A",
+          "label_sequence_id": "154",
+          "coordinates": [
+            "45.121",
+            "-4.655",
+            "-26.792"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "2473",
+          "group": "HETATM",
+          "element": "N",
+          "author_component": "NEC",
+          "author_chain": "A",
+          "author_residue_number": "400",
+          "author_insertion_code": "?",
+          "author_atom": "N1",
+          "label_chain": "B",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "32.501",
+            "4.389",
+            "-18.588"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/2YDV.cif",
+        "sha256": "6957703aa88ede652c5e9d8850193c7ccd4348e7c54fe34f7f2867b1a8ec664f"
+      }
+    },
+    {
+      "structure_id": "4UG2",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NGI",
+        "author_chain": "A",
+        "author_residue_number": "1311"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "48",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 48
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 48,
+        "canonical_residue": "L",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          325,
+          326,
+          327,
+          328,
+          329
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 13.338006522715457,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "328",
+          "group": "ATOM",
+          "element": "O",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "48",
+          "author_insertion_code": "?",
+          "author_atom": "O",
+          "label_chain": "A",
+          "label_sequence_id": "48",
+          "coordinates": [
+            "-2.606",
+            "-13.849",
+            "40.871"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "4430",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "NGI",
+          "author_chain": "A",
+          "author_residue_number": "1311",
+          "author_insertion_code": "?",
+          "author_atom": "C1",
+          "label_chain": "D",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "-0.049",
+            "-18.689",
+            "28.708"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/4UG2.cif",
+        "sha256": "9ecdc696aad3d696fc0b07a289bd7e002749944530f2289a75a26aba3866900d"
+      }
+    },
+    {
+      "structure_id": "4UG2",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NGI",
+        "author_chain": "A",
+        "author_residue_number": "1311"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "54",
+          "insertion_code": "",
+          "name": "LEU",
+          "label_sequence_id": 54
+        },
+        "deposited_residue": "LEU",
+        "canonical_position": 54,
+        "canonical_residue": "A",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          361,
+          362,
+          363,
+          364,
+          365,
+          366,
+          367,
+          368
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 10.892390233552966,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "364",
+          "group": "ATOM",
+          "element": "O",
+          "author_component": "LEU",
+          "author_chain": "A",
+          "author_residue_number": "54",
+          "author_insertion_code": "?",
+          "author_atom": "O",
+          "label_chain": "A",
+          "label_sequence_id": "54",
+          "coordinates": [
+            "-4.712",
+            "-8.058",
+            "33.293"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "4441",
+          "group": "HETATM",
+          "element": "O",
+          "author_component": "NGI",
+          "author_chain": "A",
+          "author_residue_number": "1311",
+          "author_insertion_code": "?",
+          "author_atom": "O4",
+          "label_chain": "D",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "-6.064",
+            "-17.452",
+            "27.948"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/4UG2.cif",
+        "sha256": "9ecdc696aad3d696fc0b07a289bd7e002749944530f2289a75a26aba3866900d"
+      }
+    },
+    {
+      "structure_id": "4UG2",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NGI",
+        "author_chain": "A",
+        "author_residue_number": "1311"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "65",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 65
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 65,
+        "canonical_residue": "T",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          439,
+          440,
+          441,
+          442,
+          443
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 7.661645841462525,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "442",
+          "group": "ATOM",
+          "element": "O",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "65",
+          "author_insertion_code": "?",
+          "author_atom": "O",
+          "label_chain": "A",
+          "label_sequence_id": "65",
+          "coordinates": [
+            "-9.945",
+            "-9.317",
+            "18.476"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "4454",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "NGI",
+          "author_chain": "A",
+          "author_residue_number": "1311",
+          "author_insertion_code": "?",
+          "author_atom": "C12",
+          "label_chain": "D",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "-8.838",
+            "-16.895",
+            "18.698"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/4UG2.cif",
+        "sha256": "9ecdc696aad3d696fc0b07a289bd7e002749944530f2289a75a26aba3866900d"
+      }
+    },
+    {
+      "structure_id": "4UG2",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NGI",
+        "author_chain": "A",
+        "author_residue_number": "1311"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "89",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 89
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 89,
+        "canonical_residue": "Q",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          608,
+          609,
+          610,
+          611,
+          612
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 3.8793944115029095,
+      "in_ligand_defined_pocket": true,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "608",
+          "group": "ATOM",
+          "element": "N",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "89",
+          "author_insertion_code": "?",
+          "author_atom": "N",
+          "label_chain": "A",
+          "label_sequence_id": "89",
+          "coordinates": [
+            "0.400",
+            "-16.251",
+            "31.692"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "4430",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "NGI",
+          "author_chain": "A",
+          "author_residue_number": "1311",
+          "author_insertion_code": "?",
+          "author_atom": "C1",
+          "label_chain": "D",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "-0.049",
+            "-18.689",
+            "28.708"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/4UG2.cif",
+        "sha256": "9ecdc696aad3d696fc0b07a289bd7e002749944530f2289a75a26aba3866900d"
+      }
+    },
+    {
+      "structure_id": "4UG2",
+      "selected_author_chain": "A",
+      "ligand_instance": {
+        "component": "NGI",
+        "author_chain": "A",
+        "author_residue_number": "1311"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "A",
+          "number": "154",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 154
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 154,
+        "canonical_residue": "N",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          1102,
+          1103,
+          1104,
+          1105,
+          1106
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 12.9669580472831,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "1102",
+          "group": "ATOM",
+          "element": "N",
+          "author_component": "ALA",
+          "author_chain": "A",
+          "author_residue_number": "154",
+          "author_insertion_code": "?",
+          "author_atom": "N",
+          "label_chain": "A",
+          "label_sequence_id": "154",
+          "coordinates": [
+            "-8.338",
+            "-9.698",
+            "5.347"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "4460",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "NGI",
+          "author_chain": "A",
+          "author_residue_number": "1311",
+          "author_insertion_code": "?",
+          "author_atom": "C18",
+          "label_chain": "D",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "-11.385",
+            "-19.522",
+            "13.243"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/4UG2.cif",
+        "sha256": "9ecdc696aad3d696fc0b07a289bd7e002749944530f2289a75a26aba3866900d"
+      }
+    },
+    {
+      "structure_id": "9EHS",
+      "selected_author_chain": "R",
+      "ligand_instance": {
+        "component": "A1BII",
+        "author_chain": "R",
+        "author_residue_number": "501"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "R",
+          "number": "97",
+          "insertion_code": "",
+          "name": "ARG",
+          "label_sequence_id": 133
+        },
+        "deposited_residue": "ARG",
+        "canonical_position": 97,
+        "canonical_residue": "S",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          4876,
+          4877,
+          4878,
+          4879,
+          4880,
+          4881,
+          4882,
+          4883,
+          4884,
+          4885,
+          4886
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 8.437769577969068,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "4886",
+          "group": "ATOM",
+          "element": "N",
+          "author_component": "ARG",
+          "author_chain": "R",
+          "author_residue_number": "97",
+          "author_insertion_code": "?",
+          "author_atom": "NH2",
+          "label_chain": "D",
+          "label_sequence_id": "133",
+          "coordinates": [
+            "144.60413",
+            "147.30925",
+            "176.14937"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "7181",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "A1BII",
+          "author_chain": "R",
+          "author_residue_number": "501",
+          "author_insertion_code": "?",
+          "author_atom": "C1",
+          "label_chain": "E",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "146.52226",
+            "155.32659",
+            "177.94909"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/9EHS.cif",
+        "sha256": "70d760c7035663ef53c8d3c78801cb224db76d5ee89af40e8950bd114f7e1474"
+      }
+    },
+    {
+      "structure_id": "9EHS",
+      "selected_author_chain": "R",
+      "ligand_instance": {
+        "component": "A1BII",
+        "author_chain": "R",
+        "author_residue_number": "501"
+      },
+      "mutation": {
+        "deposited_author_residue": {
+          "chain": "R",
+          "number": "160",
+          "insertion_code": "",
+          "name": "ALA",
+          "label_sequence_id": 196
+        },
+        "deposited_residue": "ALA",
+        "canonical_position": 160,
+        "canonical_residue": "N",
+        "mutation_flag": true,
+        "mapping_status": "UNIQUE_CANONICAL_POSITION",
+        "source_atom_ids": [
+          5401,
+          5402,
+          5403,
+          5404,
+          5405
+        ]
+      },
+      "pocket_distance_cutoff_angstrom": 4.5,
+      "minimum_heavy_atom_distance_angstrom": 20.480163574349216,
+      "in_ligand_defined_pocket": false,
+      "minimum_distance_pair": {
+        "receptor_atom": {
+          "atom_site_id": "5403",
+          "group": "ATOM",
+          "element": "C",
+          "author_component": "ALA",
+          "author_chain": "R",
+          "author_residue_number": "160",
+          "author_insertion_code": "?",
+          "author_atom": "C",
+          "label_chain": "D",
+          "label_sequence_id": "196",
+          "coordinates": [
+            "158.36801",
+            "173.03958",
+            "188.63486"
+          ]
+        },
+        "ligand_atom": {
+          "atom_site_id": "7185",
+          "group": "HETATM",
+          "element": "C",
+          "author_component": "A1BII",
+          "author_chain": "R",
+          "author_residue_number": "501",
+          "author_insertion_code": "?",
+          "author_atom": "C16",
+          "label_chain": "E",
+          "label_sequence_id": ".",
+          "coordinates": [
+            "145.02595",
+            "157.68576",
+            "186.25017"
+          ]
+        }
+      },
+      "source_mmcif": {
+        "path": "/Users/mileshuang/Desktop/sbdd-project/references/stage5/d017/structures/raw/9EHS.cif",
+        "sha256": "70d760c7035663ef53c8d3c78801cb224db76d5ee89af40e8950bd114f7e1474"
+      }
+    }
+  ]
+}

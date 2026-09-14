@@ -227,6 +227,68 @@ class Stage5RouterTests(unittest.TestCase):
             "claims not authorized by frozen implementation authority",
         )
 
+    def test_level2_homolog_route_reads_real_d017_artifact(self):
+        report = build_stage5_report(
+            {
+                "schema_version": 1,
+                "target_id": "test_level2_d017_bridge",
+                "evidence": {
+                    "structure_available": True,
+                    "cognate_complex_available": False,
+                    "apo_structure_available": False,
+                    "homolog_complex_available": True,
+                    "d017_pocket_measurement_artifact": (
+                        "references/stage5/d017/"
+                        "calibration_runs/P3/post_usalign/"
+                        "pocket_measurement.json"
+                    ),
+                    "gate_validation": None,
+                },
+            }
+        )
+
+        evidence = report["target_record"]["evidence"]
+        ruling = report["target_record"]["ruling"]
+
+        self.assertEqual(
+            evidence["mapping_coverage"],
+            1.0,
+        )
+        self.assertEqual(
+            evidence["mapped_pocket_residue_count"],
+            12,
+        )
+        self.assertEqual(
+            evidence["pocket_superposition_rmsd"],
+            0.4365457976453139,
+        )
+        self.assertTrue(
+            evidence["level2_pocket_eligible"]
+        )
+        self.assertTrue(
+            evidence["pocket_conserved"]
+        )
+        self.assertEqual(
+            evidence["evidence_level"],
+            2,
+        )
+        self.assertEqual(
+            evidence["d017_pocket_measurement_artifact"],
+            (
+                "references/stage5/d017/"
+                "calibration_runs/P3/post_usalign/"
+                "pocket_measurement.json"
+            ),
+        )
+        self.assertEqual(
+            ruling["route"],
+            LEVEL2_ROUTE,
+        )
+        self.assertIn(
+            HOMOLOGY_INFERRED_LABEL,
+            ruling["labels"],
+        )
+
     def test_level2_homolog_route_derives_d018_conservation(self):
         report = build_stage5_report(
             {

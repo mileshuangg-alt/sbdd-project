@@ -462,8 +462,82 @@ def evaluate_level2_pocket_conservation(
         "maximum_pocket_rmsd_angstrom": D018_MAX_POCKET_RMSD_ANGSTROM,
     }
 
+
+def load_d017_pocket_measurement_artifact(artifact_path):
+    """Load a persisted D017 pocket-measurement artifact."""
+
+    artifact_path = Path(artifact_path)
+
+    if not artifact_path.exists():
+        raise FileNotFoundError(
+            f"D017 pocket-measurement artifact not found: "
+            f"{artifact_path}"
+        )
+
+    with artifact_path.open("r") as handle:
+        artifact = json.load(handle)
+
+    measurement = artifact.get("measurement")
+    if not isinstance(measurement, dict):
+        raise ValueError(
+            "D017 pocket-measurement artifact missing "
+            "measurement object."
+        )
+
+    required = {
+        "mapping_coverage",
+        "mapped_pocket_residues",
+        "pocket_superposition_rmsd",
+    }
+
+    missing = sorted(required - measurement.keys())
+    if missing:
+        raise ValueError(
+            "D017 pocket-measurement artifact missing required "
+            f"measurement fields: {missing}"
+        )
+
+    return artifact
+
+
+def enrich_stage5_evidence_from_d017_artifact(target_evidence):
+    """Populate Stage-5 homolog-pocket measurements from frozen D017 output."""
+
+    artifact_reference = target_evidence.get(
+        "d017_pocket_measurement_artifact"
+    )
+
+    if artifact_reference is None:
+        return target_evidence
+
+    artifact = load_d017_pocket_measurement_artifact(
+        artifact_reference
+    )
+    measurement = artifact["measurement"]
+
+    enriched = deepcopy(target_evidence)
+
+    enriched["mapping_coverage"] = measurement[
+        "mapping_coverage"
+    ]
+    enriched["mapped_pocket_residue_count"] = len(
+        measurement["mapped_pocket_residues"]
+    )
+    enriched["pocket_superposition_rmsd"] = measurement[
+        "pocket_superposition_rmsd"
+    ]
+    enriched["d017_pocket_measurement_artifact"] = (
+        str(artifact_reference)
+    )
+
+    return enriched
+
 def build_stage5_target_record(target_evidence, implementation=None):
     """Build the canonical Stage-5 target record."""
+
+    target_evidence = enrich_stage5_evidence_from_d017_artifact(
+        target_evidence
+    )
 
     target_evidence = deepcopy(target_evidence)
 

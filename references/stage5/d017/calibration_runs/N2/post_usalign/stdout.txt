@@ -1,0 +1,24 @@
+
+ ********************************************************************
+ * US-align (Version 20220227)                                      *
+ * Universal Structure Alignment of Proteins and Nucleic Acids      *
+ * References: C Zhang, M Shine, AM Pyle, Y Zhang. (2022) Submitted.*
+ * Please email comments and suggestions to yangzhanglab@umich.edu  *
+ ********************************************************************
+
+Name of Structure_1: references/stage5/d017/receptor_inputs/4UG2_A.cif:A (to be superimposed onto Structure_2)
+Name of Structure_2: references/stage5/d017/receptor_inputs/7XY7_R.cif:R
+Length of Structure_1: 292 residues
+Length of Structure_2: 283 residues
+
+Aligned length= 273, RMSD=   2.32, Seq_ID=n_identical/n_aligned= 0.641
+TM-score= 0.86529 (normalized by length of Structure_1: L=292, d0=6.28)
+TM-score= 0.89143 (normalized by length of Structure_2: L=283, d0=6.19)
+(You should use TM-score normalized by length of the reference structure)
+
+(":" denotes residue pairs of d < 5.0 Angstrom, "." denotes other aligned residues)
+--SSVYITVELAIAVLAILGNVLVCWAVWLNSNLQNVTNYFVVSAAAADILVGVLAIPFAIAISTGFCAACHGCLFIACFVLVLTASSIFSLLAIAIDRYIAIRIPLRYNGLVTGTRAKGIIAICWVLSFAIGLTPMLGWNNCGQPKEGKAHSQGCGEGQVACLFEDVVPMNYMVYFNFFACVLVPLLLMLGVYLRIFLAARRQL-ARST----LQ--KEVHAAKSLAIIVGLFALCWLPLHIINCFTFFCPDC-SHAPLWLMYLAIVLSHTNSVVNPFIYAYRIREFRQTFRKIIRSHVLR
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::             :::::::::::::::::::::::::::::::::::::::::::::: ..      .   ........:::::::::::::::::::::::::::: ::::::::::::::::::::::::::::::::::::::::..::   
+TQDALYVALELVIAALSVAGNVLVCAAVGTANTLQTPTNYFLVSLAAADVAVGLFAIPFAITISLGFCTDFYGCLFLACFVLVLTQSSIFSLLAVAVDRYLAICVPLRYKSLVTGTRARGVIAVLWVLAFGIGLTPFLGWNSKDSA-------------LVKCLFENVVPMSYMVYFNFFGCVLPPLLIMLVIYIKIFLVACRQLQRT--ELRTT-LQREIHAAKSLAMIVGIFALCWLPVHAVNCVTLFQPAQGKNKPKWAMNMAILLSHANSVVNPIVYAYRNRDFRYTFHKIISRY---
+
+#Total CPU time is  0.06 seconds

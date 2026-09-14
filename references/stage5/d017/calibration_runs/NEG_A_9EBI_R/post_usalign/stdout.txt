@@ -1,0 +1,24 @@
+
+ ********************************************************************
+ * US-align (Version 20220227)                                      *
+ * Universal Structure Alignment of Proteins and Nucleic Acids      *
+ * References: C Zhang, M Shine, AM Pyle, Y Zhang. (2022) Submitted.*
+ * Please email comments and suggestions to yangzhanglab@umich.edu  *
+ ********************************************************************
+
+Name of Structure_1: references/stage5/d017/receptor_inputs/2YDV_A.cif:A (to be superimposed onto Structure_2)
+Name of Structure_2: references/stage5/d017/receptor_inputs/9EBI_R.cif:R
+Length of Structure_1: 307 residues
+Length of Structure_2: 267 residues
+
+Aligned length= 264, RMSD=   2.02, Seq_ID=n_identical/n_aligned= 0.451
+TM-score= 0.81339 (normalized by length of Structure_1: L=307, d0=6.43)
+TM-score= 0.93058 (normalized by length of Structure_2: L=267, d0=6.03)
+(You should use TM-score normalized by length of the reference structure)
+
+(":" denotes residue pairs of d < 5.0 Angstrom, "." denotes other aligned residues)
+IMGSSVYITVELAIAVLAILGNVLVCWAVWLNSNLQNVTNYFVVSAAAADILVGVLAIPFAIAISTGFCAACHGCLFIACFVLVLTASSIFSLLAIAIDRYIAIRIPLRYNGLVTGTRAKGIIAICWVLSFAIGLTPMLGWNNCG-QPKEGKAHSQGCG--EGQVACLFEDVVPMNYMVYFNFFACVLVPLLLMLGVYLRIFLAARRQLKQMESQSTLQKEVHAAKSLAIIVGLFALCWLPLHIINCFTFFCPDCSHAPLWLMYLAIVLSHTNSVVNPFIYAYRIREFRQTFRKIIRSHVLRQQEPFKAA
+...:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::. ....           .::::::::::::::::::::::::::::::::::::::::::::::          .  .: .:::::::::::::::::::::::::::  : ::::::::::::::::::::::::::::::::::::                  
+SLANVTYITMEIFIGLCAIVGNVLVICVVKLNPSLQTTTFYFIVSLALADIAVGVLVMPLAIVVSLGITIHFYSCLFMTCLLLIFTHASIMSLLAIAVDRYLRVKLTVRYKRVTTHRRIWLALGLCWLVSFLVGLTPMFGWNMKLTSEYH---------RNVTFLSCQFVSVMRMDYMVYFSFLTWIFIPLVVMCAIYLDIFYIIRNK----------F--KT-AKSLFLVLFLFALSWLPLSIINCIIYFN--G-EVPQLVLYMGILLSHANSMMNPIVYAYKIKKFKETY------------------
+
+#Total CPU time is  0.06 seconds

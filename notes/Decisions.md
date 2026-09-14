@@ -4308,3 +4308,172 @@ The receptor alignment input is determined mechanically from the frozen canonica
 - D018 demonstrates that the frozen D017 measurements cannot support a defensible conservation rule;
 - new evidence shows that mapped Cα local RMSD is insufficient for the intended Level-2 characterization claim;
 - a change to the measurement contract is scientifically justified and recorded prospectively rather than introduced after inspection of favorable calibration outcomes.
+# D018 — Level-2 Homolog-Pocket Conservation Verdict
+
+**Decision date:** 2026-09-13
+
+**Status:** APPROVED
+
+## Decision
+
+D018 defines the rule by which the quantitative D017 homolog-pocket measurements are converted into the Level-2 target-arm field `pocket_conserved`.
+
+D018 does **not** alter the D017 measurement procedure. The following remain fixed:
+
+- homolog pocket definition;
+- US-align 20220227;
+- position-only receptor mapping;
+- exact-coordinate receptor inputs;
+- mapping coverage definition;
+- pocket sequence-identity definition;
+- local mapped-pocket Cα RMSD definition;
+- required state/species provenance.
+
+D018 must establish explicit acceptance criteria for:
+
+1. mapping coverage;
+2. pocket sequence identity;
+3. local pocket Cα RMSD;
+4. any required minimum mapped-pocket-residue count or equivalent completeness condition.
+
+These criteria must be selected from the frozen D017 calibration panel rather than introduced as arbitrary target-specific cutoffs.
+
+`pocket_conserved` is now evaluable for cases that satisfy the D018 eligibility conditions.
+
+## Calibration role
+
+The frozen D017 structure panel contains:
+
+- **P1:** A2A → A1, agonist/agonist context;
+- **P3:** A2A → A3, agonist/agonist context;
+- **N1:** A2A → A1, structural agonist context;
+- **N2:** A2A → A2B, active/active context;
+- **N3:** A2A → A3, inactive/inactive context.
+
+D018 shall use the completed D017 measurements from this frozen calibration panel to determine whether a single fixed rule can distinguish the intended positive and negative calibration cases without target-specific tuning.
+
+No threshold may be chosen merely because it makes an individual calibration case pass.
+
+## Calibration discrimination requirement
+
+Before D018 approval, completed D017 measurements must be attached for P1, P3, N1, N2, and N3, with per-case pass/fail shown under every proposed conservation rule.
+
+P3 and N3 are the same receptor pair (A2A→A3) represented in different structural states. Sequence identity and mapping coverage therefore cannot be assumed to discriminate them. The D018 analysis must identify which frozen D017 measurement, if any, separates P3 from N3 and show the measured values explicitly.
+
+If no frozen D017 measurement separates P3 from N3 under the proposed rule, the calibration panel does not constrain a discriminating conservation rule. D018 must state that limitation and must not freeze thresholds that the panel cannot falsify.
+
+**State is provenance, not a criterion.**
+
+## P1 calibration observation
+
+The completed P1 measurement currently provides:
+
+- total homolog-pocket residues = 14;
+- mapped = 14;
+- unmapped = 0;
+- mapping coverage = 1.0;
+- identical mapped residue pairs = 13/14;
+- pocket sequence identity = 0.9285714285714286;
+- local pocket Cα RMSD = 0.4398073045565676 Å.
+
+These are observations from D017 and are **not themselves D018 thresholds**.
+
+## Conservation verdict
+
+The D018 verdict must remain a separate classification layer above the three D017 measurements.
+
+The intended semantic distinction is:
+
+> **D017 measures homolog-pocket correspondence. D018 decides whether that measured correspondence is sufficient to treat the homolog pocket as conserved for the Level-2 target arm.**
+
+D018 must not allow the visualization artifacts, US-align exit status, global whole-structure RMSD, or any Level-3 pocket characterization to rescue a failed Level-2 conservation decision.
+
+
+## Final D018 Rule
+
+D018 is approved as the complete fixed Level-2 homolog-pocket conservation rule.
+
+### Eligibility
+
+A case is eligible for the Level-2 conservation verdict only when both conditions hold:
+
+- mapping coverage = **1.0**;
+- mapped homolog-pocket residue count >= **11**.
+
+These are completeness conditions for the experimentally ligand-defined homolog pocket. They are not class-discriminating scores.
+
+### Structural-conservation verdict
+
+For an eligible case:
+
+> `pocket_conserved = TRUE` iff local mapped-pocket C-alpha RMSD <= **0.5370920576693073 Å**.
+
+The cutoff is the midpoint between the largest positive-calibration pocket RMSD and the smallest negative-calibration pocket RMSD:
+
+- largest positive RMSD = **0.4398073045565676 Å**;
+- smallest negative RMSD = **0.634376810782047 Å**;
+- midpoint = **0.5370920576693073 Å**.
+
+### Pocket sequence identity
+
+**Pocket sequence identity carries no weight in the Level-2 verdict.**
+
+The rebuilt calibration panel demonstrated why: P3 is positive with pocket sequence identity **0.8333333333333334**, while 5UEN B is a structurally negative case with higher pocket sequence identity **0.85**. Therefore sequence identity cannot support a fixed discriminator consistent with the intended panel labels, whereas local pocket RMSD does.
+
+This preserves the semantic boundary of Level 2: the verdict is based on demonstrated local pocket structural conservation, not residue-identity similarity by itself.
+
+### Rebuilt calibration panel — final pass/fail
+
+| Calibration row | Intended class | Mapped residues | Coverage | Pocket sequence identity | Pocket C-alpha RMSD (Å) | Eligibility | `pocket_conserved` |
+|---|---|---:|---:|---:|---:|---|---|
+| P1 | Positive | 14 | 1.0 | 0.9285714285714286 | 0.4398073045565676 | PASS | **PASS** |
+| P3 | Positive | 12 | 1.0 | 0.8333333333333334 | 0.4365457976453139 | PASS | **PASS** |
+| N3 / 9EHS R | Negative | 11 | 1.0 | 0.6363636363636364 | 1.5790088912154592 | PASS | **FAIL** |
+| NEG_A_9EBI_R | Negative | 22 | 1.0 | 0.5454545454545454 | 0.634376810782047 | PASS | **FAIL** |
+| NEG_B_5UEN_B | Negative | 20 | 1.0 | 0.85 | 1.6228560849340186 | PASS | **FAIL** |
+
+The rebuilt panel therefore reproduces the intended calibration labels under the single fixed RMSD rule.
+
+### 5UEN chain-B provenance
+
+**The 5UEN mmCIF contains coordinate-bearing receptor copies on auth chains A and B, each paired with DU1 1201; the approved candidate is the B-copy (`5UEN B` with `DU1 B 1201`). The prior chain-A description was the erroneous provenance statement.**
+
+### Panel amendment
+
+The approved rebuilt panel is:
+
+- P1 — positive;
+- P3 — positive;
+- N3 / 9EHS R — existing preregistered structural negative;
+- NEG_A_9EBI_R / 9EBI R — replacement A3 structural negative;
+- NEG_B_5UEN_B / 5UEN B — replacement A1 structural negative.
+
+N1 and N2 are excluded from the structural-conservation calibration because their negative status is based on ligand assignment/context, which is outside the frozen D017 structural measurements. 7LD4 R is excluded because it failed its preregistered negative-direction screen.
+
+The D017 measurement contract itself remains unchanged.
+
+
+## Claim boundary
+
+If the frozen D018 criteria are satisfied, the authorized Level-2 target-arm claim is limited to:
+
+> **The target pocket is conserved by the frozen D018 homolog-pocket correspondence criterion.**
+
+This does **not** by itself establish:
+
+- ligand compatibility;
+- target-ligand interaction reproduction;
+- docking success;
+- Level-3 predicted-pocket validity;
+- generated-molecule binding;
+- biological efficacy.
+
+Those remain separate claim layers.
+
+### Governing principle
+
+D018 must convert the frozen D017 measurements into a deterministic, generator-independent Level-2 target-arm verdict without changing the underlying measurements or introducing target-specific tuning.
+
+### Revisit when
+
+Revisit D018 only if the frozen calibration panel, D017 measurement definitions, or Stage-5 Level-2 claim boundary is formally amended.

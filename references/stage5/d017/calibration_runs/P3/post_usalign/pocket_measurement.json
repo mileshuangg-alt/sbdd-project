@@ -1,0 +1,702 @@
+{
+  "schema_version": 1,
+  "decision_id": "D017",
+  "calibration_row_id": "P3",
+  "target": {
+    "pdb_id": "2YDV",
+    "chain": "A",
+    "structure_path": "references/stage5/d017/receptor_inputs/2YDV_A.cif",
+    "structure_sha256": "70b6a9973ca7a184642fa17cde2f17dbaf47b5a0b68de2783eeb22a29b362c61"
+  },
+  "homolog": {
+    "pdb_id": "9EBH",
+    "chain": "R",
+    "structure_path": "references/stage5/d017/receptor_inputs/9EBH_R.cif",
+    "structure_sha256": "bb79e79cfdb38eb9774eb678fd8fe731282e68d8a7b7a435ecb8bf655aa40d93"
+  },
+  "ligand": {
+    "component": "ADN",
+    "instance": "ADN R 401"
+  },
+  "pocket_definition": {
+    "distance_cutoff_angstrom": 4.5,
+    "atom_type": "heavy_atoms",
+    "source": "experimentally_bound_homolog_ligand"
+  },
+  "usalign": {
+    "stdout_path": "references/stage5/d017/calibration_runs/P3/post_usalign/stdout.txt",
+    "stdout_sha256": "7981e46c76c9aee5d8db92cb84a9f0dbceaabc6208510d66f83a78d1af1b8a02",
+    "config_path": "references/stage5/d017/usalign_20220227_config_v2.json",
+    "config_sha256": "6b98a09dcdc103a9c86aa640bc68a72e1685528ff7b5848df326048a99b2d6e6"
+  },
+  "measurement": {
+    "total_homolog_pocket_residues": 12,
+    "mapped_homolog_pocket_residues": 12,
+    "unmapped_homolog_pocket_residues": 0,
+    "unmapped_pocket_residues": [],
+    "mapping_coverage": 1.0,
+    "identical_mapped_residue_pairs": 10,
+    "pocket_sequence_identity": 0.8333333333333334,
+    "pocket_superposition_rmsd": 0.4365457976453139,
+    "pocket_residues": [
+      {
+        "chain": "R",
+        "number": "90",
+        "insertion_code": "",
+        "name": "LEU"
+      },
+      {
+        "chain": "R",
+        "number": "91",
+        "insertion_code": "",
+        "name": "LEU"
+      },
+      {
+        "chain": "R",
+        "number": "94",
+        "insertion_code": "",
+        "name": "THR"
+      },
+      {
+        "chain": "R",
+        "number": "168",
+        "insertion_code": "",
+        "name": "PHE"
+      },
+      {
+        "chain": "R",
+        "number": "177",
+        "insertion_code": "",
+        "name": "MET"
+      },
+      {
+        "chain": "R",
+        "number": "243",
+        "insertion_code": "",
+        "name": "TRP"
+      },
+      {
+        "chain": "R",
+        "number": "246",
+        "insertion_code": "",
+        "name": "LEU"
+      },
+      {
+        "chain": "R",
+        "number": "250",
+        "insertion_code": "",
+        "name": "ASN"
+      },
+      {
+        "chain": "R",
+        "number": "264",
+        "insertion_code": "",
+        "name": "LEU"
+      },
+      {
+        "chain": "R",
+        "number": "268",
+        "insertion_code": "",
+        "name": "ILE"
+      },
+      {
+        "chain": "R",
+        "number": "271",
+        "insertion_code": "",
+        "name": "SER"
+      },
+      {
+        "chain": "R",
+        "number": "272",
+        "insertion_code": "",
+        "name": "HIS"
+      }
+    ],
+    "pocket_distance_evidence": [
+      {
+        "key": {
+          "chain": "R",
+          "number": "90",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "value": {
+          "distance_angstrom": 3.9327855966223253,
+          "receptor_atom_site_id": "7068",
+          "receptor_atom": "O",
+          "ligand_atom_site_id": "8595",
+          "ligand_atom": "C5'"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "91",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "value": {
+          "distance_angstrom": 3.6513788293739,
+          "receptor_atom_site_id": "7079",
+          "receptor_atom": "CD1",
+          "ligand_atom_site_id": "8594",
+          "ligand_atom": "O5'"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "94",
+          "insertion_code": "",
+          "name": "THR"
+        },
+        "value": {
+          "distance_angstrom": 3.8274252366179535,
+          "receptor_atom_site_id": "7105",
+          "receptor_atom": "OG1",
+          "ligand_atom_site_id": "8595",
+          "ligand_atom": "C5'"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "168",
+          "insertion_code": "",
+          "name": "PHE"
+        },
+        "value": {
+          "distance_angstrom": 3.4167266246072434,
+          "receptor_atom_site_id": "7713",
+          "receptor_atom": "CD1",
+          "ligand_atom_site_id": "8611",
+          "ligand_atom": "N3"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "177",
+          "insertion_code": "",
+          "name": "MET"
+        },
+        "value": {
+          "distance_angstrom": 3.984839027187919,
+          "receptor_atom_site_id": "7792",
+          "receptor_atom": "CE",
+          "ligand_atom_site_id": "8604",
+          "ligand_atom": "C8"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "243",
+          "insertion_code": "",
+          "name": "TRP"
+        },
+        "value": {
+          "distance_angstrom": 4.0760409219486515,
+          "receptor_atom_site_id": "8186",
+          "receptor_atom": "CZ3",
+          "ligand_atom_site_id": "8595",
+          "ligand_atom": "C5'"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "246",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "value": {
+          "distance_angstrom": 3.5314604819394497,
+          "receptor_atom_site_id": "8210",
+          "receptor_atom": "CD2",
+          "ligand_atom_site_id": "8605",
+          "ligand_atom": "N7"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "250",
+          "insertion_code": "",
+          "name": "ASN"
+        },
+        "value": {
+          "distance_angstrom": 3.094165723341263,
+          "receptor_atom_site_id": "8239",
+          "receptor_atom": "OD1",
+          "ligand_atom_site_id": "8608",
+          "ligand_atom": "N6"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "264",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "value": {
+          "distance_angstrom": 3.894098757979828,
+          "receptor_atom_site_id": "8351",
+          "receptor_atom": "CD1",
+          "ligand_atom_site_id": "8608",
+          "ligand_atom": "N6"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "268",
+          "insertion_code": "",
+          "name": "ILE"
+        },
+        "value": {
+          "distance_angstrom": 3.8366261065420426,
+          "receptor_atom_site_id": "8383",
+          "receptor_atom": "CG2",
+          "ligand_atom_site_id": "8601",
+          "ligand_atom": "O2'"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "271",
+          "insertion_code": "",
+          "name": "SER"
+        },
+        "value": {
+          "distance_angstrom": 2.8362040959176467,
+          "receptor_atom_site_id": "8406",
+          "receptor_atom": "OG",
+          "ligand_atom_site_id": "8599",
+          "ligand_atom": "O3'"
+        }
+      },
+      {
+        "key": {
+          "chain": "R",
+          "number": "272",
+          "insertion_code": "",
+          "name": "HIS"
+        },
+        "value": {
+          "distance_angstrom": 2.697354057256848,
+          "receptor_atom_site_id": "8416",
+          "receptor_atom": "NE2",
+          "ligand_atom_site_id": "8599",
+          "ligand_atom": "O3'"
+        }
+      }
+    ],
+    "mapped_pocket_residues": [
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "90",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "84",
+          "insertion_code": "",
+          "name": "VAL"
+        },
+        "alignment_column": 82,
+        "identical": false
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "91",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "85",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "alignment_column": 83,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "94",
+          "insertion_code": "",
+          "name": "THR"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "88",
+          "insertion_code": "",
+          "name": "THR"
+        },
+        "alignment_column": 86,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "168",
+          "insertion_code": "",
+          "name": "PHE"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "168",
+          "insertion_code": "",
+          "name": "PHE"
+        },
+        "alignment_column": 169,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "177",
+          "insertion_code": "",
+          "name": "MET"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "177",
+          "insertion_code": "",
+          "name": "MET"
+        },
+        "alignment_column": 178,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "243",
+          "insertion_code": "",
+          "name": "TRP"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "246",
+          "insertion_code": "",
+          "name": "TRP"
+        },
+        "alignment_column": 239,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "246",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "249",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "alignment_column": 242,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "250",
+          "insertion_code": "",
+          "name": "ASN"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "253",
+          "insertion_code": "",
+          "name": "ASN"
+        },
+        "alignment_column": 246,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "264",
+          "insertion_code": "",
+          "name": "LEU"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "270",
+          "insertion_code": "",
+          "name": "MET"
+        },
+        "alignment_column": 263,
+        "identical": false
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "268",
+          "insertion_code": "",
+          "name": "ILE"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "274",
+          "insertion_code": "",
+          "name": "ILE"
+        },
+        "alignment_column": 267,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "271",
+          "insertion_code": "",
+          "name": "SER"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "277",
+          "insertion_code": "",
+          "name": "SER"
+        },
+        "alignment_column": 270,
+        "identical": true
+      },
+      {
+        "homolog_residue": {
+          "chain": "R",
+          "number": "272",
+          "insertion_code": "",
+          "name": "HIS"
+        },
+        "target_residue": {
+          "chain": "A",
+          "number": "278",
+          "insertion_code": "",
+          "name": "HIS"
+        },
+        "alignment_column": 271,
+        "identical": true
+      }
+    ],
+    "local_superposition": {
+      "rotation": [
+        [
+          0.24929856886934398,
+          0.12757585604460317,
+          0.9599867835101603
+        ],
+        [
+          0.9615952838503342,
+          0.08492534055217332,
+          -0.2610022923441323
+        ],
+        [
+          -0.11482479539059234,
+          0.9881862615350324,
+          -0.10150457564526105
+        ]
+      ],
+      "translation": [
+        -109.87397678642928,
+        -107.41370898307571,
+        -86.93260296934909
+      ],
+      "target_ca_coordinates": [
+        [
+          36.658,
+          14.365,
+          -17.583
+        ],
+        [
+          36.205,
+          13.582,
+          -13.864
+        ],
+        [
+          32.162,
+          17.19,
+          -14.326
+        ],
+        [
+          37.687,
+          4.528,
+          -19.384
+        ],
+        [
+          34.496,
+          4.988,
+          -8.955
+        ],
+        [
+          23.773,
+          11.056,
+          -12.506
+        ],
+        [
+          25.629,
+          5.655,
+          -14.697
+        ],
+        [
+          29.116,
+          1.148,
+          -12.056
+        ],
+        [
+          26.501,
+          2.527,
+          -21.205
+        ],
+        [
+          27.125,
+          8.565,
+          -20.103
+        ],
+        [
+          25.119,
+          12.325,
+          -17.08
+        ],
+        [
+          26.317,
+          14.981,
+          -19.543
+        ]
+      ],
+      "homolog_ca_coordinates": [
+        [
+          118.64217,
+          132.97101,
+          96.21826
+        ],
+        [
+          122.23799,
+          131.69819,
+          95.89778
+        ],
+        [
+          120.9894,
+          127.85346,
+          99.47138
+        ],
+        [
+          115.56783,
+          134.0095,
+          86.47937
+        ],
+        [
+          125.03778,
+          127.69249,
+          86.6271
+        ],
+        [
+          120.0448,
+          119.09752,
+          93.88022
+        ],
+        [
+          117.71358,
+          120.68732,
+          88.94815
+        ],
+        [
+          120.60992,
+          123.70908,
+          83.595
+        ],
+        [
+          111.08145,
+          123.01696,
+          86.03795
+        ],
+        [
+          112.87747,
+          124.33269,
+          92.38767
+        ],
+        [
+          115.94993,
+          122.3393,
+          95.72219
+        ],
+        [
+          114.28131,
+          123.91587,
+          98.77854
+        ]
+      ],
+      "transformed_homolog_ca_coordinates": [
+        [
+          36.519400489600955,
+          14.09633836628582,
+          -17.51001987832339
+        ],
+        [
+          36.228694610749116,
+          14.130289575909757,
+          -13.693341078297635
+        ],
+        [
+          31.810010786158827,
+          17.17586705745147,
+          -14.25122438440222
+        ],
+        [
+          37.86984506529039,
+          4.168483625322779,
+          -19.743852020210582
+        ],
+        [
+          34.13931995649618,
+          4.986131134167451,
+          -9.019066359907825
+        ],
+        [
+          23.79685655132441,
+          10.786650219433128,
+          -12.30517916531349
+        ],
+        [
+          25.310754852472158,
+          5.750453323785578,
+          -14.457433326734034
+        ],
+        [
+          29.553192787803923,
+          1.0866710898124836,
+          -11.922302273980591
+        ],
+        [
+          26.23170829153152,
+          2.226379473681206,
+          -21.136833237549
+        ],
+        [
+          27.215547970225074,
+          8.84195314957337,
+          -20.400611954801263
+        ],
+        [
+          25.681787851533116,
+          12.359762392446669,
+          -17.269280639982412
+        ],
+        [
+          26.430880786814257,
+          15.30102059213047,
+          -19.592855680497507
+        ]
+      ]
+    }
+  }
+}

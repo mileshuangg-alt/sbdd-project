@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "decision_id": "D018",
+  "status": "APPROVED_CANDIDATES_PENDING_MEASUREMENT",
+  "purpose": "Rebuild the negative calibration panel for one fixed structural-conservation rule over frozen D017 measurements.",
+  "manifest_status": "UNCHANGED",
+  "candidates": [
+    {
+      "candidate_id": "NEG_A_9EBI_R",
+      "family": "A3",
+      "pdb_id": "9EBI",
+      "chain": "R",
+      "species": "Homo sapiens",
+      "state": "ACTIVE",
+      "ligand_component": "Q8L",
+      "ligand_instance": "Q8L R 401",
+      "raw_structure_path": "references/stage5/d017/structures/raw/9EBI.cif",
+      "receptor_input_path": "references/stage5/d017/receptor_inputs/9EBI_R.cif",
+      "canonical_fasta": "references/stage5/d017/canonical_sequences/ADORA3_P0DMS8.fasta",
+      "raw_structure_sha256": "5df554f499bb1f21ee5e262b1c30147ee22b546eb8cb3d48c6b79edf6564ff54",
+      "canonical_fasta_sha256": "b117a029664c0025d6b833df72fef925dbd4f70936ee9a04ec09254edd59af92",
+      "expected_negative_direction": "lower mapped-pocket sequence identity and/or larger local mapped-pocket C-alpha RMSD than the positive envelope"
+    },
+    {
+      "candidate_id": "NEG_B_7LD4_R",
+      "family": "A1",
+      "pdb_id": "7LD4",
+      "chain": "R",
+      "species": "Homo sapiens",
+      "state": "ACTIVE",
+      "ligand_component": "ADN",
+      "ligand_instance": "ADN R 401",
+      "raw_structure_path": "references/stage5/d017/structures/raw/7LD4.cif",
+      "receptor_input_path": "references/stage5/d017/receptor_inputs/7LD4_R.cif",
+      "canonical_fasta": "references/stage5/d017/canonical_sequences/ADORA1_P30542.fasta",
+      "raw_structure_sha256": "5ccedcf0850c5ac4ee4f1a4466d81ef18a7315bb766365729cb0ec3b7e1a3bf7",
+      "canonical_fasta_sha256": "b737a73f9d6c1340d0df89ce558deb1e72b84309df0967db13675b7205dfc2c89",
+      "expected_negative_direction": "lower mapped-pocket sequence identity and/or larger local mapped-pocket C-alpha RMSD than the positive envelope"
+    }
+  ],
+  "target_context": {
+    "pdb_id": "2YDV",
+    "chain": "A",
+    "state": "ACTIVE",
+    "species": "Homo sapiens",
+    "role": "frozen A2A target context for replacement-negative screening"
+  }
+}

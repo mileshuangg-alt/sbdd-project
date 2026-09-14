@@ -1,0 +1,24 @@
+
+ ********************************************************************
+ * US-align (Version 20220227)                                      *
+ * Universal Structure Alignment of Proteins and Nucleic Acids      *
+ * References: C Zhang, M Shine, AM Pyle, Y Zhang. (2022) Submitted.*
+ * Please email comments and suggestions to yangzhanglab@umich.edu  *
+ ********************************************************************
+
+Name of Structure_1: references/stage5/d017/receptor_inputs/2YDV_A.cif:A (to be superimposed onto Structure_2)
+Name of Structure_2: references/stage5/d017/receptor_inputs/5UEN_B.cif:B
+Length of Structure_1: 307 residues
+Length of Structure_2: 288 residues
+
+Aligned length= 283, RMSD=   2.64, Seq_ID=n_identical/n_aligned= 0.541
+TM-score= 0.83485 (normalized by length of Structure_1: L=307, d0=6.43)
+TM-score= 0.88616 (normalized by length of Structure_2: L=288, d0=6.24)
+(You should use TM-score normalized by length of the reference structure)
+
+(":" denotes residue pairs of d < 5.0 Angstrom, "." denotes other aligned residues)
+IMGSSVYITVELAIAVLAILGNVLVCWAVWLNSNLQNVTNYFVVSAAAADILVGVLAIPFAIAISTGFCAACHGCLFIACFVLVLTASSIFSLLAIAIDRYIAIRIPLRYNGLVTGTRAKGIIAICWVLSFAIGLTPMLGWNNCGQP--KEGK-AHSQGC--GEGQVACLFEDVVPMNYMVYFNFFACVLVPLLLMLGVYLRIFLAARRQLKQMESQSTLQKEVHAAKSLAIIVGLFALCWLPLHIINCFTFFCPDCSHAPLWLMYLAIVLSHTNSVVNPFIYAYRIREFRQTFRKIIRSHVLRQQEPFKAA
+...::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::..::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  ...  ..      ..::::::::::::::::::::::::::::::::::::::::::::::         : ::::::::::::::::::::::::::::::::::::: ::::::::::::::::::::..::..::::::::::::::::. ::       
+SAFQAAYIGIEVLIALVSVPGNVLVIWAVKVNQALRDATFCFIVSLAVADVAVGALVIPLAILINIGPQTYFHTCLMVACPVLILTQSSILALLAIAVDRYLRVKIPLRYKMVVTPRRAAVAIAGCWILSFVVGLTPMFGWNNLSAVERAWA-AAG----SMGEPVIKCEFEKVISMEYMVYFNFFVWVLPPLLLMVLIYLEVFYLIRKQ---------L-KELKIAKSLALILFLFALSWLPLHILNCITLFCPSCH-KPSILTYIAIFLTHGNSAMNPIVYAFRIQKFRVTFLKIWNDHF-RC-------
+
+#Total CPU time is  0.06 seconds

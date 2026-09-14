@@ -1,0 +1,24 @@
+
+ ********************************************************************
+ * US-align (Version 20220227)                                      *
+ * Universal Structure Alignment of Proteins and Nucleic Acids      *
+ * References: C Zhang, M Shine, AM Pyle, Y Zhang. (2022) Submitted.*
+ * Please email comments and suggestions to yangzhanglab@umich.edu  *
+ ********************************************************************
+
+Name of Structure_1: references/stage5/d017/receptor_inputs/2YDV_A.cif:A (to be superimposed onto Structure_2)
+Name of Structure_2: references/stage5/d017/receptor_inputs/7LD4_R.cif:R
+Length of Structure_1: 307 residues
+Length of Structure_2: 287 residues
+
+Aligned length= 280, RMSD=   2.47, Seq_ID=n_identical/n_aligned= 0.536
+TM-score= 0.84252 (normalized by length of Structure_1: L=307, d0=6.43)
+TM-score= 0.89842 (normalized by length of Structure_2: L=287, d0=6.23)
+(You should use TM-score normalized by length of the reference structure)
+
+(":" denotes residue pairs of d < 5.0 Angstrom, "." denotes other aligned residues)
+IM-GSSVYITVELAIAVLAILGNVLVCWAVWLNSNLQNVTNYFVVSAAAADILVGVLAIPFAIAISTGFCAACHGCLFIACFVLVLTASSIFSLLAIAIDRYIAIRIPLRYNGLVTGTRAKGIIAICWVLSFAIGLTPMLGWNNCGQPKEGKAHSQGC------GEGQVACLFEDVVPMNYMVYFNFFACVLVPLLLMLGVYLRIFLAARRQLKQMESQSTLQKEVHAAKSLAIIVGLFALCWLPLHIINCFTFFCPDCSHAPLWLMYLAIVLSHTNSVVNPFIYAYRIREFRQTFRKIIRSHVLRQQEPFKAA
+.. .::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::....            ..:::::::::::::::::::::::::::::::::::::::::::::::::.   . .......:::::::::::::::::::::::::::::::: :::::::::::::::::::::::::::::::::::::                
+ISAFQAAYIGIEVLIALVSVPGNVLVIWAVKVNQALRDATFCFIVSLAVADVAVGALVIPLAILINIGPQTYFHTCLMVACPVLILTQSSILALLAIAVDRYLRVKIPLRYKMVVTPRRAAVAIAGCWILSFVVGLTPMFGWNNLSAVERAW------AANGSMGEPVIKCEFEKVISMEYMVYFNFFVWVLPPLLLMVLIYLEVFYLIRKQLNKK---Y-YGKELKIAKSLALILFLFALSWLPLHILNCITLFCPSCH-KPSILTYIAIFLTHGNSAMNPIVYAFRIQKFRVTFLK----------------
+
+#Total CPU time is  0.07 seconds

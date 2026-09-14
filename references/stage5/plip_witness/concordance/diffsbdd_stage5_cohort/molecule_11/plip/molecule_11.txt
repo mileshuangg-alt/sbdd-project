@@ -1,0 +1,24 @@
+Prediction of noncovalent interactions for PDB structure PLIP_COMPLEX_PROTEIN
+=============================================================================
+Created on 2026/09/06 using PLIP v3.0.1
+
+If you are using PLIP in your work, please cite:
+Schake,P. Bolz,SN. et al. PLIP 2025: introducing protein–protein interactions to the protein–ligand interaction profiler. Nucl. Acids Res. (10 May 2025), gkaf361. doi: 10.1093/nar/gkaf361
+Analysis was done on model 1.
+
+DIF:Z:1 (DIF) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): A
+
+
+**Hydrophobic Interactions**
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+-------------------------+-------------------------+
+| RESNR | RESTYPE | RESCHAIN | RESNR_LIG | RESTYPE_LIG | RESCHAIN_LIG | DIST | LIGCARBONIDX | PROTCARBONIDX | LIGCOO                  | PROTCOO                 | 
++=======+=========+==========+===========+=============+==============+======+==============+===============+=========================+=========================+
+| 66    | ILE     | A        | 1         | DIF         | Z            | 3.97 | 586          | 108           | 9.150, -36.189, -34.836 | 7.430, -39.336, -36.540 | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+-------------------------+-------------------------+
+| 168   | PHE     | A        | 1         | DIF         | Z            | 3.84 | 585          | 230           | 8.208, -35.536, -34.092 | 5.696, -36.841, -31.493 | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+-------------------------+-------------------------+
+
+
+

@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "witness_id": "a2a_plip_witness",
+  "target_id": "ADORA2A",
+  "instrument_role": "independent_witness_only",
+  "stage5_verdict_instrument": "ProLIF",
+  "claims_status": "claims capped pending gate validation",
+  "qualification_panel": {
+    "status": "PASS",
+    "experimental_positives_passed": 3,
+    "experimental_positives_total": 3,
+    "cases": [
+      {
+        "panel_id": "3REY_XAC",
+        "pdb_id": "3REY",
+        "ligand_name": "XAC",
+        "xml_path": "references/stage5/plip_witness/qualification/3REY_XAC/3REY_report.xml",
+        "ligand": {
+          "hetid": "XAC",
+          "chain": "A",
+          "position": 999
+        }
+      },
+      {
+        "panel_id": "5OLH_9XT",
+        "pdb_id": "5OLH",
+        "ligand_name": "Vipadenant",
+        "xml_path": "references/stage5/plip_witness/qualification/5OLH_9XT/5OLH_report.xml",
+        "ligand": {
+          "hetid": "9XT",
+          "chain": "A",
+          "position": 1201
+        }
+      },
+      {
+        "panel_id": "5OLO_9XW",
+        "pdb_id": "5OLO",
+        "ligand_name": "Tozadenant",
+        "xml_path": "references/stage5/plip_witness/qualification/5OLO_9XW/5OLO_report.xml",
+        "ligand": {
+          "hetid": "9XW",
+          "chain": "A",
+          "position": 1201
+        }
+      }
+    ]
+  },
+  "configured_residues": [
+    {
+      "residue_id": "aromatic_anchor",
+      "name": "PHE",
+      "chain": "A",
+      "number": 168
+    },
+    {
+      "residue_id": "hbond_anchor",
+      "name": "ASN",
+      "chain": "A",
+      "number": 253
+    }
+  ],
+  "configured_roles": [
+    {
+      "role_id": "aromatic_anchor_reproduction",
+      "residue_id": "aromatic_anchor",
+      "requires_any": [
+        {
+          "interaction_class": "Hydrophobic"
+        },
+        {
+          "interaction_class": "PiStacking"
+        }
+      ]
+    },
+    {
+      "role_id": "hbond_acceptor_reproduction",
+      "residue_id": "hbond_anchor",
+      "requires_any": [
+        {
+          "interaction_class": "HydrogenBond",
+          "direction": "ligand_donor"
+        }
+      ]
+    }
+  ],
+  "concordance_measurements": [
+    {
+      "measurement_id": "session011_negative_panel_plip_concordance",
+      "status": "authorized",
+      "plip_version": "3.0.1",
+      "plip_settings": {
+        "xml": true,
+        "txt": true,
+        "maxthreads": 1,
+        "hydrogen_addition": "PLIP default",
+        "interaction_thresholds": "PLIP defaults"
+      },
+      "receptor": {
+        "path": "references/stage5/negative_panel/session011_frozen_bundle/inputs/3REY_receptor_pH7.4_restored.pqr",
+        "format": "pqr",
+        "derived_pdb_role": "format_adapter_only"
+      },
+      "output_root": "references/stage5/plip_witness/concordance/session011_negative_panel",
+      "prolif_result_path": "references/stage5/negative_panel/session011_frozen_bundle/results/blind_ProLIF_POD_observed_result.txt",
+      "cases": [
+        {
+          "case_id": "dock_p3_002_rank01",
+          "display_name": "DOCK P3-002 rank 01",
+          "pose_path": "references/stage5/negative_panel/session011_frozen_bundle/panel/P3-002_DOCK_rank01.mol2",
+          "pose_format": "mol2",
+          "source_representative_path": "references/stage5/negative_panel/p3_candidates/P3-002_N6-cyclooctyladenosine/p1_posebusters_dock/poses/rank_01.mol2",
+          "source_sha256": "a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf",
+          "ligand": {
+            "hetid": "P3N",
+            "chain": "Z",
+            "position": 1
+          },
+          "prolif": {
+            "observed_interactions_by_residue": {
+              "aromatic_anchor": [
+                "VdWContact"
+              ],
+              "hbond_anchor": []
+            },
+            "complete_pattern_reproduced": false
+          }
+        },
+        {
+          "case_id": "rdock_p3_002",
+          "display_name": "rDock P3-002 sole generated pose",
+          "pose_path": "references/stage5/negative_panel/session011_frozen_bundle/panel/P3-002_N6-cyclooctyladenosine_rdock.sd",
+          "pose_format": "sdf",
+          "source_representative_path": "references/stage5/negative_panel/rdock_session011/P3-002_N6-cyclooctyladenosine_rdock.sd",
+          "source_sha256": "731661a5096209b80a56f6ecd48d520c69c834b949b3d456bd0101a5de48f81a",
+          "ligand": {
+            "hetid": "P3N",
+            "chain": "Z",
+            "position": 1
+          },
+          "prolif": {
+            "observed_interactions_by_residue": {
+              "aromatic_anchor": [],
+              "hbond_anchor": []
+            },
+            "complete_pattern_reproduced": false
+          }
+        }
+      ]
+    },
+    {
+      "measurement_id": "diffsbdd_stage5_cohort_plip_concordance",
+      "status": "authorized",
+      "plip_version": "3.0.1",
+      "plip_settings": {
+        "xml": true,
+        "txt": true,
+        "nofix": true,
+        "maxthreads": 1,
+        "hydrogen_addition": "PLIP default",
+        "interaction_thresholds": "PLIP defaults"
+      },
+      "receptor": {
+        "path": "experiments/phase1_diffsbdd/evaluation/prepared_3rfm_pocket_pH7.4_restored.pqr",
+        "format": "pqr",
+        "derived_pdb_role": "format_adapter_only"
+      },
+      "output_root": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort",
+      "cohort": {
+        "pose_sdf_path": "experiments/phase1_diffsbdd/evaluation/stage3_input.sdf",
+        "prolif_result_path": "experiments/phase1_diffsbdd/evaluation/stage5_a2a_reference_pattern.csv",
+        "molecule_id_column": "molecule_id",
+        "pose_molecule_id_property": "molecule_id",
+        "output_case_prefix": "molecule",
+        "ligand": {
+          "hetid": "DIF",
+          "chain": "Z",
+          "position": 1
+        },
+        "role_columns": {
+          "aromatic_anchor_reproduction": {
+            "observed_interactions_column": "phe168_interactions",
+            "reproduced_column": "phe168_reference_feature"
+          },
+          "hbond_acceptor_reproduction": {
+            "observed_interactions_column": "asn253_interactions",
+            "reproduced_column": "asn253_reference_feature"
+          }
+        },
+        "complete_pattern_column": "a2a_reference_pattern"
+      }
+    }
+  ]
+}

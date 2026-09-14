@@ -1,0 +1,100 @@
+{
+  "case_id": "molecule_11",
+  "complete_pattern_concordant": true,
+  "derived_input_path": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_11/input/plip_complex.pdb",
+  "display_name": "molecule_11",
+  "molecule_id": 11,
+  "plip_complete_pattern_reproduced": false,
+  "plip_observed_interactions_by_residue": {
+    "aromatic_anchor": [
+      {
+        "atom_indices": {
+          "ligcarbonidx": 585,
+          "protcarbonidx": 230
+        },
+        "direction": null,
+        "interaction_class": "Hydrophobic",
+        "plip_id": "2",
+        "residue": {
+          "chain": "A",
+          "name": "PHE",
+          "number": 168
+        },
+        "residue_id": "aromatic_anchor"
+      }
+    ],
+    "hbond_anchor": []
+  },
+  "plip_outputs": {
+    "command_log": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_11/plip/molecule_11_plip_command.log",
+    "protonated_pdb": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_11/plip/plip_complex_protonated.pdb",
+    "txt": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_11/plip/molecule_11.txt",
+    "xml": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_11/plip/molecule_11.xml"
+  },
+  "plip_role_reproduction": {
+    "aromatic_anchor_reproduction": {
+      "matched_count": 1,
+      "matched_observation_indices": [
+        0
+      ],
+      "observed_count": 1,
+      "reproduced": true,
+      "residue_id": "aromatic_anchor",
+      "role_id": "aromatic_anchor_reproduction"
+    },
+    "hbond_acceptor_reproduction": {
+      "matched_count": 0,
+      "matched_observation_indices": [],
+      "observed_count": 0,
+      "reproduced": false,
+      "residue_id": "hbond_anchor",
+      "role_id": "hbond_acceptor_reproduction"
+    }
+  },
+  "pose_path": "experiments/phase1_diffsbdd/evaluation/stage3_input.sdf",
+  "pose_record_id": 11,
+  "prolif_complete_pattern_reproduced": false,
+  "prolif_observed_interactions_by_residue": {
+    "aromatic_anchor": [
+      "Hydrophobic"
+    ],
+    "hbond_anchor": [
+      "VdWContact"
+    ]
+  },
+  "prolif_role_reproduction": {
+    "aromatic_anchor_reproduction": {
+      "observed_interactions": [
+        "Hydrophobic"
+      ],
+      "reproduced": true
+    },
+    "hbond_acceptor_reproduction": {
+      "observed_interactions": [
+        "VdWContact"
+      ],
+      "reproduced": false
+    }
+  },
+  "role_concordance": {
+    "aromatic_anchor_reproduction": {
+      "concordant": true,
+      "plip_reproduced": true,
+      "prolif_reproduced": true
+    },
+    "hbond_acceptor_reproduction": {
+      "concordant": true,
+      "plip_reproduced": false,
+      "prolif_reproduced": false
+    }
+  },
+  "selected_ligand": {
+    "binding_site_id": "1",
+    "chain": "Z",
+    "has_interactions": "True",
+    "hetid": "DIF",
+    "longname": "DIF",
+    "position": 1
+  },
+  "source_representative_path": null
+}

@@ -1,0 +1,50 @@
+{
+  "case_id": "rdock_p3_002",
+  "complete_pattern_concordant": true,
+  "derived_input_path": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/input/plip_complex.pdb",
+  "display_name": "rDock P3-002 sole generated pose",
+  "plip_complete_pattern_reproduced": false,
+  "plip_observed_interactions_by_residue": {
+    "aromatic_anchor": [],
+    "hbond_anchor": []
+  },
+  "plip_outputs": {
+    "command_log": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/rdock_p3_002_plip_command.log",
+    "protonated_pdb": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/plip_complex_protonated.pdb",
+    "txt": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/rdock_p3_002.txt",
+    "xml": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/rdock_p3_002.xml"
+  },
+  "plip_role_reproduction": {
+    "aromatic_anchor_reproduction": {
+      "matched_count": 0,
+      "matched_observation_indices": [],
+      "observed_count": 0,
+      "reproduced": false,
+      "residue_id": "aromatic_anchor",
+      "role_id": "aromatic_anchor_reproduction"
+    },
+    "hbond_acceptor_reproduction": {
+      "matched_count": 0,
+      "matched_observation_indices": [],
+      "observed_count": 0,
+      "reproduced": false,
+      "residue_id": "hbond_anchor",
+      "role_id": "hbond_acceptor_reproduction"
+    }
+  },
+  "pose_path": "references/stage5/negative_panel/session011_frozen_bundle/panel/P3-002_N6-cyclooctyladenosine_rdock.sd",
+  "prolif_complete_pattern_reproduced": false,
+  "prolif_observed_interactions_by_residue": {
+    "aromatic_anchor": [],
+    "hbond_anchor": []
+  },
+  "selected_ligand": {
+    "binding_site_id": "1",
+    "chain": "Z",
+    "has_interactions": "True",
+    "hetid": "P3N",
+    "longname": "P3N",
+    "position": 1
+  },
+  "source_representative_path": "references/stage5/negative_panel/rdock_session011/P3-002_N6-cyclooctyladenosine_rdock.sd"
+}

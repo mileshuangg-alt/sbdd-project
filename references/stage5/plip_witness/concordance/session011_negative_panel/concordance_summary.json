@@ -1,0 +1,119 @@
+{
+  "case_count": 2,
+  "case_reports": [
+    {
+      "case_id": "dock_p3_002_rank01",
+      "complete_pattern_concordant": true,
+      "concordance_path": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/concordance.json",
+      "derived_input_path": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/input/plip_complex.pdb",
+      "display_name": "DOCK P3-002 rank 01",
+      "plip_complete_pattern_reproduced": false,
+      "plip_observed_interactions_by_residue": {
+        "aromatic_anchor": [],
+        "hbond_anchor": []
+      },
+      "plip_outputs": {
+        "command_log": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/dock_p3_002_rank01_plip_command.log",
+        "protonated_pdb": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/plip_complex_protonated.pdb",
+        "txt": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/dock_p3_002_rank01.txt",
+        "xml": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/dock_p3_002_rank01.xml"
+      },
+      "plip_role_reproduction": {
+        "aromatic_anchor_reproduction": {
+          "matched_count": 0,
+          "matched_observation_indices": [],
+          "observed_count": 0,
+          "reproduced": false,
+          "residue_id": "aromatic_anchor",
+          "role_id": "aromatic_anchor_reproduction"
+        },
+        "hbond_acceptor_reproduction": {
+          "matched_count": 0,
+          "matched_observation_indices": [],
+          "observed_count": 0,
+          "reproduced": false,
+          "residue_id": "hbond_anchor",
+          "role_id": "hbond_acceptor_reproduction"
+        }
+      },
+      "pose_path": "references/stage5/negative_panel/session011_frozen_bundle/panel/P3-002_DOCK_rank01.mol2",
+      "prolif_complete_pattern_reproduced": false,
+      "prolif_observed_interactions_by_residue": {
+        "aromatic_anchor": [
+          "VdWContact"
+        ],
+        "hbond_anchor": []
+      },
+      "selected_ligand": {
+        "binding_site_id": "1",
+        "chain": "Z",
+        "has_interactions": "True",
+        "hetid": "P3N",
+        "longname": "P3N",
+        "position": 1
+      },
+      "source_representative_path": "references/stage5/negative_panel/p3_candidates/P3-002_N6-cyclooctyladenosine/p1_posebusters_dock/poses/rank_01.mol2",
+      "summary_path": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip_summary.json"
+    },
+    {
+      "case_id": "rdock_p3_002",
+      "complete_pattern_concordant": true,
+      "concordance_path": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/concordance.json",
+      "derived_input_path": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/input/plip_complex.pdb",
+      "display_name": "rDock P3-002 sole generated pose",
+      "plip_complete_pattern_reproduced": false,
+      "plip_observed_interactions_by_residue": {
+        "aromatic_anchor": [],
+        "hbond_anchor": []
+      },
+      "plip_outputs": {
+        "command_log": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/rdock_p3_002_plip_command.log",
+        "protonated_pdb": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/plip_complex_protonated.pdb",
+        "txt": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/rdock_p3_002.txt",
+        "xml": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip/rdock_p3_002.xml"
+      },
+      "plip_role_reproduction": {
+        "aromatic_anchor_reproduction": {
+          "matched_count": 0,
+          "matched_observation_indices": [],
+          "observed_count": 0,
+          "reproduced": false,
+          "residue_id": "aromatic_anchor",
+          "role_id": "aromatic_anchor_reproduction"
+        },
+        "hbond_acceptor_reproduction": {
+          "matched_count": 0,
+          "matched_observation_indices": [],
+          "observed_count": 0,
+          "reproduced": false,
+          "residue_id": "hbond_anchor",
+          "role_id": "hbond_acceptor_reproduction"
+        }
+      },
+      "pose_path": "references/stage5/negative_panel/session011_frozen_bundle/panel/P3-002_N6-cyclooctyladenosine_rdock.sd",
+      "prolif_complete_pattern_reproduced": false,
+      "prolif_observed_interactions_by_residue": {
+        "aromatic_anchor": [],
+        "hbond_anchor": []
+      },
+      "selected_ligand": {
+        "binding_site_id": "1",
+        "chain": "Z",
+        "has_interactions": "True",
+        "hetid": "P3N",
+        "longname": "P3N",
+        "position": 1
+      },
+      "source_representative_path": "references/stage5/negative_panel/rdock_session011/P3-002_N6-cyclooctyladenosine_rdock.sd",
+      "summary_path": "references/stage5/plip_witness/concordance/session011_negative_panel/rdock_p3_002/plip_summary.json"
+    }
+  ],
+  "complete_pattern_concordance_fraction": 1.0,
+  "complete_pattern_concordant_count": 2,
+  "instrument_role": "independent_witness_only",
+  "measurement_id": "session011_negative_panel_plip_concordance",
+  "prolif_result_path": "references/stage5/negative_panel/session011_frozen_bundle/results/blind_ProLIF_POD_observed_result.txt",
+  "stage5_verdict_instrument": "ProLIF",
+  "target_id": "ADORA2A",
+  "witness_id": "a2a_plip_witness"
+}

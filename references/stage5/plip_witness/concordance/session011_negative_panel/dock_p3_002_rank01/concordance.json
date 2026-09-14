@@ -1,0 +1,52 @@
+{
+  "case_id": "dock_p3_002_rank01",
+  "complete_pattern_concordant": true,
+  "derived_input_path": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/input/plip_complex.pdb",
+  "display_name": "DOCK P3-002 rank 01",
+  "plip_complete_pattern_reproduced": false,
+  "plip_observed_interactions_by_residue": {
+    "aromatic_anchor": [],
+    "hbond_anchor": []
+  },
+  "plip_outputs": {
+    "command_log": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/dock_p3_002_rank01_plip_command.log",
+    "protonated_pdb": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/plip_complex_protonated.pdb",
+    "txt": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/dock_p3_002_rank01.txt",
+    "xml": "references/stage5/plip_witness/concordance/session011_negative_panel/dock_p3_002_rank01/plip/dock_p3_002_rank01.xml"
+  },
+  "plip_role_reproduction": {
+    "aromatic_anchor_reproduction": {
+      "matched_count": 0,
+      "matched_observation_indices": [],
+      "observed_count": 0,
+      "reproduced": false,
+      "residue_id": "aromatic_anchor",
+      "role_id": "aromatic_anchor_reproduction"
+    },
+    "hbond_acceptor_reproduction": {
+      "matched_count": 0,
+      "matched_observation_indices": [],
+      "observed_count": 0,
+      "reproduced": false,
+      "residue_id": "hbond_anchor",
+      "role_id": "hbond_acceptor_reproduction"
+    }
+  },
+  "pose_path": "references/stage5/negative_panel/session011_frozen_bundle/panel/P3-002_DOCK_rank01.mol2",
+  "prolif_complete_pattern_reproduced": false,
+  "prolif_observed_interactions_by_residue": {
+    "aromatic_anchor": [
+      "VdWContact"
+    ],
+    "hbond_anchor": []
+  },
+  "selected_ligand": {
+    "binding_site_id": "1",
+    "chain": "Z",
+    "has_interactions": "True",
+    "hetid": "P3N",
+    "longname": "P3N",
+    "position": 1
+  },
+  "source_representative_path": "references/stage5/negative_panel/p3_candidates/P3-002_N6-cyclooctyladenosine/p1_posebusters_dock/poses/rank_01.mol2"
+}

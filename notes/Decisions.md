@@ -4477,3 +4477,242 @@ D018 must convert the frozen D017 measurements into a deterministic, generator-i
 ### Revisit when
 
 Revisit D018 only if the frozen calibration panel, D017 measurement definitions, or Stage-5 Level-2 claim boundary is formally amended.
+
+# D019 — PLIP Independent-Witness Qualification and Concordance
+
+**Decision date:** 2026-09-13
+
+**Status:** APPROVED
+
+## Decision
+
+D019 records completion of the frozen PLIP independent-witness qualification and concordance program for the Stage-5 interaction-evidence layer.
+
+The frozen Stage-5 instrument allocation remains:
+
+- **ProLIF** — Stage-5 verdict instrument;
+- **PLIP** — independent witness only.
+
+D019 does not alter the frozen ProLIF instrument, its interaction parameters, its interpretation, or any previously frozen Stage-5 verdict rule.
+
+## Witness qualification
+
+The PLIP witness was qualified against three experimental A2A positive complexes:
+
+- **3REY / XAC**;
+- **5OLH / Vipadenant**;
+- **5OLO / Tozadenant**.
+
+All three reproduced the configured experimental-positive reference pattern.
+
+- experimental positives passed = **3/3**;
+- witness reproduced = **True**;
+- qualification status = **PASS**.
+
+This establishes that the PLIP witness can reproduce the frozen reference interaction pattern on the independent experimental-positive qualification panel.
+
+## DiffSBDD cohort concordance
+
+The frozen DiffSBDD Stage-5 cohort contains **16** cases.
+
+The complete-pattern concordance table is:
+
+| | PLIP FALSE | PLIP TRUE |
+|---|---:|---:|
+| **ProLIF FALSE** | 13 | 0 |
+| **ProLIF TRUE** | 0 | 3 |
+
+Therefore:
+
+- complete-pattern concordant cases = **16/16**;
+- complete-pattern concordance fraction = **1.0**;
+- discordant cases = **0**.
+
+Both configured interaction roles independently show:
+
+- aromatic-anchor reproduction = **16/16** concordant;
+- H-bond-acceptor reproduction = **16/16** concordant.
+
+The witness and verdict instrument therefore agree on the complete configured interaction pattern across the frozen DiffSBDD cohort.
+
+## Session-011 negative-panel concordance
+
+The frozen Session-011 negative panel contains two generated-pose cases:
+
+- DOCK P3-002 rank 01;
+- rDock P3-002 sole generated pose.
+
+Both are concordant between ProLIF and PLIP under the configured reference-pattern interpretation.
+
+- complete-pattern concordant cases = **2/2**;
+- complete-pattern concordance fraction = **1.0**;
+- discordant cases = **0**.
+
+These results provide independent-witness concordance on the frozen negative-panel material without changing the negative-panel verdict definition or the role of ProLIF as the Stage-5 instrument.
+
+## Witness role and claim boundary
+
+The PLIP implementation is formally qualified as an **independent witness only**.
+
+PLIP concordance does **not** establish a second Stage-5 verdict instrument, does not supersede ProLIF, and does not authorize a new pass/fail rule.
+
+The frozen claim boundary remains:
+
+> ProLIF is the Stage-5 verdict instrument; PLIP provides independent witness evidence concerning concordance of the configured interaction-pattern measurements.
+
+The witness results do not by themselves establish:
+
+- ligand compatibility;
+- biological activity;
+- target validation;
+- docking success;
+- generated-molecule binding;
+- a new Stage-5 PASS/FAIL criterion.
+
+Any future use of PLIP as a verdict instrument, any change to the configured interaction pattern, or any change to the frozen witness role requires formal promotion through the decision/amendment process.
+
+## Implementation and artifact basis
+
+The D019 evidence package includes:
+
+- frozen witness configuration;
+- three experimental-positive qualification records;
+- qualification summary;
+- DiffSBDD cohort concordance records and summary;
+- Session-011 negative-panel concordance records and summary;
+- derived-input manifests and SHA256 inventories.
+
+These artifacts are preserved as the auditable basis for D019.
+
+## Governing principle
+
+The independent witness provides orthogonal implementation evidence for the frozen interaction instrument without becoming a second source of scientific authority.
+
+## Revisit when
+
+Revisit D019 only if:
+
+- the frozen ProLIF instrument or interaction parameters are formally changed;
+- PLIP or another qualified witness is shown to produce materially non-concordant results on a newly frozen witness panel;
+- the Stage-5 interaction-evidence claim boundary is formally amended;
+- a future decision proposes to promote the independent witness from witness status to verdict authority;
+- new evidence demonstrates that the current witness qualification panel is materially inadequate for the frozen interaction-evidence claim.
+# D019 — PLIP Independent-Witness Qualification and Concordance
+
+**Decision date:** 2026-09-13
+
+**Status:** APPROVED
+
+## Decision
+
+D019 records completion of the frozen PLIP independent-witness qualification and concordance program for the Stage-5 interaction-evidence layer.
+
+The frozen Stage-5 instrument allocation remains:
+
+- **ProLIF** — Stage-5 verdict instrument;
+- **PLIP** — independent witness only.
+
+D019 does not alter the frozen ProLIF instrument, its interaction parameters, its interpretation, or any previously frozen Stage-5 verdict rule.
+
+## Witness qualification
+
+The PLIP witness was qualified against three experimental A2A positive complexes:
+
+- **3REY / XAC**;
+- **5OLH / Vipadenant**;
+- **5OLO / Tozadenant**.
+
+All three reproduced the configured experimental-positive reference pattern.
+
+- experimental positives passed = **3/3**;
+- witness reproduced = **True**;
+- qualification status = **PASS**.
+
+This establishes that the PLIP witness can reproduce the frozen reference interaction pattern on the independent experimental-positive qualification panel.
+
+## DiffSBDD cohort concordance
+
+The frozen DiffSBDD Stage-5 cohort contains **16** cases.
+
+The complete-pattern concordance table is:
+
+| | PLIP FALSE | PLIP TRUE |
+|---|---:|---:|
+| **ProLIF FALSE** | 13 | 0 |
+| **ProLIF TRUE** | 0 | 3 |
+
+Therefore:
+
+- complete-pattern concordant cases = **16/16**;
+- complete-pattern concordance fraction = **1.0**;
+- discordant cases = **0**.
+
+Both configured interaction roles independently show:
+
+- aromatic-anchor reproduction = **16/16** concordant;
+- H-bond-acceptor reproduction = **16/16** concordant.
+
+The witness and verdict instrument therefore agree on the complete configured interaction pattern across the frozen DiffSBDD cohort.
+
+## Session-011 negative-panel concordance
+
+The frozen Session-011 negative panel contains two generated-pose cases:
+
+- DOCK P3-002 rank 01;
+- rDock P3-002 sole generated pose.
+
+Both are concordant between ProLIF and PLIP under the configured reference-pattern interpretation.
+
+- complete-pattern concordant cases = **2/2**;
+- complete-pattern concordance fraction = **1.0**;
+- discordant cases = **0**.
+
+These results provide independent-witness concordance on the frozen negative-panel material without changing the negative-panel verdict definition or the role of ProLIF as the Stage-5 instrument.
+
+## Witness role and claim boundary
+
+The PLIP implementation is formally qualified as an **independent witness only**.
+
+PLIP concordance does **not** establish a second Stage-5 verdict instrument, does not supersede ProLIF, and does not authorize a new pass/fail rule.
+
+The frozen claim boundary remains:
+
+> ProLIF is the Stage-5 verdict instrument; PLIP provides independent witness evidence concerning concordance of the configured interaction-pattern measurements.
+
+The witness results do not by themselves establish:
+
+- ligand compatibility;
+- biological activity;
+- target validation;
+- docking success;
+- generated-molecule binding;
+- a new Stage-5 PASS/FAIL criterion.
+
+Any future use of PLIP as a verdict instrument, any change to the configured interaction pattern, or any change to the frozen witness role requires formal promotion through the decision/amendment process.
+
+## Implementation and artifact basis
+
+The D019 evidence package includes:
+
+- frozen witness configuration;
+- three experimental-positive qualification records;
+- qualification summary;
+- DiffSBDD cohort concordance records and summary;
+- Session-011 negative-panel concordance records and summary;
+- derived-input manifests and SHA256 inventories.
+
+These artifacts are preserved as the auditable basis for D019.
+
+## Governing principle
+
+The independent witness provides orthogonal implementation evidence for the frozen interaction instrument without becoming a second source of scientific authority.
+
+## Revisit when
+
+Revisit D019 only if:
+
+- the frozen ProLIF instrument or interaction parameters are formally changed;
+- PLIP or another qualified witness is shown to produce materially non-concordant results on a newly frozen witness panel;
+- the Stage-5 interaction-evidence claim boundary is formally amended;
+- a future decision proposes to promote the independent witness from witness status to verdict authority;
+- new evidence demonstrates that the current witness qualification panel is materially inadequate for the frozen interaction-evidence claim.

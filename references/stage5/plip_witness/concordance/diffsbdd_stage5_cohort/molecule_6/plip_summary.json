@@ -1,0 +1,120 @@
+{
+  "case_id": "molecule_6",
+  "configured_role_reproduction": [
+    {
+      "matched_count": 0,
+      "matched_observation_indices": [],
+      "observed_count": 0,
+      "reproduced": false,
+      "residue_id": "aromatic_anchor",
+      "role_id": "aromatic_anchor_reproduction"
+    },
+    {
+      "matched_count": 2,
+      "matched_observation_indices": [
+        0,
+        3
+      ],
+      "observed_count": 4,
+      "reproduced": true,
+      "residue_id": "hbond_anchor",
+      "role_id": "hbond_acceptor_reproduction"
+    }
+  ],
+  "ignored_ligands": [],
+  "instrument_role": "independent_witness_only",
+  "observed_counts": {
+    "aromatic_anchor": {
+      "by_class": {},
+      "by_class_and_direction": {},
+      "total": 0
+    },
+    "hbond_anchor": {
+      "by_class": {
+        "HydrogenBond": 4
+      },
+      "by_class_and_direction": {
+        "HydrogenBond:ligand_donor": 2,
+        "HydrogenBond:protein_donor": 2
+      },
+      "total": 4
+    }
+  },
+  "observed_interactions": [
+    {
+      "atom_indices": {
+        "acceptoridx": 421,
+        "donoridx": 586
+      },
+      "direction": "ligand_donor",
+      "interaction_class": "HydrogenBond",
+      "plip_id": "1",
+      "residue": {
+        "chain": "A",
+        "name": "ASN",
+        "number": 253
+      },
+      "residue_id": "hbond_anchor"
+    },
+    {
+      "atom_indices": {
+        "acceptoridx": 601,
+        "donoridx": 421
+      },
+      "direction": "protein_donor",
+      "interaction_class": "HydrogenBond",
+      "plip_id": "2",
+      "residue": {
+        "chain": "A",
+        "name": "ASN",
+        "number": 253
+      },
+      "residue_id": "hbond_anchor"
+    },
+    {
+      "atom_indices": {
+        "acceptoridx": 601,
+        "donoridx": 422
+      },
+      "direction": "protein_donor",
+      "interaction_class": "HydrogenBond",
+      "plip_id": "3",
+      "residue": {
+        "chain": "A",
+        "name": "ASN",
+        "number": 253
+      },
+      "residue_id": "hbond_anchor"
+    },
+    {
+      "atom_indices": {
+        "acceptoridx": 421,
+        "donoridx": 601
+      },
+      "direction": "ligand_donor",
+      "interaction_class": "HydrogenBond",
+      "plip_id": "4",
+      "residue": {
+        "chain": "A",
+        "name": "ASN",
+        "number": 253
+      },
+      "residue_id": "hbond_anchor"
+    }
+  ],
+  "panel_id": null,
+  "pdb_id": "PLIP_COMPLEX_PROTEIN",
+  "selected_ligand": {
+    "binding_site_id": "1",
+    "chain": "Z",
+    "has_interactions": "True",
+    "hetid": "DIF",
+    "longname": "DIF",
+    "position": 1
+  },
+  "source_xml": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_6/plip/molecule_6.xml",
+  "stage5_verdict_instrument": "ProLIF",
+  "target_id": "ADORA2A",
+  "witness_id": "a2a_plip_witness",
+  "witness_reproduced": false
+}

@@ -1,0 +1,126 @@
+{
+  "case_id": "molecule_3",
+  "configured_role_reproduction": [
+    {
+      "matched_count": 3,
+      "matched_observation_indices": [
+        0,
+        1,
+        2
+      ],
+      "observed_count": 3,
+      "reproduced": true,
+      "residue_id": "aromatic_anchor",
+      "role_id": "aromatic_anchor_reproduction"
+    },
+    {
+      "matched_count": 1,
+      "matched_observation_indices": [
+        3
+      ],
+      "observed_count": 1,
+      "reproduced": true,
+      "residue_id": "hbond_anchor",
+      "role_id": "hbond_acceptor_reproduction"
+    }
+  ],
+  "ignored_ligands": [],
+  "instrument_role": "independent_witness_only",
+  "observed_counts": {
+    "aromatic_anchor": {
+      "by_class": {
+        "Hydrophobic": 3
+      },
+      "by_class_and_direction": {
+        "Hydrophobic": 3
+      },
+      "total": 3
+    },
+    "hbond_anchor": {
+      "by_class": {
+        "HydrogenBond": 1
+      },
+      "by_class_and_direction": {
+        "HydrogenBond:ligand_donor": 1
+      },
+      "total": 1
+    }
+  },
+  "observed_interactions": [
+    {
+      "atom_indices": {
+        "ligcarbonidx": 584,
+        "protcarbonidx": 232
+      },
+      "direction": null,
+      "interaction_class": "Hydrophobic",
+      "plip_id": "1",
+      "residue": {
+        "chain": "A",
+        "name": "PHE",
+        "number": 168
+      },
+      "residue_id": "aromatic_anchor"
+    },
+    {
+      "atom_indices": {
+        "ligcarbonidx": 588,
+        "protcarbonidx": 230
+      },
+      "direction": null,
+      "interaction_class": "Hydrophobic",
+      "plip_id": "2",
+      "residue": {
+        "chain": "A",
+        "name": "PHE",
+        "number": 168
+      },
+      "residue_id": "aromatic_anchor"
+    },
+    {
+      "atom_indices": {
+        "ligcarbonidx": 590,
+        "protcarbonidx": 234
+      },
+      "direction": null,
+      "interaction_class": "Hydrophobic",
+      "plip_id": "3",
+      "residue": {
+        "chain": "A",
+        "name": "PHE",
+        "number": 168
+      },
+      "residue_id": "aromatic_anchor"
+    },
+    {
+      "atom_indices": {
+        "acceptoridx": 421,
+        "donoridx": 585
+      },
+      "direction": "ligand_donor",
+      "interaction_class": "HydrogenBond",
+      "plip_id": "1",
+      "residue": {
+        "chain": "A",
+        "name": "ASN",
+        "number": 253
+      },
+      "residue_id": "hbond_anchor"
+    }
+  ],
+  "panel_id": null,
+  "pdb_id": "PLIP_COMPLEX_PROTEIN",
+  "selected_ligand": {
+    "binding_site_id": "1",
+    "chain": "Z",
+    "has_interactions": "True",
+    "hetid": "DIF",
+    "longname": "DIF",
+    "position": 1
+  },
+  "source_xml": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_3/plip/molecule_3.xml",
+  "stage5_verdict_instrument": "ProLIF",
+  "target_id": "ADORA2A",
+  "witness_id": "a2a_plip_witness",
+  "witness_reproduced": true
+}

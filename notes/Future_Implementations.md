@@ -1,36 +1,43 @@
 
 ---
 
-## ProLIF/PLIP Interaction-Fingerprint Layer
+## Interaction-Fingerprint Review View
 
 ### Purpose
 
-Provide a future interaction-evidence layer that computes per-residue interaction fingerprints for generated molecules using ProLIF/PLIP.
+Provide a future reporting and GUI view for displaying the existing interaction-fingerprint infrastructure established under D019.
 
-The intended interaction types include:
+The interaction-fingerprint infrastructure is no longer a future implementation item:
 
-- hydrogen bonds;
-- hydrophobic contacts;
-- related contact types supported by the selected interaction reader.
+- **ProLIF** is the frozen Stage-5 verdict instrument;
+- **PLIP** is the qualified independent witness.
 
-The purpose is to verify whether generated molecules reproduce key contacts of the experimentally bound ligand, providing interaction-level evidence beyond geometric fit.
+The future implementation is therefore limited to presentation and exploration of those existing results.
 
-### Inputs and scope
+### Desired capabilities
 
-The layer consumes:
+A future GUI/reporting layer could display:
 
-- frozen pocket/structure artifacts;
-- experimentally defined reference-ligand interaction information;
-- generated-molecule outputs.
-
-Its results are an evidence layer downstream of the frozen structural measurements and must not alter those measurements.
+- per-residue interaction fingerprints;
+- configured interaction roles;
+- ProLIF observations;
+- PLIP witness observations;
+- concordance/disagreement status;
+- links to the underlying frozen audit artifacts.
 
 ### Scientific boundary
 
-Interaction-fingerprint results must never feed back into a frozen verdict, threshold, eligibility rule, or routing decision without formal promotion through the decision/amendment process.
+This is a presentation layer over existing frozen interaction-evidence outputs.
 
-This implementation therefore remains a future evidence layer and introduces no new validation requirement for the currently frozen methodology.
+It must not:
 
+- redefine the ProLIF interaction pattern;
+- change the ProLIF verdict instrument;
+- promote PLIP to verdict authority;
+- introduce new interaction thresholds;
+- create new validation requirements.
+
+Any change to the instrument/witness allocation or any attempt to use these results in a new scientific verdict requires formal promotion through the decision/amendment process.
 ---
 
 ## Dock-Back Forensics Harness

@@ -1,0 +1,38 @@
+PLIP WITNESS QUALIFICATION — 5OLO / 9XW (Tozadenant)
+
+PLIP: 3.0.1
+Open Babel: 3.2.1
+Input: references/stage5/native_complexes/5OLO.pdb
+Structure fixing: disabled (--nofix)
+Hydrogen addition: PLIP default
+Interaction thresholds: PLIP defaults
+Runs: 1
+
+PREDECLARED EXPECTATION
+Phe168: Hydrophobic OR PiStacking
+Asn253 H-bond direction:
+  protein Asn253 = acceptor
+  ligand = donor
+
+MEASURED RESULT
+Phe168 Hydrophobic: NOT OBSERVED
+Phe168 PiStacking: OBSERVED (2)
+
+Asn253 H-bond, protein donor / ligand acceptor: OBSERVED (1)
+Asn253 H-bond, protein acceptor / ligand donor: OBSERVED (2)
+
+Phe168 frozen role reproduced: YES
+Asn253 predeclared directional role reproduced: YES
+Complete frozen A2A recognition pattern reproduced: YES
+
+PLIP POSITIVE-CONTROL QUALIFICATION: PASS
+
+NOTE
+PLIP analyzed the retained raw experimental PDB using its own hydrogen
+addition. The frozen ProLIF proof-of-life used the independently prepared
+pH7.4-restored receptor pathway. Concordance was measured without PLIP
+parameter tuning against ProLIF output.
+
+PLIP additionally analyzed other hetero compounds present in the deposited
+PDB. Those compounds are outside the frozen qualification panel and were
+not used in the qualification verdict.

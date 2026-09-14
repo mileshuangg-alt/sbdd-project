@@ -1,0 +1,149 @@
+{
+  "case_id": "molecule_2",
+  "complete_pattern_concordant": true,
+  "derived_input_path": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_2/input/plip_complex.pdb",
+  "display_name": "molecule_2",
+  "molecule_id": 2,
+  "plip_complete_pattern_reproduced": false,
+  "plip_observed_interactions_by_residue": {
+    "aromatic_anchor": [
+      {
+        "atom_indices": {
+          "ligcarbonidx": 584,
+          "protcarbonidx": 232
+        },
+        "direction": null,
+        "interaction_class": "Hydrophobic",
+        "plip_id": "1",
+        "residue": {
+          "chain": "A",
+          "name": "PHE",
+          "number": 168
+        },
+        "residue_id": "aromatic_anchor"
+      },
+      {
+        "atom_indices": {
+          "ligcarbonidx": 598,
+          "protcarbonidx": 234
+        },
+        "direction": null,
+        "interaction_class": "Hydrophobic",
+        "plip_id": "2",
+        "residue": {
+          "chain": "A",
+          "name": "PHE",
+          "number": 168
+        },
+        "residue_id": "aromatic_anchor"
+      }
+    ],
+    "hbond_anchor": [
+      {
+        "atom_indices": {
+          "acceptoridx": 589,
+          "donoridx": 421
+        },
+        "direction": "protein_donor",
+        "interaction_class": "HydrogenBond",
+        "plip_id": "2",
+        "residue": {
+          "chain": "A",
+          "name": "ASN",
+          "number": 253
+        },
+        "residue_id": "hbond_anchor"
+      },
+      {
+        "atom_indices": {
+          "acceptoridx": 589,
+          "donoridx": 422
+        },
+        "direction": "protein_donor",
+        "interaction_class": "HydrogenBond",
+        "plip_id": "3",
+        "residue": {
+          "chain": "A",
+          "name": "ASN",
+          "number": 253
+        },
+        "residue_id": "hbond_anchor"
+      }
+    ]
+  },
+  "plip_outputs": {
+    "command_log": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_2/plip/molecule_2_plip_command.log",
+    "protonated_pdb": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_2/plip/plip_complex_protonated.pdb",
+    "txt": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_2/plip/molecule_2.txt",
+    "xml": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/molecule_2/plip/molecule_2.xml"
+  },
+  "plip_role_reproduction": {
+    "aromatic_anchor_reproduction": {
+      "matched_count": 2,
+      "matched_observation_indices": [
+        0,
+        1
+      ],
+      "observed_count": 2,
+      "reproduced": true,
+      "residue_id": "aromatic_anchor",
+      "role_id": "aromatic_anchor_reproduction"
+    },
+    "hbond_acceptor_reproduction": {
+      "matched_count": 0,
+      "matched_observation_indices": [],
+      "observed_count": 2,
+      "reproduced": false,
+      "residue_id": "hbond_anchor",
+      "role_id": "hbond_acceptor_reproduction"
+    }
+  },
+  "pose_path": "experiments/phase1_diffsbdd/evaluation/stage3_input.sdf",
+  "pose_record_id": 2,
+  "prolif_complete_pattern_reproduced": false,
+  "prolif_observed_interactions_by_residue": {
+    "aromatic_anchor": [
+      "Hydrophobic",
+      "VdWContact"
+    ],
+    "hbond_anchor": [
+      "VdWContact"
+    ]
+  },
+  "prolif_role_reproduction": {
+    "aromatic_anchor_reproduction": {
+      "observed_interactions": [
+        "Hydrophobic",
+        "VdWContact"
+      ],
+      "reproduced": true
+    },
+    "hbond_acceptor_reproduction": {
+      "observed_interactions": [
+        "VdWContact"
+      ],
+      "reproduced": false
+    }
+  },
+  "role_concordance": {
+    "aromatic_anchor_reproduction": {
+      "concordant": true,
+      "plip_reproduced": true,
+      "prolif_reproduced": true
+    },
+    "hbond_acceptor_reproduction": {
+      "concordant": true,
+      "plip_reproduced": false,
+      "prolif_reproduced": false
+    }
+  },
+  "selected_ligand": {
+    "binding_site_id": "1",
+    "chain": "Z",
+    "has_interactions": "True",
+    "hetid": "DIF",
+    "longname": "DIF",
+    "position": 1
+  },
+  "source_representative_path": null
+}

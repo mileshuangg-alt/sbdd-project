@@ -1,0 +1,798 @@
+{
+  "case_summaries": [
+    {
+      "configured_role_reproduction": [
+        {
+          "matched_count": 2,
+          "matched_observation_indices": [
+            0,
+            1
+          ],
+          "observed_count": 2,
+          "reproduced": true,
+          "residue_id": "aromatic_anchor",
+          "role_id": "aromatic_anchor_reproduction"
+        },
+        {
+          "matched_count": 1,
+          "matched_observation_indices": [
+            2
+          ],
+          "observed_count": 2,
+          "reproduced": true,
+          "residue_id": "hbond_anchor",
+          "role_id": "hbond_acceptor_reproduction"
+        }
+      ],
+      "ignored_ligands": [],
+      "instrument_role": "independent_witness_only",
+      "observed_counts": {
+        "aromatic_anchor": {
+          "by_class": {
+            "Hydrophobic": 1,
+            "PiStacking": 1
+          },
+          "by_class_and_direction": {
+            "Hydrophobic": 1,
+            "PiStacking": 1
+          },
+          "total": 2
+        },
+        "hbond_anchor": {
+          "by_class": {
+            "HydrogenBond": 2
+          },
+          "by_class_and_direction": {
+            "HydrogenBond:ligand_donor": 1,
+            "HydrogenBond:protein_donor": 1
+          },
+          "total": 2
+        }
+      },
+      "observed_interactions": [
+        {
+          "atom_indices": {
+            "ligcarbonidx": 2270,
+            "protcarbonidx": 1130
+          },
+          "direction": null,
+          "interaction_class": "Hydrophobic",
+          "plip_id": "2",
+          "residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168
+          },
+          "residue_id": "aromatic_anchor"
+        },
+        {
+          "atom_indices": {
+            "lig_idx_list": [
+              2252,
+              2253,
+              2255,
+              2256,
+              2261,
+              2264
+            ],
+            "prot_idx_list": [
+              1129,
+              1130,
+              1131,
+              1132,
+              1133,
+              1134
+            ]
+          },
+          "direction": null,
+          "interaction_class": "PiStacking",
+          "plip_id": "1",
+          "residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168
+          },
+          "residue_id": "aromatic_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 2254,
+            "donoridx": 1809
+          },
+          "direction": "protein_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "1",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 1808,
+            "donoridx": 2254
+          },
+          "direction": "ligand_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "2",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        }
+      ],
+      "panel_id": "3REY_XAC",
+      "pdb_id": "3REY",
+      "selected_ligand": {
+        "binding_site_id": "1",
+        "chain": "A",
+        "has_interactions": "True",
+        "hetid": "XAC",
+        "longname": "XAC",
+        "position": 999
+      },
+      "source_xml": "references/stage5/plip_witness/qualification/3REY_XAC/3REY_report.xml",
+      "stage5_verdict_instrument": "ProLIF",
+      "target_id": "ADORA2A",
+      "witness_id": "a2a_plip_witness",
+      "witness_reproduced": true
+    },
+    {
+      "configured_role_reproduction": [
+        {
+          "matched_count": 2,
+          "matched_observation_indices": [
+            0,
+            1
+          ],
+          "observed_count": 2,
+          "reproduced": true,
+          "residue_id": "aromatic_anchor",
+          "role_id": "aromatic_anchor_reproduction"
+        },
+        {
+          "matched_count": 1,
+          "matched_observation_indices": [
+            3
+          ],
+          "observed_count": 3,
+          "reproduced": true,
+          "residue_id": "hbond_anchor",
+          "role_id": "hbond_acceptor_reproduction"
+        }
+      ],
+      "ignored_ligands": [
+        {
+          "binding_site_id": "2",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "CLR",
+          "longname": "CLR",
+          "position": 1204
+        },
+        {
+          "binding_site_id": "3",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "CLR",
+          "longname": "CLR",
+          "position": 1205
+        },
+        {
+          "binding_site_id": "4",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "CLR",
+          "longname": "CLR",
+          "position": 1206
+        },
+        {
+          "binding_site_id": "5",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "NA",
+          "longname": "NA",
+          "position": 1203
+        },
+        {
+          "binding_site_id": "6",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1220
+        },
+        {
+          "binding_site_id": "7",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1221
+        },
+        {
+          "binding_site_id": "8",
+          "chain": "A",
+          "has_interactions": "False",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1222
+        },
+        {
+          "binding_site_id": "9",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1223
+        },
+        {
+          "binding_site_id": "10",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1224
+        },
+        {
+          "binding_site_id": "11",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1225
+        },
+        {
+          "binding_site_id": "12",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1226
+        },
+        {
+          "binding_site_id": "13",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1227
+        }
+      ],
+      "instrument_role": "independent_witness_only",
+      "observed_counts": {
+        "aromatic_anchor": {
+          "by_class": {
+            "PiStacking": 2
+          },
+          "by_class_and_direction": {
+            "PiStacking": 2
+          },
+          "total": 2
+        },
+        "hbond_anchor": {
+          "by_class": {
+            "HydrogenBond": 3
+          },
+          "by_class_and_direction": {
+            "HydrogenBond:ligand_donor": 2,
+            "HydrogenBond:protein_donor": 1
+          },
+          "total": 3
+        }
+      },
+      "observed_interactions": [
+        {
+          "atom_indices": {
+            "lig_idx_list": [
+              3050,
+              3061,
+              3066,
+              3067,
+              3068
+            ],
+            "prot_idx_list": [
+              1261,
+              1262,
+              1263,
+              1264,
+              1265,
+              1266
+            ]
+          },
+          "direction": null,
+          "interaction_class": "PiStacking",
+          "plip_id": "1",
+          "residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168
+          },
+          "residue_id": "aromatic_anchor"
+        },
+        {
+          "atom_indices": {
+            "lig_idx_list": [
+              3056,
+              3060,
+              3061,
+              3066,
+              3069,
+              3070
+            ],
+            "prot_idx_list": [
+              1261,
+              1262,
+              1263,
+              1264,
+              1265,
+              1266
+            ]
+          },
+          "direction": null,
+          "interaction_class": "PiStacking",
+          "plip_id": "2",
+          "residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168
+          },
+          "residue_id": "aromatic_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 2605,
+            "donoridx": 3069
+          },
+          "direction": "ligand_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "2",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 3072,
+            "donoridx": 2606
+          },
+          "direction": "protein_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "3",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 2605,
+            "donoridx": 3071
+          },
+          "direction": "ligand_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "4",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        }
+      ],
+      "panel_id": "5OLH_9XT",
+      "pdb_id": "5OLH",
+      "selected_ligand": {
+        "binding_site_id": "1",
+        "chain": "A",
+        "has_interactions": "True",
+        "hetid": "9XT",
+        "longname": "9XT",
+        "position": 1201
+      },
+      "source_xml": "references/stage5/plip_witness/qualification/5OLH_9XT/5OLH_report.xml",
+      "stage5_verdict_instrument": "ProLIF",
+      "target_id": "ADORA2A",
+      "witness_id": "a2a_plip_witness",
+      "witness_reproduced": true
+    },
+    {
+      "configured_role_reproduction": [
+        {
+          "matched_count": 2,
+          "matched_observation_indices": [
+            0,
+            1
+          ],
+          "observed_count": 2,
+          "reproduced": true,
+          "residue_id": "aromatic_anchor",
+          "role_id": "aromatic_anchor_reproduction"
+        },
+        {
+          "matched_count": 1,
+          "matched_observation_indices": [
+            3
+          ],
+          "observed_count": 3,
+          "reproduced": true,
+          "residue_id": "hbond_anchor",
+          "role_id": "hbond_acceptor_reproduction"
+        }
+      ],
+      "ignored_ligands": [
+        {
+          "binding_site_id": "2",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "CLR",
+          "longname": "CLR",
+          "position": 1202
+        },
+        {
+          "binding_site_id": "3",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "CLR",
+          "longname": "CLR",
+          "position": 1203
+        },
+        {
+          "binding_site_id": "4",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "CLR",
+          "longname": "CLR",
+          "position": 1204
+        },
+        {
+          "binding_site_id": "5",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "NA",
+          "longname": "NA",
+          "position": 1223
+        },
+        {
+          "binding_site_id": "6",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1205
+        },
+        {
+          "binding_site_id": "7",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1206
+        },
+        {
+          "binding_site_id": "8",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1207
+        },
+        {
+          "binding_site_id": "9",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1208
+        },
+        {
+          "binding_site_id": "10",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1209
+        },
+        {
+          "binding_site_id": "11",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1210
+        },
+        {
+          "binding_site_id": "12",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1211
+        },
+        {
+          "binding_site_id": "13",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1212
+        },
+        {
+          "binding_site_id": "14",
+          "chain": "A",
+          "has_interactions": "False",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1213
+        },
+        {
+          "binding_site_id": "15",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLA",
+          "longname": "OLA",
+          "position": 1214
+        },
+        {
+          "binding_site_id": "16",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1215
+        },
+        {
+          "binding_site_id": "17",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1216
+        },
+        {
+          "binding_site_id": "18",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1217
+        },
+        {
+          "binding_site_id": "19",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1218
+        },
+        {
+          "binding_site_id": "20",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1219
+        },
+        {
+          "binding_site_id": "21",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1220
+        },
+        {
+          "binding_site_id": "22",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1221
+        },
+        {
+          "binding_site_id": "23",
+          "chain": "A",
+          "has_interactions": "True",
+          "hetid": "OLC",
+          "longname": "OLC",
+          "position": 1222
+        }
+      ],
+      "instrument_role": "independent_witness_only",
+      "observed_counts": {
+        "aromatic_anchor": {
+          "by_class": {
+            "PiStacking": 2
+          },
+          "by_class_and_direction": {
+            "PiStacking": 2
+          },
+          "total": 2
+        },
+        "hbond_anchor": {
+          "by_class": {
+            "HydrogenBond": 3
+          },
+          "by_class_and_direction": {
+            "HydrogenBond:ligand_donor": 2,
+            "HydrogenBond:protein_donor": 1
+          },
+          "total": 3
+        }
+      },
+      "observed_interactions": [
+        {
+          "atom_indices": {
+            "lig_idx_list": [
+              2985,
+              2986,
+              2992,
+              3007,
+              3012
+            ],
+            "prot_idx_list": [
+              1239,
+              1240,
+              1241,
+              1242,
+              1243,
+              1244
+            ]
+          },
+          "direction": null,
+          "interaction_class": "PiStacking",
+          "plip_id": "1",
+          "residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168
+          },
+          "residue_id": "aromatic_anchor"
+        },
+        {
+          "atom_indices": {
+            "lig_idx_list": [
+              2985,
+              2992,
+              2994,
+              2995,
+              2996,
+              2997
+            ],
+            "prot_idx_list": [
+              1239,
+              1240,
+              1241,
+              1242,
+              1243,
+              1244
+            ]
+          },
+          "direction": null,
+          "interaction_class": "PiStacking",
+          "plip_id": "2",
+          "residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168
+          },
+          "residue_id": "aromatic_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 2529,
+            "donoridx": 3005
+          },
+          "direction": "ligand_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "2",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 3008,
+            "donoridx": 2530
+          },
+          "direction": "protein_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "3",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        },
+        {
+          "atom_indices": {
+            "acceptoridx": 2529,
+            "donoridx": 3007
+          },
+          "direction": "ligand_donor",
+          "interaction_class": "HydrogenBond",
+          "plip_id": "4",
+          "residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253
+          },
+          "residue_id": "hbond_anchor"
+        }
+      ],
+      "panel_id": "5OLO_9XW",
+      "pdb_id": "5OLO",
+      "selected_ligand": {
+        "binding_site_id": "1",
+        "chain": "A",
+        "has_interactions": "True",
+        "hetid": "9XW",
+        "longname": "9XW",
+        "position": 1201
+      },
+      "source_xml": "references/stage5/plip_witness/qualification/5OLO_9XW/5OLO_report.xml",
+      "stage5_verdict_instrument": "ProLIF",
+      "target_id": "ADORA2A",
+      "witness_id": "a2a_plip_witness",
+      "witness_reproduced": true
+    }
+  ],
+  "qualification_panel": {
+    "cases": [
+      {
+        "ligand": {
+          "chain": "A",
+          "hetid": "XAC",
+          "position": 999
+        },
+        "ligand_name": "XAC",
+        "panel_id": "3REY_XAC",
+        "pdb_id": "3REY",
+        "xml_path": "references/stage5/plip_witness/qualification/3REY_XAC/3REY_report.xml"
+      },
+      {
+        "ligand": {
+          "chain": "A",
+          "hetid": "9XT",
+          "position": 1201
+        },
+        "ligand_name": "Vipadenant",
+        "panel_id": "5OLH_9XT",
+        "pdb_id": "5OLH",
+        "xml_path": "references/stage5/plip_witness/qualification/5OLH_9XT/5OLH_report.xml"
+      },
+      {
+        "ligand": {
+          "chain": "A",
+          "hetid": "9XW",
+          "position": 1201
+        },
+        "ligand_name": "Tozadenant",
+        "panel_id": "5OLO_9XW",
+        "pdb_id": "5OLO",
+        "xml_path": "references/stage5/plip_witness/qualification/5OLO_9XW/5OLO_report.xml"
+      }
+    ],
+    "experimental_positives_passed": 3,
+    "experimental_positives_total": 3,
+    "status": "PASS"
+  },
+  "summary_count": 3,
+  "target_id": "ADORA2A",
+  "witness_id": "a2a_plip_witness",
+  "witness_reproduced": true,
+  "witness_reproduced_count": 3
+}

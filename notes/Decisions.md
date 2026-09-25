@@ -4597,122 +4597,1218 @@ Revisit D019 only if:
 - the Stage-5 interaction-evidence claim boundary is formally amended;
 - a future decision proposes to promote the independent witness from witness status to verdict authority;
 - new evidence demonstrates that the current witness qualification panel is materially inadequate for the frozen interaction-evidence claim.
-# D019 — PLIP Independent-Witness Qualification and Concordance
 
-**Decision date:** 2026-09-13
+# D020 — Pose-Level Adversarial Eligibility and Reference Preregistration
+
+**Decision date:** 2026-09-14
 
 **Status:** APPROVED
 
 ## Decision
 
-D019 records completion of the frozen PLIP independent-witness qualification and concordance program for the Stage-5 interaction-evidence layer.
+D020 freezes the preregistered eligibility and reference framework for the Stage-5 pose-level adversarial-pose measurement program.
 
-The frozen Stage-5 instrument allocation remains:
+D020 establishes the predeclared rules for identifying an eligible XAC pose as a physically plausible, genuinely alternative pose sampled in the same search that also contains near-native sampling.
 
-- **ProLIF** — Stage-5 verdict instrument;
-- **PLIP** — independent witness only.
+D020 authorizes no docking search, retention change, engine change, parameter tuning, or candidate inspection beyond the explicitly authorized measurement procedures.
 
-D019 does not alter the frozen ProLIF instrument, its interaction parameters, its interpretation, or any previously frozen Stage-5 verdict rule.
+### Pose-level discrimination scope
 
-## Witness qualification
+Pose-level discrimination is IN for the A2A Stage-5 claim.
 
-The PLIP witness was qualified against three experimental A2A positive complexes:
+The intended pose-level negative is a generated XAC pose that is:
 
-- **3REY / XAC**;
-- **5OLH / Vipadenant**;
-- **5OLO / Tozadenant**.
+- physically plausible;
+- genuinely alternative relative to the frozen experimental reference;
+- sampled in the same search in which near-native XAC sampling is demonstrated;
+- independently selected without access to ProLIF outcomes.
 
-All three reproduced the configured experimental-positive reference pattern.
+The pose-level criterion is subordinate to, and does not replace, the existing molecule-level Stage-5 claim boundary.
 
-- experimental positives passed = **3/3**;
-- witness reproduced = **True**;
-- qualification status = **PASS**.
+### Frozen structural reference
 
-This establishes that the PLIP witness can reproduce the frozen reference interaction pattern on the independent experimental-positive qualification panel.
+The structural reference for near-native and alternative-pose RMSD is:
 
-## DiffSBDD cohort concordance
+- **PDB:** 3REY;
+- **ligand:** XAC;
+- **reference pose:** the experimentally observed XAC ligand pose in 3REY.
 
-The frozen DiffSBDD Stage-5 cohort contains **16** cases.
+The RMSD reference is therefore explicitly **3REY/XAC experimental ligand pose**.
 
-The complete-pattern concordance table is:
+Any future change of structural reference requires a separate preregistration.
 
-| | PLIP FALSE | PLIP TRUE |
-|---|---:|---:|
-| **ProLIF FALSE** | 13 | 0 |
-| **ProLIF TRUE** | 0 | 3 |
+### RMSD computation convention
+
+RMSD is computed using:
+
+- the protein-superposed 3REY frame;
+- ligand heavy atoms only;
+- atom correspondence assessed on the heavy-atom molecular graph;
+- chemically valid atom correspondence;
+- protonation/charge differences recorded separately and not treated as correspondence failures, consistent with the ligand-heavy-atom convention;
+- symmetry correction over equivalent mappings;
+- the minimum RMSD across the valid mappings.
+
+XAC's near-symmetric xanthine core requires symmetry correction because naive atom correspondence can misclassify equivalent arrangements.
+
+The RMSD convention is frozen before candidate inspection.
+
+### Ligand scope
+
+The frozen eligibility/reference rule applies **only to XAC**.
+
+RMSD to the frozen 3REY/XAC reference is defined only for XAC poses.
+
+Any expansion to analogs or other ligands requires a separate prospective preregistration containing an explicit atom-mapping rule.
+
+### Near-native and genuinely-alternative boundary
+
+A single RMSD boundary is frozen:
+
+- **near-native:** RMSD <= 2.0 Å;
+- **alternative:** RMSD > 2.0 Å.
+
+The `2.0 Å` boundary is descriptive of near-native versus alternative geometry and is not otherwise tuned during candidate selection.
+
+Every evaluated candidate must have its RMSD recorded, including candidates that are ultimately rejected.
+
+Results are reported by distance band:
+
+- <= 2.0 Å;
+- >2.0 Å and <3.0 Å;
+- >=3.0 Å.
+
+These distance bands are descriptive only and are not separate eligibility criteria.
+
+### Physical plausibility
+
+Physical plausibility requires:
+
+> d_rel >= 0.75
+
+where `d_rel` is the minimum intermolecular atom-pair distance normalized by the corresponding van der Waals radii, per PoseBusters (PMC10901501).
+
+No alternative cutoff may be derived or introduced during the measurement program.
+
+### Same-search near-native and alternative-pose coexistence
+
+Eligibility requires the same search to contain both:
+
+- at least one near-native XAC pose with RMSD <= 2.0 Å; and
+- at least one genuinely alternative XAC pose with RMSD > 2.0 Å that also satisfies the frozen physical-plausibility criterion.
+
+A genuinely alternative pose is therefore not eligible merely because it is geometrically distant from the reference. It must arise from the same search that demonstrates near-native sampling.
+
+### Blindness and selection procedure
+
+Eligibility cutoffs for:
+
+- physical plausibility;
+- genuine alternativeness;
+- near-native sampling;
+
+must be numerically defined and frozen before any DOCK/rDock candidate pose is inspected.
+
+Candidate selection must be blind to ProLIF outcomes.
+
+ProLIF results therefore cannot be used to select, exclude, rank, or otherwise influence eligibility at selection time.
+
+The eligibility procedure operates on the preregistered geometric quantities only.
+
+### Failure branch
+
+Any new purpose-built search undertaken under this preregistration has a predeclared failure branch.
+
+If the new search again returns only near-native poses and produces no physically plausible pose with RMSD >2.0 Å, the search does not establish an eligible adversarial negative.
+
+The result is recorded as:
+
+> **No eligible genuinely alternative physically plausible pose was obtained from the preregistered search.**
+
+Such a result does not authorize retrospective relaxation of the RMSD, `d_rel`, reference, blindness, or coexistence rules.
+
+### New experiment versus Session-010 Graves ladder
+
+The completed Session-010 Graves/DOCK geometric-decoy ladder is closed and is not reopened or tuned by this preregistration.
+
+A new purpose-built search is a new gate-validation measurement when it:
+
+- uses a prospective frozen contract;
+- changes the search design only through parameters explicitly named in that contract;
+- is executed after the eligibility criteria and reference have been frozen;
+- is not chosen or adjusted in response to inspected candidate poses.
+
+Changing or increasing retention within the closed Session-010 ladder does not by itself reopen that ladder; a new search is distinguished from tuning the closed ladder by the existence of a separately preregistered search contract and its prospective execution.
+
+### Per-candidate record
+
+For every evaluated candidate, whether accepted or rejected, the measurement record must retain:
+
+- candidate identity;
+- score/rank information;
+- RMSD to the frozen 3REY/XAC reference;
+- `d_rel`;
+- physical-plausibility status under `d_rel >= 0.75`;
+- RMSD distance band.
+
+No rejected candidate may be omitted from the preregistered measurement record solely because it fails eligibility.
+
+### Joint interpretation
+
+The primary eligibility condition is the conjunction:
+
+> RMSD > 2.0 Å **and** d_rel >= 0.75
+
+with same-search near-native sampling also demonstrated.
+
+`d_rel` does not replace RMSD, and RMSD does not replace physical plausibility.
+
+The two quantities remain independently measured and are combined only by the frozen eligibility rule.
+
+### Reference-source implementation note
+
+The `d_rel` calculation must use the same **3REY receptor coordinate frame** used for the frozen XAC reference and RMSD measurement.
+
+Van der Waals radii are taken from the **RDKit/Bondi `GetRvdw()` table**, corresponding to the radius source used by the PoseBusters-derived implementation.
+
+These implementation choices do not change the frozen definition; they make its execution reproducible and auditable.
+
+### Claim boundary
+
+A pose satisfying the frozen eligibility rule may be described as:
+
+> **a physically plausible, genuinely alternative XAC pose sampled in the same search as near-native XAC sampling under the frozen preregistered criteria.**
+
+This does not by itself establish:
+
+- interaction-negativity;
+- ProLIF failure;
+- target invalidity;
+- generated-molecule binding;
+- biological efficacy.
+
+Those remain separate evidence layers.
+
+### Governing principle
+
+Pose-level adversarial eligibility must be determined prospectively from frozen geometric criteria and an explicit structural reference, independently of the verdict instrument and without adapting the rules after candidate inspection.
+
+### Revisit when
+
+Revisit D020 only if:
+
+- the frozen 3REY/XAC reference is formally changed;
+- the RMSD computation convention is formally amended;
+- the XAC-only ligand scope is expanded;
+- the physical-plausibility definition or `d_rel` threshold is formally amended;
+- the blindness or same-search coexistence requirements are formally changed;
+- a future decision formally changes pose-level discrimination scope.
+
+# D021 — Purpose-Built Pose-Sampling Search Contract
+
+**Decision date:** 2026-09-17
+
+**Status:** APPROVED
+
+## Decision
+
+D021 defines the prospective purpose-built Stage-5 pose-sampling experiment required after the D020 preregistered retention diagnostic failed to obtain an eligible genuinely alternative physically plausible XAC pose.
+
+D021 is separate from D020.
+
+D020 freezes the pose-level eligibility and reference criteria. D021 freezes the search mechanism, measurement pool, persistence qualification, and search parameters used to attempt to satisfy those criteria.
+
+The purpose-built experiment is a new gate-validation experiment. It does not reopen, retune, or amend the closed Session-010 Graves/DOCK geometric-decoy null ladder.
+
+The primary engine remains DOCK. A separately qualified rDock fallback is retained as a parallel pose-generation lineage under the terms below.
+
+## Purpose
+
+The experiment asks whether a prospectively specified pose-generation mechanism can generate, within one search:
+
+1. near-native XAC poses with RMSD <= 2.0 Å; and
+2. genuinely alternative XAC poses with RMSD > 2.0 Å that also satisfy `d_rel >= 0.75`.
+
+The experiment is intended to determine whether the failure to obtain an eligible alternative pose is attributable to score-ranked retention or to the underlying pose-generation population.
+
+No ProLIF or PLIP result may influence pose generation, candidate selection, or eligibility determination.
+
+## Frozen primary engine
+
+The primary purpose-built search uses:
+
+- DOCK 3.8.5;
+- the validated pinned DOCK executable/source lineage;
+- pinned source commit: `fb9b42004a5fcd7fe06902241cbefbb129d7293d`;
+- the same DOCK lineage used for the Session-010 A1 measurement.
+
+## Frozen target/reference system
+
+- target: ADORA2A;
+- receptor: 3REY;
+- ligand: XAC;
+- structural reference: experimental XAC pose in 3REY;
+- coordinate frame: the frozen 3REY frame used by the D020 RMSD and `d_rel` measurements.
+
+Any future change to the target structure, ligand reference, or coordinate frame requires formal amendment.
+
+## Frozen ligand preparation
+
+The XAC ligand preparation remains the frozen Session-010 A1 representation.
+
+The neutral terminal-amine representation remains the frozen DOCK ligand representation.
+
+No ligand-preparation change is included in the purpose-built sampling experiment unless prospectively specified and approved.
+
+## Frozen receptor and grid preparation
+
+The receptor preparation and all receptor/grid inputs remain identical to the frozen Session-010 A1 setup unless a specific change is explicitly designated as part of the approved sampling mechanism.
+
+This includes:
+
+- receptor coordinate frame;
+- matching spheres;
+- scoring grids;
+- bump map;
+- desolvation maps;
+- associated grid inputs.
+
+## Frozen scoring
+
+The DOCK scoring function and scoring weights remain unchanged from the frozen Session-010 A1 setup unless an explicit prospective amendment is approved.
+
+The purpose-built experiment must not alter scoring merely to create an alternative-pose population.
+
+The intended experimental change is to pose sampling and preservation of the generated orientation population.
+
+## Sampling mechanism
+
+The DOCK purpose-built mechanism is to rerun the frozen Session-010 A1 search while adding persistence of the full generated orientation population.
+
+The generated-population persistence mechanism is implemented as a strictly write-only source change.
+
+The approved implementation places the persistence hook after the complete matching/adaptive loop and immediately before `calc_score_mol()`. The hook is gated by the presence of `orientation_dump.enable` in the working directory and uses the existing DOCK `output_match` machinery to serialize the generated orientation state.
+
+The persistence change may:
+
+- read the existing in-memory generated-match arrays;
+- serialize those generated orientations to a new orientation archive;
+- add only the minimum output plumbing required to identify and write that archive.
+
+For the frozen A1 run, `MAXOR = 1000000` and the complete generated population contains 7,989 orientations, so all generated A1 orientations have stored `coml`, `comr`, and `rot` state available at the persistence hook.
+
+The persistence change must not alter:
+
+- orientation-generation control flow;
+- `match_goal` behavior;
+- adaptive matching behavior;
+- match ordering;
+- hash/de-duplication behavior;
+- scoring;
+- minimization;
+- retention;
+- existing `OUTDOCK` output;
+- existing MOL2 output;
+- any floating-point operation in the search path;
+- any existing search-state mutation other than the new persistence side effect.
+
+The persistence archive is a text/gzip serialization of the existing DOCK `comr`, `coml`, and `rot` state. It is not a bit-exact dump of in-memory floating-point objects.
+
+No per-orientation adaptive-tolerance field is asserted because the pinned `match` structure does not retain the tolerance associated with each individual orientation. The archived `curdislim` value is therefore population-level metadata only and is not used as a D020 eligibility criterion.
+
+No claim about the unpersisted A1 run may depend on reconstructing what `curdislim` did internally.
+
+## Measurement pool
+
+The eligibility candidate pool must be defined explicitly because DOCK retention is a score-ranked filter.
+
+The completed 200-save diagnostic generated **7,989 orientations/matches** but retained only **200 score-ranked poses**. All 200 retained poses were near-native under the frozen D020 criterion, with RMSD <= 2.0 Å. No retained pose satisfied the genuinely-alternative condition, despite all 200 being physically plausible under `d_rel >= 0.75`.
+
+The 200 retained poses were all evaluated with the frozen `d_rel` implementation; `d_rel` ranged from 0.9032485336292032 to 0.9292307923112898, with 200/200 satisfying `d_rel >= 0.75` and no computation failures. The joint criterion RMSD > 2.0 Å and `d_rel >= 0.75` was satisfied by 0/200 poses.
+
+The measurement therefore showed that the observed retention population was near-native-only while remaining physically plausible throughout.
+
+Because the full 7,989 generated orientations from the original A1 run were not persisted, no inference about the geometry of the discarded 7,789 orientations is authorized.
+
+The persistence-complete DOCK rerun therefore preserves the full generated orientation population before score-ranked retention is applied.
+
+Eligibility candidates are drawn from that full generated orientation archive.
+
+The retained score-ranked MOL2 population remains an independently preserved output, but retention does not define the measurement pool for the persistence-complete A1 rerun.
+
+## Retention
+
+The 200-save diagnostic showed that increasing retention from 20 to 200 within the frozen A1 search did not expose a genuinely alternative physically plausible pose.
+
+Retention is therefore not itself the intended sampling change.
+
+The persistence-complete rerun retains and preserves the existing A1 score-ranked outputs while additionally preserving the full generated orientation population.
+
+The original A1 search parameters remain frozen, including:
+
+- `match_goal = 5000`;
+- `number_save = 20`;
+- `number_write = 20`;
+
+unless a separate approved amendment explicitly changes them.
+
+## Auditable A1 parameter baseline
+
+The authoritative frozen A1 configuration is:
+
+`references/stage5/dock385/3REY/xac_adversarial_A1_matchgoal5000/working/INDOCK`
+
+The persistence-complete rerun must use that configuration without search-parameter changes.
+
+Every parameter is therefore held frozen except the source-level generated-orientation persistence mechanism.
+
+| Parameter / component | Frozen A1 / D021 treatment |
+|---|---|
+| DOCK source commit | `fb9b42004a5fcd7fe06902241cbefbb129d7293d` — frozen |
+| `match_method` | frozen A1 value |
+| `distance_tolerance` | frozen A1 value |
+| `match_goal` | `5000` — frozen |
+| `distance_step` | frozen A1 value |
+| `distance_maximum` | frozen A1 value |
+| `timeout` | frozen A1 value |
+| `nodes_maximum` | frozen A1 value |
+| `nodes_minimum` | frozen A1 value |
+| `bump_maximum` | frozen A1 value |
+| `bump_rigid` | frozen A1 value |
+| `mol2_score_maximum` | frozen A1 value |
+| ligand preparation | frozen A1 |
+| receptor preparation | frozen A1 |
+| matching spheres | frozen A1 |
+| scoring grids | frozen A1 |
+| scoring weights | frozen A1 |
+| minimization | frozen A1 |
+| random seed | frozen A1 |
+| `number_save` | `20` — frozen |
+| `number_write` | `20` — frozen |
+| existing OUTDOCK output | frozen |
+| existing MOL2 output | frozen |
+| generated-orientation persistence | **new write-only source change** |
+
+The auditable distinction is therefore:
+
+> **Only the generated-orientation persistence mechanism changes.**
+
+## Generated-orientation persistence qualification
+
+### Condition 1 — write-only patch
+
+The source modification must be strictly write-only.
+
+The patch may:
+
+- read the existing in-memory generated-match arrays after orientation generation;
+- serialize those generated orientations to a new archive file;
+- add only the minimum output plumbing required to identify and write that archive.
+
+The patch must not alter:
+
+- orientation-generation control flow;
+- `match_goal` behavior;
+- adaptive matching behavior;
+- match ordering;
+- hash/de-duplication behavior;
+- scoring;
+- minimization;
+- retention;
+- existing `OUTDOCK` output;
+- existing MOL2 output;
+- any floating-point operation in the search path;
+- any existing search-state mutation other than the new persistence side effect.
+
+The source diff must be small enough to review line by line against this standard.
+
+Before execution, the following must be recorded:
+
+- pre-patch commit;
+- post-patch commit;
+- complete source diff;
+- files modified;
+- lines added/removed;
+- archive format and fields;
+- insertion point in the search/output call path.
+
+### Condition 2 — unpatched build-baseline control
+
+Before building or running the patched binary, an unpatched baseline binary must be built from the same frozen source commit using the historical PGI 12.10 toolchain lineage as the validated A1 executable.
+
+The existing validated A1 `dock64` binary was built with PGI 12.10-era tooling, as established by its ELF compiler metadata.
+
+GNU substitution is excluded because the qualification gate compares the rebuild against frozen A1 outputs; a toolchain mismatch would confound compiler effects with patch effects and could force a false Outcome B stop.
+
+The unpatched baseline must be run under the authoritative frozen A1 configuration:
+
+`references/stage5/dock385/3REY/xac_adversarial_A1_matchgoal5000/working/INDOCK`
+
+The baseline must reproduce the frozen A1 retained 20-pose MOL2 and OUTDOCK score/rank rows to printed precision.
+
+The baseline comparison must cover:
+
+- rank;
+- Matchnum;
+- Total Energy;
+- retained pose ordering;
+- retained pose coordinates;
+- other existing printed score fields in the frozen A1 artifacts.
+
+#### Baseline outcome A — exact reproduction
+
+If the unpatched rebuild reproduces the frozen A1 retained MOL2 and OUTDOCK score/rank rows exactly to printed precision:
+
+> **The build environment is qualified as equivalent to the original A1 build for the audited observable outputs.**
+
+The patched-build qualification may proceed.
+
+Any subsequent discrepancy between the patched run and the frozen A1 artifacts is then attributable to the source patch or patched build rather than an already-unqualified build environment.
+
+#### Baseline outcome B — any discrepancy
+
+If the unpatched rebuild differs from the frozen A1 artifacts at printed precision:
+
+> **The build environment is not established as equivalent to the original A1 build.**
+
+Qualification stops immediately.
+
+No patched build is interpreted.
+
+No generated-population measurement is performed.
+
+No D021 scientific conclusion is drawn from the failed qualification.
+
+### Condition 3 — patched-run reproduction
+
+Only after the unpatched baseline passes:
+
+1. apply the write-only source patch;
+2. review the complete source diff line by line;
+3. build the patched binary;
+4. run it under the same frozen A1 working/INDOCK and inputs with persistence disabled;
+5. compare the retained 20-pose MOL2 and OUTDOCK score/rank rows against the frozen A1 artifacts.
+
+#### Patched outcome A — exact reproduction
+
+The patched binary passed this gate.
+
+Observed result:
+
+- retained A1 poses = **20**;
+- retained pose coordinates = **byte-identical** to the certified A1 rerun;
+- OUTDOCK score rows = **identical to printed precision**;
+- Matchnums = **identical**;
+- rank ordering = **identical**;
+- only wall-time/date/header fields differed.
 
 Therefore:
 
-- complete-pattern concordant cases = **16/16**;
-- complete-pattern concordance fraction = **1.0**;
-- discordant cases = **0**.
+> **The patched search is empirically identical to the frozen A1 search for the audited observable outputs with persistence disabled.**
 
-Both configured interaction roles independently show:
+The generated-orientation archive was thereby authorized for use.
 
-- aromatic-anchor reproduction = **16/16** concordant;
-- H-bond-acceptor reproduction = **16/16** concordant.
+#### Patched outcome B — any discrepancy
 
-The witness and verdict instrument therefore agree on the complete configured interaction pattern across the frozen DiffSBDD cohort.
+If any audited retained pose or OUTDOCK score/rank field differs in a future patched qualification:
 
-## Session-011 negative-panel concordance
+> **The patched run is invalidated.**
 
-The frozen Session-011 negative panel contains two generated-pose cases:
+Stop immediately.
 
-- DOCK P3-002 rank 01;
-- rDock P3-002 sole generated pose.
+Do not measure RMSD or `d_rel`.
 
-Both are concordant between ProLIF and PLIP under the configured reference-pattern interpretation.
+Do not select candidates.
 
-- complete-pattern concordant cases = **2/2**;
-- complete-pattern concordance fraction = **1.0**;
-- discordant cases = **0**.
+Do not interpret the generated archive.
 
-These results provide independent-witness concordance on the frozen negative-panel material without changing the negative-panel verdict definition or the role of ProLIF as the Stage-5 instrument.
+## Qualification sequence
 
-## Witness role and claim boundary
+The required DOCK sequence is:
 
-The PLIP implementation is formally qualified as an **independent witness only**.
+1. freeze source commit;
+2. build unpatched baseline from that exact commit using the historical PGI build lineage;
+3. run unpatched baseline under frozen A1 `working/INDOCK`;
+4. compare baseline retained MOL2 and OUTDOCK outputs to frozen A1 artifacts;
+5. if baseline passes, apply the write-only persistence patch;
+6. review the complete source diff line by line;
+7. build patched binary;
+8. run patched binary under the same frozen A1 configuration with persistence disabled;
+9. compare patched retained MOL2 and OUTDOCK outputs to frozen A1 artifacts;
+10. if patched reproduction passes, enable persistence and preserve the complete generated orientation population;
+11. measure the full persisted generated population under D020;
+12. apply the preregistered D021 outcome rule.
 
-PLIP concordance does **not** establish a second Stage-5 verdict instrument, does not supersede ProLIF, and does not authorize a new pass/fail rule.
+## Full-generated-population measurement
 
-The frozen claim boundary remains:
+Only after patched-run qualification passed may the generated-orientation archive be measured.
 
-> ProLIF is the Stage-5 verdict instrument; PLIP provides independent witness evidence concerning concordance of the configured interaction-pattern measurements.
+The persistence-enabled A1 run produced **7,989** generated orientations, matching the generated-orientation count reported by the frozen A1 OUTDOCK record.
 
-The witness results do not by themselves establish:
+Three gzip-compressed orientation streams were preserved:
 
-- ligand compatibility;
-- biological activity;
-- target validation;
-- docking success;
+- `orientations_mol000001_comr.gz`;
+- `orientations_mol000001_coml.gz`;
+- `orientations_mol000001_rot.gz`.
+
+Each contained exactly 7,989 records.
+
+The stored `rot` values were interpreted using the pinned `output_match` Fortran column-major serialization:
+
+`rot11, rot21, rot31, rot12, rot22, rot32, rot13, rot23, rot33`.
+
+The persisted `coml`, `comr`, and `rot` state was reconstructed using the frozen DOCK transform:
+
+`transformed = comr + rot * (coords - coml)`.
+
+Reconstruction was validated before full-population measurement.
+
+Every generated orientation was then evaluated under the frozen D020 conventions:
+
+- symmetry-corrected RMSD to the experimental 3REY/XAC reference;
+- `d_rel` against the same frozen 3REY receptor coordinate frame;
+- physical-plausibility status under `d_rel >= 0.75`;
+- RMSD distance band.
+
+The distance bands are:
+
+- <= 2.0 Å;
+- >2.0 Å and <3.0 Å;
+- >=3.0 Å.
+
+These bands are descriptive only.
+
+## Predeclared DOCK full-population outcomes
+
+### Outcome A — eligible alternative exists
+
+If any generated pose satisfies:
+
+- RMSD > 2.0 Å; and
+- `d_rel >= 0.75`;
+
+then an eligible negative exists within the completed frozen A1 search.
+
+The conclusion is:
+
+> **Score-ranked retention was the bottleneck.**
+
+The D021 mechanism does not proceed to tolerance redesign.
+
+The measurement-pool definition is the corrective change: eligibility is assessed against the persisted full generated population rather than only the score-ranked retained set.
+
+### Outcome B — no eligible alternative exists
+
+If the full generated population contains no pose satisfying:
+
+- RMSD > 2.0 Å; and
+- `d_rel >= 0.75`;
+
+then the persistence-complete A1 population contains no eligible alternative under D020.
+
+The persistence-complete archive becomes the preserved baseline for any later, separately justified sampling/tolerance redesign.
+
+No inference is made about any unpersisted orientation population from the original A1 run.
+
+## D021 Outcome B — Persistence-Complete A1 Result
+
+The persistence-complete DOCK A1 experiment was executed under the frozen D021 search configuration with the approved write-only orientation-persistence patch.
+
+The patched binary passed the required reproduction gate with persistence disabled before the persistence-enabled run was executed:
+
+- retained A1 poses = **20**;
+- retained pose coordinates = **byte-identical** to the certified A1 rerun;
+- OUTDOCK score rows = **identical to printed precision**;
+- Matchnums = **identical**;
+- rank ordering = **identical**.
+
+The persistence-enabled run produced **7,989** generated orientations.
+
+All 7,989 generated orientations were reconstructed from the persisted `comr`, `coml`, and `rot` archives and measured under the frozen D020 RMSD and `d_rel` conventions.
+
+### Full-population measurements
+
+| Measurement | Result |
+|---|---:|
+| Generated orientations | **7,989** |
+| RMSD <= 2.0 Å | **7,758** |
+| RMSD > 2.0 Å | **231** |
+| 2.0 Å < RMSD < 3.0 Å | **24** |
+| RMSD >= 3.0 Å | **207** |
+| `d_rel >= 0.75` | **7,752** |
+| RMSD > 2.0 Å and `d_rel >= 0.75` | **0** |
+
+Observed ranges:
+
+- RMSD = **0.000000 to 13.784851 Å**;
+- `d_rel` = **0.023943 to 0.884488**.
+
+Among the 231 geometrically alternative orientations with RMSD > 2.0 Å, **none** satisfied the frozen physical-plausibility requirement `d_rel >= 0.75`. The maximum `d_rel` among the RMSD > 2.0 Å orientations was **0.729061**.
+
+### Outcome
+
+The preregistered **Outcome B** is therefore observed:
+
+> **The persistence-complete A1 generated population contains no eligible genuinely alternative physically plausible pose under the frozen D020 criteria.**
+
+The result does **not** support the conclusion that the original 20-pose retention filter alone was the bottleneck.
+
+The full generated population contained **231** genuinely alternative geometries by RMSD, demonstrating that alternative geometries were sampled.
+
+However, none of those 231 alternative orientations satisfied the frozen `d_rel >= 0.75` physical-plausibility requirement.
+
+Thus the D021 full-population result is:
+
+> **Alternative geometry was generated, but no physically plausible alternative pose was generated under the frozen D020 criterion.**
+
+The frozen D020 RMSD threshold, `d_rel` threshold, physical-plausibility definition, scoring criteria, retention rule, and other eligibility criteria were not changed in response to this result.
+
+No inference is made about any unpersisted orientation population from the original A1 run beyond the persistence-complete experiment actually measured here.
+
+### D021 failure-branch consequence
+
+The persistence-complete A1 archive is now the preserved baseline for any later, separately justified sampling/tolerance redesign.
+
+Per the preregistered D021 failure branch:
+
+> **No eligible genuinely alternative physically plausible XAC pose was obtained from the persistence-complete A1 generated population.**
+
+No further DOCK rerun is authorized under the completed D021 persistence experiment.
+
+Any subsequent sampling or tolerance redesign requires a separate prospective justification and preregistration before execution.
+
+### Measurement artifact
+
+The complete raw D020 measurement population is preserved as:
+
+`references/stage5/dock385/d021_orientation_measurement/d021_A1_all_7989_measurements.csv`
+
+The artifact contains one row for each of the 7,989 generated orientations in archive order, with:
+
+- `orient_index`;
+- `rmsd`;
+- `d_rel`.
+
+## Blindness
+
+The search is executed before inspection of candidate RMSDs, `d_rel` values, ProLIF results, or PLIP results.
+
+Candidate inspection occurs only after the applicable search and persistence qualification has completed.
+
+ProLIF and PLIP outcomes are unavailable to the geometric eligibility-selection procedure.
+
+## Candidate measurement
+
+Every candidate in the frozen measurement pool must retain:
+
+- candidate identity;
+- generated-orientation identifier where available;
+- score/rank metadata where available;
+- RMSD to the experimental 3REY/XAC reference;
+- `d_rel`;
+- physical-plausibility status under `d_rel >= 0.75`;
+- RMSD distance band.
+
+No rejected candidate may be omitted solely because it fails eligibility.
+
+## Failure branch
+
+If the persistence-complete full generated population produces no physically plausible XAC pose with RMSD >2.0 Å, the preregistered failure branch is:
+
+> **No eligible genuinely alternative physically plausible pose was obtained from the persistence-complete A1 generated population.**
+
+No RMSD, `d_rel`, retention, scoring, or sampling criterion may be relaxed retrospectively.
+
+## Implementation-assistant boundary
+
+OpenCode may be used for implementation plumbing after this contract is frozen, including:
+
+- source-edit mechanics;
+- build commands;
+- output-file plumbing;
+- test/scaffolding;
+- manifests and hashes;
+- mechanical verification;
+- diff reporting.
+
+OpenCode must not decide:
+
+- where the scientific write occurs;
+- what constitutes a valid generated-orientation record;
+- whether the patch is write-only;
+- whether the patch changes scientific behavior;
+- whether a qualification result passes the predeclared scientific criteria.
+
+The scientifically consequential patch behavior and its line-by-line review remain under direct project review.
+
+## rDock fallback
+
+rDock is retained as a pre-registered fallback pose-generation lineage.
+
+The rDock fallback is **ACTIVE NOW**.
+
+The fallback does not amend D020 and does not reopen, tune, reinterpret, or invalidate the closed Session-010 Graves/DOCK geometric-decoy null ladder.
+
+rDock remains a parallel engine rather than a replacement for DOCK.
+
+### Pinned rDock lineage
+
+The qualification uses the Session-011-frozen rDock lineage:
+
+- source tag: `v24.04.204-legacy`;
+- Git commit: `3c029ecc65898166b234716b1609fb46212cbc6d`;
+- source path: `/mnt/nfs/CX900004_DS117/src/rdock`;
+- standard protocol: `data/scripts/dock.prm`;
+- protocol title: `Free docking (indexed VDW)`;
+- protocol used unmodified.
+
+Session-011 also recorded a pre-existing executable/library metadata discrepancy: the pinned Git checkout reported `v24.04.204-legacy`, while the executable/library reported `v26.09-alpha`. That discrepancy is preserved as provenance and is not normalized.
+
+Before execution, the exact executable and library artifacts actually used must be recorded and hashed.
+
+### rDock activation
+
+The rDock fallback activation was moved to **immediate activation**.
+
+The PGI/DOCK path remains active in parallel through the September 23 review, including:
+
+- the UCSF infrastructure ticket;
+- the legacy-artifact request to the docking.org administrators.
+
+DOCK remains the primary engine until the September 23 review.
+
+A passing rDock qualification establishes a qualified parallel pose-generation engine; it does not replace DOCK.
+
+### rDock environment preparation
+
+The first rDock step is environment preparation only:
+
+1. install the pinned rDock implementation;
+2. verify the pinned source/executable/library lineage;
+3. stage the frozen receptor, ligand, and protocol inputs;
+4. verify the staged environment.
+
+The qualification run does not begin until the environment is staged and verified.
+
+### rDock Qualification — Run 1
+
+The initial executed single-shot run used the pinned standard protocol without an explicit multi-run pose-count parameter.
+
+The resulting population contained exactly one generated pose.
+
+Run 1 produced:
+
+- RMSD = 11.544159786719 Å;
+- `d_rel` = 0.859153284524;
+- RMSD band = >=3.0 Å;
+- physically plausible = True;
+- D020-eligible alternative = True.
+
+Run 1 is preserved as historical evidence of the operational contract defect.
+
+Its result is not interpreted as an rDock capability finding because the one-pose population could not satisfy the predeclared coexistence criterion requiring both near-native and alternative classes.
+
+Run 1 is not replaced or erased by the repair.
+
+### rDock Contract Repair Amendment
+
+The rDock fallback contract contained an operational contradiction: the pinned standard single-run invocation produced a one-pose population, while the qualification criterion required same-search coexistence of near-native and alternative pose classes, which a one-pose population cannot satisfy.
+
+This amendment repairs the invocation while leaving the scientific qualification criteria unchanged.
+
+#### 1. Frozen criteria
+
+All D020 geometric criteria remain unchanged:
+
+- near-native: RMSD <= 2.0 Å;
+- alternative: RMSD > 2.0 Å;
+- physical plausibility: `d_rel >= 0.75`;
+- same-search coexistence remains the qualification requirement.
+
+No geometric criterion, threshold, reference structure, or measurement convention is modified.
+
+#### 2. Preregistered pose-count parameter
+
+The only changed rDock invocation parameter is:
+
+    -n 50
+
+This requests 50 independent docking runs for the single XAC ligand record.
+
+The value is preregistered before the repair run.
+
+The justification is based on documented rDock benchmarking practice: 50 runs per ligand is documented as standard docking, while 100 runs is described as exhaustive docking; published rDock binding-mode benchmarking reports convergence after approximately 20–50 genetic-algorithm runs. The choice of 50 therefore follows the standard-docking convention and the upper end of the published convergence range rather than being selected from inspection of Run 1.
+
+No other command-line parameter is changed.
+
+#### 3. Repair run
+
+Exactly one repair run is authorized.
+
+This is **Run 2**.
+
+No further reruns are authorized under any alternative framing, parameterization, or interpretation.
+
+The result of Run 2 stands as executed:
+
+- qualification pass if the frozen coexistence criterion is satisfied;
+- qualification fail if either required population component is absent.
+
+A failure is a documented null and is not a cue for further tuning.
+
+#### 4. rDock Run 2 frozen invocation
+
+The frozen repair invocation is:
+
+    rbdock
+      -r 3REY_rdock.prm
+      -p dock.prm
+      -n 50
+      -i XAC_reference.sd
+      -o <new repair-run output>
+
+The pinned rDock executable, protocol, receptor, ligand, cavity, runtime libraries, and all other settings remain unchanged.
+
+#### 5. rDock measurement pool
+
+All generated rDock poses from Run 2 constitute the measurement pool.
+
+Eligibility is assessed over the full generated population.
+
+No pose may be removed based on RMSD, `d_rel`, interaction pattern, score, or other post-generation observations.
+
+The complete generated pose archive must be preserved.
+
+#### 6. rDock Run 2 qualification criterion
+
+The same Run 2 population must contain both:
+
+1. at least one near-native pose with RMSD <= 2.0 Å; and
+2. at least one physically plausible alternative pose satisfying:
+   - RMSD > 2.0 Å;
+   - `d_rel >= 0.75`.
+
+Both conditions must occur within Run 2.
+
+#### 7. rDock Run 2 outcome
+
+Run 2 **passed** the frozen qualification criterion.
+
+The 50-pose population contained:
+
+- 1/50 near-native pose with RMSD <= 2.0 Å;
+- 49/50 alternative poses with RMSD > 2.0 Å;
+- 50/50 physically plausible poses with `d_rel >= 0.75`;
+- 49/50 D020-eligible alternative poses satisfying RMSD >2.0 Å and `d_rel >= 0.75`.
+
+Observed ranges:
+
+- RMSD = **1.0622873991472819 to 13.524631893279377 Å**;
+- `d_rel` = **0.7856314103933344 to 0.9213006403054211**.
+
+The first eligible alternative occurred at rank 1.
+
+Therefore:
+
+> **rDock is qualified as a parallel pose-generation engine under the frozen D020 same-search coexistence criterion.**
+
+No further rDock rerun or tuning is authorized under this qualification.
+
+## Relationship to D020
+
+D020 is engine-agnostic with respect to generator lineage.
+
+D020 defines eligibility in terms of the generated XAC pose and the frozen geometric criteria:
+
+- physically plausible;
+- genuinely alternative relative to the frozen experimental reference;
+- sampled in the same search in which near-native XAC sampling is demonstrated.
+
+The rDock fallback therefore does not require a D020 amendment.
+
+D020 remains unchanged.
+
+## Relationship to Session-010
+
+The completed Session-010 Graves/DOCK geometric-decoy null ladder remains closed.
+
+Neither the persistence-complete DOCK experiment nor the rDock fallback reopens, retunes, or reinterprets that result.
+
+A successful rDock qualification constitutes new evidence from a separate pose-generation lineage.
+
+## Output artifact requirements
+
+The DOCK persistence-complete search and rDock qualification must preserve:
+
+- exact engine/build identity;
+- exact source commit;
+- exact executable/library artifacts;
+- exact input configuration;
+- complete parameter record;
+- complete generated-pose archive;
+- retained/written pose archive where applicable;
+- score/rank records;
+- RMSD and `d_rel` measurements;
+- manifests;
+- hashes;
+- qualification summaries;
+- failure/success outcome records.
+
+## Claim boundary
+
+A successful rDock qualification establishes only that the qualified rDock search sampled both:
+
+- at least one near-native XAC pose; and
+- at least one physically plausible genuinely alternative XAC pose
+
+under the frozen D020 same-search criterion.
+
+A successful DOCK persistence experiment does not independently establish that a physically plausible genuinely alternative pose exists; the completed DOCK persistence experiment produced Outcome B.
+
+Neither result independently establishes:
+
+- interaction-negativity;
+- ProLIF failure;
+- PLIP failure;
+- target invalidity;
 - generated-molecule binding;
-- a new Stage-5 PASS/FAIL criterion.
-
-Any future use of PLIP as a verdict instrument, any change to the configured interaction pattern, or any change to the frozen witness role requires formal promotion through the decision/amendment process.
-
-## Implementation and artifact basis
-
-The D019 evidence package includes:
-
-- frozen witness configuration;
-- three experimental-positive qualification records;
-- qualification summary;
-- DiffSBDD cohort concordance records and summary;
-- Session-011 negative-panel concordance records and summary;
-- derived-input manifests and SHA256 inventories.
-
-These artifacts are preserved as the auditable basis for D019.
+- biological efficacy.
 
 ## Governing principle
 
-The independent witness provides orthogonal implementation evidence for the frozen interaction instrument without becoming a second source of scientific authority.
+The purpose-built experiment must alter or expand the pose-sampling measurement population prospectively and transparently, while preserving the frozen D020 eligibility criteria, avoiding post hoc selection, and maintaining auditable lineage from the generator through the final geometric measurement.
 
 ## Revisit when
 
-Revisit D019 only if:
+Revisit D021 only if:
 
-- the frozen ProLIF instrument or interaction parameters are formally changed;
-- PLIP or another qualified witness is shown to produce materially non-concordant results on a newly frozen witness panel;
-- the Stage-5 interaction-evidence claim boundary is formally amended;
-- a future decision proposes to promote the independent witness from witness status to verdict authority;
-- new evidence demonstrates that the current witness qualification panel is materially inadequate for the frozen interaction-evidence claim.
+- the DOCK persistence mechanism is formally amended;
+- the DOCK baseline qualification or patched-run qualification fails and a new implementation route is proposed;
+- the generated-orientation measurement-pool definition is amended;
+- the rDock pinned lineage or protocol is formally changed;
+- the rDock repair-run parameter is formally amended before execution;
+- a new pose-generation architecture is proposed;
+- the D020 eligibility/reference framework is amended;
+- the Stage-5 pose-level claim boundary is amended.
+
+# D022 — Symmetric Stage-5 discriminator semantics for panel verdict
+
+Decision date: 2026-09-25
+Status: FROZEN
+
+## Decision
+
+For the Stage-5 ProLIF panel verdict, the same frozen interaction-class
+recognition rule governs both experimental positives and primary-panel
+negatives:
+
+(Phe168 Hydrophobic OR PiStacking)
+AND
+(Asn253 HBAcceptor)
+
+VdWContact alone does not satisfy the Phe168 arm.
+
+An experimental positive is retained only if it satisfies this strict
+interaction-class rule.
+
+A primary-panel negative is rejected only if it does not satisfy this
+strict interaction-class rule.
+
+The historical native-reader proof-of-life qualification remains valid as
+a record that the frozen reader recovered interactions involving both
+predeclared A2A anchor residues. Its historical `reader_pass` criterion
+(any Phe168 interaction AND any Asn253 interaction) is not the Stage-5
+panel-verdict criterion and is not retroactively rewritten.
+
+## Pre-inspection freeze
+
+This amendment was frozen before inspection of the preserved positive
+interaction-class outputs under the strict rule.
+
+At the time of this decision:
+- the historical native-reader proof-of-life implementation and its broad
+  anchor-recovery criterion had been inspected;
+- the strict interaction-class discriminator definition had been inspected;
+- the completed primary-negative ProLIF interaction results had been
+  inspected;
+- the preserved Phe168/Asn253 interaction-class results for the three
+  experimental positives had NOT been inspected in the current decision
+  process.
+
+Therefore the positive-retention criterion was selected without knowledge
+of whether the three experimental positives pass or fail that criterion.
+
+## Failure handling
+
+If any experimental positive fails the strict interaction-class rule:
+
+1. Do not loosen, reinterpret, or tune the rule to obtain a passing panel.
+2. Record the positive failure under the frozen D022 criterion.
+3. Retrieve the crystallographic interaction evidence for the failing
+   experimental complex.
+4. Any proposed change to the recognition rule must be presented as a
+   separate framework amendment for review before adoption.
+5. The failed result remains the result under D022 unless and until a
+   separately approved amendment supersedes the rule.
+
+No rerun is authorized by this failure-handling rule.
+
+## Verdict reporting
+
+The Stage-5 result must be reported as two separate counts:
+
+- experimental positives retained: x/3
+- primary-panel negatives rejected: 6/6
+
+Do not collapse these counts into a single PASS/FAIL word as the primary
+reported result.
+
+The existing panel-level logic remains:
+
+all experimental positives retained
+AND
+all primary-panel negatives rejected.
+
+## Evidence handling
+
+Positive-arm evaluation after this decision is retrieval-only.
+
+Use preserved ProLIF outputs from the historical native-control execution.
+Do not rerun ProLIF, alter receptor or ligand preparation, tune fingerprint
+parameters, or regenerate interaction evidence merely to evaluate D022.
+
+If the necessary preserved positive interaction classes cannot be found,
+record the evidence gap and stop rather than rerunning the reader.
+
+## Governing principle
+
+The verdict criterion must be fixed independently of the observed positive
+outcomes. Symmetric discriminator semantics prevent the positive and
+negative arms from being judged by different interaction definitions after
+their outcomes are known.
+
+## Revisit when
+
+Revisit D022 only through a separately documented amendment supported by
+a methodological reason independent of a desire to change the observed
+Stage-5 verdict, including crystallographic interaction evidence if a
+positive fails the frozen strict rule.
+
+# D023 — A2A Stage-5 Authority to Apply the Validated Gate to the Existing DiffSBDD Cohort
+
+**Decision date:** 2026-09-25
+**Status:** APPROVED — FROZEN
+
+## Decision
+
+The A2A Stage-5 interaction criterion is already frozen and is not changed by this decision:
+
+```text
+(Phe168 Hydrophobic OR PiStacking)
+AND
+(Asn253 HBAcceptor)
+```
+
+D022 established the authority of this frozen discriminator within the validated A2A Stage-5 panel:
+
+* experimental positives retained: **3/3**
+* primary-panel negatives rejected: **6/6**
+
+D023 therefore grants **application authority** for the already-frozen criterion to the previously measured 16-member DiffSBDD Stage-5 cohort.
+
+No interaction measurement is rerun, regenerated, reinterpreted, or recalibrated.
+
+The preserved DiffSBDD measurements, obtained using the frozen interaction definition and original generator-provided coordinates, remain the authoritative measurements for this disposition.
+
+## Relationship to D012
+
+D012 explicitly recorded the 3/16 DiffSBDD result as characterization-only and stated that the 13 non-reproducing molecules were not Stage-5 failures.
+
+D023 does not alter the D012 criterion, invalidate the historical characterization record, or claim that the original measurements were incorrectly obtained.
+
+D023 changes only the **authority of the validated Stage-5 gate over that already-measured cohort**.
+
+The D012 characterization record therefore remains permanently preserved, while the same preserved measurements are now authorized for formal Stage-5 cascade disposition.
+
+## Known-outcome status
+
+The 3/16 outcome was already known when D023 was approved.
+
+This is therefore a **post-validation authority decision**, not a blinded criterion-selection decision.
+
+The criterion itself was not selected, tightened, loosened, or recalibrated in response to the observed 3/16 result.
+
+## Mechanical disposition
+
+The preserved 16-member DiffSBDD cohort is disposed mechanically under the frozen criterion.
+
+* **3/16 molecules are retained through Stage 5** because they reproduce the complete frozen A2A recognition pattern.
+* **13/16 molecules are attrited from cascade progression at Stage 5** because they do not reproduce the complete frozen A2A recognition pattern.
+
+No rerun is authorized or required.
+
+The original generator-provided coordinates, ProLIF outputs, target representation, and underlying measurements remain unchanged.
+
+## Permanent characterization record
+
+The 13 Stage-5-attrited molecules are **also permanently retained as characterization evidence**.
+
+Their attrition from cascade progression does not erase or collapse the information they provide about generator behavior.
+
+The preserved DiffSBDD cohort records the following feature-level pattern:
+
+* Phe168 reference feature reproduced: **15/16**
+* Asn253 reference feature reproduced: **4/16**
+* complete A2A reference pattern reproduced: **3/16**
+
+Thus, the Stage-5 attrition result must be accompanied by the generator failure-mode characterization:
+
+> **The generator reproduced the Phe168 reference feature in 15/16 molecules, the Asn253 reference feature in 4/16 molecules, and the complete frozen A2A recognition pattern in 3/16 molecules.**
+
+The 13 non-reproducing molecules therefore remain available for downstream scientific analysis of where target-recognition reproduction breaks down, even though they no longer progress through the attrition cascade.
+
+## Final Stage-5 cohort disposition
+
+```text
+Stage-5 input cohort:              16
+Retained through Stage 5:           3
+Attrited at Stage 5:               13
+Complete-pattern reproduction:      3/16
+Phe168 feature reproduction:       15/16
+Asn253 feature reproduction:        4/16
+```
+
+The 13 attrited molecules remain preserved as characterization artifacts and are not deleted, hidden, or excluded from the project's scientific record.
+
+## Claim boundary
+
+This authority remains limited to the validated A2A molecule-level Stage-5 domain established by D012 and D022.
+
+It does not authorize:
+
+* pose-sensitivity claims;
+* arbitrary pose-correctness claims;
+* general negative-chemotype specificity;
+* universal ProLIF specificity;
+* transfer of the A2A gate to another target;
+* alteration of the frozen recognition criterion.
+
+Stage-5 attrition means only that the frozen A2A target-recognition criterion was not reproduced by the evaluated generator-provided pose under the validated molecule-level gate. It does not by itself establish experimental nonbinding or biological inactivity.
+
+## Governing principle
+
+**Validation establishes when a frozen measurement can exercise attrition; it does not require remeasurement or retrospective criterion selection.**
+
+The same preserved measurement must therefore support both:
+
+1. cascade disposition; and
+2. permanent characterization of generator behavior.
+
+## Revisit when
+
+Revisit D023 only if:
+
+* the A2A Stage-5 criterion is formally amended;
+* the validated A2A implementation materially changes;
+* the preserved 16-member measurements are shown to be technically invalid;
+* the Stage-5 authority model is formally broadened or narrowed.

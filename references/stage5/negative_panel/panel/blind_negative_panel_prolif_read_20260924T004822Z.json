@@ -1,0 +1,2702 @@
+{
+  "artifacts": {
+    "human_readable_summary": "references/stage5/negative_panel/panel/blind_negative_panel_prolif_read_20260924T004822Z.md",
+    "machine_readable_result": "references/stage5/negative_panel/panel/blind_negative_panel_prolif_read_20260924T004822Z.json"
+  },
+  "execution_timestamp_utc": "20260924T004822Z",
+  "inputs": [
+    {
+      "input_filename": "NEG001.mol2",
+      "input_sha256": "a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf",
+      "ligand_loading_route": "qualified_mol2_adapter",
+      "opaque_id": "NEG001"
+    },
+    {
+      "input_filename": "NEG002.sdf",
+      "input_sha256": "4673e9602eb9c7bce9aa722719a23b09cbcd2577aa58eb98d831ae5decae1a40",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG002"
+    },
+    {
+      "input_filename": "NEG003.sdf",
+      "input_sha256": "0be9e51d6d8724d893d8897c8ee8f2098d1f78c0c78f2d56671ae5a3e2ad6a1f",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG003"
+    },
+    {
+      "input_filename": "NEG004.sdf",
+      "input_sha256": "ef147293ace058a7e0b414bdb3099348694fe3de0ac30b6db3777aac40eb5f53",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG004"
+    },
+    {
+      "input_filename": "NEG005.sdf",
+      "input_sha256": "866e6c6c0ccc1d57296861a855630adfe0a754e1f2f182b77b1f66ff64513125",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG005"
+    },
+    {
+      "input_filename": "NEG006.sdf",
+      "input_sha256": "957fc0043750dd93a405dcd00347ef98b805004477e9cfbe680c9c8d2326fa5c",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG006"
+    }
+  ],
+  "package_versions": {
+    "prolif": "2.2.0",
+    "rdkit": "2026.03.5"
+  },
+  "reader": {
+    "fingerprint": "default plf.Fingerprint() via run_interaction_reader()",
+    "functions": [
+      "load_protein",
+      "run_interaction_reader"
+    ],
+    "metadata": true,
+    "source_file": "scripts/stage5/test_native_reader_controls.py",
+    "source_file_sha256_after_run": "006d0eae192c4776d84d89d3d381c87d289c0fbda749b1ba7c9a93929c07cdf6",
+    "source_file_sha256_before_task": "006d0eae192c4776d84d89d3d381c87d289c0fbda749b1ba7c9a93929c07cdf6",
+    "source_file_unchanged": true
+  },
+  "receptor": {
+    "path": "references/stage5/native_complexes/3REY/3REY_receptor_pH7.4_restored.pqr",
+    "sha256": "215980d74db369f4617fb750ade5f2d362f36cd1b93af97ad1fda773bfa5c384"
+  },
+  "results": [
+    {
+      "anchor_results": {
+        "Asn253": {
+          "interaction_classes": [],
+          "metadata": []
+        },
+        "Phe168": {
+          "interaction_classes": [
+            "VdWContact"
+          ],
+          "metadata": [
+            {
+              "interactions": {
+                "VdWContact": [
+                  {
+                    "distance": 3.0814372373865733,
+                    "indices": {
+                      "ligand": [
+                        24
+                      ],
+                      "protein": [
+                        4
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        24
+                      ],
+                      "protein": [
+                        2291
+                      ]
+                    }
+                  }
+                ]
+              },
+              "ligand_residue": {
+                "chain": null,
+                "name": "UNL",
+                "number": 1,
+                "repr": "ResidueId(UNL, 1, None)"
+              },
+              "protein_residue": {
+                "chain": "A",
+                "name": "PHE",
+                "number": 168,
+                "repr": "ResidueId(PHE, 168, A)"
+              }
+            }
+          ]
+        }
+      },
+      "frozen_recognition_pattern": false,
+      "input_filename": "NEG001.mol2",
+      "input_path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG001.mol2",
+      "input_sha256": "a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf",
+      "ligand_loading_route": "qualified_mol2_adapter",
+      "opaque_id": "NEG001",
+      "processing_state": "ANCHOR_REPORTED",
+      "prolif_interactions": [
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.0814372373865733,
+                "indices": {
+                  "ligand": [
+                    24
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    24
+                  ],
+                  "protein": [
+                    2291
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168,
+            "repr": "ResidueId(PHE, 168, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.080614829457334,
+                "indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    3957
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 271,
+            "repr": "ResidueId(TYR, 271, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.585226042823576,
+                "indices": {
+                  "ligand": [
+                    35
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    35
+                  ],
+                  "protein": [
+                    33
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 9,
+            "repr": "ResidueId(TYR, 9, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.2247842431196525,
+                "indices": {
+                  "ligand": [
+                    12
+                  ],
+                  "protein": [
+                    6
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    12
+                  ],
+                  "protein": [
+                    3877
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 267,
+            "repr": "ResidueId(LEU, 267, A)"
+          }
+        },
+        {
+          "interactions": {
+            "HBDonor": [
+              {
+                "DHA_angle": 146.8364439438742,
+                "distance": 2.652180969493531,
+                "indices": {
+                  "ligand": [
+                    26,
+                    53
+                  ],
+                  "protein": [
+                    3
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    26,
+                    53
+                  ],
+                  "protein": [
+                    934
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.652180969493531,
+                "indices": {
+                  "ligand": [
+                    26
+                  ],
+                  "protein": [
+                    3
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    26
+                  ],
+                  "protein": [
+                    934
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "SER",
+            "number": 67,
+            "repr": "ResidueId(SER, 67, A)"
+          }
+        },
+        {
+          "interactions": {
+            "HBDonor": [
+              {
+                "DHA_angle": 175.70555697369133,
+                "distance": 2.6088911160726935,
+                "indices": {
+                  "ligand": [
+                    25,
+                    52
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    25,
+                    52
+                  ],
+                  "protein": [
+                    2314
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.6088911160726935,
+                "indices": {
+                  "ligand": [
+                    25
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    25
+                  ],
+                  "protein": [
+                    2314
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "GLU",
+            "number": 169,
+            "repr": "ResidueId(GLU, 169, A)"
+          }
+        }
+      ],
+      "residue_75_guard": {
+        "residue_75_contacts": "NONE",
+        "state": "CLEAR"
+      }
+    },
+    {
+      "anchor_results": {
+        "Asn253": {
+          "interaction_classes": [],
+          "metadata": []
+        },
+        "Phe168": {
+          "interaction_classes": [
+            "VdWContact"
+          ],
+          "metadata": [
+            {
+              "interactions": {
+                "VdWContact": [
+                  {
+                    "distance": 2.586741647128452,
+                    "indices": {
+                      "ligand": [
+                        29
+                      ],
+                      "protein": [
+                        14
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        29
+                      ],
+                      "protein": [
+                        2301
+                      ]
+                    }
+                  }
+                ]
+              },
+              "ligand_residue": {
+                "chain": null,
+                "name": "UNL",
+                "number": 1,
+                "repr": "ResidueId(UNL, 1, None)"
+              },
+              "protein_residue": {
+                "chain": "A",
+                "name": "PHE",
+                "number": 168,
+                "repr": "ResidueId(PHE, 168, A)"
+              }
+            }
+          ]
+        }
+      },
+      "frozen_recognition_pattern": false,
+      "input_filename": "NEG002.sdf",
+      "input_path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG002.sdf",
+      "input_sha256": "4673e9602eb9c7bce9aa722719a23b09cbcd2577aa58eb98d831ae5decae1a40",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG002",
+      "processing_state": "ANCHOR_REPORTED",
+      "prolif_interactions": [
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.586741647128452,
+                "indices": {
+                  "ligand": [
+                    29
+                  ],
+                  "protein": [
+                    14
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    29
+                  ],
+                  "protein": [
+                    2301
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168,
+            "repr": "ResidueId(PHE, 168, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 3.8784965512612586,
+                "indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    3954
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.243744371091483,
+                "indices": {
+                  "ligand": [
+                    6
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    6
+                  ],
+                  "protein": [
+                    3957
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 271,
+            "repr": "ResidueId(TYR, 271, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.157642828633523,
+                "indices": {
+                  "ligand": [
+                    25
+                  ],
+                  "protein": [
+                    5
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    25
+                  ],
+                  "protein": [
+                    34
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.77433948259925,
+                "indices": {
+                  "ligand": [
+                    0
+                  ],
+                  "protein": [
+                    14
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    0
+                  ],
+                  "protein": [
+                    43
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 9,
+            "repr": "ResidueId(TYR, 9, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 3.6914038155976314,
+                "indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    3875
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.110005755338962,
+                "indices": {
+                  "ligand": [
+                    23
+                  ],
+                  "protein": [
+                    3
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    23
+                  ],
+                  "protein": [
+                    3874
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 267,
+            "repr": "ResidueId(LEU, 267, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.950444864588141,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    3
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    915
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ILE",
+            "number": 66,
+            "repr": "ResidueId(ILE, 66, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.4966642317291154,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    938
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "SER",
+            "number": 67,
+            "repr": "ResidueId(SER, 67, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.148561157998001,
+                "indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    17
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "VAL",
+            "number": 8,
+            "repr": "ResidueId(VAL, 8, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.377297984275949,
+                "indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    3937
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "MET",
+            "number": 270,
+            "repr": "ResidueId(MET, 270, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.1630455229986087,
+                "indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    4007
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ILE",
+            "number": 274,
+            "repr": "ResidueId(ILE, 274, A)"
+          }
+        }
+      ],
+      "residue_75_guard": {
+        "residue_75_contacts": "NONE",
+        "state": "CLEAR"
+      }
+    },
+    {
+      "anchor_results": {
+        "Asn253": {
+          "interaction_classes": [],
+          "metadata": []
+        },
+        "Phe168": {
+          "interaction_classes": [],
+          "metadata": []
+        }
+      },
+      "frozen_recognition_pattern": false,
+      "input_filename": "NEG003.sdf",
+      "input_path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG003.sdf",
+      "input_sha256": "0be9e51d6d8724d893d8897c8ee8f2098d1f78c0c78f2d56671ae5a3e2ad6a1f",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG003",
+      "processing_state": "ANCHOR_REPORTED",
+      "prolif_interactions": [
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.7533663789912977,
+                "indices": {
+                  "ligand": [
+                    0
+                  ],
+                  "protein": [
+                    17
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    0
+                  ],
+                  "protein": [
+                    3967
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 271,
+            "repr": "ResidueId(TYR, 271, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.09286731719155,
+                "indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    5
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    34
+                  ]
+                }
+              }
+            ],
+            "PiStacking": [
+              {
+                "distance": 5.172211058862955,
+                "indices": {
+                  "ligand": [
+                    6,
+                    7,
+                    9,
+                    12,
+                    10
+                  ],
+                  "protein": [
+                    5,
+                    6,
+                    8,
+                    10,
+                    9,
+                    7
+                  ]
+                },
+                "normal_to_centroid_angle": 23.66226110034617,
+                "parent_indices": {
+                  "ligand": [
+                    6,
+                    7,
+                    9,
+                    12,
+                    10
+                  ],
+                  "protein": [
+                    34,
+                    35,
+                    37,
+                    39,
+                    38,
+                    36
+                  ]
+                },
+                "plane_angle": 23.398890337513294
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.146322003587676,
+                "indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    36
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 9,
+            "repr": "ResidueId(TYR, 9, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.479331639565871,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    8
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    877
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ALA",
+            "number": 63,
+            "repr": "ResidueId(ALA, 63, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 3.8912554634017806,
+                "indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    3875
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.978482268584659,
+                "indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    2
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    3873
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 267,
+            "repr": "ResidueId(LEU, 267, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.160544688610992,
+                "indices": {
+                  "ligand": [
+                    34
+                  ],
+                  "protein": [
+                    16
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    34
+                  ],
+                  "protein": [
+                    4080
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "HIS",
+            "number": 278,
+            "repr": "ResidueId(HIS, 278, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.845024943789992,
+                "indices": {
+                  "ligand": [
+                    7
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    7
+                  ],
+                  "protein": [
+                    935
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "SER",
+            "number": 67,
+            "repr": "ResidueId(SER, 67, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.191849588767976,
+                "indices": {
+                  "ligand": [
+                    25
+                  ],
+                  "protein": [
+                    5
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    25
+                  ],
+                  "protein": [
+                    3938
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "MET",
+            "number": 270,
+            "repr": "ResidueId(MET, 270, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.156936187046628,
+                "indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    4007
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ILE",
+            "number": 274,
+            "repr": "ResidueId(ILE, 274, A)"
+          }
+        }
+      ],
+      "residue_75_guard": {
+        "residue_75_contacts": "NONE",
+        "state": "CLEAR"
+      }
+    },
+    {
+      "anchor_results": {
+        "Asn253": {
+          "interaction_classes": [
+            "HBAcceptor",
+            "VdWContact"
+          ],
+          "metadata": [
+            {
+              "interactions": {
+                "HBAcceptor": [
+                  {
+                    "DHA_angle": 134.68631014055575,
+                    "distance": 2.902097016962077,
+                    "indices": {
+                      "ligand": [
+                        11
+                      ],
+                      "protein": [
+                        7,
+                        13
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        11
+                      ],
+                      "protein": [
+                        3681,
+                        3687
+                      ]
+                    }
+                  }
+                ],
+                "VdWContact": [
+                  {
+                    "distance": 2.902097016962077,
+                    "indices": {
+                      "ligand": [
+                        11
+                      ],
+                      "protein": [
+                        7
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        11
+                      ],
+                      "protein": [
+                        3681
+                      ]
+                    }
+                  }
+                ]
+              },
+              "ligand_residue": {
+                "chain": null,
+                "name": "UNL",
+                "number": 1,
+                "repr": "ResidueId(UNL, 1, None)"
+              },
+              "protein_residue": {
+                "chain": "A",
+                "name": "ASN",
+                "number": 253,
+                "repr": "ResidueId(ASN, 253, A)"
+              }
+            }
+          ]
+        },
+        "Phe168": {
+          "interaction_classes": [
+            "VdWContact"
+          ],
+          "metadata": [
+            {
+              "interactions": {
+                "VdWContact": [
+                  {
+                    "distance": 3.159681859057299,
+                    "indices": {
+                      "ligand": [
+                        29
+                      ],
+                      "protein": [
+                        9
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        29
+                      ],
+                      "protein": [
+                        2296
+                      ]
+                    }
+                  }
+                ]
+              },
+              "ligand_residue": {
+                "chain": null,
+                "name": "UNL",
+                "number": 1,
+                "repr": "ResidueId(UNL, 1, None)"
+              },
+              "protein_residue": {
+                "chain": "A",
+                "name": "PHE",
+                "number": 168,
+                "repr": "ResidueId(PHE, 168, A)"
+              }
+            }
+          ]
+        }
+      },
+      "frozen_recognition_pattern": false,
+      "input_filename": "NEG004.sdf",
+      "input_path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG004.sdf",
+      "input_sha256": "ef147293ace058a7e0b414bdb3099348694fe3de0ac30b6db3777aac40eb5f53",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG004",
+      "processing_state": "ANCHOR_REPORTED",
+      "prolif_interactions": [
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.159681859057299,
+                "indices": {
+                  "ligand": [
+                    29
+                  ],
+                  "protein": [
+                    9
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    29
+                  ],
+                  "protein": [
+                    2296
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168,
+            "repr": "ResidueId(PHE, 168, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 3.9667376234760847,
+                "indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    3954
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.352460004111037,
+                "indices": {
+                  "ligand": [
+                    19
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    19
+                  ],
+                  "protein": [
+                    3954
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 271,
+            "repr": "ResidueId(TYR, 271, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.3102114579144,
+                "indices": {
+                  "ligand": [
+                    6
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    6
+                  ],
+                  "protein": [
+                    3878
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 267,
+            "repr": "ResidueId(LEU, 267, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.795864179583707,
+                "indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    8
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    950
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "THR",
+            "number": 68,
+            "repr": "ResidueId(THR, 68, A)"
+          }
+        },
+        {
+          "interactions": {
+            "HBAcceptor": [
+              {
+                "DHA_angle": 134.68631014055575,
+                "distance": 2.902097016962077,
+                "indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    7,
+                    13
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    3681,
+                    3687
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.902097016962077,
+                "indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    3681
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253,
+            "repr": "ResidueId(ASN, 253, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.432462749949223,
+                "indices": {
+                  "ligand": [
+                    30
+                  ],
+                  "protein": [
+                    6
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    30
+                  ],
+                  "protein": [
+                    2386
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "MET",
+            "number": 174,
+            "repr": "ResidueId(MET, 174, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.1079703640785037,
+                "indices": {
+                  "ligand": [
+                    3
+                  ],
+                  "protein": [
+                    3
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    3
+                  ],
+                  "protein": [
+                    934
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "SER",
+            "number": 67,
+            "repr": "ResidueId(SER, 67, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 3.800612348873888,
+                "indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    2311
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.1250670582995075,
+                "indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    2311
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "GLU",
+            "number": 169,
+            "repr": "ResidueId(GLU, 169, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.27959546727834,
+                "indices": {
+                  "ligand": [
+                    23
+                  ],
+                  "protein": [
+                    5
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    23
+                  ],
+                  "protein": [
+                    3938
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.1885960464506002,
+                "indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    6
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    11
+                  ],
+                  "protein": [
+                    3939
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "MET",
+            "number": 270,
+            "repr": "ResidueId(MET, 270, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.7941949563241733,
+                "indices": {
+                  "ligand": [
+                    19
+                  ],
+                  "protein": [
+                    18
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    19
+                  ],
+                  "protein": [
+                    4018
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ILE",
+            "number": 274,
+            "repr": "ResidueId(ILE, 274, A)"
+          }
+        }
+      ],
+      "residue_75_guard": {
+        "residue_75_contacts": "NONE",
+        "state": "CLEAR"
+      }
+    },
+    {
+      "anchor_results": {
+        "Asn253": {
+          "interaction_classes": [
+            "HBAcceptor",
+            "VdWContact"
+          ],
+          "metadata": [
+            {
+              "interactions": {
+                "HBAcceptor": [
+                  {
+                    "DHA_angle": 145.61632996591305,
+                    "distance": 2.6585450853581865,
+                    "indices": {
+                      "ligand": [
+                        15
+                      ],
+                      "protein": [
+                        7,
+                        13
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        15
+                      ],
+                      "protein": [
+                        3681,
+                        3687
+                      ]
+                    }
+                  }
+                ],
+                "VdWContact": [
+                  {
+                    "distance": 3.1432512097457947,
+                    "indices": {
+                      "ligand": [
+                        15
+                      ],
+                      "protein": [
+                        5
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        15
+                      ],
+                      "protein": [
+                        3679
+                      ]
+                    }
+                  }
+                ]
+              },
+              "ligand_residue": {
+                "chain": null,
+                "name": "UNL",
+                "number": 1,
+                "repr": "ResidueId(UNL, 1, None)"
+              },
+              "protein_residue": {
+                "chain": "A",
+                "name": "ASN",
+                "number": 253,
+                "repr": "ResidueId(ASN, 253, A)"
+              }
+            }
+          ]
+        },
+        "Phe168": {
+          "interaction_classes": [
+            "VdWContact"
+          ],
+          "metadata": [
+            {
+              "interactions": {
+                "VdWContact": [
+                  {
+                    "distance": 2.68335241319792,
+                    "indices": {
+                      "ligand": [
+                        27
+                      ],
+                      "protein": [
+                        14
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        27
+                      ],
+                      "protein": [
+                        2301
+                      ]
+                    }
+                  }
+                ]
+              },
+              "ligand_residue": {
+                "chain": null,
+                "name": "UNL",
+                "number": 1,
+                "repr": "ResidueId(UNL, 1, None)"
+              },
+              "protein_residue": {
+                "chain": "A",
+                "name": "PHE",
+                "number": 168,
+                "repr": "ResidueId(PHE, 168, A)"
+              }
+            }
+          ]
+        }
+      },
+      "frozen_recognition_pattern": false,
+      "input_filename": "NEG005.sdf",
+      "input_path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG005.sdf",
+      "input_sha256": "866e6c6c0ccc1d57296861a855630adfe0a754e1f2f182b77b1f66ff64513125",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG005",
+      "processing_state": "ANCHOR_REPORTED",
+      "prolif_interactions": [
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.68335241319792,
+                "indices": {
+                  "ligand": [
+                    27
+                  ],
+                  "protein": [
+                    14
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    27
+                  ],
+                  "protein": [
+                    2301
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168,
+            "repr": "ResidueId(PHE, 168, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.0476147209287285,
+                "indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    9
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    3959
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.800669435516883,
+                "indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    3957
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 271,
+            "repr": "ResidueId(TYR, 271, A)"
+          }
+        },
+        {
+          "interactions": {
+            "HBDonor": [
+              {
+                "DHA_angle": 131.24414724389234,
+                "distance": 3.4119676065208893,
+                "indices": {
+                  "ligand": [
+                    10,
+                    31
+                  ],
+                  "protein": [
+                    3
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    10,
+                    31
+                  ],
+                  "protein": [
+                    3874
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.2910185789972464,
+                "indices": {
+                  "ligand": [
+                    0
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    0
+                  ],
+                  "protein": [
+                    3875
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 267,
+            "repr": "ResidueId(LEU, 267, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.6115927020737923,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    14
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    3614
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 249,
+            "repr": "ResidueId(LEU, 249, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.38210264755899,
+                "indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    16
+                  ],
+                  "protein": [
+                    3894
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.876192726636696,
+                "indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    0
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    3890
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TRP",
+            "number": 268,
+            "repr": "ResidueId(TRP, 268, A)"
+          }
+        },
+        {
+          "interactions": {
+            "HBAcceptor": [
+              {
+                "DHA_angle": 145.61632996591305,
+                "distance": 2.6585450853581865,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    7,
+                    13
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    3681,
+                    3687
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 3.1432512097457947,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    5
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    3679
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ASN",
+            "number": 253,
+            "repr": "ResidueId(ASN, 253, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.072470794260609,
+                "indices": {
+                  "ligand": [
+                    27
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    27
+                  ],
+                  "protein": [
+                    2314
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "GLU",
+            "number": 169,
+            "repr": "ResidueId(GLU, 169, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 3.984018472987261,
+                "indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    5
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    22
+                  ],
+                  "protein": [
+                    3938
+                  ]
+                }
+              }
+            ],
+            "VdWContact": [
+              {
+                "distance": 2.7898233579150014,
+                "indices": {
+                  "ligand": [
+                    34
+                  ],
+                  "protein": [
+                    6
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    34
+                  ],
+                  "protein": [
+                    3939
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "MET",
+            "number": 270,
+            "repr": "ResidueId(MET, 270, A)"
+          }
+        }
+      ],
+      "residue_75_guard": {
+        "residue_75_contacts": "NONE",
+        "state": "CLEAR"
+      }
+    },
+    {
+      "anchor_results": {
+        "Asn253": {
+          "interaction_classes": [],
+          "metadata": []
+        },
+        "Phe168": {
+          "interaction_classes": [
+            "VdWContact"
+          ],
+          "metadata": [
+            {
+              "interactions": {
+                "VdWContact": [
+                  {
+                    "distance": 3.1579883060878533,
+                    "indices": {
+                      "ligand": [
+                        8
+                      ],
+                      "protein": [
+                        4
+                      ]
+                    },
+                    "parent_indices": {
+                      "ligand": [
+                        8
+                      ],
+                      "protein": [
+                        2291
+                      ]
+                    }
+                  }
+                ]
+              },
+              "ligand_residue": {
+                "chain": null,
+                "name": "UNL",
+                "number": 1,
+                "repr": "ResidueId(UNL, 1, None)"
+              },
+              "protein_residue": {
+                "chain": "A",
+                "name": "PHE",
+                "number": 168,
+                "repr": "ResidueId(PHE, 168, A)"
+              }
+            }
+          ]
+        }
+      },
+      "frozen_recognition_pattern": false,
+      "input_filename": "NEG006.sdf",
+      "input_path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG006.sdf",
+      "input_sha256": "957fc0043750dd93a405dcd00347ef98b805004477e9cfbe680c9c8d2326fa5c",
+      "ligand_loading_route": "frozen_sdf_route",
+      "opaque_id": "NEG006",
+      "processing_state": "ANCHOR_REPORTED",
+      "prolif_interactions": [
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 3.1579883060878533,
+                "indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    8
+                  ],
+                  "protein": [
+                    2291
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "PHE",
+            "number": 168,
+            "repr": "ResidueId(PHE, 168, A)"
+          }
+        },
+        {
+          "interactions": {
+            "Hydrophobic": [
+              {
+                "distance": 4.1389618116853235,
+                "indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    7
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    18
+                  ],
+                  "protein": [
+                    36
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "TYR",
+            "number": 9,
+            "repr": "ResidueId(TYR, 9, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.9428229914728163,
+                "indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    4
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    2
+                  ],
+                  "protein": [
+                    3875
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 267,
+            "repr": "ResidueId(LEU, 267, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.5713491312847143,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    17
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    3617
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "LEU",
+            "number": 249,
+            "repr": "ResidueId(LEU, 249, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.938645435526918,
+                "indices": {
+                  "ligand": [
+                    7
+                  ],
+                  "protein": [
+                    3
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    7
+                  ],
+                  "protein": [
+                    934
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "SER",
+            "number": 67,
+            "repr": "ResidueId(SER, 67, A)"
+          }
+        },
+        {
+          "interactions": {
+            "VdWContact": [
+              {
+                "distance": 2.524708246500104,
+                "indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    11
+                  ]
+                },
+                "parent_indices": {
+                  "ligand": [
+                    15
+                  ],
+                  "protein": [
+                    4011
+                  ]
+                }
+              }
+            ]
+          },
+          "ligand_residue": {
+            "chain": null,
+            "name": "UNL",
+            "number": 1,
+            "repr": "ResidueId(UNL, 1, None)"
+          },
+          "protein_residue": {
+            "chain": "A",
+            "name": "ILE",
+            "number": 274,
+            "repr": "ResidueId(ILE, 274, A)"
+          }
+        }
+      ],
+      "residue_75_guard": {
+        "residue_75_contacts": "NONE",
+        "state": "CLEAR"
+      }
+    }
+  ],
+  "scope_confirmation": {
+    "a2a_recognition_evaluation_run": true,
+    "blind_mapping_used_to_alter_processing": false,
+    "blind_negative_panel_read_only": true,
+    "candidate_identities_unblinded": false,
+    "docking_or_scoring_run": false,
+    "frozen_a2a_recognition_pattern_evaluated": true,
+    "frozen_inputs_modified": false,
+    "overall_stage5_panel_verdict": "NOT_COMPUTED",
+    "overall_stage5_panel_verdict_computed": false,
+    "per_pose_recognition_results_recorded": true,
+    "prolif_interaction_reader_run": true,
+    "reader_parameters_tuned": false,
+    "residue_75_guard_execution": true
+  },
+  "validation": {
+    "all_inputs_processed_or_guard_stopped": true,
+    "blind_mapping_not_used_to_alter_processing": true,
+    "frozen_reader_file_unchanged": true,
+    "inputs_expected_count": 6,
+    "inputs_processed_count": 6,
+    "ligand_loading_failures": [],
+    "unexpected_ligand_loading_failures": 0
+  }
+}

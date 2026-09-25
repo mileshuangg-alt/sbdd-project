@@ -1,0 +1,154 @@
+{
+  "artifact_type": "D022 retrieval-derived positive-arm audit",
+  "created_date": "2026-09-25",
+  "retrieval_only": true,
+  "prolif_rerun": false,
+  "prohibited_actions_not_performed": [
+    "test_native_reader_controls.py was not executed",
+    "run_interaction_reader() was not executed",
+    "ProLIF was not executed",
+    "docking/scoring was not executed",
+    "ligand/receptor regeneration was not executed"
+  ],
+  "d022_rule_applied": {
+    "positive_retained": "(Phe168 contains Hydrophobic OR PiStacking) AND (Asn253 contains HBAcceptor)",
+    "phe168_vdwcontact_alone_satisfies": false,
+    "historical_reader_pass_used_as_d022_verdict": false
+  },
+  "searched_locations": [
+    "notes/Session_007.md",
+    "notes/Session_011.md",
+    "notes/handoffs/Session_012_Handoff.md",
+    "notes/Decisions.md (searched only as contextual existing record; not edited by this task)",
+    "references/stage5/negative_panel/session011_frozen_bundle/reader/test_native_reader_controls.py",
+    "references/stage5/negative_panel/panel/blind_negative_panel_prolif_read_20260924T004822Z.json",
+    "references/stage5/negative_panel/panel/primary_panel_manifest.json",
+    "references/stage5/**/*native*reader*",
+    "references/stage5/**/*controls*",
+    "**/*native_reader*.*",
+    "**/*reader_controls*.*",
+    "**/*proof*life*.*",
+    "**/*terminal*.*",
+    "**/*output*.*"
+  ],
+  "source_artifacts": [
+    {
+      "path": "notes/Session_007.md",
+      "sha256": "cce1d62dde4efae2e85f31506cdc91c00c347a9171c1440ac282a0dd42c06153",
+      "role": "authoritative retained session record for final native reader class results",
+      "relevant_lines": "164-168 and 327-370"
+    },
+    {
+      "path": "notes/Session_011.md",
+      "sha256": "ff197624d4bbb453b6e4a767cdfcf921ca21baaa03d0269045b8719cf75528b3",
+      "role": "later recovery note for historical ProLIF reader and frozen 3REY/XAC proof-of-life result",
+      "relevant_lines": "508-546"
+    },
+    {
+      "path": "notes/handoffs/Session_012_Handoff.md",
+      "sha256": "a6bae409b6e96af0e96330b31da1ccd2fcaa1d79c3c53b5c0cabf7773b702e06",
+      "role": "handoff corroboration of completed native proof of life and 3REY/XAC recovered classes",
+      "relevant_lines": "391-424"
+    },
+    {
+      "path": "references/stage5/negative_panel/session011_frozen_bundle/reader/test_native_reader_controls.py",
+      "sha256": "006d0eae192c4776d84d89d3d381c87d289c0fbda749b1ba7c9a93929c07cdf6",
+      "role": "preserved historical reader implementation; cited for provenance only and not executed",
+      "relevant_lines": "13-29, 822-1027, 1030-1120"
+    }
+  ],
+  "metadata_retention_note": "A retained machine-readable native positive ProLIF result object containing full per-interaction metadata was not found. The preserved evidence found contains interaction classes for all three positives, plus limited 3REY/XAC distance/angle details in notes/Session_007.md. No native positive ProLIF rerun was performed to recover missing metadata.",
+  "positives": [
+    {
+      "complex": "3REY",
+      "ligand": "XAC",
+      "ligand_code": "XAC",
+      "source_artifact": "notes/Session_007.md",
+      "source_sha256": "cce1d62dde4efae2e85f31506cdc91c00c347a9171c1440ac282a0dd42c06153",
+      "source_lines": "106-144, 164-168, 327-340",
+      "phe168_classes": [
+        "Hydrophobic",
+        "VdWContact"
+      ],
+      "phe168_strict_arm": true,
+      "asn253_classes": [
+        "HBAcceptor",
+        "VdWContact"
+      ],
+      "asn253_strict_arm": true,
+      "d022_retained": true,
+      "provenance": "Retrieved from the retained Session 007 native interaction-reader proof-of-life record. Session 011 and Session 012 handoff corroborate the historical reader route and the recovered 3REY/XAC classes. The preserved historical reader script was inspected but not executed.",
+      "existing_interaction_metadata_preserved": {
+        "status": "partial",
+        "details": [
+          "Asn253 HBAcceptor donor/acceptor distance: 2.868 A",
+          "Asn253 HBAcceptor DHA angle: 137.9 degrees",
+          "Phe168 Hydrophobic interaction distance: 3.853 A",
+          "Phe168 VdWContact distance: 3.398 A",
+          "Additional ProLIF contacts noted: Met177, His250, Leu249, Met270, Ile274, Tyr271, Ala81, Leu267"
+        ],
+        "full_machine_readable_metadata_found": false
+      },
+      "prolif_rerun": false
+    },
+    {
+      "complex": "5OLH",
+      "ligand": "Vipadenant",
+      "ligand_code": "9XT",
+      "source_artifact": "notes/Session_007.md",
+      "source_sha256": "cce1d62dde4efae2e85f31506cdc91c00c347a9171c1440ac282a0dd42c06153",
+      "source_lines": "164-168, 327-352",
+      "phe168_classes": [
+        "PiStacking",
+        "VdWContact"
+      ],
+      "phe168_strict_arm": true,
+      "asn253_classes": [
+        "HBDonor",
+        "HBAcceptor",
+        "VdWContact"
+      ],
+      "asn253_strict_arm": true,
+      "d022_retained": true,
+      "provenance": "Retrieved from the retained Session 007 final native reader results. The preserved historical reader script was inspected for provenance but not executed.",
+      "existing_interaction_metadata_preserved": {
+        "status": "class_evidence_only_found",
+        "full_machine_readable_metadata_found": false
+      },
+      "prolif_rerun": false
+    },
+    {
+      "complex": "5OLO",
+      "ligand": "Tozadenant",
+      "ligand_code": "9XW",
+      "source_artifact": "notes/Session_007.md",
+      "source_sha256": "cce1d62dde4efae2e85f31506cdc91c00c347a9171c1440ac282a0dd42c06153",
+      "source_lines": "164-168, 327-370",
+      "phe168_classes": [
+        "Hydrophobic",
+        "PiStacking",
+        "VdWContact"
+      ],
+      "phe168_strict_arm": true,
+      "asn253_classes": [
+        "HBDonor",
+        "HBAcceptor",
+        "VdWContact"
+      ],
+      "asn253_strict_arm": true,
+      "d022_retained": true,
+      "provenance": "Retrieved from the retained Session 007 final native reader results. The preserved historical reader script was inspected for provenance but not executed.",
+      "existing_interaction_metadata_preserved": {
+        "status": "class_evidence_only_found",
+        "full_machine_readable_metadata_found": false
+      },
+      "prolif_rerun": false
+    }
+  ],
+  "stage5_result_counts": {
+    "experimental_positives_retained": "3/3",
+    "primary_panel_negatives_rejected": "6/6",
+    "negative_count_source": "already frozen evidence; not recomputed in this audit"
+  },
+  "bks_work_touched": false
+}

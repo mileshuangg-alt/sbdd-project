@@ -49,13 +49,17 @@ This allows different generators to be evaluated through the identical cascade.
 
 ### Phase 1 — DiffSBDD
 
-Reproduce DiffSBDD using its released pretrained checkpoint and establish the initial generation baseline.
+Reproduce DiffSBDD using its released pretrained checkpoint and establish the complete baseline by carrying the surviving DiffSBDD cohort through the full evaluation cascade.
+
+Each evaluation stage is developed, validated where required, and frozen before the baseline advances to the next stage.
 
 ### Phase 2 — FLOWR
 
-Add FLOWR through the same generator interface and compare DiffSBDD and FLOWR through the identical evaluation cascade.
+After the complete DiffSBDD baseline cascade has been implemented and frozen, add FLOWR through the same generator interface and evaluate it through the identical frozen cascade.
 
 The comparison will focus on **attrition and characterization across development-relevant stages**, rather than generator-native validity metrics alone.
+
+Downstream evaluation methods must not be recalibrated using FLOWR outcomes.
 
 ## Current Baseline
 
@@ -504,6 +508,159 @@ Cumulative strict cascade survival therefore remains:
 
 ---
 
+## Stage 5 — Target–Ligand Interaction Evidence
+
+Stage 5 evaluates whether surviving generator-provided poses reproduce experimentally grounded target–ligand recognition chemistry.
+
+Stage 5 is **method-generalized but target-specific in implementation**. The generalized framework determines the available interaction-evidence level, permitted claims, validation requirements, and whether hard attrition is authorized. The biological interaction definition itself is target-specific.
+
+### Interaction-Evidence Levels
+
+Structurally defined targets are assigned one of three interaction-evidence levels:
+
+- **Level 1 — validated compatibility testing:** direct experimental cognate target–ligand structural evidence is available.
+- **Level 2 — interaction characterization:** direct cognate evidence is unavailable, but interaction characterization is supportable from an apo target structure or a demonstrably conserved ligand-bound homolog.
+- **Level 3 — insufficient interaction evidence:** a target structure exists, but available target–ligand evidence is insufficient for a compatibility verdict.
+
+Evidence level and gate validation are separate. Level 1 permits development of a target-specific compatibility gate but does not automatically authorize attrition.
+
+For the Phase 1 A2A baseline:
+
+```text
+A2A interaction-evidence level: LEVEL 1
+```
+
+### Frozen A2A Recognition Criterion
+
+The A2A interaction definition was derived from experimental cognate complexes before inspection of the DiffSBDD Stage-5 outcomes:
+
+- 3REY / XAC
+- 5OLH / Vipadenant
+- 5OLO / Tozadenant
+
+The frozen ProLIF recognition criterion is:
+
+```text
+(Phe168 Hydrophobic OR PiStacking)
+AND
+(Asn253 HBAcceptor)
+```
+
+`VdWContact` is retained as characterization evidence but does not satisfy the Phe168 arm.
+
+**ProLIF 2.2.0** is the frozen Stage-5 verdict instrument.
+
+**PLIP 3.0.1** is a separately qualified independent witness. PLIP provides concordance evidence but does not define or override the Stage-5 verdict.
+
+### Gate Validation
+
+Hard attrition requires validation of the target-specific implementation independently of generated-molecule outcomes.
+
+For the finalized A2A gate, the frozen validation panel produced:
+
+```text
+Experimental positives retained: 3 / 3
+Primary-panel negatives rejected: 6 / 6
+```
+
+The same frozen interaction-class criterion governs both arms.
+
+The six-member primary-negative panel was frozen before the blind ProLIF read and contained physically qualified poses from two independent pose-generation lineages:
+
+```text
+DOCK:  1
+rDock: 5
+```
+
+All six blind negatives were recognition-negative under the frozen criterion.
+
+A predeclared receptor-artifact guard also checked every blind negative for any interaction involving residue 75. The guard remained clear for all six:
+
+```text
+Residue-75 guard clear: 6 / 6
+```
+
+Independent PLIP witness evaluation was concordant with ProLIF across the frozen 16-member DiffSBDD cohort:
+
+```text
+Complete-pattern concordance: 16 / 16
+Discordant cases:              0
+```
+
+The validated authority is deliberately bounded to **molecule-level A2A interaction-pattern discrimination**. Stage 5 does not establish general pose sensitivity, universal specificity, experimental binding, or biological activity.
+
+### DiffSBDD Stage-5 Evaluation
+
+Stage 5 consumes the same 16 molecules that survived Stage 3 and were characterized in Stage 4.
+
+The preserved Stage-5 measurements use:
+
+- original molecule IDs;
+- unmodified generator-provided coordinates;
+- the interaction-ready 3RFM receptor in the generator's coordinate frame;
+- the frozen ProLIF interaction reader;
+- the frozen A2A recognition criterion.
+
+Feature-level results were:
+
+```text
+Phe168 reference feature reproduced: 15 / 16
+Asn253 reference feature reproduced:  4 / 16
+Complete A2A pattern reproduced:       3 / 16
+```
+
+The complete pattern was reproduced by:
+
+```text
+molecule_id = 0
+molecule_id = 3
+molecule_id = 18
+```
+
+Following validation of the A2A gate and the D023 authority decision, the preserved measurements now exercise Stage-5 cascade attrition without being rerun or recalibrated:
+
+```text
+Stage 5 entering: 16
+
+Retained through Stage 5:
+3 / 16
+
+Attrited from forward cascade progression:
+13 / 16
+```
+
+The 13 attrited molecules remain permanently retained as characterization evidence. Their measurements are not deleted or hidden, and the feature-level pattern is preserved as evidence of the generator's Stage-5 failure mode.
+
+In particular, Phe168 recognition was reproduced much more frequently than Asn253 recognition:
+
+```text
+Phe168:  15 / 16
+Asn253:   4 / 16
+Complete: 3 / 16
+```
+
+Stage-5 attrition means that a generator-provided pose did not reproduce the frozen A2A recognition criterion under the validated molecule-level gate. It does **not** establish that the molecule is experimentally inactive or incapable of binding A2A in another pose.
+
+### Stage 5 Attrition
+
+```text
+Stage 5 entering: 16
+Stage 5 leaving:   3
+
+Stage 5 survival:  3 / 16 = 18.75%
+Stage 5 attrition: 13 / 16 = 81.25%
+```
+
+Cumulative strict cascade survival after Stage 5:
+
+```text
+3 / 20 = 15%
+```
+
+The three Stage-5 survivors continue to Stage 6 — Synthetic Feasibility.
+
+---
+
 ## Reference-Data Policy
 
 Live ChEMBL access is separated from normal evaluation.
@@ -591,7 +748,9 @@ conda env create -f environment.yml
 conda activate sbdd-eval
 ```
 
-The environment includes the pinned dependencies required for the implemented evaluation and reference-construction stages, including RDKit, PoseBusters, and the ChEMBL web-resource client.
+The environment includes the pinned dependencies required for the implemented evaluation and reference-construction stages, including RDKit, PoseBusters, ProLIF, and the ChEMBL web-resource client.
+
+Stage-5 independent-witness work uses the separately qualified PLIP environment and remains distinct from the frozen ProLIF verdict pathway.
 
 Generator environments remain separate from the evaluation environment.
 
@@ -601,34 +760,29 @@ Generator environments remain separate from the evaluation environment.
 
 ```text
 sbdd-project/
-├── evaluation/
-│   ├── __init__.py
-│   ├── validity.py
-│   ├── properties.py
-│   ├── structure.py
-│   └── novelty.py
+├── evaluation/              # generator-independent scientific evaluation
 ├── scripts/
+│   ├── stage5/              # Stage-5 execution, qualification, and audit tooling
 │   └── build_chembl_reference.py
 ├── references/
-│   └── chembl37/
-│       ├── ADORA2A_target_ligands.csv
-│       └── approved_drugs.csv
+│   ├── chembl37/            # frozen Stage-4 reference populations
+│   └── stage5/              # frozen Stage-5 configs, controls, validation, and evidence
 ├── experiments/
 │   └── phase1_diffsbdd/
-│       └── evaluation/
+│       └── evaluation/      # DiffSBDD baseline evaluation artifacts
 ├── notes/
 │   ├── Decisions.md
-│   ├── project_log.md
-│   └── Session_XXX.md
+│   ├── Development.md
+│   ├── Session_XXX.md
+│   └── handoffs/
 ├── tests/
-│   └── data/
 ├── environment.yml
 └── README.md
 ```
 
-External generator repositories, model checkpoints, and generated molecular SDF files are intentionally excluded from Git.
+External generator repositories, model checkpoints, and generated molecular SDF files are intentionally excluded from Git where appropriate.
 
-Frozen reference artifacts and machine-readable evaluation outputs are retained where appropriate to preserve reproducibility and auditability.
+Frozen reference artifacts, validation evidence, machine-readable evaluation outputs, and characterization records are retained where required to preserve reproducibility and auditability.
 
 ---
 
@@ -668,15 +822,20 @@ Stage 3 — 3D / Structural Plausibility
 Stage 4 — Novelty / Chemical-Space Characterization
 16 / 16
         ↓
-Stage 5 — Target Compatibility
+Stage 5 — Target–Ligand Interaction Evidence
+3 / 16
+        ↓
+Stage 6 — Synthetic Feasibility
 next
 ```
 
 Current cumulative strict cascade survival:
 
 ```text
-16 / 20 = 80%
+3 / 20 = 15%
 ```
+
+The 13 molecules attrited at Stage 5 remain permanently preserved as characterization evidence even though they no longer progress through the strict cascade.
 
 ---
 
@@ -684,6 +843,9 @@ Current cumulative strict cascade survival:
 
 **Current phase:** Phase 1  
 **Current generator:** DiffSBDD  
-**Completed cascade stages:** Chemical validity; molecular property profiling / Rule-of-Five classification; 3D / structural plausibility; novelty / chemical-space characterization
-**Next implementation:** Stage 5 — target compatibility
-**Current strict cascade survival:** 16/20 (80%)
+**Completed cascade stages:** Chemical validity; molecular property profiling / Rule-of-Five classification; 3D / structural plausibility; novelty / chemical-space characterization; target–ligand interaction evidence  
+**Stage-5 status:** Validated and frozen for the A2A Level-1 implementation; DiffSBDD disposition complete  
+**Current strict cascade survival:** 3/20 (15%)  
+**Stage-5 characterization record:** Phe168 15/16; Asn253 4/16; complete A2A pattern 3/16  
+**Next implementation:** Stage 6 — synthetic feasibility  
+**FLOWR comparator arm:** Deferred until the complete DiffSBDD baseline cascade is implemented and frozen

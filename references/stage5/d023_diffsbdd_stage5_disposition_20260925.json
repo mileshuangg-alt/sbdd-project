@@ -1,0 +1,205 @@
+{
+  "artifact_type": "D023 mechanical DiffSBDD Stage-5 disposition",
+  "created_date": "2026-09-25",
+  "d023_identifier": "D023 - A2A Stage-5 Authority to Apply the Validated Gate to the Existing DiffSBDD Cohort",
+  "rerun_performed": false,
+  "disposition_basis": "preserved_measurement",
+  "frozen_criterion": "(Phe168 Hydrophobic OR PiStacking) AND (Asn253 HBAcceptor)",
+  "stage5_input_cohort_count": 16,
+  "original_molecule_ids": [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 18, 19],
+  "retained_through_stage5": {
+    "count": 3,
+    "fraction": "3/16",
+    "molecule_ids": [0, 3, 18]
+  },
+  "attrited_from_forward_cascade_progression": {
+    "count": 13,
+    "fraction": "13/16",
+    "molecule_ids": [1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 19],
+    "permanent_characterization_evidence": true,
+    "statement": "The 13 Stage-5-attrited molecules remain permanently retained as characterization evidence and are not deleted, hidden, or excluded from the scientific record."
+  },
+  "feature_summaries": {
+    "phe168_reference_feature_reproduced": "15/16",
+    "asn253_reference_feature_reproduced": "4/16",
+    "complete_frozen_a2a_recognition_pattern_reproduced": "3/16"
+  },
+  "post_validation_authority_note": "D023 is a post-validation authority decision. The 3/16 DiffSBDD outcome was already known when D023 was approved. D023 changes application authority only; it does not change the frozen criterion or any underlying measurement.",
+  "d012_historical_characterization_provenance": {
+    "statement": "D012 recorded the same 3/16 DiffSBDD Stage-5 result as characterization-only and stated that the 13 non-reproducing molecules were not Stage-5 failures at that time. D023 does not invalidate that historical characterization record; it authorizes formal Stage-5 cascade disposition from the same preserved measurements.",
+    "source_artifact": "notes/Decisions.md",
+    "source_sha256": "eaf66f71bd15fa5573e983219e403837a10036a6ee79ca28dbf4c0b998f4ab69",
+    "relevant_lines": "2551-2637, 5697-5814"
+  },
+  "source_artifacts": [
+    {
+      "path": "experiments/phase1_diffsbdd/evaluation/stage5_a2a_reference_pattern.csv",
+      "sha256": "602ccee156787855452fd2297e0ffc0c41ef72c17a61ab51f30fda876fd5cc2d",
+      "role": "authoritative preserved DiffSBDD 16-member ProLIF Stage-5 measurement table"
+    },
+    {
+      "path": "experiments/phase1_diffsbdd/evaluation/stage3_input.sdf",
+      "sha256": "1f7a12f6a1d231a08d40e360e6b26e7d522b9149e3904860415d4aeacbb7afb0",
+      "role": "preserved generator-provided coordinate source for the 16 Stage-5 records"
+    },
+    {
+      "path": "notes/Decisions.md",
+      "sha256": "eaf66f71bd15fa5573e983219e403837a10036a6ee79ca28dbf4c0b998f4ab69",
+      "role": "D012 historical characterization provenance and D023 authority decision"
+    }
+  ],
+  "molecule_dispositions": [
+    {
+      "molecule_id": 0,
+      "phe168_interactions": ["Hydrophobic", "VdWContact"],
+      "asn253_interactions": ["HBAcceptor", "VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": true,
+      "complete_frozen_a2a_recognition_pattern": true,
+      "disposition": "RETAINED"
+    },
+    {
+      "molecule_id": 1,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": ["VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 2,
+      "phe168_interactions": ["Hydrophobic", "VdWContact"],
+      "asn253_interactions": ["VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 3,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": ["HBAcceptor", "VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": true,
+      "complete_frozen_a2a_recognition_pattern": true,
+      "disposition": "RETAINED"
+    },
+    {
+      "molecule_id": 5,
+      "phe168_interactions": ["Hydrophobic", "VdWContact"],
+      "asn253_interactions": [],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 6,
+      "phe168_interactions": [],
+      "asn253_interactions": ["HBAcceptor", "VdWContact"],
+      "phe168_reference_feature": false,
+      "asn253_reference_feature": true,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 7,
+      "phe168_interactions": ["Hydrophobic", "VdWContact"],
+      "asn253_interactions": ["VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 8,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": [],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 9,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": [],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 10,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": ["VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 11,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": ["VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 12,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": [],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 14,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": [],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 17,
+      "phe168_interactions": ["Hydrophobic", "VdWContact"],
+      "asn253_interactions": ["VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    },
+    {
+      "molecule_id": 18,
+      "phe168_interactions": ["Hydrophobic", "VdWContact"],
+      "asn253_interactions": ["HBAcceptor", "VdWContact"],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": true,
+      "complete_frozen_a2a_recognition_pattern": true,
+      "disposition": "RETAINED"
+    },
+    {
+      "molecule_id": 19,
+      "phe168_interactions": ["Hydrophobic"],
+      "asn253_interactions": [],
+      "phe168_reference_feature": true,
+      "asn253_reference_feature": false,
+      "complete_frozen_a2a_recognition_pattern": false,
+      "disposition": "ATTRITED"
+    }
+  ],
+  "claim_boundary": {
+    "no_pose_sensitivity_claim": true,
+    "no_general_or_universal_specificity_claim": true,
+    "no_experimental_binding_claim": true,
+    "no_biological_efficacy_claim": true,
+    "no_transfer_to_other_targets": true,
+    "attrited_molecules_not_called_nonbinders_or_scientifically_invalid": true
+  }
+}

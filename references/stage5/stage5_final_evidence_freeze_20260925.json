@@ -1,0 +1,153 @@
+{
+  "artifact_type": "Stage-5 final evidence freeze",
+  "created_date": "2026-09-25",
+  "provenance_assembly_only": true,
+  "scientific_rerun_performed": false,
+  "prohibited_actions_not_performed": [
+    "README was not updated",
+    "session logs were not edited",
+    "notes/Decisions.md was not edited by this task",
+    "ProLIF was not rerun",
+    "PLIP was not rerun",
+    "docking/scoring was not rerun",
+    "ligand/receptor inputs were not regenerated",
+    "no commit was made",
+    "no push was made"
+  ],
+  "frozen_criterion": "(Phe168 Hydrophobic OR PiStacking) AND (Asn253 HBAcceptor)",
+  "recorded_without_recomputation": {
+    "a2a_evidence_level": "LEVEL 1",
+    "validation_positive_arm": "3/3 retained",
+    "validation_primary_negative_arm": "6/6 rejected",
+    "diffsbdd_stage5_disposition": "3/16 retained, 13/16 attrited",
+    "phe168_feature": "15/16",
+    "asn253_feature": "4/16",
+    "complete_pattern": "3/16",
+    "residue_75_guard_result": "6/6 clear for the blind negative panel",
+    "d023_authority_status": "post-validation authority decision",
+    "criterion_and_measurements_unchanged": true
+  },
+  "authoritative_evidence": [
+    {
+      "id": "D022 decision",
+      "path": "notes/Decisions.md",
+      "sha256": "eaf66f71bd15fa5573e983219e403837a10036a6ee79ca28dbf4c0b998f4ab69",
+      "relevant_lines": "5594-5695"
+    },
+    {
+      "id": "D023 decision",
+      "path": "notes/Decisions.md",
+      "sha256": "eaf66f71bd15fa5573e983219e403837a10036a6ee79ca28dbf4c0b998f4ab69",
+      "relevant_lines": "5697-5814"
+    },
+    {
+      "id": "D012 historical characterization provenance",
+      "path": "notes/Decisions.md",
+      "sha256": "eaf66f71bd15fa5573e983219e403837a10036a6ee79ca28dbf4c0b998f4ab69",
+      "relevant_lines": "2551-2637"
+    },
+    {
+      "id": "D019 PLIP independent-witness decision provenance",
+      "path": "notes/Decisions.md",
+      "sha256": "eaf66f71bd15fa5573e983219e403837a10036a6ee79ca28dbf4c0b998f4ab69",
+      "relevant_lines": "4481-4560"
+    },
+    {
+      "id": "D022 positive-arm audit",
+      "path": "references/stage5/d022_positive_arm_audit_20260925.json",
+      "sha256": "441fd06afd883637615d33e6a58644cca5fb67d8d373b164584f413217e11e49"
+    },
+    {
+      "id": "corrected blind negative-panel ProLIF JSON",
+      "path": "references/stage5/negative_panel/panel/blind_negative_panel_prolif_read_20260924T004822Z.json",
+      "sha256": "0b230fd7b8e15644760963a85430e58ce97e3cba2acfdb131e75eadafc06a3ee"
+    },
+    {
+      "id": "blind negative-panel human-readable summary",
+      "path": "references/stage5/negative_panel/panel/blind_negative_panel_prolif_read_20260924T004822Z.md",
+      "sha256": "7eb6d2cee85aad33df4d4f1ca522dd179b88d69c3c2bed290170a09daf529290"
+    },
+    {
+      "id": "primary negative-panel manifest",
+      "path": "references/stage5/negative_panel/panel/primary_panel_manifest.json",
+      "sha256": "2f958135092c709f57997dfd0b982e94fe6204233db32f3aea6d562633538506"
+    },
+    {
+      "id": "blind ProLIF input manifest",
+      "path": "references/stage5/negative_panel/panel/blind_prolif_input_manifest.json",
+      "sha256": "6e4fd8aefc81693ed497472fdad5caffedd627fdc718134c8dc58b37a41cf3e6"
+    },
+    {
+      "id": "NEG001 MOL2 adapter qualification JSON",
+      "path": "references/stage5/negative_panel/panel/mol2_adapter_qualification/NEG001_mol2_adapter_qualification.json",
+      "sha256": "418f5d6cd2f8f280ca7c2e325ce82aea133c39cd7e6d412779ac6f7d8da06d79"
+    },
+    {
+      "id": "NEG001 MOL2 adapter qualification Markdown",
+      "path": "references/stage5/negative_panel/panel/mol2_adapter_qualification/NEG001_mol2_adapter_qualification.md",
+      "sha256": "93e719871ee889d6f70d9b0ff903071d46de98d2b53c78ee7d023611d60ca673"
+    },
+    {
+      "id": "historical frozen ProLIF reader",
+      "path": "scripts/stage5/test_native_reader_controls.py",
+      "sha256": "006d0eae192c4776d84d89d3d381c87d289c0fbda749b1ba7c9a93929c07cdf6"
+    },
+    {
+      "id": "session011 frozen-bundle copy of historical ProLIF reader",
+      "path": "references/stage5/negative_panel/session011_frozen_bundle/reader/test_native_reader_controls.py",
+      "sha256": "006d0eae192c4776d84d89d3d381c87d289c0fbda749b1ba7c9a93929c07cdf6"
+    },
+    {
+      "id": "PLIP witness configuration",
+      "path": "references/stage5/plip_witness/a2a_witness_config.json",
+      "sha256": "4f6deaaf9bf7840263a0f8a9a046126a1c39f6adeb24ca1a538827d1d929b9dd"
+    },
+    {
+      "id": "D019 PLIP positive qualification summary",
+      "path": "references/stage5/plip_witness/qualification/qualification_summary.json",
+      "sha256": "08377ea75969b0f996095677ab2340ca19c8ec36025997df3935fe94318d59de"
+    },
+    {
+      "id": "D019 PLIP DiffSBDD cohort concordance summary",
+      "path": "references/stage5/plip_witness/concordance/diffsbdd_stage5_cohort/concordance_summary.json",
+      "sha256": "cc2f2f4c1a0e6d7979b66b2e3ccbe7a4f67af30b9897b3802a497fd5d0a3eced"
+    },
+    {
+      "id": "D019 PLIP Session-011 negative-panel concordance summary",
+      "path": "references/stage5/plip_witness/concordance/session011_negative_panel/concordance_summary.json",
+      "sha256": "f64d2983b2a396a570466562f6bcfd4bea3d8d262cb0ec5a51155783d298b8c3"
+    },
+    {
+      "id": "preserved DiffSBDD 16-member Stage-5 ProLIF measurement artifact",
+      "path": "experiments/phase1_diffsbdd/evaluation/stage5_a2a_reference_pattern.csv",
+      "sha256": "602ccee156787855452fd2297e0ffc0c41ef72c17a61ab51f30fda876fd5cc2d"
+    },
+    {
+      "id": "preserved DiffSBDD Stage-5 coordinate source",
+      "path": "experiments/phase1_diffsbdd/evaluation/stage3_input.sdf",
+      "sha256": "1f7a12f6a1d231a08d40e360e6b26e7d522b9149e3904860415d4aeacbb7afb0"
+    },
+    {
+      "id": "D023 mechanical disposition JSON",
+      "path": "references/stage5/d023_diffsbdd_stage5_disposition_20260925.json",
+      "sha256": "929db9d1a1b25d4af109d3e3c328e31c5d1cbf596035fc86941c8c88a906e445"
+    },
+    {
+      "id": "D023 mechanical disposition Markdown",
+      "path": "references/stage5/d023_diffsbdd_stage5_disposition_20260925.md",
+      "sha256": "e487ae32084a69904ef818c55517d0caeb3eeb52f2093360ee6d75b7d030d75e"
+    }
+  ],
+  "missing_provenance": [
+    "No retained machine-readable native positive ProLIF result object with full per-interaction metadata was found during the D022 positive-arm audit; preserved class evidence was available and used for D022."
+  ],
+  "claim_boundary": {
+    "no_pose_sensitivity_claim": true,
+    "no_general_or_universal_specificity_claim": true,
+    "no_experimental_binding_claim": true,
+    "no_biological_efficacy_claim": true,
+    "no_transfer_to_other_targets": true,
+    "attrited_diffsbdd_molecules_not_called_nonbinders_or_scientifically_invalid": true
+  },
+  "bks_work_touched": false
+}

@@ -1,0 +1,134 @@
+{
+  "freeze_date": "2026-09-23",
+  "status": "FROZEN",
+  "panel_name": "Stage-5 primary negative panel",
+  "panel_size": 6,
+  "generation_family_distribution": {
+    "DOCK": {
+      "count": 1,
+      "proportion": 0.16666666666666666
+    },
+    "rDock": {
+      "count": 5,
+      "proportion": 0.8333333333333334
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "P3-002_N6-cyclooctyladenosine_DOCK_rank1",
+      "parent_ligand_complex": "N6-cyclooctyladenosine / 3REY",
+      "generation_family": "DOCK",
+      "generator_lineage": "DOCK 3.8.5",
+      "representative": "rank 1",
+      "generator_score": -27.96,
+      "p1": "PASS",
+      "p2": "PASS",
+      "p3": "PASS",
+      "p4": "RETAIN_SESSION_011_STATUS",
+      "protein_clashes": 0,
+      "prolif_exposure_before_freeze": "NONE",
+      "source_artifact": "/mnt/nfs/CX900004_DS117/sbdd-project/references/stage5/negative_panel/p3_candidates/P3-002_N6-cyclooctyladenosine/p1_posebusters_dock/poses/rank_01.mol2",
+      "source_sha256": "a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf"
+    },
+    {
+      "candidate_id": "rDock_XAC_3REY_pose_44",
+      "parent_ligand_complex": "XAC / 3REY",
+      "generation_family": "rDock",
+      "generator_lineage": "rDock v24.04.204-legacy",
+      "generator_git_commit": "3c029ecc65898166b234716b1609fb46212cbc6d",
+      "search_run": "D021 Run-2",
+      "pose_id": 44,
+      "rmsd_A": 11.2413927841303,
+      "d_rel": 0.8681156215031376,
+      "rdock_score": 2.13362,
+      "p1": "PASS",
+      "p2": "PASS",
+      "p3": "PASS",
+      "p4": "PASS",
+      "prolif_exposure_before_freeze": "NONE",
+      "source_archive": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/XAC_3REY_run2.sd"
+    },
+    {
+      "candidate_id": "rDock_XAC_3REY_pose_01",
+      "parent_ligand_complex": "XAC / 3REY",
+      "generation_family": "rDock",
+      "generator_lineage": "rDock v24.04.204-legacy",
+      "generator_git_commit": "3c029ecc65898166b234716b1609fb46212cbc6d",
+      "search_run": "D021 Run-2",
+      "pose_id": 1,
+      "rmsd_A": 13.327538799745048,
+      "d_rel": 0.8509823327094858,
+      "rdock_score": -1.28039,
+      "p1": "PASS",
+      "p2": "PASS",
+      "p3": "PASS",
+      "p4": "PASS",
+      "prolif_exposure_before_freeze": "NONE",
+      "source_archive": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/XAC_3REY_run2.sd"
+    },
+    {
+      "candidate_id": "rDock_XAC_3REY_pose_11",
+      "parent_ligand_complex": "XAC / 3REY",
+      "generation_family": "rDock",
+      "generator_lineage": "rDock v24.04.204-legacy",
+      "generator_git_commit": "3c029ecc65898166b234716b1609fb46212cbc6d",
+      "search_run": "D021 Run-2",
+      "pose_id": 11,
+      "rmsd_A": 10.835889637740426,
+      "d_rel": 0.7900851376207806,
+      "rdock_score": -1.63705,
+      "p1": "PASS",
+      "p2": "PASS",
+      "p3": "PASS",
+      "p4": "PASS",
+      "prolif_exposure_before_freeze": "NONE",
+      "source_archive": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/XAC_3REY_run2.sd"
+    },
+    {
+      "candidate_id": "rDock_XAC_3REY_pose_29",
+      "parent_ligand_complex": "XAC / 3REY",
+      "generation_family": "rDock",
+      "generator_lineage": "rDock v24.04.204-legacy",
+      "generator_git_commit": "3c029ecc65898166b234716b1609fb46212cbc6d",
+      "search_run": "D021 Run-2",
+      "pose_id": 29,
+      "rmsd_A": 10.94642420277493,
+      "d_rel": 0.9213006403054211,
+      "rdock_score": -3.32868,
+      "p1": "PASS",
+      "p2": "PASS",
+      "p3": "PASS",
+      "p4": "PASS",
+      "prolif_exposure_before_freeze": "NONE",
+      "source_archive": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/XAC_3REY_run2.sd"
+    },
+    {
+      "candidate_id": "rDock_XAC_3REY_pose_35",
+      "parent_ligand_complex": "XAC / 3REY",
+      "generation_family": "rDock",
+      "generator_lineage": "rDock v24.04.204-legacy",
+      "generator_git_commit": "3c029ecc65898166b234716b1609fb46212cbc6d",
+      "search_run": "D021 Run-2",
+      "pose_id": 35,
+      "rmsd_A": 11.811384287667883,
+      "d_rel": 0.8307953391744333,
+      "rdock_score": -3.53497,
+      "p1": "PASS",
+      "p2": "PASS",
+      "p3": "PASS",
+      "p4": "PASS",
+      "prolif_exposure_before_freeze": "NONE",
+      "source_archive": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/XAC_3REY_run2.sd"
+    }
+  ],
+  "authoritative_measurement_artifact": {
+    "path": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/run2_d020_measurement_v2/XAC_3REY_run2_d020_measurements.csv",
+    "sha256": "93e4b618132193b7c48d80cce431ebea244a8f49c6ff7014c6a540915d2a92ad"
+  },
+  "authoritative_rdock_archive": {
+    "path": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/XAC_3REY_run2.sd",
+    "sha256": "21cca02ece8ce246e852a155733d2daba736960267c330257ee9a221ae869ebb"
+  },
+  "lineage_policy": "Generation-family identity remains attached to every candidate after blinding for prespecified post-run stratification.",
+  "downstream_claim_boundary": "This freeze establishes panel membership and provenance only. It does not itself establish interaction negativity, pose sensitivity, or hard-attrition authority."
+}

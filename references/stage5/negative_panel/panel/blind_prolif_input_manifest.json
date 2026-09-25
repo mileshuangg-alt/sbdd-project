@@ -1,0 +1,36 @@
+{
+  "status": "FROZEN",
+  "purpose": "Opaque mapping for blind frozen ProLIF negative-panel input.",
+  "candidates": {
+    "NEG001": {
+      "blind_filename": "NEG001.mol2",
+      "source_filename": "DOCK_P3-002_rank01.mol2",
+      "sha256": "a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf"
+    },
+    "NEG002": {
+      "blind_filename": "NEG002.sdf",
+      "source_filename": "rDock_XAC_3REY_pose_01.sdf",
+      "sha256": "4673e9602eb9c7bce9aa722719a23b09cbcd2577aa58eb98d831ae5decae1a40"
+    },
+    "NEG003": {
+      "blind_filename": "NEG003.sdf",
+      "source_filename": "rDock_XAC_3REY_pose_11.sdf",
+      "sha256": "0be9e51d6d8724d893d8897c8ee8f2098d1f78c0c78f2d56671ae5a3e2ad6a1f"
+    },
+    "NEG004": {
+      "blind_filename": "NEG004.sdf",
+      "source_filename": "rDock_XAC_3REY_pose_29.sdf",
+      "sha256": "ef147293ace058a7e0b414bdb3099348694fe3de0ac30b6db3777aac40eb5f53"
+    },
+    "NEG005": {
+      "blind_filename": "NEG005.sdf",
+      "source_filename": "rDock_XAC_3REY_pose_35.sdf",
+      "sha256": "866e6c6c0ccc1d57296861a855630adfe0a754e1f2f182b77b1f66ff64513125"
+    },
+    "NEG006": {
+      "blind_filename": "NEG006.sdf",
+      "source_filename": "rDock_XAC_3REY_pose_44.sdf",
+      "sha256": "957fc0043750dd93a405dcd00347ef98b805004477e9cfbe680c9c8d2326fa5c"
+    }
+  }
+}

@@ -119,6 +119,47 @@ The criterion must specify what constitutes successful recovery of known-positiv
 
 The criterion must not be retroactively modified to accommodate observed validation outcomes.
 
+### Plausible-but-wrong negative-pose eligibility
+
+Where gate validation requires discrimination of plausible-but-wrong poses, negative-pose eligibility must be defined prospectively and independently of the interaction-reader outcome.
+
+The eligibility record must freeze numerical cutoffs for:
+
+1. **physical plausibility**;
+2. **genuine alternativeness** relative to a specified near-native structural reference;
+3. **near-native sampling** within the same docking search.
+
+The eligibility selector must be **blind to ProLIF outcomes**. ProLIF must not be run, inspected, or used to select, reject, or otherwise modify candidate negative poses before the eligible negative set is frozen.
+
+The numeric preregistration record must also identify the structural reference used to define near-native and genuine alternativeness. The record must specify:
+
+- the reference type:
+  - experimental ligand pose;
+  - re-docked native pose; or
+  - search top-ranked pose;
+- the specific structure and search to which that reference belongs;
+- the structural identity required to reproduce the reference unambiguously.
+
+The near-native and genuine-alternative numerical criteria are interpreted relative to that named reference. The reference identity itself must be frozen before candidate poses are inspected. Choosing the reference after inspecting candidate poses violates the same blindness requirement that governs eligibility selection.
+
+Accordingly, the prospective sequence is:
+
+```text
+freeze physical-plausibility cutoff
+freeze genuine-alternativeness cutoff
+freeze near-native sampling cutoff
+freeze near-native reference identity
+        ↓
+inspect/search poses
+        ↓
+blind eligibility selection
+        ↓
+freeze eligible negative set
+        ↓
+run ProLIF
+        ↓
+evaluate discrimination
+
 ### Validation is implementation-specific and target-specific
 
 Gate validation applies **per implementation and per target**.

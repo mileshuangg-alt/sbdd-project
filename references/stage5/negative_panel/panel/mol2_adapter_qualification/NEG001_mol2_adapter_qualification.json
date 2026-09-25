@@ -1,0 +1,2839 @@
+{
+  "adapter": {
+    "function": "load_mol2_ligand_for_prolif",
+    "path": "scripts/stage5/mol2_prolif_adapter.py",
+    "rdkit_parameters": {
+      "cleanupSubstructures": false,
+      "removeHs": false,
+      "sanitize": true
+    },
+    "route": "MOL2 -> RDKit MolFromMol2File -> plf.Molecule.from_rdkit"
+  },
+  "artifacts": {
+    "human_readable_summary": "references/stage5/negative_panel/panel/mol2_adapter_qualification/NEG001_mol2_adapter_qualification.md",
+    "machine_readable_report": "references/stage5/negative_panel/panel/mol2_adapter_qualification/NEG001_mol2_adapter_qualification.json"
+  },
+  "chemical_perception": {
+    "NEG001": {
+      "aromaticity_counts": {
+        "False": 45,
+        "True": 9
+      },
+      "atom_count": 54,
+      "atoms": [
+        {
+          "atom_index": 0,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 1,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 2,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 3,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 4,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 5,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 6,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 7,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 8,
+          "element": "N",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 9,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 10,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 11,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 12,
+          "element": "N",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 13,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 14,
+          "element": "N",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 15,
+          "element": "N",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 16,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 17,
+          "element": "N",
+          "formal_charge": 0,
+          "is_aromatic": true
+        },
+        {
+          "atom_index": 18,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 19,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 20,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 21,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 22,
+          "element": "O",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 23,
+          "element": "C",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 24,
+          "element": "O",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 25,
+          "element": "O",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 26,
+          "element": "O",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 27,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 28,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 29,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 30,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 31,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 32,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 33,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 34,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 35,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 36,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 37,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 38,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 39,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 40,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 41,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 42,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 43,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 44,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 45,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 46,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 47,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 48,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 49,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 50,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 51,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 52,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        },
+        {
+          "atom_index": 53,
+          "element": "H",
+          "formal_charge": 0,
+          "is_aromatic": false
+        }
+      ],
+      "bond_count": 57,
+      "bond_order_counts": {
+        "AROMATIC": 10,
+        "SINGLE": 47
+      },
+      "bonds": [
+        {
+          "begin_atom_index": 0,
+          "bond_order": "SINGLE",
+          "end_atom_index": 1,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 1,
+          "bond_order": "SINGLE",
+          "end_atom_index": 2,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 2,
+          "bond_order": "SINGLE",
+          "end_atom_index": 3,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 3,
+          "bond_order": "SINGLE",
+          "end_atom_index": 4,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 4,
+          "bond_order": "SINGLE",
+          "end_atom_index": 5,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 5,
+          "bond_order": "SINGLE",
+          "end_atom_index": 6,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 6,
+          "bond_order": "SINGLE",
+          "end_atom_index": 7,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 4,
+          "bond_order": "SINGLE",
+          "end_atom_index": 8,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 8,
+          "bond_order": "SINGLE",
+          "end_atom_index": 9,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 9,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 10,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 10,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 11,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 11,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 12,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 12,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 13,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 13,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 14,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 11,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 15,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 15,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 16,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 16,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 17,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 15,
+          "bond_order": "SINGLE",
+          "end_atom_index": 18,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 18,
+          "bond_order": "SINGLE",
+          "end_atom_index": 19,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 19,
+          "bond_order": "SINGLE",
+          "end_atom_index": 20,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 20,
+          "bond_order": "SINGLE",
+          "end_atom_index": 21,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 21,
+          "bond_order": "SINGLE",
+          "end_atom_index": 22,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 21,
+          "bond_order": "SINGLE",
+          "end_atom_index": 23,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 23,
+          "bond_order": "SINGLE",
+          "end_atom_index": 24,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 20,
+          "bond_order": "SINGLE",
+          "end_atom_index": 25,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 19,
+          "bond_order": "SINGLE",
+          "end_atom_index": 26,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 7,
+          "bond_order": "SINGLE",
+          "end_atom_index": 0,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 14,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 9,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 17,
+          "bond_order": "AROMATIC",
+          "end_atom_index": 10,
+          "is_aromatic": true
+        },
+        {
+          "begin_atom_index": 22,
+          "bond_order": "SINGLE",
+          "end_atom_index": 18,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 0,
+          "bond_order": "SINGLE",
+          "end_atom_index": 27,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 0,
+          "bond_order": "SINGLE",
+          "end_atom_index": 28,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 1,
+          "bond_order": "SINGLE",
+          "end_atom_index": 29,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 1,
+          "bond_order": "SINGLE",
+          "end_atom_index": 30,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 2,
+          "bond_order": "SINGLE",
+          "end_atom_index": 31,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 2,
+          "bond_order": "SINGLE",
+          "end_atom_index": 32,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 3,
+          "bond_order": "SINGLE",
+          "end_atom_index": 33,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 3,
+          "bond_order": "SINGLE",
+          "end_atom_index": 34,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 4,
+          "bond_order": "SINGLE",
+          "end_atom_index": 35,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 5,
+          "bond_order": "SINGLE",
+          "end_atom_index": 36,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 5,
+          "bond_order": "SINGLE",
+          "end_atom_index": 37,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 6,
+          "bond_order": "SINGLE",
+          "end_atom_index": 38,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 6,
+          "bond_order": "SINGLE",
+          "end_atom_index": 39,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 7,
+          "bond_order": "SINGLE",
+          "end_atom_index": 40,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 7,
+          "bond_order": "SINGLE",
+          "end_atom_index": 41,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 8,
+          "bond_order": "SINGLE",
+          "end_atom_index": 42,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 13,
+          "bond_order": "SINGLE",
+          "end_atom_index": 43,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 16,
+          "bond_order": "SINGLE",
+          "end_atom_index": 44,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 18,
+          "bond_order": "SINGLE",
+          "end_atom_index": 45,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 19,
+          "bond_order": "SINGLE",
+          "end_atom_index": 46,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 20,
+          "bond_order": "SINGLE",
+          "end_atom_index": 47,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 21,
+          "bond_order": "SINGLE",
+          "end_atom_index": 48,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 23,
+          "bond_order": "SINGLE",
+          "end_atom_index": 49,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 23,
+          "bond_order": "SINGLE",
+          "end_atom_index": 50,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 24,
+          "bond_order": "SINGLE",
+          "end_atom_index": 51,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 25,
+          "bond_order": "SINGLE",
+          "end_atom_index": 52,
+          "is_aromatic": false
+        },
+        {
+          "begin_atom_index": 26,
+          "bond_order": "SINGLE",
+          "end_atom_index": 53,
+          "is_aromatic": false
+        }
+      ],
+      "formal_charge_counts": {
+        "0": 54
+      },
+      "label": "NEG001_MOL2_RDKit",
+      "path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG001.mol2",
+      "sha256": "a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf"
+    },
+    "comparison_method": "NEG001 MOL2 RDKit perception is compared to the native control SDF RDKit perception used by the frozen reader. NEG001 and native controls are different ligand identities; cross-molecule aggregate differences are records for human review, not parser/perception mismatches. No atom mapping, repair, or normalization is performed.",
+    "comparisons": [
+      {
+        "difference_count": 5,
+        "differences": [
+          {
+            "NEG001": 54,
+            "field": "atom_count",
+            "native_control": 60
+          },
+          {
+            "NEG001": 57,
+            "field": "bond_count",
+            "native_control": 62
+          },
+          {
+            "NEG001": {
+              "AROMATIC": 10,
+              "SINGLE": 47
+            },
+            "field": "bond_order_counts",
+            "native_control": {
+              "AROMATIC": 16,
+              "DOUBLE": 3,
+              "SINGLE": 43
+            }
+          },
+          {
+            "NEG001": {
+              "0": 54
+            },
+            "field": "formal_charge_counts",
+            "native_control": {
+              "0": 59,
+              "1": 1
+            }
+          },
+          {
+            "NEG001": {
+              "False": 45,
+              "True": 9
+            },
+            "field": "aromaticity_counts",
+            "native_control": {
+              "False": 45,
+              "True": 15
+            }
+          }
+        ],
+        "method": "Cross-molecule descriptive comparison only. NEG001 and this native control are different ligand identities, so differences are not parser/perception mismatches and no atom mapping is attempted.",
+        "native_control": "3REY_XAC"
+      },
+      {
+        "difference_count": 5,
+        "differences": [
+          {
+            "NEG001": 54,
+            "field": "atom_count",
+            "native_control": 39
+          },
+          {
+            "NEG001": 57,
+            "field": "bond_count",
+            "native_control": 42
+          },
+          {
+            "NEG001": {
+              "AROMATIC": 10,
+              "SINGLE": 47
+            },
+            "field": "bond_order_counts",
+            "native_control": {
+              "AROMATIC": 21,
+              "SINGLE": 21
+            }
+          },
+          {
+            "NEG001": {
+              "0": 54
+            },
+            "field": "formal_charge_counts",
+            "native_control": {
+              "0": 39
+            }
+          },
+          {
+            "NEG001": {
+              "False": 45,
+              "True": 9
+            },
+            "field": "aromaticity_counts",
+            "native_control": {
+              "False": 19,
+              "True": 20
+            }
+          }
+        ],
+        "method": "Cross-molecule descriptive comparison only. NEG001 and this native control are different ligand identities, so differences are not parser/perception mismatches and no atom mapping is attempted.",
+        "native_control": "5OLH_9XT"
+      },
+      {
+        "difference_count": 1,
+        "differences": [
+          {
+            "NEG001": {
+              "AROMATIC": 10,
+              "SINGLE": 47
+            },
+            "field": "bond_order_counts",
+            "native_control": {
+              "AROMATIC": 10,
+              "DOUBLE": 1,
+              "SINGLE": 46
+            }
+          }
+        ],
+        "method": "Cross-molecule descriptive comparison only. NEG001 and this native control are different ligand identities, so differences are not parser/perception mismatches and no atom mapping is attempted.",
+        "native_control": "5OLO_9XW"
+      }
+    ],
+    "native_controls": [
+      {
+        "aromaticity_counts": {
+          "False": 45,
+          "True": 15
+        },
+        "atom_count": 60,
+        "atoms": [
+          {
+            "atom_index": 0,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 1,
+            "element": "N",
+            "formal_charge": 1,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 2,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 3,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 4,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 5,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 6,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 7,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 8,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 9,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 10,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 11,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 12,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 13,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 14,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 15,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 16,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 17,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 18,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 19,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 20,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 21,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 22,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 23,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 24,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 25,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 26,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 27,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 28,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 29,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 30,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 31,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 32,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 33,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 34,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 35,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 36,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 37,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 38,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 39,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 40,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 41,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 42,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 43,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 44,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 45,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 46,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 47,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 48,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 49,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 50,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 51,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 52,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 53,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 54,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 55,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 56,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 57,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 58,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 59,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          }
+        ],
+        "bond_count": 62,
+        "bond_order_counts": {
+          "AROMATIC": 16,
+          "DOUBLE": 3,
+          "SINGLE": 43
+        },
+        "bonds": [
+          {
+            "begin_atom_index": 0,
+            "bond_order": "SINGLE",
+            "end_atom_index": 1,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 2,
+            "bond_order": "SINGLE",
+            "end_atom_index": 0,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "SINGLE",
+            "end_atom_index": 2,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "SINGLE",
+            "end_atom_index": 4,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 5,
+            "bond_order": "DOUBLE",
+            "end_atom_index": 4,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 4,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 7,
+            "bond_order": "SINGLE",
+            "end_atom_index": 6,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 7,
+            "bond_order": "SINGLE",
+            "end_atom_index": 8,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 9,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 10,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 9,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 11,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 12,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 10,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 11,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 13,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 13,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 12,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 14,
+            "bond_order": "SINGLE",
+            "end_atom_index": 13,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 14,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 15,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 14,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 16,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 15,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 17,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 16,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 18,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 19,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 17,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 17,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 18,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 20,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 18,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 19,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 21,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 19,
+            "bond_order": "SINGLE",
+            "end_atom_index": 22,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 20,
+            "bond_order": "DOUBLE",
+            "end_atom_index": 23,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 20,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 24,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 21,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 24,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 21,
+            "bond_order": "DOUBLE",
+            "end_atom_index": 25,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 22,
+            "bond_order": "SINGLE",
+            "end_atom_index": 26,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 24,
+            "bond_order": "SINGLE",
+            "end_atom_index": 27,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 26,
+            "bond_order": "SINGLE",
+            "end_atom_index": 28,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 27,
+            "bond_order": "SINGLE",
+            "end_atom_index": 29,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 29,
+            "bond_order": "SINGLE",
+            "end_atom_index": 30,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 0,
+            "bond_order": "SINGLE",
+            "end_atom_index": 31,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 0,
+            "bond_order": "SINGLE",
+            "end_atom_index": 32,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 1,
+            "bond_order": "SINGLE",
+            "end_atom_index": 33,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 1,
+            "bond_order": "SINGLE",
+            "end_atom_index": 34,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 1,
+            "bond_order": "SINGLE",
+            "end_atom_index": 35,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 2,
+            "bond_order": "SINGLE",
+            "end_atom_index": 36,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 2,
+            "bond_order": "SINGLE",
+            "end_atom_index": 37,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "SINGLE",
+            "end_atom_index": 38,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 39,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 40,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 9,
+            "bond_order": "SINGLE",
+            "end_atom_index": 41,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 10,
+            "bond_order": "SINGLE",
+            "end_atom_index": 42,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 11,
+            "bond_order": "SINGLE",
+            "end_atom_index": 43,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 12,
+            "bond_order": "SINGLE",
+            "end_atom_index": 44,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 16,
+            "bond_order": "SINGLE",
+            "end_atom_index": 45,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 22,
+            "bond_order": "SINGLE",
+            "end_atom_index": 46,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 22,
+            "bond_order": "SINGLE",
+            "end_atom_index": 47,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 26,
+            "bond_order": "SINGLE",
+            "end_atom_index": 48,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 26,
+            "bond_order": "SINGLE",
+            "end_atom_index": 49,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 27,
+            "bond_order": "SINGLE",
+            "end_atom_index": 50,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 27,
+            "bond_order": "SINGLE",
+            "end_atom_index": 51,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 28,
+            "bond_order": "SINGLE",
+            "end_atom_index": 52,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 28,
+            "bond_order": "SINGLE",
+            "end_atom_index": 53,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 28,
+            "bond_order": "SINGLE",
+            "end_atom_index": 54,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 29,
+            "bond_order": "SINGLE",
+            "end_atom_index": 55,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 29,
+            "bond_order": "SINGLE",
+            "end_atom_index": 56,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 30,
+            "bond_order": "SINGLE",
+            "end_atom_index": 57,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 30,
+            "bond_order": "SINGLE",
+            "end_atom_index": 58,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 30,
+            "bond_order": "SINGLE",
+            "end_atom_index": 59,
+            "is_aromatic": false
+          }
+        ],
+        "formal_charge_counts": {
+          "0": 59,
+          "1": 1
+        },
+        "label": "3REY_XAC",
+        "path": "references/stage5/native_complexes/3REY/3REY_XAC_native_pH7.4_restored.sdf",
+        "sha256": "f7da633024a309fd186dfa483d522601d3b9810caa4813d2364f3d620e733946"
+      },
+      {
+        "aromaticity_counts": {
+          "False": 19,
+          "True": 20
+        },
+        "atom_count": 39,
+        "atoms": [
+          {
+            "atom_index": 0,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 1,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 2,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 3,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 4,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 5,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 6,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 7,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 8,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 9,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 10,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 11,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 12,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 13,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 14,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 15,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 16,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 17,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 18,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 19,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 20,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 21,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 22,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 23,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 24,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 25,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 26,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 27,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 28,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 29,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 30,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 31,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 32,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 33,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 34,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 35,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 36,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 37,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 38,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          }
+        ],
+        "bond_count": 42,
+        "bond_order_counts": {
+          "AROMATIC": 21,
+          "SINGLE": 21
+        },
+        "bonds": [
+          {
+            "begin_atom_index": 0,
+            "bond_order": "SINGLE",
+            "end_atom_index": 5,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 1,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 19,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 2,
+            "bond_order": "SINGLE",
+            "end_atom_index": 6,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 2,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 4,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 3,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 5,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 15,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 5,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 4,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 18,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 7,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 20,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 7,
+            "bond_order": "SINGLE",
+            "end_atom_index": 8,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 13,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 23,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 9,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 14,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 10,
+            "bond_order": "SINGLE",
+            "end_atom_index": 15,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 11,
+            "bond_order": "SINGLE",
+            "end_atom_index": 22,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 11,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 20,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 12,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 21,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 12,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 17,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 13,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 9,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 15,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 16,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 16,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 2,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 17,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 7,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 18,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 1,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 18,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 12,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 19,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 17,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 21,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 11,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 23,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 14,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 0,
+            "bond_order": "SINGLE",
+            "end_atom_index": 24,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 0,
+            "bond_order": "SINGLE",
+            "end_atom_index": 25,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "SINGLE",
+            "end_atom_index": 26,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 4,
+            "bond_order": "SINGLE",
+            "end_atom_index": 27,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 28,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 29,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 9,
+            "bond_order": "SINGLE",
+            "end_atom_index": 30,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 10,
+            "bond_order": "SINGLE",
+            "end_atom_index": 31,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 10,
+            "bond_order": "SINGLE",
+            "end_atom_index": 32,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 10,
+            "bond_order": "SINGLE",
+            "end_atom_index": 33,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 13,
+            "bond_order": "SINGLE",
+            "end_atom_index": 34,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 14,
+            "bond_order": "SINGLE",
+            "end_atom_index": 35,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 16,
+            "bond_order": "SINGLE",
+            "end_atom_index": 36,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 22,
+            "bond_order": "SINGLE",
+            "end_atom_index": 37,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 22,
+            "bond_order": "SINGLE",
+            "end_atom_index": 38,
+            "is_aromatic": false
+          }
+        ],
+        "formal_charge_counts": {
+          "0": 39
+        },
+        "label": "5OLH_9XT",
+        "path": "references/stage5/native_complexes/5OLH/5OLH_9XT_native_pH7.4_restored.sdf",
+        "sha256": "a9946f09efbc08898923b2ff15be7ffe9bd4d6947218a511de78ec929fa6a11e"
+      },
+      {
+        "aromaticity_counts": {
+          "False": 45,
+          "True": 9
+        },
+        "atom_count": 54,
+        "atoms": [
+          {
+            "atom_index": 0,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 1,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 2,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 3,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 4,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 5,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 6,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 7,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 8,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 9,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 10,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 11,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 12,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 13,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 14,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 15,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 16,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 17,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 18,
+            "element": "C",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 19,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 20,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 21,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 22,
+            "element": "N",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 23,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 24,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 25,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 26,
+            "element": "O",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 27,
+            "element": "S",
+            "formal_charge": 0,
+            "is_aromatic": true
+          },
+          {
+            "atom_index": 28,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 29,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 30,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 31,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 32,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 33,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 34,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 35,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 36,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 37,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 38,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 39,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 40,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 41,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 42,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 43,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 44,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 45,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 46,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 47,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 48,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 49,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 50,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 51,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 52,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          },
+          {
+            "atom_index": 53,
+            "element": "H",
+            "formal_charge": 0,
+            "is_aromatic": false
+          }
+        ],
+        "bond_count": 57,
+        "bond_order_counts": {
+          "AROMATIC": 10,
+          "DOUBLE": 1,
+          "SINGLE": 46
+        },
+        "bonds": [
+          {
+            "begin_atom_index": 0,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 7,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 1,
+            "bond_order": "SINGLE",
+            "end_atom_index": 20,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 1,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 22,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 2,
+            "bond_order": "SINGLE",
+            "end_atom_index": 21,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 2,
+            "bond_order": "SINGLE",
+            "end_atom_index": 20,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "SINGLE",
+            "end_atom_index": 21,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 4,
+            "bond_order": "SINGLE",
+            "end_atom_index": 5,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 4,
+            "bond_order": "SINGLE",
+            "end_atom_index": 3,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 5,
+            "bond_order": "SINGLE",
+            "end_atom_index": 18,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 5,
+            "bond_order": "SINGLE",
+            "end_atom_index": 26,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 7,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 22,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 7,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 9,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "SINGLE",
+            "end_atom_index": 23,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 9,
+            "bond_order": "SINGLE",
+            "end_atom_index": 23,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 10,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 9,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 11,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 10,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 12,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 0,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 12,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 11,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 14,
+            "bond_order": "SINGLE",
+            "end_atom_index": 13,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 15,
+            "bond_order": "SINGLE",
+            "end_atom_index": 16,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 15,
+            "bond_order": "SINGLE",
+            "end_atom_index": 24,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 16,
+            "bond_order": "SINGLE",
+            "end_atom_index": 19,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 17,
+            "bond_order": "SINGLE",
+            "end_atom_index": 5,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 18,
+            "bond_order": "SINGLE",
+            "end_atom_index": 6,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 19,
+            "bond_order": "SINGLE",
+            "end_atom_index": 12,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 19,
+            "bond_order": "SINGLE",
+            "end_atom_index": 13,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 21,
+            "bond_order": "SINGLE",
+            "end_atom_index": 6,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 24,
+            "bond_order": "SINGLE",
+            "end_atom_index": 14,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 25,
+            "bond_order": "DOUBLE",
+            "end_atom_index": 2,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 27,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 0,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 27,
+            "bond_order": "AROMATIC",
+            "end_atom_index": 1,
+            "is_aromatic": true
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "SINGLE",
+            "end_atom_index": 28,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 3,
+            "bond_order": "SINGLE",
+            "end_atom_index": 29,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 4,
+            "bond_order": "SINGLE",
+            "end_atom_index": 30,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 4,
+            "bond_order": "SINGLE",
+            "end_atom_index": 31,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 32,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 6,
+            "bond_order": "SINGLE",
+            "end_atom_index": 33,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "SINGLE",
+            "end_atom_index": 34,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "SINGLE",
+            "end_atom_index": 35,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 8,
+            "bond_order": "SINGLE",
+            "end_atom_index": 36,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 10,
+            "bond_order": "SINGLE",
+            "end_atom_index": 37,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 11,
+            "bond_order": "SINGLE",
+            "end_atom_index": 38,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 13,
+            "bond_order": "SINGLE",
+            "end_atom_index": 39,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 13,
+            "bond_order": "SINGLE",
+            "end_atom_index": 40,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 14,
+            "bond_order": "SINGLE",
+            "end_atom_index": 41,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 14,
+            "bond_order": "SINGLE",
+            "end_atom_index": 42,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 15,
+            "bond_order": "SINGLE",
+            "end_atom_index": 43,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 15,
+            "bond_order": "SINGLE",
+            "end_atom_index": 44,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 16,
+            "bond_order": "SINGLE",
+            "end_atom_index": 45,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 16,
+            "bond_order": "SINGLE",
+            "end_atom_index": 46,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 17,
+            "bond_order": "SINGLE",
+            "end_atom_index": 47,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 17,
+            "bond_order": "SINGLE",
+            "end_atom_index": 48,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 17,
+            "bond_order": "SINGLE",
+            "end_atom_index": 49,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 18,
+            "bond_order": "SINGLE",
+            "end_atom_index": 50,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 18,
+            "bond_order": "SINGLE",
+            "end_atom_index": 51,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 20,
+            "bond_order": "SINGLE",
+            "end_atom_index": 52,
+            "is_aromatic": false
+          },
+          {
+            "begin_atom_index": 26,
+            "bond_order": "SINGLE",
+            "end_atom_index": 53,
+            "is_aromatic": false
+          }
+        ],
+        "formal_charge_counts": {
+          "0": 54
+        },
+        "label": "5OLO_9XW",
+        "path": "references/stage5/native_complexes/5OLO/5OLO_9XW_native_pH7.4_restored.sdf",
+        "sha256": "15ab25c78446bd5d2a346383641c6fd218969a1c039bd2b12c8b9be4efeb15b2"
+      }
+    ]
+  },
+  "coordinate_preservation": {
+    "atom_count": 54,
+    "has_conformer": true,
+    "max_abs_coordinate_deviation": 0.0,
+    "method": "Coordinates parsed directly from the frozen MOL2 ATOM block were compared with the RDKit conformer coordinates immediately before plf.Molecule.from_rdkit(). RMS is the root mean square per-atom Euclidean deviation. No tolerance was applied.",
+    "prolif_atom_count": 54,
+    "rms_coordinate_deviation": 0.0
+  },
+  "inputs": {
+    "NEG001": {
+      "path": "references/stage5/negative_panel/panel/blind_prolif_inputs/NEG001.mol2",
+      "sha256": "a232d950008861f3ee87d73e880b9e1627afa06a47182b3a1a249f4cf61eaddf"
+    },
+    "native_controls": [
+      {
+        "label": "3REY_XAC",
+        "path": "references/stage5/native_complexes/3REY/3REY_XAC_native_pH7.4_restored.sdf",
+        "sha256": "f7da633024a309fd186dfa483d522601d3b9810caa4813d2364f3d620e733946"
+      },
+      {
+        "label": "5OLH_9XT",
+        "path": "references/stage5/native_complexes/5OLH/5OLH_9XT_native_pH7.4_restored.sdf",
+        "sha256": "a9946f09efbc08898923b2ff15be7ffe9bd4d6947218a511de78ec929fa6a11e"
+      },
+      {
+        "label": "5OLO_9XW",
+        "path": "references/stage5/native_complexes/5OLO/5OLO_9XW_native_pH7.4_restored.sdf",
+        "sha256": "15ab25c78446bd5d2a346383641c6fd218969a1c039bd2b12c8b9be4efeb15b2"
+      }
+    ]
+  },
+  "mechanical_execution": {
+    "adapter_constructed_prolif_molecule": true,
+    "chemical_perception_record_completed": true,
+    "coordinate_audit_completed": true,
+    "protected_reader_unchanged": true
+  },
+  "package_versions": {
+    "numpy": "2.5.2",
+    "prolif": "2.2.0",
+    "python": "3.12.13",
+    "rdkit": "2026.03.5"
+  },
+  "protected_file_check": {
+    "path": "scripts/stage5/test_native_reader_controls.py",
+    "sha256_after_task": "006d0eae192c4776d84d89d3d381c87d289c0fbda749b1ba7c9a93929c07cdf6",
+    "sha256_before_task": "006d0eae192c4776d84d89d3d381c87d289c0fbda749b1ba7c9a93929c07cdf6",
+    "sha256_before_task_provenance": "Captured with `shasum -a 256 scripts/stage5/test_native_reader_controls.py` before this adapter task edited files.",
+    "unchanged": true
+  },
+  "qualification_review_status": "PENDING_HUMAN_REVIEW",
+  "scope": {
+    "adapter_qualification_only": true,
+    "blind_six_pose_prolif_pod_run": false,
+    "chemistry_repaired_or_normalized": false,
+    "geometry_modified": false,
+    "neg001_interaction_reader_run": false
+  }
+}

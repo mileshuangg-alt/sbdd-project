@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "measurement_id": "d021_rdock_run2_d020_measurement_v2",
+  "status": "SUPERSEDES_UNPRESERVED_ORIGINAL_COMPUTATION",
+  "reason": "The original Run-2 RMSD/d_rel measurement table was not preserved in the bounded provenance search. This artifact remeasures the frozen Run-2 generated archive using the frozen D020 measurement functions.",
+  "source_archive": "references/stage5/d021_rdock_3REY_XAC_single_shot_qualification_20260917/XAC_3REY_run2.sd",
+  "source_archive_sha256": "21cca02ece8ce246e852a155733d2daba736960267c330257ee9a221ae869ebb",
+  "source_pose_count": 50,
+  "measurement_code": "scripts/stage5/analyze_dock_xac_200save.py",
+  "measurement_code_sha256": "eaad8a89db75a761496f6c063cc55569af8224c9ee11e5742977ee49ed8b307f",
+  "git_head": "5691609d5af3f624e9a17c5bf16537d9a1269484",
+  "git_working_tree_dirty": true,
+  "python_version": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "rdkit_version": "2026.03.5",
+  "numpy_version": "2.5.2",
+  "d020_functions": [
+    "calculate_symmetry_corrected_rmsd",
+    "calculate_d_rel"
+  ],
+  "rmsd_band_definition": {
+    "<=2.0": "RMSD <= 2.0 A",
+    "2.0-3.0": "RMSD > 2.0 A and < 3.0 A",
+    ">=3.0": "RMSD >= 3.0 A"
+  },
+  "historical_run2_summary_to_verify": {
+    "poses": 50,
+    "near_native_count": 1,
+    "alternative_count": 49,
+    "rmsd_min": 1.0622873991472819,
+    "rmsd_max": 13.524631893279377,
+    "d_rel_min": 0.7856314103933344,
+    "d_rel_max": 0.9213006403054211
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "target_id": "ADORA2A",
+  "evidence": {
+    "structure_available": true,
+    "cognate_complex_available": true,
+    "homology_inferred": false,
+    "gate_validation": "NOT_ESTABLISHED",
+    "evidence_provenance": {
+      "evidence_level_basis": "Direct experimental cognate target-ligand complexes are available.",
+      "experimental_complexes": [
+        {
+          "pdb_id": "3REY",
+          "ligand_name": "XAC"
+        },
+        {
+          "pdb_id": "5OLH",
+          "ligand_name": "Vipadenant"
+        },
+        {
+          "pdb_id": "5OLO",
+          "ligand_name": "Tozadenant"
+        }
+      ],
+      "evidence_pull": "Session 008"
+    }
+  },
+  "interaction_implementation": {
+    "implementation_id": "a2a_frozen_prolif_reference_pattern",
+    "instrument": "ProLIF",
+    "artifact_path": "experiments/phase1_diffsbdd/evaluation/stage5_a2a_reference_pattern.csv",
+    "authority": {
+      "gate_validation": "NOT_ESTABLISHED",
+      "molecule_level_claims": true,
+      "hard_attrition": false,
+      "pose_level_claims": false,
+      "general_specificity": false,
+      "claims_status": "claims capped pending gate validation",
+      "claim_boundary": "Pattern reproduction only; not Stage-5 PASS/FAIL and not a survival rate.",
+      "pose_basis": "generator-provided coordinates"
+    },
+    "frozen_definition_artifact": {
+      "description": "Frozen target-specific reference-recognition pattern defined before DiffSBDD Stage-5 baseline inspection.",
+      "configured_roles": [
+        {
+          "role_id": "aromatic_anchor_reproduction",
+          "residue": {
+            "name": "PHE",
+            "number": 168
+          },
+          "requires_any": [
+            "Hydrophobic",
+            "PiStacking"
+          ]
+        },
+        {
+          "role_id": "hbond_acceptor_reproduction",
+          "residue": {
+            "name": "ASN",
+            "number": 253
+          },
+          "requires_any": [
+            "HBAcceptor"
+          ]
+        }
+      ]
+    }
+  }
+}

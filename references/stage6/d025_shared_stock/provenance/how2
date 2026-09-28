@@ -1,0 +1,9 @@
+cat ??/???[ABC].smi |grep -v smiles > in-stock-25Q2.smi 
+cat ??/???[D].smi |grep -v smiles  > d-only
+cat ??/???[E].smi  | grep -v smiles > e-only
+cat ??/???[F].smi | grep -v smiles > f-only
+cat in-stock-25Q2.smi d-only > wait-ok-25Q2.smi 
+cat wait-ok-25Q2.smi e-only > for-sale-25Q2.smi 
+cat for-sale-25Q2.smi f-only > ZINC20-All-25Q2.smi 
+
+

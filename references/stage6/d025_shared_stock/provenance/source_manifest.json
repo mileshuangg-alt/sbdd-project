@@ -1,0 +1,54 @@
+{
+  "decision": "D025",
+  "status": "frozen",
+  "amendment_date": "2026-09-27",
+  "source_artifact": {
+    "path": "/nfs/exl/zinc20/2D/for-sale-25Q2.smi",
+    "format": "SMILES + ZINC identifier",
+    "size_bytes": 113043807549,
+    "source_record_count": 1907324517,
+    "sha256": "9b5c02767c56282c7704ce039e6176d986cf9e2e386a9ae46d1538600125c336"
+  },
+  "generation_provenance": {
+    "runtime_environment": "/nfs/soft/www/apps/zinc21/envs/development",
+    "entry_script": "/nfs/exl/zinc20/2D/newcron2d.csh",
+    "invocation": "./newcron2d.csh C",
+    "export_command": "zinc-manage admin export tranches-2d --dir <output> <tranche>"
+  },
+  "selection_semantics": {
+    "name": "for-sale",
+    "predicate": "Substance.purchasable >= 10",
+    "availability_levels": {
+      "10": "boutique",
+      "20": "on-demand",
+      "30": "agent",
+      "40_or_greater": "in-stock"
+    }
+  },
+  "assembly": {
+    "procedure_file": "/nfs/exl/zinc20/2D/how2",
+    "in_stock": "A/B/C",
+    "wait_ok": "A/B/C/D",
+    "for_sale": "A/B/C/D/E",
+    "all": "A/B/C/D/E/F"
+  },
+  "provenance_files": {
+    "how2": {
+      "path": "how2"
+    },
+    "hownew": {
+      "path": "hownew"
+    },
+    "newcron2d": {
+      "path": "newcron2d.csh"
+    },
+    "zinc_export": {
+      "path": "zinc_export.py",
+      "sha256": "e3fd79d7b5651d81a6dcaaaee98467d917c45b68f63c7beb6a1d8f4511ff56a4"
+    },
+    "zinc_substance": {
+      "path": "zinc_substance.py",
+      "sha256": "6852b73b1d1a0d2fc148f4cef85f3cb93a2619e17c0d931a57753e23c46ce5c9"
+    }
+  }
+}

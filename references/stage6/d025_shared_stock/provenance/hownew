@@ -1,0 +1,2 @@
+source /mnt/nfs/home/devtest/anaconda3/bin/activate /nfs/soft/www/apps/zinc21/envs/development
+./newcron2d.csh C

@@ -20,11 +20,15 @@ class D026ContainerDefinitionTests(unittest.TestCase):
     def test_dockerfile_pins_immutable_inputs(self):
         text = DOCKERFILE.read_text()
 
+        self.assertIn("FROM d026-python-base:3.11.11-pinned", text)
+        self.assertIn('LABEL org.opencontainers.image.base.name="python:3.11.11"', text)
         self.assertIn(
-            "FROM python:3.11.11@sha256:"
-            "4ca910a51a1a474e5d95aa52455331b2a94272eeae3c498be1ad7a2ff9b00bf",
+            'LABEL org.opencontainers.image.base.digest="sha256:'
+            '4ca910a51a1a474e5d95aa52455331b2a942eeae3c498be1ad7a2ff9b00bf"',
             text,
         )
+        self.assertNotIn("FROM python:3.11.11", text)
+        self.assertNotIn("FROM python@sha256", text)
         self.assertIn("rdkit==2023.9.6", text)
         self.assertIn("9859f5bc6c04c342b828aff20001504c238d7ac1", text)
         self.assertIn("git checkout 9859f5bc6c04c342b828aff20001504c238d7ac1", text)

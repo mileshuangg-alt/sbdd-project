@@ -1,15 +1,16 @@
 # D026 molecular-identity transformation runtime.
 # Immutable inputs:
 # - Python: 3.11.11
-# - Base image: python:3.11.11@sha256:4ca910a51a1a474e5d95aa52455331b2a94272eeae3c498be1ad7a2ff9b00bf
+# - Base image: local tag d026-python-base:3.11.11-pinned
+# - Upstream base image: python:3.11.11@sha256:4ca910a51a1a474e5d95aa52455331b2a942eeae3c498be1ad7a2ff9b00bf
 # - AiZynthFinder: v4.4.1, commit 9859f5bc6c04c342b828aff20001504c238d7ac1
 # - RDKit: 2023.9.6
-FROM python:3.11.11@sha256:4ca910a51a1a474e5d95aa52455331b2a94272eeae3c498be1ad7a2ff9b00bf
+FROM d026-python-base:3.11.11-pinned
 
+LABEL org.opencontainers.image.base.name="python:3.11.11"
+LABEL org.opencontainers.image.base.digest="sha256:4ca910a51a1a474e5d95aa52455331b2a942eeae3c498be1ad7a2ff9b00bf"
 LABEL org.opencontainers.image.title="SBDD D026 molecular identity runtime"
 LABEL org.opencontainers.image.description="Scientific runtime for D026 molecular-identity transformation environment"
-LABEL org.opencontainers.image.base.name="python:3.11.11"
-LABEL org.opencontainers.image.base.digest="sha256:4ca910a51a1a474e5d95aa52455331b2a94272eeae3c498be1ad7a2ff9b00bf"
 LABEL sbdd.d026.python.version="3.11.11"
 LABEL sbdd.d026.rdkit.version="2023.9.6"
 LABEL sbdd.d026.aizynthfinder.version="4.4.1"

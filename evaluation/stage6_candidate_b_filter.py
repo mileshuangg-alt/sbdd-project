@@ -312,21 +312,178 @@ def process_zinc_metadata_files(
     }
 
 
+def tranche_is_literature_eligible(tranche_name: str) -> bool:
+    """Return whether a four-axis ZINC tranche satisfies the frozen criteria.
+
+    Tranche axes, as established from the preserved ZINC comparator and
+    validated against live exports:
+
+    - axis 1: A-B corresponds to MW <= 250 Da
+    - axis 2: A-G corresponds to logP <= 3.5
+    - axis 3: E/G correspond to reactivity 30/50
+    - axis 4: A-E corresponds to purchasability >= 10
+
+    This function only interprets the ZINC tranche encoding. It does not
+    inspect or reclassify individual molecules.
+    """
+    if len(tranche_name) != 4:
+        return False
+
+    return (
+        tranche_name[0] in "AB"
+        and tranche_name[1] in "ABCDEFG"
+        and tranche_name[2] in "EG"
+        and tranche_name[3] in "ABCDE"
+    )
+
+
+def _relative_posix_path(path: Path, root: Path) -> str:
+    return path.relative_to(root).as_posix()
+
+
+def enumerate_literature_eligible_tranche_files(
+    source_root: Path | str,
+) -> dict:
+    source_root = Path(source_root)
+    eligible = []
+    excluded = []
+    malformed = []
+    total_txt_files = 0
+
+    child_dirs = sorted(path for path in source_root.iterdir() if path.is_dir())
+
+    for child_dir in child_dirs:
+        txt_files = sorted(
+            path
+            for path in child_dir.iterdir()
+            if path.is_file() and path.suffix == ".txt"
+        )
+        for txt_file in txt_files:
+            total_txt_files += 1
+            relative_path = _relative_posix_path(txt_file, source_root)
+            tranche_name = txt_file.stem
+
+            if len(child_dir.name) != 2:
+                malformed.append(
+                    {
+                        "path": relative_path,
+                        "reason": "parent directory name is not two characters",
+                        "tranche_name": tranche_name,
+                        "observed_parent": child_dir.name,
+                    }
+                )
+                continue
+
+            if len(tranche_name) != 4:
+                malformed.append(
+                    {
+                        "path": relative_path,
+                        "reason": "tranche name length is not 4",
+                        "tranche_name": tranche_name,
+                    }
+                )
+                continue
+
+            if child_dir.name != tranche_name[:2]:
+                malformed.append(
+                    {
+                        "path": relative_path,
+                        "reason": "parent directory does not match tranche prefix",
+                        "tranche_name": tranche_name,
+                        "expected_parent": tranche_name[:2],
+                        "observed_parent": child_dir.name,
+                    }
+                )
+                continue
+
+            if tranche_is_literature_eligible(tranche_name):
+                eligible.append(relative_path)
+            else:
+                excluded.append(relative_path)
+
+    eligible = sorted(eligible)
+    excluded = sorted(excluded)
+    malformed = sorted(malformed, key=lambda item: item["path"])
+
+    return {
+        "schema_version": 1,
+        "root_path_provenance": str(source_root),
+        "source_layout": "<source_root>/<two-character-directory>/<four-character-tranche>.txt",
+        "counts": {
+            "total_txt_files_discovered": total_txt_files,
+            "eligible_txt_files": len(eligible),
+            "excluded_txt_files": len(excluded),
+            "malformed_or_unexpected_txt_files": len(malformed),
+        },
+        "eligible_source_paths": eligible,
+        "excluded_source_paths": excluded,
+        "malformed_or_unexpected": malformed,
+    }
+
+
+def write_tranche_enumeration_manifest(
+    source_root: Path | str,
+    manifest_output: Path | str,
+) -> dict:
+    manifest_output = Path(manifest_output)
+    manifest_output.parent.mkdir(parents=True, exist_ok=True)
+    manifest = enumerate_literature_eligible_tranche_files(source_root)
+    _write_json(manifest_output, manifest)
+    return {
+        "manifest_output": str(manifest_output),
+        "manifest_sha256": sha256_file(manifest_output),
+        "counts": manifest["counts"],
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Filter BKS ZINC pre-how2 2D metadata exports."
     )
     parser.add_argument(
+        "--enumerate-tranches",
+        action="store_true",
+        help="Only enumerate eligible tranche .txt files and write a manifest.",
+    )
+    parser.add_argument(
+        "--source-root",
+        help="Root 2D directory for tranche enumeration.",
+    )
+    parser.add_argument(
+        "--manifest-output",
+        help="Output JSON path for tranche enumeration manifest.",
+    )
+    parser.add_argument(
         "--output-dir",
-        required=True,
         help="Directory for deterministic filtered outputs and manifests.",
     )
     parser.add_argument(
         "inputs",
-        nargs="+",
+        nargs="*",
         help="One or more tab-delimited ZINC 2D metadata .txt files.",
     )
     args = parser.parse_args(argv)
+
+    if args.enumerate_tranches:
+        if not args.source_root or not args.manifest_output:
+            parser.error(
+                "--enumerate-tranches requires --source-root and --manifest-output"
+            )
+        if args.inputs or args.output_dir:
+            parser.error(
+                "--enumerate-tranches does not accept filtering inputs or --output-dir"
+            )
+        result = write_tranche_enumeration_manifest(
+            args.source_root,
+            args.manifest_output,
+        )
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0
+
+    if not args.output_dir:
+        parser.error("filtering mode requires --output-dir")
+    if not args.inputs:
+        parser.error("filtering mode requires at least one input file")
 
     result = process_zinc_metadata_files(args.inputs, args.output_dir)
     print(json.dumps(result, indent=2, sort_keys=True))

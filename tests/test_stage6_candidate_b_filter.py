@@ -2,15 +2,20 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
+import evaluation.stage6_candidate_b_filter as stage6_filter
 from evaluation.stage6_candidate_b_filter import (
     ZINC_METADATA_HEADER,
     ZincMetadataParseError,
     ZincMetadataRecord,
+    enumerate_literature_eligible_tranche_files,
     parse_zinc_metadata_line,
     passes_literature_filter,
     process_zinc_metadata_files,
     sha256_file,
+    tranche_is_literature_eligible,
+    write_tranche_enumeration_manifest,
 )
 
 
@@ -45,6 +50,26 @@ class Stage6CandidateBFilterTests(unittest.TestCase):
             with self.subTest(values=values):
                 self.assertIs(
                     passes_literature_filter(self.make_record(*values)),
+                    expected,
+                )
+
+    def test_frozen_tranche_eligibility_predicate(self):
+        cases = {
+            "AAEA": True,
+            "AAGA": True,
+            "AAEE": True,
+            "BAEA": True,
+            "BGEA": True,
+            "AACA": False,
+            "AAAF": False,
+            "CAEA": False,
+            "AAA": False,
+            "AAAAA": False,
+        }
+        for tranche_name, expected in cases.items():
+            with self.subTest(tranche_name=tranche_name):
+                self.assertIs(
+                    tranche_is_literature_eligible(tranche_name),
                     expected,
                 )
 
@@ -171,6 +196,125 @@ class Stage6CandidateBFilterTests(unittest.TestCase):
             self.assertEqual(result["counts"]["malformed_records"], 1)
             malformed = (output_dir / "malformed_records.tsv").read_text()
             self.assertIn("bad.txt\t2\tInvalid numeric field", malformed)
+
+    def test_filtering_cli_invokes_worker_once(self):
+        with tempfile.TemporaryDirectory() as directory:
+            input_path = Path(directory) / "input.txt"
+            output_dir = Path(directory) / "out"
+            input_path.write_text(
+                "\t".join(ZINC_METADATA_HEADER) + "\n",
+                encoding="utf-8",
+            )
+            mocked_result = {
+                "counts": {
+                    "input_records": 0,
+                    "accepted_records": 0,
+                    "rejected_records": 0,
+                    "malformed_records": 0,
+                }
+            }
+
+            with mock.patch.object(
+                stage6_filter,
+                "process_zinc_metadata_files",
+                return_value=mocked_result,
+            ) as process_mock:
+                self.assertEqual(
+                    stage6_filter.main(
+                        [
+                            "--output-dir",
+                            str(output_dir),
+                            str(input_path),
+                        ]
+                    ),
+                    0,
+                )
+
+            process_mock.assert_called_once_with(
+                [str(input_path)],
+                str(output_dir),
+            )
+
+    def test_tranche_enumerator_reports_expected_paths(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "2D"
+            for dirname, filename in (
+                ("AA", "AAEA.txt"),
+                ("AA", "AAGA.txt"),
+                ("AA", "AAEE.txt"),
+                ("AA", "AACA.txt"),
+                ("AA", "AAAF.txt"),
+                ("BA", "BAEA.txt"),
+                ("BG", "BGEA.txt"),
+                ("CA", "CAEA.txt"),
+                ("BG", "BHEA.txt"),
+                ("AA", "AAA.txt"),
+            ):
+                path = root / dirname / filename
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(b"\xff\xfe contents must not be read\n")
+            ignored = root / "A" / "AAEA.txt"
+            ignored.parent.mkdir(parents=True, exist_ok=True)
+            ignored.write_text("ignored non-two-character parent\n", encoding="utf-8")
+            (root / "AA" / "AAEA.smi").write_text("ignored suffix\n", encoding="utf-8")
+
+            manifest = enumerate_literature_eligible_tranche_files(root)
+
+            self.assertEqual(
+                manifest["eligible_source_paths"],
+                [
+                    "AA/AAEA.txt",
+                    "AA/AAEE.txt",
+                    "AA/AAGA.txt",
+                    "BA/BAEA.txt",
+                    "BG/BGEA.txt",
+                ],
+            )
+            self.assertEqual(
+                manifest["excluded_source_paths"],
+                ["AA/AAAF.txt", "AA/AACA.txt", "CA/CAEA.txt"],
+            )
+            self.assertEqual(
+                manifest["counts"],
+                {
+                    "total_txt_files_discovered": 11,
+                    "eligible_txt_files": 5,
+                    "excluded_txt_files": 3,
+                    "malformed_or_unexpected_txt_files": 3,
+                },
+            )
+            self.assertEqual(
+                [item["path"] for item in manifest["malformed_or_unexpected"]],
+                ["A/AAEA.txt", "AA/AAA.txt", "BG/BHEA.txt"],
+            )
+            self.assertEqual(
+                manifest["malformed_or_unexpected"][0]["reason"],
+                "parent directory name is not two characters",
+            )
+
+            (root / "AA" / "AAEA.txt").write_bytes(
+                b"different unread content\n"
+            )
+            self.assertEqual(
+                manifest,
+                enumerate_literature_eligible_tranche_files(root),
+            )
+
+    def test_tranche_enumeration_manifest_is_deterministic(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "2D"
+            for relative_path in ("BG/BGEA.txt", "AA/AAEA.txt", "AA/AAA.txt"):
+                path = root / relative_path
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("not inspected\n", encoding="utf-8")
+
+            manifest_a = Path(directory) / "manifest_a.json"
+            manifest_b = Path(directory) / "manifest_b.json"
+            result_a = write_tranche_enumeration_manifest(root, manifest_a)
+            result_b = write_tranche_enumeration_manifest(root, manifest_b)
+
+            self.assertEqual(manifest_a.read_text(), manifest_b.read_text())
+            self.assertEqual(result_a["manifest_sha256"], result_b["manifest_sha256"])
 
 
 if __name__ == "__main__":

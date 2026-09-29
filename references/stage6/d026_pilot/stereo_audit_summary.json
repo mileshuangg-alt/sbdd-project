@@ -1,0 +1,13 @@
+{
+  "case_counts": {
+    "A_input_stereo_present_but_D026_key_empty_stereo_layer": 3,
+    "C_both_keys_have_stereo_but_stereo_layer_differs": 4
+  },
+  "connectivity_matches": 7,
+  "full_key_matches": 0,
+  "oxime_like": 5,
+  "records": 7,
+  "source_atom_stereo": 4,
+  "source_bond_stereo": 7,
+  "source_explicit_stereo": 7
+}

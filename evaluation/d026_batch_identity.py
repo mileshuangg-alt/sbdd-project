@@ -5,6 +5,8 @@ import csv
 import hashlib
 import json
 import re
+from rdkit import Chem
+from rdkit.Chem import inchi
 from pathlib import Path
 from typing import Callable, TextIO
 
@@ -144,6 +146,29 @@ def _default_smiles_to_inchikey(smiles: str) -> str:
     return smiles_to_inchikey(smiles)
 
 
+def local_smiles_to_inchikey(smiles: str) -> str:
+    """Generate an InChIKey directly through RDKit/InChI for adjudication."""
+    molecule = Chem.MolFromSmiles(smiles)
+    if molecule is None:
+        raise D026BatchError(
+            f"Local RDKit parsing failed for SMILES: {smiles!r}"
+        )
+
+    inchi_string = inchi.MolToInchi(molecule)
+    if not inchi_string:
+        raise D026BatchError(
+            f"Local RDKit/InChI generation produced no InChI for SMILES: {smiles!r}"
+        )
+
+    inchikey = inchi.InchiToInchiKey(inchi_string)
+    if not inchikey:
+        raise D026BatchError(
+            f"Local RDKit/InChI generation produced no InChIKey for SMILES: {smiles!r}"
+        )
+
+    return inchikey
+
+
 def _sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -281,6 +306,12 @@ def _summary(
     first_connectivity_mismatch: dict | None,
 ) -> dict:
     processed_count = counts["processed_count"]
+    connectivity_denominator = (
+        counts["connectivity_matches"] + counts["connectivity_mismatches"]
+    )
+    full_key_denominator = (
+        counts["full_key_matches"] + counts["full_key_mismatches"]
+    )
 
     summary = {
         "schema_version": 2,
@@ -293,10 +324,10 @@ def _summary(
         "connectivity_matches": counts["connectivity_matches"],
         "connectivity_mismatches": counts["connectivity_mismatches"],
         "connectivity_concordance_fraction": _fraction(
-            counts["connectivity_matches"], processed_count
+            counts["connectivity_matches"], connectivity_denominator
         ),
         "full_key_concordance_fraction": _fraction(
-            counts["full_key_matches"], processed_count
+            counts["full_key_matches"], full_key_denominator
         ),
         "stopping_status": stopping_status,
         "first_connectivity_mismatch": first_connectivity_mismatch,
@@ -307,14 +338,152 @@ def _summary(
     return summary
 
 
+
+def _d026_representation_features(smiles: str) -> dict:
+    bracket_atom_tokens = re.findall(r"\[([A-Z][a-z]?)\]", smiles)
+    directional_bond_markers = sorted({char for char in smiles if char in "/\\"})
+    cumulene_like = bool(re.search(r"C(?:\d+)?=C=C", smiles))
+
+    result = {
+        "bracket_atom_tokens": bracket_atom_tokens,
+        "directional_bond_markers": directional_bond_markers,
+        "cumulene_like": cumulene_like,
+    }
+    return result
+
+
+def adjudicate_d026_connectivity_mismatch(
+    *,
+    smiles: str,
+    zinc_inchikey: str,
+    d026_inchikey: str,
+    local_smiles_to_inchikey: Callable[[str], str],
+) -> dict:
+    zinc_connectivity_layer = inchikey_connectivity_layer(zinc_inchikey)
+    d026_connectivity_layer = inchikey_connectivity_layer(d026_inchikey)
+
+    if zinc_connectivity_layer == d026_connectivity_layer:
+        raise D026BatchError(
+            "Connectivity adjudication requires an existing connectivity mismatch"
+        )
+
+    local_inchikey = local_smiles_to_inchikey(smiles)
+    local_connectivity_layer = inchikey_connectivity_layer(local_inchikey)
+
+    if local_connectivity_layer == d026_connectivity_layer:
+        adjudication = "exclude_continue"
+        reproduced_side = "d026"
+    elif local_connectivity_layer == zinc_connectivity_layer:
+        adjudication = "hard_halt"
+        reproduced_side = "zinc"
+    else:
+        adjudication = "adjudication_inconclusive"
+        reproduced_side = "neither"
+
+    result = {
+        "adjudication": adjudication,
+        "reproduced_side": reproduced_side,
+        "local_inchikey": local_inchikey,
+        "local_connectivity_layer": local_connectivity_layer,
+        "zinc_connectivity_layer": zinc_connectivity_layer,
+        "d026_connectivity_layer": d026_connectivity_layer,
+        "representation_features": _d026_representation_features(smiles),
+    }
+    return result
+
+
+
+def record_d026_discrepancy(
+    *,
+    filtered_record: dict[str, str],
+    zinc_inchikey: str,
+    d026_inchikey: str,
+    adjudication: dict,
+) -> dict:
+    result = {
+        "smiles": filtered_record["smiles"],
+        "zinc_id": filtered_record["zinc_id"],
+        "zinc_inchikey": zinc_inchikey,
+        "d026_inchikey": d026_inchikey,
+        "zinc_connectivity_layer": inchikey_connectivity_layer(
+            zinc_inchikey
+        ),
+        "d026_connectivity_layer": inchikey_connectivity_layer(
+            d026_inchikey
+        ),
+        "local_inchikey": adjudication["local_inchikey"],
+        "local_connectivity_layer": adjudication["local_connectivity_layer"],
+        "reproduced_side": adjudication["reproduced_side"],
+        "adjudication": adjudication["adjudication"],
+        "representation_features": adjudication["representation_features"],
+        "source_file": filtered_record["source_file"],
+        "source_line_number": int(filtered_record["source_line_number"]),
+    }
+    return result
+
+
+
+D026_DISCREPANCY_OUTPUT_HEADER = (
+    "smiles",
+    "zinc_id",
+    "zinc_inchikey",
+    "d026_inchikey",
+    "zinc_connectivity_layer",
+    "d026_connectivity_layer",
+    "local_inchikey",
+    "local_connectivity_layer",
+    "reproduced_side",
+    "adjudication",
+    "bracket_atom_tokens",
+    "directional_bond_markers",
+    "cumulene_like",
+    "source_file",
+    "source_line_number",
+)
+
+
+def write_d026_discrepancy(
+    writer: csv.DictWriter,
+    discrepancy: dict,
+) -> None:
+    features = discrepancy["representation_features"]
+
+    row = {
+        "smiles": discrepancy["smiles"],
+        "zinc_id": discrepancy["zinc_id"],
+        "zinc_inchikey": discrepancy["zinc_inchikey"],
+        "d026_inchikey": discrepancy["d026_inchikey"],
+        "zinc_connectivity_layer": discrepancy["zinc_connectivity_layer"],
+        "d026_connectivity_layer": discrepancy["d026_connectivity_layer"],
+        "local_inchikey": discrepancy["local_inchikey"],
+        "local_connectivity_layer": discrepancy["local_connectivity_layer"],
+        "reproduced_side": discrepancy["reproduced_side"],
+        "adjudication": discrepancy["adjudication"],
+        "bracket_atom_tokens": json.dumps(
+            features["bracket_atom_tokens"],
+            separators=(",", ":"),
+        ),
+        "directional_bond_markers": json.dumps(
+            features["directional_bond_markers"],
+            separators=(",", ":"),
+        ),
+        "cumulene_like": _bool_text(features["cumulene_like"]),
+        "source_file": discrepancy["source_file"],
+        "source_line_number": discrepancy["source_line_number"],
+    }
+
+    writer.writerow(row)
+
 def transform_candidate_b_identities(
     filtered_records_path: Path | str,
     source_root: Path | str,
     output_tsv_path: Path | str,
     summary_json_path: Path | str,
     quarantine_tsv_path: Path | str,
+    discrepancy_tsv_path: Path | str,
     container_environment_id: str,
     smiles_to_inchikey: Callable[[str], str] | None = None,
+    local_smiles_to_inchikey: Callable[[str], str] | None = None,
 ) -> dict:
     """Transform Candidate-B identities with approved D026 quarantine handling."""
     filtered_records_path = Path(filtered_records_path)
@@ -322,7 +491,11 @@ def transform_candidate_b_identities(
     output_tsv_path = Path(output_tsv_path)
     summary_json_path = Path(summary_json_path)
     quarantine_tsv_path = Path(quarantine_tsv_path)
+    discrepancy_tsv_path = Path(discrepancy_tsv_path)
     smiles_to_inchikey = smiles_to_inchikey or _default_smiles_to_inchikey
+    local_smiles_to_inchikey = (
+        local_smiles_to_inchikey or globals()["local_smiles_to_inchikey"]
+    )
 
     input_artifact_sha256 = _sha256_file(filtered_records_path)
     input_record_count = _count_filtered_records(filtered_records_path)
@@ -334,6 +507,7 @@ def transform_candidate_b_identities(
     output_tsv_path.parent.mkdir(parents=True, exist_ok=True)
     summary_json_path.parent.mkdir(parents=True, exist_ok=True)
     quarantine_tsv_path.parent.mkdir(parents=True, exist_ok=True)
+    discrepancy_tsv_path.parent.mkdir(parents=True, exist_ok=True)
 
     current_source_file = None
     current_source_handle = None
@@ -356,6 +530,11 @@ def transform_candidate_b_identities(
                 encoding="utf-8",
                 newline="",
             ) as quarantine_handle,
+            discrepancy_tsv_path.open(
+                "w",
+                encoding="utf-8",
+                newline="",
+            ) as discrepancy_handle,
         ):
             reader = csv.DictReader(filtered_handle, delimiter="\t")
             if tuple(reader.fieldnames or ()) != FILTERED_RECORDS_HEADER:
@@ -379,6 +558,14 @@ def transform_candidate_b_identities(
                 lineterminator="\n",
             )
             quarantine_writer.writeheader()
+
+            discrepancy_writer = csv.DictWriter(
+                discrepancy_handle,
+                fieldnames=D026_DISCREPANCY_OUTPUT_HEADER,
+                delimiter="\t",
+                lineterminator="\n",
+            )
+            discrepancy_writer.writeheader()
 
             for filtered_record in reader:
                 source_file = filtered_record["source_file"]
@@ -454,15 +641,43 @@ def transform_candidate_b_identities(
 
                 counts["processed_count"] += 1
 
+                if not is_connectivity_match:
+                    adjudication = adjudicate_d026_connectivity_mismatch(
+                        smiles=smiles,
+                        zinc_inchikey=source_record.inchikey,
+                        d026_inchikey=d026_inchikey,
+                        local_smiles_to_inchikey=local_smiles_to_inchikey,
+                    )
+                    discrepancy = record_d026_discrepancy(
+                        filtered_record=filtered_record,
+                        zinc_inchikey=source_record.inchikey,
+                        d026_inchikey=d026_inchikey,
+                        adjudication=adjudication,
+                    )
+                    write_d026_discrepancy(discrepancy_writer, discrepancy)
+
+                    if adjudication["adjudication"] == "exclude_continue":
+                        continue
+
+                    if adjudication["adjudication"] == "adjudication_inconclusive":
+                        first_connectivity_mismatch = discrepancy
+                        stopping_status = "adjudication_inconclusive"
+                        exit_code = 1
+                        break
+
+                    counts["full_key_mismatches"] += 1
+                    counts["connectivity_mismatches"] += 1
+                    first_connectivity_mismatch = discrepancy
+                    stopping_status = "stopped_d026_processing_failure"
+                    exit_code = 1
+                    break
+
                 if is_full_match:
                     counts["full_key_matches"] += 1
                 else:
                     counts["full_key_mismatches"] += 1
 
-                if is_connectivity_match:
-                    counts["connectivity_matches"] += 1
-                else:
-                    counts["connectivity_mismatches"] += 1
+                counts["connectivity_matches"] += 1
 
                 output_row = {
                     "smiles": smiles,
@@ -475,25 +690,6 @@ def transform_candidate_b_identities(
                     "source_line_number": source_line_number,
                 }
                 writer.writerow(output_row)
-
-                if not is_connectivity_match:
-                    first_connectivity_mismatch = {
-                        "smiles": smiles,
-                        "zinc_id": zinc_id,
-                        "zinc_inchikey": source_record.inchikey,
-                        "d026_inchikey": d026_inchikey,
-                        "zinc_connectivity_layer": inchikey_connectivity_layer(
-                            source_record.inchikey
-                        ),
-                        "d026_connectivity_layer": inchikey_connectivity_layer(
-                            d026_inchikey
-                        ),
-                        "source_file": source_file,
-                        "source_line_number": source_line_number,
-                    }
-                    stopping_status = "stopped_connectivity_mismatch"
-                    exit_code = 1
-                    break
     finally:
         if current_source_handle is not None:
             current_source_handle.close()
@@ -514,6 +710,7 @@ def transform_candidate_b_identities(
         "output_tsv": str(output_tsv_path),
         "summary_json": str(summary_json_path),
         "quarantine_tsv": str(quarantine_tsv_path),
+        "discrepancy_tsv": str(discrepancy_tsv_path),
     }
 
     return result
@@ -578,6 +775,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output-tsv", required=True)
     parser.add_argument("--summary-json", required=True)
     parser.add_argument("--quarantine-tsv", required=True)
+    parser.add_argument("--discrepancy-tsv", required=True)
     parser.add_argument("--container-environment-id", required=True)
     parser.add_argument("--waiver-output")
     args = parser.parse_args(argv)
@@ -591,6 +789,7 @@ def main(argv: list[str] | None = None) -> int:
         output_tsv_path=args.output_tsv,
         summary_json_path=args.summary_json,
         quarantine_tsv_path=args.quarantine_tsv,
+        discrepancy_tsv_path=args.discrepancy_tsv,
         container_environment_id=args.container_environment_id,
     )
     print(json.dumps(result["summary"], indent=2, sort_keys=True))

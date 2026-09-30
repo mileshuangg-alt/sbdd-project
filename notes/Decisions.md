@@ -6863,3 +6863,218 @@ Revisit D026 if:
 - the predicates fail to capture a reproducible representation class that demonstrably causes the same identity-comparability problem;
 - the D026 identity runtime or identity-authority definition is materially changed;
 - a future amendment proposes a different treatment of quarantined records or denominator semantics.
+
+# D027 — D026 Non-Waived Connectivity-Mismatch Discrepancy Handling
+
+**Decision date:** 2026-09-30  
+**Status:** APPROVED AND FROZEN
+
+## Context
+
+D026 establishes the frozen D026 molecular-identity authority and the approved Q1/Q2 exotic-valence quarantine amendment.
+
+The Q1/Q2 amendment applies only to source records whose frozen SMILES satisfies the mechanically defined quarantine predicates. Quarantined records are preserved and excluded from D026 identity measurement.
+
+The amended Candidate-B execution subsequently encountered a non-quarantined connectivity mismatch at:
+
+```text
+ZINC ID: 642869374
+source: AAEE.txt:5675
+source SMILES: C[C]1N=C(C2=C=C(N)NN2)C#CN1
+ZINC InChIKey: NOBHQWDCVRXEIG-UHFFFAOYSA-N
+D026 InChIKey: OBWAYGZZGSXGKA-UHFFFAOYSA-N
+ZINC connectivity block: NOBHQWDCVRXEIG
+D026 connectivity block: OBWAYGZZGSXGKA
+```
+
+This record does not satisfy either D026 Q1 or Q2 and therefore cannot be treated as a D026 quarantine-class record.
+
+A local RDKit/InChI generation from the raw frozen source SMILES independently produced:
+
+```text
+InChIKey: OBWAYGZZGSXGKA-UHFFFAOYSA-N
+connectivity block: OBWAYGZZGSXGKA
+```
+
+matching the D026 identity rather than the historical ZINC stored key.
+
+The local generation therefore supports the D026 identity for this record and does not indicate a D026 processing failure.
+
+The raw source representation contains a bare bracketed carbon `[C]` and an unusual five-membered-ring representation:
+
+```text
+C2=C=C(N)NN2
+```
+
+The observed discrepancy is therefore retained as a distinct ZINC-versus-D026 identity discrepancy rather than being promoted into a new D026 quarantine class.
+
+## 1. Treatment of non-waived connectivity mismatches
+
+Any non-waived connectivity mismatch that does not satisfy an existing frozen quarantine rule is **excluded and logged**.
+
+Such a record is not converted into an accepted quarantine class, and no Q3 or other new quarantine predicate is created by this decision.
+
+The excluded record remains part of the frozen input population for provenance purposes but is removed from downstream D026 identity concordance measurement and is not counted as either a connectivity match or an accepted D026 identity result.
+
+## 2. Local-generation adjudication
+
+Every non-waived connectivity mismatch must receive a local canonical-generation adjudication using the raw source SMILES.
+
+The adjudication records:
+
+- the local-generation InChIKey;
+- the local-generation connectivity block;
+- whether local generation reproduces the D026-side key or the ZINC-side key;
+- the structural representation features relevant to the discrepancy;
+- the source record and lineage information.
+
+The local adjudication is explanatory and decision-supporting; it does not modify the frozen D026 identity authority.
+
+For the motivating record `642869374`, local generation reproduced the D026-side identity:
+
+```text
+local connectivity: OBWAYGZZGSXGKA
+D026 connectivity:  OBWAYGZZGSXGKA
+ZINC connectivity: NOBHQWDCVRXEIG
+```
+
+The local RDKit/InChI generation also reported:
+
+```text
+Accepted unusual valence(s): C(3)
+```
+
+and generated:
+
+```text
+InChI=1S/C8H8N5/c1-5-10-3-2-6(11-5)7-4-8(9)13-12-7/h10,12-13H,9H2,1H3
+```
+
+The result is recorded as evidence that the local canonical-generation path agrees with D026 for this source representation.
+
+## 3. Run-continuation rule
+
+A non-waived connectivity mismatch that local generation adjudicates to the **D026 side** is excluded and logged, and the batch continues to subsequent records.
+
+The purpose of this rule is to distinguish an externally stored identity discrepancy from a failure of the D026 identity transformation itself.
+
+The exclusion does not create an acceptance criterion for future connectivity mismatches. Each mismatch remains subject to the same local-generation adjudication.
+
+## 4. Hard-halt condition
+
+A hard halt remains mandatory when local canonical generation reproduces the **ZINC-side connectivity key** rather than the D026-side key.
+
+That outcome would indicate that the D026 transformation, rather than the historical ZINC identity, is responsible for the observed connectivity discrepancy.
+
+In that case the transformation must:
+
+- record the offending record;
+- preserve the local-generation adjudication;
+- stop immediately;
+- exit nonzero.
+
+No automatic exclusion-and-continue behavior applies to a demonstrated D026 processing failure.
+
+## 4A. Inconclusive local adjudication
+
+If local canonical generation reproduces neither the D026 connectivity key nor the ZINC connectivity key, the adjudication is **inconclusive**.
+
+In that case the transformation must:
+
+- record the outcome as `adjudication_inconclusive`;
+- log the ZINC InChIKey, D026 InChIKey, local-generation InChIKey, and the ZINC record ID;
+- exit nonzero;
+- halt pending human review.
+
+An inconclusive adjudication does **not** constitute evidence of a D026 processing failure and must not be reported as `stopped_d026_processing_failure`.
+
+The batch must not continue after an inconclusive adjudication. Every subsequent local adjudication in that run is considered invalid until the inconclusive case has been resolved by human review.
+
+## 5. Stop-position provenance
+
+The two previously reported stop positions refer to different executions and must remain explicitly distinguished.
+
+### Pre-amendment execution
+
+The original D026 execution stopped at:
+
+```text
+processed_count: 5,334
+first connectivity mismatch: ZINC 687728612
+```
+
+That execution predates the D026 Q1/Q2 quarantine amendment.
+
+### Post-D026-amendment execution
+
+The amended execution stopped at:
+
+```text
+input_record_count:        24,249,767
+quarantined_count:                  8
+eligible_record_count:      24,249,759
+processed_count:                    8,829
+stopping_status:        stopped_connectivity_mismatch
+first connectivity mismatch: 642869374
+```
+
+The identity output contained:
+
+```text
+8,830 lines
+```
+
+corresponding to the header plus 8,829 processed records.
+
+The current amended stop position is therefore **8,829 processed records**. The earlier value of 5,334 is preserved only as provenance for the pre-amendment execution.
+
+## 6. Prevalence measurements
+
+The prevalence measurements for source-representation features are retained as provenance only.
+
+For the frozen Candidate-B population:
+
+```text
+bare [C]:
+11,560 / 24,249,767
+~0.04765%
+
+D026 Q1:
+10,491 / 24,249,767
+= 0.04326227%
+```
+
+These prevalence values do not confer exception status.
+
+In particular, the prevalence of bare `[C]` does not establish a Q3 quarantine class. The frozen population scan demonstrates that `[C]` is present in the source population, but the currently adjudicated `[C]` connectivity mismatch is insufficient to establish `[C]` as a chemically or computationally coherent D026 exception class.
+
+## 7. Relationship to the D026 Q1/Q2 amendment
+
+This decision does not modify the D026 Q1/Q2 quarantine predicates.
+
+D026 Q1/Q2 remains the only frozen D026 quarantine class.
+
+D027 instead governs the treatment of connectivity mismatches that:
+
+- are not covered by an existing frozen waiver;
+- do not satisfy a frozen quarantine predicate; and
+- require adjudication to distinguish an external identity discrepancy from a D026 processing failure.
+
+No new representation-level quarantine class is created by this decision.
+
+## Governing principle
+
+**A non-waived connectivity mismatch should be excluded and explicitly adjudicated when independent local canonical generation reproduces the frozen D026 identity, while a mismatch reproduced by the ZINC-side identity must remain a hard-stop signal of possible D026 processing failure.**
+
+The distinction preserves D026 identity authority, prevents ad hoc expansion of quarantine classes, and keeps provenance of external identity discrepancies separate from evidence of transformation failure.
+
+## Revisit when
+
+Revisit D027 if:
+
+- local canonical generation reproduces a ZINC-side key for a non-waived mismatch;
+- multiple independent records establish a reproducible D026-side failure mode;
+- a new connectivity-mismatch representation class is demonstrated to have a coherent and validated cause that warrants a prospective quarantine rule;
+- the D026 identity authority or qualified runtime changes;
+- a future stage requires a different treatment of excluded identity records;
+- the exclusion/logging pathway proves insufficiently auditable or reproducible.

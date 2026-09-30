@@ -5812,3 +5812,1054 @@ Revisit D023 only if:
 * the validated A2A implementation materially changes;
 * the preserved 16-member measurements are shown to be technically invalid;
 * the Stage-5 authority model is formally broadened or narrowed.
+
+# D024 — Stage-6 Primary Planner and Independent Witness Architecture
+
+**Decision date:** 2026-09-25
+**Status:** APPROVED
+
+## Context
+
+The original project proposal defines Stage 6 as a hard-attrition retrosynthesis route-search gate, with AiZynthFinder as the proposed planner.
+
+The primary Stage-6 outcome is:
+
+```text
+route found
+or
+no route found
+```
+
+with route step count reported alongside it.
+
+The proposal explicitly bounds the interpretation of both outcomes. A planner that finds no route has not demonstrated that a molecule cannot be synthesized; it has demonstrated only that the specified planner, under its particular template/policy, stock, and search configuration, did not find a route. A route found establishes successful computational route search against the specified stock rather than experimental practicality.
+
+SA score remains a weaker accompanying signal and does not replace route search.
+
+Session 013 established that hard attrition is an allocation decision within the evaluation cascade, not a chemistry verdict.
+
+A literature-backed alternatives pass identified ASKCOS as a serious independent multistep route-planning alternative capable of serving as a secondary witness to consequential primary-planner failures.
+
+## Decision
+
+Stage 6 will use an **asymmetric primary-planner / independent-witness architecture** with union-with-provenance gate semantics.
+
+### Primary planner
+
+**AiZynthFinder is the frozen primary Stage-6 retrosynthesis planner.**
+
+All primary Stage-6 results and headline route-search outcomes are reported against the frozen AiZynthFinder implementation and configuration.
+
+AiZynthFinder retains this role because it is the planner specified by the original project proposal. The alternatives pass did not establish a project requirement that supersedes that proposal-level choice.
+
+The primary instrument is not defined by the software name alone. Its scientifically relevant identity includes the frozen planner implementation and every configuration element that materially defines route search and its endpoint, including the template/policy, stock, and search configuration.
+
+### Independent witness
+
+**ASKCOS is the frozen secondary witness planner.**
+
+ASKCOS does not replace AiZynthFinder, define the headline Stage-6 instrument, or recalibrate the primary planner.
+
+Its role is to provide an independent second route-search perspective and to prevent a molecule from being attrited solely because the primary planner failed to identify a route.
+
+## Attrition semantics
+
+The Stage-6 gate is a **union gate with explicit provenance**.
+
+```text id="v7p8q1"
+PRIMARY FOUND
++ WITNESS FOUND
+    -> PASS
+
+PRIMARY FOUND
++ WITNESS NOT FOUND
+    -> PASS
+    -> disagreement recorded
+
+PRIMARY NOT FOUND
++ WITNESS FOUND
+    -> PASS
+    -> witness-only pass
+    -> flagged in attrition curve and molecule record
+
+PRIMARY NOT FOUND
++ WITNESS NOT FOUND
+    -> HARD ATTRITION
+```
+
+There is no clemency, limbo, or discretionary middle category.
+
+The gate therefore asks one operational question:
+
+> **Did at least one of the two frozen planners find a route under its frozen configuration?**
+
+If yes, the molecule passes Stage 6.
+
+If neither finds a route, the molecule attrits once the frozen Stage-6 control-validation authority has been established.
+
+### Provenance of passes
+
+Every Stage-6 pass retains its source provenance.
+
+The attrition curve reports three distinct pass/attrition quantities:
+
+```text
+primary-found passes
+witness-only passes
+double-blind attritions
+```
+
+The **primary-found pass count** is the literature-comparable count because it corresponds directly to the original proposal's primary AiZynthFinder route-search outcome.
+
+The **witness-only pass count** is reported separately and explicitly flagged.
+
+The witness-only flag follows the molecule into:
+
+* the Stage-6 shortlist;
+* the molecule-level record;
+* downstream reporting.
+
+A witness-only pass therefore cannot silently become indistinguishable from a primary-found pass.
+
+### Witness-only interpretation
+
+Witness-only positives are treated as the **noisiest pass class**.
+
+A route found by ASKCOS but not by AiZynthFinder demonstrates that the frozen witness configuration found a route that the frozen primary configuration did not.
+
+Template-free or otherwise differently generated routes may have weaker direct literature precedent or different evidentiary character.
+
+Any stronger scrutiny of a witness-only survivor, such as:
+
+* a forward-prediction check; or
+* a human expert read,
+
+is optional and exists **outside the Stage-6 gate**.
+
+Such additional scrutiny must not become an unapproved hidden veto on Stage-6 passage.
+
+## Bounded negative semantics
+
+A double-blind Stage-6 failure means:
+
+```text
+AiZynthFinder: no route found
+ASKCOS:        no route found
+```
+
+under their respective frozen configurations.
+
+It authorizes hard attrition within the project's evaluation cascade after the Stage-6 control validation has passed.
+
+It does **not** establish:
+
+```text
+double-blind failure
+= chemical impossibility
+```
+
+The authorized interpretation is:
+
+> **Neither frozen planner found a route under its frozen configuration.**
+
+No Stage-6 result may be described as proof that an attrited molecule is intrinsically unsynthesizable.
+
+Likewise, a route found by either planner is computational route evidence, not experimental demonstration that the proposed chemistry is practical, scalable, economical, safe, or likely to succeed in the laboratory.
+
+## Validation authority
+
+The primary/witness architecture does not itself validate the Stage-6 gate.
+
+Before Stage-6 hard attrition may be exercised:
+
+1. the AiZynthFinder primary configuration must be frozen;
+2. the ASKCOS witness configuration must be frozen;
+3. the control population and validation quantities must be frozen prospectively;
+4. the required sensitivity criterion on independently known-synthesizable controls must be justified and frozen before observing validation outcomes;
+5. the frozen control validation must pass.
+
+Until those conditions are satisfied, route-search results remain characterization evidence and cannot remove molecules from forward progression.
+
+The positive-control validation remains stratified by independently settled availability:
+
+* vendor-catalog / in-stock compounds;
+* marketed drugs;
+* literature compounds with established synthesis or experimental use.
+
+Generated molecules are not positive controls and cannot be used to select or tune the gate that subsequently evaluates them.
+
+No specificity claim for intrinsic nonsynthesizability is authorized because the required ground-truth negative class does not exist.
+
+## One-time disagreement run
+
+After the primary and witness instruments and the validation framework are frozen, a **one-time frozen disagreement run** will be performed over:
+
+1. the frozen Stage-6 controls; and
+2. the Phase-1 DiffSBDD Stage-6 cohort.
+
+For each molecule the evidence record will preserve, at minimum:
+
+```text id="pj4n6k"
+AiZynthFinder outcome
+ASKCOS outcome
+agreement / disagreement
+pass provenance:
+    primary-found
+    witness-only
+    double-blind attrition
+route information where found
+step count where defined
+primary configuration provenance
+witness configuration provenance
+```
+
+The disagreement run is methodological evidence for the frozen architecture.
+
+It is not an iterative calibration procedure.
+
+Observed disagreement may not be used to tune either planner, alter the control panel, change validation thresholds, or revise the gate after outcomes are known.
+
+The Phase-1 cohort therefore cannot become calibration data for its own Stage-6 gate.
+
+## Witness freeze
+
+The ASKCOS witness build and its scientifically relevant configuration are frozen before validation execution.
+
+Once frozen:
+
+> **The Stage-6 ASKCOS witness does not update merely because a newer ASKCOS version, model, template collection, stock, or related component becomes available.**
+
+A witness change requires a deliberate re-freeze logged as a new decision.
+
+Any re-freeze must:
+
+1. identify exactly what implementation or configuration changed;
+2. preserve the previous frozen witness and its provenance;
+3. execute a bridging control run under the old and proposed new witness states;
+4. record agreement/disagreement across that bridge;
+5. explicitly determine whether prior Stage-6 evidence remains comparable.
+
+The revised witness does not inherit the previous witness's authority merely because both are called ASKCOS.
+
+## Primary-instrument changes
+
+The same principle applies to the AiZynthFinder primary.
+
+A change that materially alters the meaning or probability of `route found` versus `no route found` constitutes a change to the Stage-6 instrument and cannot silently inherit the original validation.
+
+Any such change requires an explicit re-freeze and determination of the appropriate bridging or revalidation burden before the changed primary may exercise attrition.
+
+D024 does not pre-authorize such changes.
+
+## Configuration still to be frozen
+
+D024 establishes planner roles, witness authority, provenance semantics, and gate behavior. It does not silently select exact executable configurations.
+
+The following remain to be resolved prospectively before execution.
+
+### AiZynthFinder primary
+
+* exact version/build;
+* expansion policy/model;
+* reaction-template set;
+* stock;
+* search algorithm and scientifically relevant search settings;
+* search budget/stopping conditions;
+* route-return and success semantics;
+* other settings that materially affect the Stage-6 endpoint.
+
+### ASKCOS witness
+
+* exact version/build;
+* retrosynthesis model/template configuration;
+* stock / buyability definition;
+* search algorithm;
+* search budget/stopping conditions;
+* route-return and success semantics;
+* other settings that materially affect witness adjudication.
+
+### Validation
+
+* exact positive-control membership;
+* control-stratum construction rules;
+* measured validation quantities;
+* prospective sensitivity threshold required for hard-attrition authority.
+
+No planner execution on the Phase-1 cohort is authorized merely by adoption of D024.
+
+## Phase-1 cohort protection
+
+The Stage-6 Phase-1 DiffSBDD cohort remains:
+
+```text
+0
+3
+18
+```
+
+These molecules must not influence:
+
+* planner selection;
+* instrument configuration;
+* control-panel membership;
+* validation quantities;
+* validation threshold;
+* attrition semantics.
+
+Only after the frozen Stage-6 control validation passes may the gate be applied.
+
+At that point, disposition is mechanical:
+
+```text
+AiZynthFinder route found
+    -> pass; provenance = primary-found
+
+AiZynthFinder no route
++ ASKCOS route found
+    -> pass; provenance = witness-only; flagged
+
+AiZynthFinder no route
++ ASKCOS no route
+    -> hard attrition
+```
+
+No additional post hoc judgment is permitted after the frozen planner outcomes are known.
+
+## Governing principle
+
+**Stage-6 attrition is a computational allocation decision, not a claim of intrinsic chemical impossibility.**
+
+A molecule passes when at least one frozen planner finds a route.
+
+A molecule attrits only when neither frozen planner finds a route.
+
+The primary AiZynthFinder result remains the literature-comparable headline quantity. ASKCOS provides an independent witness and creates a distinct witness-only provenance class for molecules rescued by the witness.
+
+The gate therefore preserves both the proposal's original route-search framing and the project's requirement that increasingly consequential negative evidence carry an appropriately explicit evidentiary burden.
+
+## Revisit when
+
+Revisit D024 only if:
+
+* evidence emerges that the frozen primary or witness implementation is technically invalid;
+* the primary or witness configuration must materially change;
+* a deliberate ASKCOS witness re-freeze is proposed;
+* a deliberate AiZynthFinder primary re-freeze is proposed;
+* a bridging control run shows that a proposed replacement is not comparable to the frozen implementation;
+* Stage-6 validation fails and the project proposes changing the instrument or attrition architecture rather than retaining Stage 6 as characterization-only;
+* or future work formally proposes changing the union-with-provenance semantics or the distinction between route-search failure and chemical impossibility.
+
+Paste for GPT:
+
+Approved: freeze D025 as recommended.
+
+Shared stock candidate: AiZynthFinder-distributed public ZINC stock
+Primary/witness stock: identical molecule set
+Exact ZINC generation: record from acquired artifact metadata only
+Stock size criterion: none
+Adequacy gauge: predeclared route-found sensitivity on known-synthesizable controls
+Fallback: self-built full ZINC for-sale snapshot via future D-amendment if control criterion fails
+Future rescue lane: unaffected
+
+One addition to the freeze:
+
+Cross-planner identity proof. AiZynthFinder's stock is an HDF5/InChI-key lookup; ASKCOS buyables is a canonical-SMILES lookup. The conversion from the acquired artifact to the ASKCOS buyables set is a transformation step inside the frozen system, and D025's premise is that both planners terminate against the identical molecule set. The freeze therefore includes:
+
+1. A molecule-count match between the acquired artifact and the derived ASKCOS buyables set.
+2. A recorded hash of the derived canonical-SMILES set.
+3. A sampled InChI-key cross-check between the two ingested forms.
+4. All three logged as provenance artifacts alongside the stock hash.
+
+Next operations in order: acquire the exact stock artifact distributed with the selected AiZynthFinder release (do not assume the 2020 zinc_stock_17_04_20.hdf is still the default; check against the newer Figshare records), inspect its own metadata for generation/version, hash it, count it, convert to ASKCOS buyables, run the identity proof, then freeze.
+
+# D025 — Stage-6 Shared Stock and Cross-Planner Stock Identity
+
+**Decision date:** 2026-09-25
+**Amendment date:** 2026-09-27
+**Status:** APPROVED AND FROZEN
+
+## Context
+
+D024 established the Stage-6 retrosynthesis architecture:
+
+* **AiZynthFinder** is the primary planner.
+* **ASKCOS** is the secondary witness planner.
+* Stage-6 passage uses union semantics: a route found by either frozen planner is sufficient for passage.
+* ASKCOS executes lazily, only where the primary returns no route.
+* Hard attrition occurs only when neither frozen planner finds a route.
+* Primary-found and witness-only passages remain distinguishable in provenance.
+* A double-blind result means only that neither frozen planner found a route under its frozen configuration. It does not establish chemical impossibility.
+
+Because route-search outcomes depend on the terminal precursor stock, the purchasable-precursor universe is part of the frozen Stage-6 instrument.
+
+Both planners must therefore terminate against the same frozen molecule universe.
+
+## 1. Original D025 decision
+
+D025 originally selected the public ZINC stock distributed with AiZynthFinder as the shared Stage-6 precursor universe.
+
+The acquired artifact was:
+
+```text
+references/stage6/d025_shared_stock/source/zinc_stock.hdf5
+```
+
+SHA-256:
+
+```text
+99d39a6f807c3e815487500bafc2b4a9dc66a31af189e3b1776874fb0d4a188d
+```
+
+Official AiZynthFinder/Figshare provenance established that this corresponds to:
+
+```text
+zinc_stock_17_04_20.hdf5
+Figshare file ID: 23086469
+MD5: 00de71724ec1d4a8463c1b0d8a5d0941
+```
+
+The artifact contains **17,422,831 stored InChIKey rows**.
+
+It is an InChIKey-only stock and does not contain the structures required to derive an identical canonical-SMILES ASKCOS buyables representation.
+
+## 2. Candidate A — historical-stock recovery
+
+The first proposed solution was to recover the historical structure-bearing ZINC tranche material corresponding to the published AiZynthFinder stock definition:
+
+* molecular weight ≤ 250 Da;
+* logP ≤ 3.5;
+* reactivity `standard` or `reactive`;
+* reported population of 17,422,831 compounds.
+
+If recovered, Candidate A would have been accepted only after **full-set InChIKey equality** against all 17,422,831 entries in the acquired AiZynthFinder HDF5.
+
+Candidate A was investigated through:
+
+* public AiZynthFinder provenance;
+* public ZINC archival material;
+* first-party BKS filesystem discovery;
+* shallow inspection of the historical generic ZINC storage trees.
+
+No authoritative first-party structure-bearing export representing the exact historical 17,422,831-compound population was recovered.
+
+The BKS maintainer route was deliberately not pursued.
+
+### Candidate-A disposition
+
+**Candidate A is UNRECOVERED, not failed.**
+
+No equality test was performed.
+
+Its abandonment reflects an effort/uncertainty tradeoff rather than evidence that the historical structure population differs from the distributed HDF5.
+
+The 20,006,175-compound ZINC15 fragment collection and third-party redistributions of the historical HDF5 remain rejected as substitutes because neither establishes the exact required structure-bearing population.
+
+## 3. Candidate B — adopted shared-stock architecture
+
+Candidate B is adopted.
+
+The Stage-6 shared precursor universe will be derived from a **single first-party, structure-bearing ZINC export hosted on the BKS infrastructure**.
+
+Both planner-specific representations must derive from this same frozen structure source.
+
+The selected source artifact is:
+
+```text
+/nfs/exl/zinc20/2D/for-sale-25Q2.smi
+```
+
+The filesystem pathname itself is not used to infer database generation or selection semantics. Those properties were established separately from the provenance artifacts and source code described below.
+
+## 4. Frozen source artifact
+
+### 4.1 Artifact identity
+
+Frozen structure-bearing source:
+
+```text
+/nfs/exl/zinc20/2D/for-sale-25Q2.smi
+```
+
+Observed filesystem size:
+
+```text
+113,043,807,549 bytes
+```
+
+Filesystem display size:
+
+```text
+106G
+```
+
+Observed modification date:
+
+```text
+2025-04-17
+```
+
+SHA-256:
+
+```text
+9b5c02767c56282c7704ce039e6176d986cf9e2e386a9ae46d1538600125c336
+```
+
+Source-record count:
+
+```text
+1,907,324,517
+```
+
+The file is structure-bearing. Sampled records have the form:
+
+```text
+<SMILES> <ZINC identifier>
+```
+
+The assembly procedure removes tranche headers before concatenation, so the recorded line count is treated as the source-record count.
+
+No claim of unique-molecule count is made here. Any deduplication performed when producing planner-specific representations must be measured and recorded separately.
+
+## 5. Generation provenance
+
+The source artifact is accompanied by preserved first-party BKS generation material.
+
+### 5.1 Runtime record
+
+`/nfs/exl/zinc20/2D/hownew` records activation of:
+
+```text
+/nfs/soft/www/apps/zinc21/envs/development
+```
+
+followed by:
+
+```text
+./newcron2d.csh C
+```
+
+The generation environment is therefore recorded from the actual provenance artifact as the **ZINC21 development environment**.
+
+This designation is not inferred from the `/nfs/exl/zinc20` directory name.
+
+### 5.2 2D tranche exporter
+
+`newcron2d.csh` invokes:
+
+```text
+zinc-manage admin export tranches-2d --dir <output> <tranche>
+```
+
+The preserved ZINC implementation registers `tranches-2d` as `Tranche2DExport`.
+
+`Tranche2DExport` retrieves structure-bearing `Substance` records and emits:
+
+```text
+SMILES
+ZINC identifier
+InChIKey
+molecular weight
+logP
+reactivity
+purchasability
+tranche identity
+features
+```
+
+with `.smi` output containing the SMILES and ZINC identifier.
+
+The exporter requires:
+
+```text
+Substance.purchasable > 0
+```
+
+for the underlying tranche exports.
+
+## 6. Frozen availability semantics
+
+The preserved `Substance` model defines `purchasable` as a numeric representation of commercial availability.
+
+The relevant availability levels are:
+
+```text
+10  boutique
+20  on-demand
+30  agent
+>=40 in-stock
+```
+
+The named availability subsets include:
+
+```text
+in-stock   purchasable >= 40
+now        purchasable >= 30
+wait-ok    purchasable >= 20
+for-sale   purchasable >= 10
+```
+
+The `for-sale` subset is explicitly described in the preserved implementation as including in-stock, on-demand, and boutique availability classes.
+
+Therefore the frozen Stage-6 stock-selection predicate is:
+
+```text
+Substance.purchasable >= 10
+```
+
+This is the operative meaning of **for-sale** for the selected source.
+
+## 7. Tranche semantics
+
+The preserved `Tranche2DComparator` defines the 2D tranche axes from:
+
+* molecular weight;
+* logP;
+* reactivity;
+* purchasability.
+
+The preserved source defines explicit molecular-weight and logP boundaries and the discrete reactivity and purchasability levels.
+
+These definitions are retained as provenance for interpreting the source export.
+
+They are not independently altered by Stage 6.
+
+## 8. Construction of the frozen for-sale artifact
+
+The preserved file:
+
+```text
+/nfs/exl/zinc20/2D/how2
+```
+
+records the construction of the monolithic availability exports from the tranche `.smi` files.
+
+Its operative assembly is:
+
+```text
+A/B/C
+    -> in-stock-25Q2.smi
+
+A/B/C + D
+    -> wait-ok-25Q2.smi
+
+A/B/C/D + E
+    -> for-sale-25Q2.smi
+
+A/B/C/D/E + F
+    -> ZINC20-All-25Q2.smi
+```
+
+Headers are removed during assembly using the recorded `grep -v smiles` procedure.
+
+Accordingly, the frozen `for-sale-25Q2.smi` source is the materialized A/B/C/D/E availability population corresponding to the code-level `for-sale` definition.
+
+The literal `25Q2` identifier is preserved as part of the artifact name and provenance. No interpretation beyond what the preserved artifacts themselves establish is required for the Stage-6 gate.
+
+## 9. Cross-planner stock identity
+
+The frozen source artifact above defines the shared Stage-6 molecule universe.
+
+Both planner-specific representations must derive from that same source:
+
+```text
+for-sale-25Q2.smi
+        |
+        +----> AiZynthFinder stock
+        |
+        +----> ASKCOS buyables
+```
+
+### AiZynthFinder
+
+The AiZynthFinder representation will be constructed from the frozen SMILES source using the pinned AiZynthFinder stock-construction tooling.
+
+### ASKCOS
+
+The ASKCOS buyables representation will be derived from the same frozen SMILES records under the separately frozen ASKCOS ingestion procedure.
+
+### Required identity evidence
+
+Before either representation is used for Stage-6 planning, the transformation must produce and retain:
+
+1. source-record count;
+2. source SHA-256;
+3. unique-molecule count after the frozen normalization procedure;
+4. AiZynthFinder ingested-stock molecule count;
+5. ASKCOS ingested-stock molecule count;
+6. deterministic hash of the normalized canonical-SMILES molecule set;
+7. complete cross-representation identity proof demonstrating that both planners terminate against the same normalized molecule set;
+8. transformation logs, software versions, configuration, and any rejected/failed source records.
+
+No sampled identity proof substitutes for the complete comparison.
+
+Any transformation loss, normalization collision, parse failure, or representation disagreement must be recorded explicitly rather than silently discarded.
+
+## 10. Adequacy criterion
+
+No absolute stock-size criterion is adopted.
+
+The source contains 1,907,324,517 records, but its size does not itself establish adequacy.
+
+The adequacy gauge remains the **prospectively frozen route-found sensitivity on the known-synthesizable Stage-6 control panel**.
+
+The threshold must be fixed before planner execution and may not be chosen after observing the controls or Phase-1 cohort.
+
+Therefore:
+
+```text
+stock size = frozen system parameter
+
+known-synthesizable control sensitivity
+    = empirical adequacy gauge
+```
+
+Specificity remains structurally unknowable because there is no ground-truth population of intrinsically unsynthesizable molecules.
+
+## 11. Consequence for AiZynthFinder literature comparability
+
+This amendment deliberately changes the stock universe relative to the public AiZynthFinder stock used in the original publication.
+
+The operative Stage-6 stock is **not** the published 17,422,831-compound AiZynthFinder ZINC stock.
+
+Therefore any comparison between this project's route-search behavior and published AiZynthFinder behavior must record the stock difference explicitly.
+
+The previously acquired:
+
+```text
+zinc_stock_17_04_20.hdf5
+```
+
+is retained as provenance and literature-comparison material but is **not the operative Stage-6 stock source**.
+
+No result obtained with the new stock may be represented as a direct reproduction of the paper's stock configuration.
+
+## 12. Freeze boundary
+
+The following are now frozen by D025:
+
+* the source artifact identity;
+* its SHA-256;
+* its observed source-record count;
+* the structure-bearing source format;
+* the ZINC21 development runtime provenance recorded by `hownew`;
+* the `tranches-2d` export mechanism;
+* the code-level `for-sale` selection predicate;
+* the `how2` A/B/C/D/E assembly procedure;
+* the requirement that both planners derive their terminal stocks from this identical frozen source;
+* the complete cross-planner identity requirement;
+* the prospective control-panel adequacy gauge;
+* the distinction between the new Stage-6 stock and the historical AiZynthFinder publication stock.
+
+No planner run is authorized merely by this source freeze.
+
+Planner-specific stock construction, transformation validation, complete identity proof, planner/policy/search-budget freezes, and the predeclared Stage-6 control-validation threshold must be completed before the hard attrition gate touches the Phase-1 cohort.
+
+## Governing principle
+
+**A Stage-6 no-route result is interpretable only relative to a frozen and auditable search system, including the precursor universe against which search terminates.**
+
+The two planners may differ in route-search methodology, but they must terminate against the same frozen molecule universe.
+
+The stock is therefore treated as an instrument component with explicit provenance, transformation history, identity proof, and prospective validation rather than as an informal reference to “ZINC.”
+
+## Revisit when
+
+Revisit D025 if:
+
+* the frozen source artifact cannot be preserved or reproduced;
+* its recorded SHA-256 does not reproduce;
+* planner-stock construction reveals material parse failures, normalization losses, collisions, or cross-representation disagreement that prevent identical molecule-set ingestion;
+* the prospective known-synthesizable control criterion fails;
+* a broader or different precursor universe is proposed;
+* the meaning of the frozen availability predicate is changed;
+* a new ZINC snapshot/export is proposed;
+* or a future rescue workflow deliberately expands the precursor universe.
+
+Any such change requires a deliberate D-amendment. It must not be introduced as an implementation adjustment.
+
+# D026 — Molecular-Identity Exotic-Valence Quarantine Amendment
+
+**Decision date:** 2026-09-30  
+**Status:** APPROVED AND FROZEN
+
+## Context
+
+The D026 molecular-identity transformation uses the frozen D026 AiZynthFinder/RDKit environment to generate InChIKeys from the frozen Candidate-B source SMILES.
+
+The original execution contract required immediate termination when a non-quarantined record produced a ZINC-versus-D026 connectivity mismatch.
+
+The first full-population execution reached record 5,334 and encountered one connectivity mismatch:
+
+```text
+ZINC ID: 687728612
+source: AAEE.txt:2172
+source SMILES: N=C(NO)N[N]N=C1C=C[N+]\(=O)N=C1
+ZINC InChIKey: RIOUTZLLLBJUDD-UHFFFAOYSA-O
+D026 InChIKey: PHBUFEQEQXGTPJ-UHFFFAOYSA-N
+connectivity block: PHBUFEQEQXGTPJ
+```
+
+The raw source record was inspected before the amendment was adopted. It is a single connected organic component with no dot-disconnected fragments, counterions, or metals. Its source representation contains a bare bracketed nitrogen `[N]` and directional N-oxide syntax `[N+]\(=O)`.
+
+The observed mismatch was therefore classified as the approved exotic-valence / charge-representation class rather than salt, mixture, fragment, or ordinary neutral-organic handling.
+
+The pre-amendment stopped run remains preserved and is not retroactively continued.
+
+## 1. Frozen quarantine class
+
+D026 is amended to mechanically quarantine records whose source SMILES contains either of the following representations.
+
+### Q1 — bare bracketed nitrogen
+
+```text
+\[(?:N|n)\]
+```
+
+Reason code:
+
+```text
+D026_EXOTIC_VALENCE_Q1
+```
+
+### Q2 — directional N-oxide representation
+
+```text
+\[[Nn][^\]]*\][\\/]\(=O
+```
+
+Reason code:
+
+```text
+D026_EXOTIC_VALENCE_Q2
+```
+
+When both predicates match, both reason codes are recorded.
+
+The motivating ZINC 687728612 record matches Q1 and Q2 and is therefore classified with both reason codes.
+
+The quarantine predicate is applied to the source SMILES representation itself. It does not require successful D026 identity generation and does not infer a chemical verdict from the resulting InChIKey.
+
+## 2. Quarantine artifact
+
+Every quarantined record must be retained in a dedicated artifact containing:
+
+- source SMILES;
+- ZINC identifier;
+- source file;
+- source line number;
+- deterministic quarantine reason code or codes.
+
+Quarantine is an explicit provenance state.
+
+A quarantined record is not silently discarded and is not represented as either a connectivity match or connectivity mismatch.
+
+The quarantine artifact is generated during the same streaming transformation as the D026 identity output.
+
+## 3. Denominator and routing semantics
+
+The frozen Candidate-B population remains the input population.
+
+For a completed transformation:
+
+```text
+input_record_count = quarantined_count + processed_count
+```
+
+`processed_count` contains only records that were not quarantined and were actually subjected to D026 identity generation.
+
+Connectivity concordance is calculated over processed, non-quarantined records.
+
+Full-key concordance is likewise calculated over processed, non-quarantined records.
+
+A quarantined record therefore contributes to:
+
+```text
+input_record_count
+quarantined_count
+```
+
+but not to:
+
+```text
+processed_count
+connectivity_matches
+connectivity_mismatches
+full_key_matches
+full_key_mismatches
+```
+
+A stopped transformation may have:
+
+```text
+processed_count < eligible_record_count
+```
+
+because the existing connectivity stop rule intentionally terminates processing before the remaining eligible population is transformed.
+
+## 4. Preservation of the existing connectivity rule
+
+The amendment does not weaken the existing D026 connectivity authority.
+
+Any record that does not satisfy Q1 or Q2 remains subject to the original lineage checks and D026 identity comparison.
+
+If such a non-quarantined record produces a ZINC-versus-D026 connectivity mismatch:
+
+- the mismatch is recorded;
+- the transformation stops immediately;
+- the stopping status is `stopped_connectivity_mismatch`;
+- the process exits nonzero.
+
+No additional discretionary exception mechanism is introduced.
+
+## 5. Scientific implementation and executed-state provenance
+
+The amended implementation contains separate scientific primitives for:
+
+- quarantine classification;
+- quarantine-record construction;
+- quarantine accounting;
+- summary-level eligible/processed accounting;
+- streaming integration of quarantine before D026 identity generation.
+
+The implementation remains generator-independent with respect to downstream evaluation and does not alter the D026 identity primitive itself.
+
+Quarantined records are written directly to the quarantine artifact rather than retained in an unbounded in-memory collection.
+
+The amended batch implementation used in the qualified runtime has SHA-256:
+
+```text
+7fa973470dee5e7c18e43949b8e5352a82299f5075b1b7dae186d6ed855f1dbf
+```
+
+The qualified container environment was:
+
+```text
+sha256:020a8c810e5f4285fe4479c6d6aa6bc987393834480a24dd9a513631668851b4
+```
+
+The amended implementation was copied into the existing qualified runtime without rebuilding the qualified base image. The implementation hash above identifies the exact amended batch code used for the runtime preflight and provides the basis for explaining the code difference from the qualified base image as the D026 amendment rather than untracked runtime drift.
+
+## 6. Validation and runtime preflight provenance
+
+The amended scientific-core implementation was validated before execution against the full Candidate-B population.
+
+The focused D026 test suite passed:
+
+```text
+14 passed
+```
+
+The D026 scientific-core module also passed Python compilation.
+
+A two-record runtime preflight containing one ordinary record and the motivating ZINC 687728612 record was then executed in the qualified runtime.
+
+The preflight input artifact SHA-256 was:
+
+```text
+535ac535157f3ee285c9acb6af5549999e05e92275b7cbcc816c2dcad3a25f58
+```
+
+The persistent preflight output artifacts were preserved under:
+
+```text
+/nfs/home/mhuang/d026_build/d026_preflight_output/
+```
+
+with SHA-256:
+
+```text
+identity.tsv:
+0fb0c1ed49f07c5b2dcdbaff75ba5ca45c5947e012e33f6e570fecafd566c7aa
+
+summary.json:
+b9d6a3270f5390ad206706c48f47f97942d1fbd202179bd474125c08e7b0b161
+
+quarantine.tsv:
+2293208d4fa1e93156c2847343a737c4509115a48c658bda885020a9d949efc9
+```
+
+The preflight summary established:
+
+```text
+input_record_count:        2
+quarantined_count:         1
+eligible_record_count:     1
+processed_count:           1
+connectivity_matches:      1
+connectivity_mismatches:   0
+full_key_matches:          1
+full_key_mismatches:       0
+stopping_status:           completed
+schema_version:            2
+```
+
+The preflight therefore demonstrated that the approved quarantine rule operates before D026 identity generation while an ordinary eligible record continues through the existing identity and concordance pathway.
+
+## 7. Frozen-population prevalence measurement
+
+Before relaunching the D026 transformation, the frozen Candidate-B population was scanned using the approved Q1/Q2 lexical predicates without running D026 identity generation.
+
+The frozen population contained:
+
+```text
+total records:       24,249,767
+Q1 matches:              10,491
+Q2 matches:                   0
+Q1 only:                  10,491
+Q2 only:                       0
+Q1 + Q2:                      0
+quarantined unique:      10,491
+```
+
+The measured quarantine prevalence is:
+
+```text
+10,491 / 24,249,767 = 0.04326227%
+```
+
+The observed frozen Candidate-B population therefore contains no Q2 records. The measured prevalence is entirely attributable to the Q1 class.
+
+This establishes that the approved quarantine rule applies to a small but nonzero fraction of the frozen population rather than only to the original motivating record.
+
+## 8. Relationship to the pre-amendment run
+
+The original Candidate-B D026 execution stopped at 5,334 processed records because ZINC 687728612 produced the first observed non-quarantined connectivity mismatch under the then-current contract.
+
+That execution remains a preserved historical artifact.
+
+The partial identity output and summary are not retroactively relabeled as a completed run.
+
+The amendment governs a subsequent execution of the frozen Candidate-B population.
+
+No conclusion about the remaining unprocessed Candidate-B population is drawn from the stopped pre-amendment run.
+
+## 9. Scope boundary
+
+This amendment is limited to the Q1/Q2 source-representation class defined above.
+
+It does not authorize quarantine of:
+
+- generic charged molecules;
+- ordinary N-oxides without the specified directional representation;
+- salts or dot-disconnected compounds unless they also satisfy Q1 or Q2;
+- arbitrary parser failures;
+- arbitrary connectivity mismatches.
+
+Any additional exception class requires a separate prospective decision.
+
+## Governing principle
+
+**A reproducible source-representation class that falls outside the intended D026 identity-comparability domain should be handled by an explicit, mechanically testable quarantine rule rather than by case-specific exceptions or retrospective weakening of the connectivity stop rule.**
+
+The quarantine preserves provenance and allows the remaining eligible population to be evaluated without converting the excluded record into either a positive or negative identity measurement.
+
+## Revisit when
+
+Revisit D026 if:
+
+- a subsequent non-quarantined connectivity mismatch is observed;
+- Q1/Q2 quarantine incidence is materially broader than anticipated;
+- the lexical predicates capture chemically ordinary representations that should remain within the D026 identity domain;
+- the predicates fail to capture a reproducible representation class that demonstrably causes the same identity-comparability problem;
+- the D026 identity runtime or identity-authority definition is materially changed;
+- a future amendment proposes a different treatment of quarantined records or denominator semantics.

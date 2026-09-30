@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Callable, TextIO
 
@@ -32,6 +33,14 @@ OUTPUT_HEADER = (
     "source_line_number",
 )
 
+QUARANTINE_OUTPUT_HEADER = (
+    "smiles",
+    "zinc_id",
+    "source_file",
+    "source_line_number",
+    "quarantine_reasons",
+)
+
 DEFAULT_FILTERED_RECORDS = Path.home() / "stage6_candidate_b_frozen/filtered_records.tsv"
 DEFAULT_SOURCE_ROOT = Path("/nfs/exl/zinc20/2D")
 
@@ -55,6 +64,9 @@ PILOT_SUMMARY_ARTIFACT = {
     "role": "associated preserved pilot summary artifact",
 }
 
+D026_QUARANTINE_Q1 = re.compile(r"\[[Nn]\]")
+D026_QUARANTINE_Q2 = re.compile(r"\[[Nn][^\]]*\][\\/]\(=O")
+
 
 class D026BatchError(RuntimeError):
     """Raised when D026 batch lineage or source recovery fails."""
@@ -72,6 +84,58 @@ def connectivity_match(zinc_inchikey: str, d026_inchikey: str) -> bool:
     return inchikey_connectivity_layer(zinc_inchikey) == inchikey_connectivity_layer(
         d026_inchikey
     )
+
+
+def classify_d026_quarantine(smiles: str) -> tuple[str, ...]:
+    """Classify source-SMILES representations requiring D026 quarantine.
+
+    Q1: bare bracketed nitrogen atom, e.g. [N].
+    Q2: bracketed nitrogen followed by a directional bond into (=O),
+        e.g. [N+]\\(=O) or [N+]/(=O).
+
+    Returns deterministic reason codes in fixed order.
+    """
+    reasons = []
+
+    if D026_QUARANTINE_Q1.search(smiles):
+        reasons.append("D026_EXOTIC_VALENCE_Q1")
+
+    if D026_QUARANTINE_Q2.search(smiles):
+        reasons.append("D026_EXOTIC_VALENCE_Q2")
+
+    return tuple(reasons)
+
+
+def build_d026_quarantine_record(
+    *,
+    smiles: str,
+    zinc_id: str,
+    source_file: str,
+    source_line_number: int,
+    quarantine_reasons: tuple[str, ...],
+) -> dict[str, object]:
+    """Build the deterministic artifact record for a quarantined source row."""
+    if not quarantine_reasons:
+        raise ValueError("quarantine_reasons must contain at least one reason")
+
+    record = {
+        "smiles": smiles,
+        "zinc_id": zinc_id,
+        "source_file": source_file,
+        "source_line_number": source_line_number,
+        "quarantine_reasons": list(quarantine_reasons),
+    }
+
+    return record
+
+
+def record_d026_quarantine(
+    *,
+    counts: dict[str, int],
+) -> None:
+    """Increment the quarantine count without retaining records in memory."""
+    counts["quarantined_count"] += 1
+    return None
 
 
 def _default_smiles_to_inchikey(smiles: str) -> str:
@@ -180,20 +244,25 @@ def _read_source_record_at_line(
                 f"Source file {source_file} ended before line {target_line_number}"
             )
 
-    return (
+    result = (
         parse_zinc_metadata_line(line, line_number=target_line_number),
         current_line_number,
     )
 
+    return result
+
 
 def _initial_counts() -> dict[str, int]:
-    return {
+    counts = {
         "processed_count": 0,
+        "quarantined_count": 0,
         "full_key_matches": 0,
         "full_key_mismatches": 0,
         "connectivity_matches": 0,
         "connectivity_mismatches": 0,
     }
+
+    return counts
 
 
 def _fraction(numerator: int, denominator: int) -> float | None:
@@ -212,8 +281,9 @@ def _summary(
     first_connectivity_mismatch: dict | None,
 ) -> dict:
     processed_count = counts["processed_count"]
-    return {
-        "schema_version": 1,
+
+    summary = {
+        "schema_version": 2,
         "container_environment_id": container_environment_id,
         "input_artifact_sha256": input_artifact_sha256,
         "input_record_count": input_record_count,
@@ -230,7 +300,11 @@ def _summary(
         ),
         "stopping_status": stopping_status,
         "first_connectivity_mismatch": first_connectivity_mismatch,
+        "quarantined_count": counts["quarantined_count"],
+        "eligible_record_count": input_record_count - counts["quarantined_count"],
     }
+
+    return summary
 
 
 def transform_candidate_b_identities(
@@ -238,13 +312,16 @@ def transform_candidate_b_identities(
     source_root: Path | str,
     output_tsv_path: Path | str,
     summary_json_path: Path | str,
+    quarantine_tsv_path: Path | str,
     container_environment_id: str,
     smiles_to_inchikey: Callable[[str], str] | None = None,
 ) -> dict:
+    """Transform Candidate-B identities with approved D026 quarantine handling."""
     filtered_records_path = Path(filtered_records_path)
     source_root = Path(source_root)
     output_tsv_path = Path(output_tsv_path)
     summary_json_path = Path(summary_json_path)
+    quarantine_tsv_path = Path(quarantine_tsv_path)
     smiles_to_inchikey = smiles_to_inchikey or _default_smiles_to_inchikey
 
     input_artifact_sha256 = _sha256_file(filtered_records_path)
@@ -255,12 +332,31 @@ def transform_candidate_b_identities(
     exit_code = 0
 
     output_tsv_path.parent.mkdir(parents=True, exist_ok=True)
+    summary_json_path.parent.mkdir(parents=True, exist_ok=True)
+    quarantine_tsv_path.parent.mkdir(parents=True, exist_ok=True)
+
     current_source_file = None
     current_source_handle = None
     current_source_line_number = 0
 
     try:
-        with filtered_records_path.open("r", encoding="utf-8", newline="") as filtered_handle:
+        with (
+            filtered_records_path.open(
+                "r",
+                encoding="utf-8",
+                newline="",
+            ) as filtered_handle,
+            output_tsv_path.open(
+                "w",
+                encoding="utf-8",
+                newline="",
+            ) as output_handle,
+            quarantine_tsv_path.open(
+                "w",
+                encoding="utf-8",
+                newline="",
+            ) as quarantine_handle,
+        ):
             reader = csv.DictReader(filtered_handle, delimiter="\t")
             if tuple(reader.fieldnames or ()) != FILTERED_RECORDS_HEADER:
                 raise D026BatchError(
@@ -268,92 +364,136 @@ def transform_candidate_b_identities(
                     f"found {tuple(reader.fieldnames or ())!r}"
                 )
 
-            with output_tsv_path.open("w", encoding="utf-8", newline="") as output_handle:
-                writer = csv.DictWriter(
-                    output_handle,
-                    fieldnames=OUTPUT_HEADER,
-                    delimiter="\t",
-                    lineterminator="\n",
-                )
-                writer.writeheader()
+            writer = csv.DictWriter(
+                output_handle,
+                fieldnames=OUTPUT_HEADER,
+                delimiter="\t",
+                lineterminator="\n",
+            )
+            writer.writeheader()
 
-                for filtered_record in reader:
-                    source_file = filtered_record["source_file"]
-                    source_line_number = int(filtered_record["source_line_number"])
+            quarantine_writer = csv.DictWriter(
+                quarantine_handle,
+                fieldnames=QUARANTINE_OUTPUT_HEADER,
+                delimiter="\t",
+                lineterminator="\n",
+            )
+            quarantine_writer.writeheader()
 
-                    if source_file != current_source_file:
-                        if current_source_handle is not None:
-                            current_source_handle.close()
-                        (
-                            _source_file_path,
-                            current_source_handle,
-                            current_source_line_number,
-                        ) = _open_source(source_root, source_file)
-                        current_source_file = source_file
+            for filtered_record in reader:
+                source_file = filtered_record["source_file"]
+                source_line_number = int(filtered_record["source_line_number"])
+                smiles = filtered_record["smiles"]
+                zinc_id = filtered_record["zinc_id"]
 
-                    source_record, current_source_line_number = _read_source_record_at_line(
+                quarantine_reasons = classify_d026_quarantine(smiles)
+                if quarantine_reasons:
+                    quarantine_record = build_d026_quarantine_record(
+                        smiles=smiles,
+                        zinc_id=zinc_id,
+                        source_file=source_file,
+                        source_line_number=source_line_number,
+                        quarantine_reasons=quarantine_reasons,
+                    )
+
+                    record_d026_quarantine(
+                        counts=counts,
+                    )
+
+                    quarantine_writer.writerow(
+                        {
+                            "smiles": quarantine_record["smiles"],
+                            "zinc_id": quarantine_record["zinc_id"],
+                            "source_file": quarantine_record["source_file"],
+                            "source_line_number": quarantine_record[
+                                "source_line_number"
+                            ],
+                            "quarantine_reasons": "|".join(
+                                quarantine_record["quarantine_reasons"]
+                            ),
+                        }
+                    )
+                    continue
+
+                if source_file != current_source_file:
+                    if current_source_handle is not None:
+                        current_source_handle.close()
+
+                    (
+                        _source_file_path,
+                        current_source_handle,
+                        current_source_line_number,
+                    ) = _open_source(source_root, source_file)
+                    current_source_file = source_file
+
+                source_record, current_source_line_number = (
+                    _read_source_record_at_line(
                         current_source_handle,
                         current_source_line_number,
                         source_line_number,
                         source_file,
                     )
+                )
 
-                    if source_record.smiles != filtered_record["smiles"]:
-                        raise D026BatchError(
-                            f"SMILES lineage mismatch for {source_file}:{source_line_number}"
-                        )
-                    if source_record.zinc_id != filtered_record["zinc_id"]:
-                        raise D026BatchError(
-                            f"ZINC ID lineage mismatch for {source_file}:{source_line_number}"
-                        )
-
-                    d026_inchikey = smiles_to_inchikey(filtered_record["smiles"])
-                    is_full_match = full_key_match(source_record.inchikey, d026_inchikey)
-                    is_connectivity_match = connectivity_match(
-                        source_record.inchikey,
-                        d026_inchikey,
+                if source_record.smiles != smiles:
+                    raise D026BatchError(
+                        f"SMILES lineage mismatch for {source_file}:{source_line_number}"
                     )
 
-                    counts["processed_count"] += 1
-                    if is_full_match:
-                        counts["full_key_matches"] += 1
-                    else:
-                        counts["full_key_mismatches"] += 1
-                    if is_connectivity_match:
-                        counts["connectivity_matches"] += 1
-                    else:
-                        counts["connectivity_mismatches"] += 1
+                if source_record.zinc_id != zinc_id:
+                    raise D026BatchError(
+                        f"ZINC ID lineage mismatch for {source_file}:{source_line_number}"
+                    )
 
-                    output_row = {
-                        "smiles": filtered_record["smiles"],
-                        "zinc_id": filtered_record["zinc_id"],
+                d026_inchikey = smiles_to_inchikey(smiles)
+                is_full_match = full_key_match(source_record.inchikey, d026_inchikey)
+                is_connectivity_match = connectivity_match(
+                    source_record.inchikey,
+                    d026_inchikey,
+                )
+
+                counts["processed_count"] += 1
+
+                if is_full_match:
+                    counts["full_key_matches"] += 1
+                else:
+                    counts["full_key_mismatches"] += 1
+
+                if is_connectivity_match:
+                    counts["connectivity_matches"] += 1
+                else:
+                    counts["connectivity_mismatches"] += 1
+
+                output_row = {
+                    "smiles": smiles,
+                    "zinc_id": zinc_id,
+                    "zinc_inchikey": source_record.inchikey,
+                    "d026_inchikey": d026_inchikey,
+                    "full_key_match": _bool_text(is_full_match),
+                    "connectivity_match": _bool_text(is_connectivity_match),
+                    "source_file": source_file,
+                    "source_line_number": source_line_number,
+                }
+                writer.writerow(output_row)
+
+                if not is_connectivity_match:
+                    first_connectivity_mismatch = {
+                        "smiles": smiles,
+                        "zinc_id": zinc_id,
                         "zinc_inchikey": source_record.inchikey,
                         "d026_inchikey": d026_inchikey,
-                        "full_key_match": _bool_text(is_full_match),
-                        "connectivity_match": _bool_text(is_connectivity_match),
+                        "zinc_connectivity_layer": inchikey_connectivity_layer(
+                            source_record.inchikey
+                        ),
+                        "d026_connectivity_layer": inchikey_connectivity_layer(
+                            d026_inchikey
+                        ),
                         "source_file": source_file,
                         "source_line_number": source_line_number,
                     }
-                    writer.writerow(output_row)
-
-                    if not is_connectivity_match:
-                        first_connectivity_mismatch = {
-                            "smiles": filtered_record["smiles"],
-                            "zinc_id": filtered_record["zinc_id"],
-                            "zinc_inchikey": source_record.inchikey,
-                            "d026_inchikey": d026_inchikey,
-                            "zinc_connectivity_layer": inchikey_connectivity_layer(
-                                source_record.inchikey
-                            ),
-                            "d026_connectivity_layer": inchikey_connectivity_layer(
-                                d026_inchikey
-                            ),
-                            "source_file": source_file,
-                            "source_line_number": source_line_number,
-                        }
-                        stopping_status = "stopped_connectivity_mismatch"
-                        exit_code = 1
-                        break
+                    stopping_status = "stopped_connectivity_mismatch"
+                    exit_code = 1
+                    break
     finally:
         if current_source_handle is not None:
             current_source_handle.close()
@@ -367,16 +507,20 @@ def transform_candidate_b_identities(
         first_connectivity_mismatch=first_connectivity_mismatch,
     )
     _write_json(summary_json_path, summary)
-    return {
+
+    result = {
         "exit_code": exit_code,
         "summary": summary,
         "output_tsv": str(output_tsv_path),
         "summary_json": str(summary_json_path),
+        "quarantine_tsv": str(quarantine_tsv_path),
     }
+
+    return result
 
 
 def d026_pilot_waiver() -> dict:
-    return {
+    waiver = {
         "schema_version": 1,
         "seven_record_audit_artifact": PILOT_SEVEN_RECORD_AUDIT_ARTIFACT,
         "pilot_summary_artifact": PILOT_SUMMARY_ARTIFACT,
@@ -401,15 +545,20 @@ def d026_pilot_waiver() -> dict:
         ),
     }
 
+    return waiver
+
 
 def write_d026_pilot_waiver(output_path: Path | str) -> dict:
     output_path = Path(output_path)
     waiver = d026_pilot_waiver()
     _write_json(output_path, waiver)
-    return {
+
+    result = {
         "waiver_output": str(output_path),
         "waiver_sha256": _sha256_file(output_path),
     }
+
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -428,6 +577,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--output-tsv", required=True)
     parser.add_argument("--summary-json", required=True)
+    parser.add_argument("--quarantine-tsv", required=True)
     parser.add_argument("--container-environment-id", required=True)
     parser.add_argument("--waiver-output")
     args = parser.parse_args(argv)
@@ -440,6 +590,7 @@ def main(argv: list[str] | None = None) -> int:
         source_root=args.source_root,
         output_tsv_path=args.output_tsv,
         summary_json_path=args.summary_json,
+        quarantine_tsv_path=args.quarantine_tsv,
         container_environment_id=args.container_environment_id,
     )
     print(json.dumps(result["summary"], indent=2, sort_keys=True))

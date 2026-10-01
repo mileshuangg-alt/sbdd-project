@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "freeze_date": "2026-09-30",
+  "run_id": "d026_full_2026-09-30",
+  "status": "frozen",
+  "stage": 6,
+  "decisions": [
+    "D026",
+    "D027"
+  ],
+  "git_provenance": {
+    "commit": "7856595",
+    "commit_subject": "Implement D027 discrepancy adjudication",
+    "production_script": "evaluation/d026_batch_identity.py",
+    "production_script_sha256": "6a0c802a05f91a657e2f77a6773ac8c9e1dced1989ab62a1693f6cf1dd8a46c6",
+    "runtime_script_sha256": "6a0c802a05f91a657e2f77a6773ac8c9e1dced1989ab62a1693f6cf1dd8a46c6",
+    "runtime_matches_committed_script": true,
+    "remotes_containing_commit": [
+      "origin/main",
+      "github/main"
+    ]
+  },
+  "runtime": {
+    "container_environment_id": "sha256:020a8c810e5f4285fe4479c6d6aa6bc987393834480a24dd9a513631668851b4",
+    "persistent_run_directory": "/output/d026_full_2026-09-30",
+    "runtime_script_artifact": "/output/d026_full_2026-09-30/d026_batch_identity_runtime.py"
+  },
+  "input": {
+    "record_count": 24249767,
+    "artifact_sha256": "5704a764984131f1165a5de0c24fa8967eebbdd55d4fe2fd9f16b70c2740ed03"
+  },
+  "results": {
+    "stopping_status": "completed",
+    "quarantined_count": 10491,
+    "processed_count": 24239276,
+    "final_identity_record_count": 24238632,
+    "d027_discrepancy_count": 644,
+    "d027_exclude_continue_count": 644,
+    "d027_local_reproduced_d026_count": 644,
+    "d027_local_reproduced_zinc_count": 0,
+    "d027_local_reproduced_neither_count": 0,
+    "connectivity_matches": 24238632,
+    "connectivity_mismatches": 0,
+    "connectivity_concordance_fraction": 1.0,
+    "full_key_matches": 23792769,
+    "full_key_mismatches": 445863,
+    "full_key_concordance_fraction": 0.9816052737629748
+  },
+  "accounting_checks": {
+    "input_equals_quarantined_plus_processed": true,
+    "processed_equals_identity_plus_d027_exclusions": true,
+    "connectivity_denominator_equals_final_identity_records": true,
+    "all_d027_discrepancies_reproduced_d026": true
+  },
+  "artifacts": {
+    "identity": {
+      "path": "/output/d026_full_2026-09-30/candidate_b_d026_identity.tsv",
+      "sha256": "d15f14acd097dfb89a788c2cd07bd304f60245a18f6b6701c8f53350340bd1d0",
+      "data_record_count": 24238632
+    },
+    "quarantine": {
+      "path": "/output/d026_full_2026-09-30/candidate_b_d026_quarantine.tsv",
+      "sha256": "59214dc57b4b474c6a9aa1abf6436c7d9f52892a4df3590b9702830807af317e",
+      "data_record_count": 10491
+    },
+    "discrepancy": {
+      "path": "/output/d026_full_2026-09-30/candidate_b_d026_discrepancy.tsv",
+      "sha256": "7900f64b6528227aeb8f2ec2c6f95b420eddd7a944c61afc3c9d5638eb313ae8",
+      "data_record_count": 644
+    },
+    "summary": {
+      "path": "/output/d026_full_2026-09-30/candidate_b_d026_identity_summary.json",
+      "sha256": "30b6192a67d1581487444240b3a4ff2e8c1e2aafe57e05a87a08c3692550d8e6"
+    },
+    "run_log": {
+      "path": "/output/d026_full_2026-09-30/candidate_b_d026_run.log",
+      "sha256": "30b6192a67d1581487444240b3a4ff2e8c1e2aafe57e05a87a08c3692550d8e6"
+    },
+    "runtime_script": {
+      "path": "/output/d026_full_2026-09-30/d026_batch_identity_runtime.py",
+      "sha256": "6a0c802a05f91a657e2f77a6773ac8c9e1dced1989ab62a1693f6cf1dd8a46c6"
+    }
+  }
+}

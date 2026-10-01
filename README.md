@@ -61,6 +61,23 @@ The comparison will focus on **attrition and characterization across development
 
 Downstream evaluation methods must not be recalibrated using FLOWR outcomes.
 
+## Tripwire — DDI Liability Characterization
+
+Tripwire is a parallel DDI-liability characterization and re-ranking workstream. It does not have candidate-attrition authority.
+
+### CYP Inhibition Arm
+
+The CYP arm evaluates direct-inhibition pIC50 prediction across CYP1A2, CYP2C9, CYP2D6, and CYP3A4. The current reference baseline uses:
+
+- Morgan radius-2 fingerprints, 2048 bits
+- one independently tuned LightGBM GBDT regressor per isoform
+- an analog-cluster 70/15/15 train/validation/held-out-test split with Tanimoto threshold 0.70
+- validation-only randomized hyperparameter tuning and early stopping on the official Soft-Threshold RAE (ST-RAE) metric
+
+Tripwire-CYP-001 established the independent reference baseline and evaluated it once on the untouched held-out test partition. Detailed provenance, tuning records, and results are recorded in `notes/Tripwire_CYP_001_Session_Log.md`.
+
+The next CYP step is the preregistered masked-label multitask challenger, evaluated against the frozen independent baseline on the same held-out test set.
+
 ## Current Baseline
 
 DiffSBDD checkpoint inference has been successfully reproduced.

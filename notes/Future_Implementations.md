@@ -91,3 +91,29 @@ The failure-mode decomposition introduces no new validation requirements.
 Its classifications must not feed back into frozen verdicts, thresholds, eligibility criteria, routing rules, or other scientific decisions without formal promotion through the decision/amendment process.
 
 ---
+
+## Experimental-Structure Reference Resolver
+
+### Purpose
+
+Provide a future reference-resolver script that uses the PDB API to map a target name or UniProt identifier to ranked candidate experimental target-ligand complexes for operator confirmation.
+
+The resolver is intended to reduce manual structure discovery when a new target enters the pipeline.
+
+### Scope
+
+The resolver should:
+
+- accept target name and/or UniProt identifier;
+- query the PDB API;
+- rank candidate experimental complexes using transparent metadata;
+- expose candidate PDB identifiers, target identity, ligand identity, structural state, and other relevant provenance for operator review;
+- require explicit operator confirmation before any structure becomes a frozen project reference.
+
+### Scientific boundary
+
+The resolver is an operator-assistance and provenance tool only.
+
+It must not automatically select or freeze an experimental reference, alter evidence levels, define target-specific interaction criteria, or change any frozen validation rule.
+
+It should be implemented only when a second target enters the pipeline.

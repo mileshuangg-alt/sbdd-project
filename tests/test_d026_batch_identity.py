@@ -259,7 +259,8 @@ class D026BatchIdentityTests(unittest.TestCase):
         self.assertEqual(result["adjudication"], "hard_halt")
         self.assertEqual(result["reproduced_side"], "zinc")
 
-    def test_d026_adjudication_is_inconclusive_for_third_connectivity_layer(self):
+    def test_d026_adjudication_is_inconclusive_for_third_connectivity_layer(
+            self):
         result = adjudicate_d026_connectivity_mismatch(
             smiles="CCO",
             zinc_inchikey="AAAAAAAAAAAAAA-BBBBBBBBBB-C",
@@ -283,7 +284,6 @@ class D026BatchIdentityTests(unittest.TestCase):
             result["d026_connectivity_layer"],
             "BBBBBBBBBBBBBB",
         )
-
 
     def test_connectivity_mismatch_causes_immediate_nonzero_stop(self):
         calls = []
@@ -760,7 +760,8 @@ class D026BatchIdentityTests(unittest.TestCase):
             self.assertEqual(len(discrepancy_rows), 1)
             self.assertEqual(discrepancy_rows[0]["adjudication"], "hard_halt")
 
-    def test_d027_d026_side_connectivity_discrepancy_is_logged_and_continues(self):
+    def test_d027_d026_side_connectivity_discrepancy_is_logged_and_continues(
+            self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "2D"
             filtered = Path(directory) / "filtered_records.tsv"
@@ -769,18 +770,31 @@ class D026BatchIdentityTests(unittest.TestCase):
             quarantine = Path(directory) / "quarantine.tsv"
             discrepancy = Path(directory) / "discrepancy.tsv"
 
-            self.make_source_tree(
-                root,
-                "AAEA.txt",
-                [
-                    ("CCO", "ZINC1", FULL_KEY_B, 46.0, 0.1, 30, 10, "AAEA", ""),
-                    ("CCN", "ZINC2", FULL_KEY_A, 45.0, 0.1, 30, 10, "AAEA", ""),
-                ],
-            )
+            self.make_source_tree(root,
+                                  "AAEA.txt",
+                                  [("CCO",
+                                    "ZINC1",
+                                    FULL_KEY_B,
+                                    46.0,
+                                    0.1,
+                                    30,
+                                    10,
+                                    "AAEA",
+                                    ""),
+                                   ("CCN",
+                                    "ZINC2",
+                                      FULL_KEY_A,
+                                      45.0,
+                                      0.1,
+                                      30,
+                                      10,
+                                      "AAEA",
+                                      ""),
+                                   ],
+                                  )
             self.make_filtered_records(
-                filtered,
-                [("CCO", "ZINC1", "AAEA.txt", 2), ("CCN", "ZINC2", "AAEA.txt", 3)],
-            )
+                filtered, [
+                    ("CCO", "ZINC1", "AAEA.txt", 2), ("CCN", "ZINC2", "AAEA.txt", 3)], )
 
             result = transform_candidate_b_identities(
                 filtered_records_path=filtered,
@@ -805,11 +819,14 @@ class D026BatchIdentityTests(unittest.TestCase):
             )
             self.assertEqual(len(discrepancy_rows), 1)
             self.assertEqual(discrepancy_rows[0]["zinc_id"], "ZINC1")
-            self.assertEqual(discrepancy_rows[0]["adjudication"], "exclude_continue")
+            self.assertEqual(
+                discrepancy_rows[0]["adjudication"],
+                "exclude_continue")
             self.assertEqual(discrepancy_rows[0]["reproduced_side"], "d026")
 
             identity_rows = list(csv.DictReader(output.open(), delimiter="\t"))
-            self.assertEqual([row["zinc_id"] for row in identity_rows], ["ZINC2"])
+            self.assertEqual([row["zinc_id"]
+                             for row in identity_rows], ["ZINC2"])
 
     def test_d027_zinc_side_connectivity_discrepancy_hard_halts(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -821,18 +838,31 @@ class D026BatchIdentityTests(unittest.TestCase):
             discrepancy = Path(directory) / "discrepancy.tsv"
             calls = []
 
-            self.make_source_tree(
-                root,
-                "AAEA.txt",
-                [
-                    ("CCO", "ZINC1", FULL_KEY_B, 46.0, 0.1, 30, 10, "AAEA", ""),
-                    ("CCN", "ZINC2", FULL_KEY_A, 45.0, 0.1, 30, 10, "AAEA", ""),
-                ],
-            )
+            self.make_source_tree(root,
+                                  "AAEA.txt",
+                                  [("CCO",
+                                    "ZINC1",
+                                    FULL_KEY_B,
+                                    46.0,
+                                    0.1,
+                                    30,
+                                    10,
+                                    "AAEA",
+                                    ""),
+                                   ("CCN",
+                                    "ZINC2",
+                                      FULL_KEY_A,
+                                      45.0,
+                                      0.1,
+                                      30,
+                                      10,
+                                      "AAEA",
+                                      ""),
+                                   ],
+                                  )
             self.make_filtered_records(
-                filtered,
-                [("CCO", "ZINC1", "AAEA.txt", 2), ("CCN", "ZINC2", "AAEA.txt", 3)],
-            )
+                filtered, [
+                    ("CCO", "ZINC1", "AAEA.txt", 2), ("CCN", "ZINC2", "AAEA.txt", 3)], )
 
             def fake_smiles_to_inchikey(smiles):
                 calls.append(smiles)
@@ -868,7 +898,8 @@ class D026BatchIdentityTests(unittest.TestCase):
             identity_rows = list(csv.DictReader(output.open(), delimiter="\t"))
             self.assertEqual(identity_rows, [])
 
-    def test_d027_third_connectivity_layer_adjudication_halts_inconclusive(self):
+    def test_d027_third_connectivity_layer_adjudication_halts_inconclusive(
+            self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "2D"
             filtered = Path(directory) / "filtered_records.tsv"
@@ -877,18 +908,31 @@ class D026BatchIdentityTests(unittest.TestCase):
             quarantine = Path(directory) / "quarantine.tsv"
             discrepancy = Path(directory) / "discrepancy.tsv"
 
-            self.make_source_tree(
-                root,
-                "AAEA.txt",
-                [
-                    ("CCO", "ZINC1", FULL_KEY_B, 46.0, 0.1, 30, 10, "AAEA", ""),
-                    ("CCN", "ZINC2", FULL_KEY_A, 45.0, 0.1, 30, 10, "AAEA", ""),
-                ],
-            )
+            self.make_source_tree(root,
+                                  "AAEA.txt",
+                                  [("CCO",
+                                    "ZINC1",
+                                    FULL_KEY_B,
+                                    46.0,
+                                    0.1,
+                                    30,
+                                    10,
+                                    "AAEA",
+                                    ""),
+                                   ("CCN",
+                                    "ZINC2",
+                                      FULL_KEY_A,
+                                      45.0,
+                                      0.1,
+                                      30,
+                                      10,
+                                      "AAEA",
+                                      ""),
+                                   ],
+                                  )
             self.make_filtered_records(
-                filtered,
-                [("CCO", "ZINC1", "AAEA.txt", 2), ("CCN", "ZINC2", "AAEA.txt", 3)],
-            )
+                filtered, [
+                    ("CCO", "ZINC1", "AAEA.txt", 2), ("CCN", "ZINC2", "AAEA.txt", 3)], )
 
             calls = []
 

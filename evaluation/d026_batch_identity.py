@@ -43,7 +43,8 @@ QUARANTINE_OUTPUT_HEADER = (
     "quarantine_reasons",
 )
 
-DEFAULT_FILTERED_RECORDS = Path.home() / "stage6_candidate_b_frozen/filtered_records.tsv"
+DEFAULT_FILTERED_RECORDS = Path.home(
+) / "stage6_candidate_b_frozen/filtered_records.tsv"
 DEFAULT_SOURCE_ROOT = Path("/nfs/exl/zinc20/2D")
 
 PILOT_FULL_KEY_MATCHES = 93
@@ -83,9 +84,8 @@ def full_key_match(zinc_inchikey: str, d026_inchikey: str) -> bool:
 
 
 def connectivity_match(zinc_inchikey: str, d026_inchikey: str) -> bool:
-    return inchikey_connectivity_layer(zinc_inchikey) == inchikey_connectivity_layer(
-        d026_inchikey
-    )
+    return inchikey_connectivity_layer(
+        zinc_inchikey) == inchikey_connectivity_layer(d026_inchikey)
 
 
 def classify_d026_quarantine(smiles: str) -> tuple[str, ...]:
@@ -214,8 +214,8 @@ def _source_path(source_root: Path, source_file: str) -> Path:
     stem = relative_path.stem
     if len(stem) < 2:
         raise D026BatchError(
-            f"Cannot derive source tranche directory from source_file={source_file!r}"
-        )
+            f"Cannot derive source tranche directory from source_file={
+                source_file!r}")
     return source_root / stem[:2] / relative_path.name
 
 
@@ -266,8 +266,7 @@ def _read_source_record_at_line(
         current_line_number += 1
         if not line:
             raise D026BatchError(
-                f"Source file {source_file} ended before line {target_line_number}"
-            )
+                f"Source file {source_file} ended before line {target_line_number}")
 
     result = (
         parse_zinc_metadata_line(line, line_number=target_line_number),
@@ -324,24 +323,25 @@ def _summary(
         "connectivity_matches": counts["connectivity_matches"],
         "connectivity_mismatches": counts["connectivity_mismatches"],
         "connectivity_concordance_fraction": _fraction(
-            counts["connectivity_matches"], connectivity_denominator
-        ),
+            counts["connectivity_matches"],
+            connectivity_denominator),
         "full_key_concordance_fraction": _fraction(
-            counts["full_key_matches"], full_key_denominator
-        ),
+            counts["full_key_matches"],
+            full_key_denominator),
         "stopping_status": stopping_status,
         "first_connectivity_mismatch": first_connectivity_mismatch,
         "quarantined_count": counts["quarantined_count"],
-        "eligible_record_count": input_record_count - counts["quarantined_count"],
+        "eligible_record_count": input_record_count -
+        counts["quarantined_count"],
     }
 
     return summary
 
 
-
 def _d026_representation_features(smiles: str) -> dict:
     bracket_atom_tokens = re.findall(r"\[([A-Z][a-z]?)\]", smiles)
-    directional_bond_markers = sorted({char for char in smiles if char in "/\\"})
+    directional_bond_markers = sorted(
+        {char for char in smiles if char in "/\\"})
     cumulene_like = bool(re.search(r"C(?:\d+)?=C=C", smiles))
 
     result = {
@@ -392,7 +392,6 @@ def adjudicate_d026_connectivity_mismatch(
     return result
 
 
-
 def record_d026_discrepancy(
     *,
     filtered_record: dict[str, str],
@@ -420,7 +419,6 @@ def record_d026_discrepancy(
         "source_line_number": int(filtered_record["source_line_number"]),
     }
     return result
-
 
 
 D026_DISCREPANCY_OUTPUT_HEADER = (
@@ -473,6 +471,7 @@ def write_d026_discrepancy(
     }
 
     writer.writerow(row)
+
 
 def transform_candidate_b_identities(
     filtered_records_path: Path | str,
@@ -624,16 +623,15 @@ def transform_candidate_b_identities(
 
                 if source_record.smiles != smiles:
                     raise D026BatchError(
-                        f"SMILES lineage mismatch for {source_file}:{source_line_number}"
-                    )
+                        f"SMILES lineage mismatch for {source_file}:{source_line_number}")
 
                 if source_record.zinc_id != zinc_id:
                     raise D026BatchError(
-                        f"ZINC ID lineage mismatch for {source_file}:{source_line_number}"
-                    )
+                        f"ZINC ID lineage mismatch for {source_file}:{source_line_number}")
 
                 d026_inchikey = smiles_to_inchikey(smiles)
-                is_full_match = full_key_match(source_record.inchikey, d026_inchikey)
+                is_full_match = full_key_match(
+                    source_record.inchikey, d026_inchikey)
                 is_connectivity_match = connectivity_match(
                     source_record.inchikey,
                     d026_inchikey,
@@ -738,8 +736,7 @@ def d026_pilot_waiver() -> dict:
         "mismatch_case_counts": PILOT_MISMATCH_CASE_COUNTS,
         "pilot_scope": (
             "qualification evidence, not proof that all 24,249,767 records "
-            "behave identically"
-        ),
+            "behave identically"),
     }
 
     return waiver

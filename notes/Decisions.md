@@ -7078,3 +7078,976 @@ Revisit D027 if:
 - the D026 identity authority or qualified runtime changes;
 - a future stage requires a different treatment of excluded identity records;
 - the exclusion/logging pathway proves insufficiently auditable or reproducible.
+## D028 — Shared planner-stock identity contract
+
+**Decision date:** 2026-10-01  
+**Status:** FROZEN
+
+### Decision
+
+The full D026-generated InChIKey is the authoritative normalized molecular identity for the shared Stage-6 planner-stock universe.
+
+**AiZynthFinder representation**
+
+AiZynthFinder receives the full frozen D026 InChIKeys directly. The full D026 InChIKeys are not regenerated from SMILES.
+
+**ASKCOS representation**
+
+ASKCOS receives exact-runtime canonicalized single-component SMILES derived from the original frozen D026 source SMILES.
+
+The ASKCOS representation step performs no salt stripping, fragment selection, neutralization, tautomer normalization, stereo removal, or other identity-changing standardization.
+
+Every ASKCOS representation retains its source D026 identity.
+
+The planner-stock construction must measure explicitly:
+
+- parser failures;
+- representation losses;
+- duplicate identities;
+- canonical-SMILES collisions.
+
+### Amendment 1 — collision remedy
+
+Any frozen D026 key whose canonical ASKCOS SMILES collides with another distinct frozen D026 key is excluded from planner stock and logged to the decision record, following the D027 exclude-and-log precedent.
+
+The molecule remains part of the frozen molecular universe. No new adjudication mechanism is introduced.
+
+### Amendment 2 — equality-proof scope
+
+Complete set equality is required across all representable D026 keys, not absolutely across every frozen key.
+
+Any frozen D026 key that ASKCOS cannot encode is logged as a documented representation failure and exempted from the equality check.
+
+The authorized proof claim is:
+
+set equality across all representable keys
+
+### Governing principle
+
+The shared planner-stock identity contract must preserve the frozen D026 molecular universe while allowing planner-specific input representations. Identity authority remains the full D026 InChIKey.
+
+### Revisit when
+
+Revisit only if a concrete defect in the frozen D026 identity authority or this planner-stock identity contract is demonstrated, or a separately approved methodology amendment changes the shared molecular-universe requirement.
+
+# D029 — D026-Compatible Planner-Stock Normalization
+
+**Decision date:** 2026-10-02  
+**Status:** FROZEN
+
+## Decision
+
+Before any compatibility experiment is run, the following acceptance test and decision rule are frozen.
+
+### 1. Acceptance test
+
+A candidate normalization rule is compatible with frozen D026 only if, measured against the **full 27-character D026 InChIKey**:
+
+1. it never collapses a pair of structures that D026 keeps distinct (**false merge = 0**); and
+2. it never preserves a distinction that D026 collapses (**false split = 0**).
+
+The first 14-character connectivity layer is insufficient for this acceptance test. The full D026 InChIKey remains the reference identity.
+
+### 2. Comparison identity
+
+The **candidate normalized identity** is exactly:
+
+```text
+(RDKit version, canonical isomeric SMILES)
+```
+
+where the canonical isomeric SMILES is emitted by:
+
+```python
+MolToSmiles(
+    normalized_molecule,
+    canonical=True,
+    isomericSmiles=True,
+)
+```
+
+The RDKit version is part of the candidate identity because canonical-SMILES serialization can change between RDKit versions.
+
+The D026 full 27-character InChIKey remains the reference identity.
+
+Definitions:
+
+```text
+FALSE MERGE
+distinct D026 keys
+but identical candidate identities
+
+FALSE SPLIT
+same D026 key
+but distinct candidate identities
+```
+
+### 3. Prospective test set
+
+#### Exhaustive conflicted-key test
+
+Use **all 241,148 conflicted full D026 keys** identified in the preserved Stage-6 ASKCOS representation-conflict artifact.
+
+This is the primary compatibility test and measures both false merges and false splits.
+
+#### Different-key control sample
+
+Construct exactly **10,000 unordered pairs** from **20,000 distinct full 27-character D026 keys**.
+
+Sampling is frozen as:
+
+```text
+population:
+    frozen distinct-key D026 population
+
+population identity:
+    full 27-character D026 InChIKey
+
+sample size:
+    20,000 distinct keys
+    -> 10,000 unordered pairs
+
+selection:
+    deterministic SHA-256 hash-priority sampling
+
+seed:
+    20261002
+
+pairing:
+    selected keys sorted ascending by full D026 key
+    adjacent keys paired sequentially
+
+row-order dependence:
+    forbidden
+```
+
+The sampled different-key arm measures false merges only.
+
+### 4. Candidate normalization rules
+
+At minimum, evaluate exactly these two candidates:
+
+#### Candidate A — InChI-consistent treatment
+
+Use the fixed pipeline defined prospectively for the compatibility experiment:
+
+```text
+frozen source SMILES
+→ RDKit MolFromSmiles
+→ Standard InChI via MolToInchi() with no non-standard options
+→ RDKit MolFromInchi(Standard InChI)
+→ MolToSmiles(
+      normalized_molecule,
+      canonical=True,
+      isomericSmiles=True,
+  )
+```
+
+#### Candidate B — RDKit MolStandardize canonical-tautomer treatment
+
+Use the fixed pipeline defined prospectively for the compatibility experiment:
+
+```text
+frozen source SMILES
+→ RDKit MolFromSmiles
+→ MolStandardize.CleanupParameters()
+→ MolStandardize.cleanup(mol, params)
+→ MolStandardize.canonicalTautomer(cleaned, params)
+→ MolToSmiles(
+      normalized_molecule,
+      canonical=True,
+      isomericSmiles=True,
+  )
+```
+
+The exact runtime RDKit version used for the experiment must be recorded in the run header and is part of candidate identity.
+
+No additional candidate may replace either preregistered candidate without a separately approved methodology amendment.
+
+### 5. Pass bar
+
+A candidate passes only if:
+
+- **false merges = 0** and **false splits = 0** across all 241,148 conflicted keys; and
+- **false merges = 0** across the 10,000-pair different-key sample.
+
+There is no tolerance band.
+
+There is no post hoc adjustment.
+
+### 6. Candidate selection rule
+
+- **Both candidates pass:** select the **InChI-consistent treatment**, because D026's frozen identity authority is an InChIKey generated from InChI semantics.
+- **Exactly one candidate passes:** adopt the passing candidate.
+- **Both candidates fail:** **stop and redesign**.
+
+The pass threshold may not be loosened, redefined, or otherwise adjusted after observing results.
+
+### 7. Power statement for the sampled control arm
+
+If zero false merges are observed in the 10,000-pair sample, the conventional rule-of-three interpretation gives an approximate upper bound of:
+
+```text
+3 / 10,000 = 0.0003 = 0.03%
+```
+
+at approximately 95% confidence for the pairwise false-merge rate.
+
+This bound is reported explicitly and is **not** treated as proof of zero false merges across the full 24,238,632-record frozen population.
+
+The 10,000-pair arm is accepted as adequate only as a **generalization control**. The 241,148 conflicted keys remain the exhaustive primary compatibility test.
+
+A passing result therefore does not support a claim of demonstrated zero false merges across all 24.2 million frozen keys.
+
+### 8. Pre-test freeze
+
+The rules above are frozen before results are observed.
+
+The experiments measure the preregistered rules. They do not define, tune, or amend them.
+
+No production planner-stock run may proceed on the basis of a candidate that has not passed this preregistered compatibility test.
+
+## Scientific rationale
+
+D025 requires both planner-specific terminal-stock representations to derive from the same frozen D026/D027 molecular universe and to be proven identical at the normalized molecular-set level. D026's full 27-character InChIKey is the identity authority. Therefore compatibility must be tested against the full D026 equivalence relation rather than the connectivity-only first 14 characters.
+
+The candidate normalized identity is explicitly version-pinned canonical isomeric SMILES so that the comparison is deterministic and auditable.
+
+### Amendment — Candidate-B Normalization Failure and Sole-Identity Consequence
+
+**Decision date:** 2026-10-04  
+**Status:** Approved amendment
+
+#### Decision
+
+For D029, **any Candidate-B normalization failure, or any failure of a frozen D029 pass criterion, means Candidate B does not pass as the sole identity step for the frozen D026 molecular universe, and D030 is considered.**
+
+The trigger is outcome-based:
+
+Candidate-B normalization failure  
+**OR**  
+any failed D029 pass criterion  
+→ Candidate B does not pass as the sole identity step  
+→ D030 is considered
+
+The cause of a failure does not affect this trigger.
+
+This amendment replaces the earlier D029 Candidate-B failure-semantics draft. The earlier draft is superseded and shall not be treated as an independent or competing failure rule.
+
+#### Failure definition and diagnostic logging
+
+A Candidate-B normalization failure means either:
+
+- an exception is raised during the frozen Candidate-B normalization pipeline; or
+- the normalization completes without producing a Candidate-B identity.
+
+Every failure shall be logged with, at minimum:
+
+- D026 full InChIKey
+- source SMILES
+- candidate
+- exception type
+- exception message
+- RDKit version
+
+Each failure's key, source SMILES, error type, and error message are retained for diagnosis only. The cause or apparent chemical nature of a failure does not create an exclusion or exception to the D029 trigger.
+
+The complete Candidate-B measurement shall report the raw failure count and denominator separately over:
+
+- the conflicted-key population;
+- the source-spelling population.
+
+No numeric failure threshold is introduced.
+
+No relevance-, chemical-class-, source-status-, availability-, or “real compound”-based exclusion is introduced.
+
+#### D029 identity-comparison semantics
+
+A normalization failure does not produce a Candidate-B identity and therefore is not itself classified as a false merge or false split.
+
+The existing D029 false-merge and false-split definitions remain unchanged.
+
+Successful Candidate-B identities continue to feed those metrics exactly as before.
+
+Thus:
+
+normalization failure  
+→ logged  
+→ counts against B's sole-identity status  
+→ not a false merge  
+→ not a false split
+
+successful normalization  
+→ produces Candidate-B identity  
+→ participates in false-merge / false-split measurement
+
+#### D029 pass/fail consequence
+
+The earlier failure-semantics draft established that normalization failures must be measured and preserved separately from false merges and false splits. This amendment adds the previously open **pass/fail consequence**:
+
+> Any Candidate-B normalization failure, or any failed D029 pass criterion, means Candidate B does not pass as the sole identity step, and D030 is considered.
+
+#### Rationale
+
+The frozen Candidate-B population derives from the first-party ZINC `for-sale-25Q2.smi` source and was selected using the stored metadata predicate:
+
+mwt <= 250.0  
+logp <= 3.5  
+reactive in {30, 50}  
+purchasable >= 10
+
+The project record does not document what `purchasable >= 10` means in ZINC's own operational terms. It therefore cannot be used as a basis for a post hoc relevance exclusion.
+
+A failure to process a molecule belonging to the frozen evaluated population is therefore a compatibility failure of the defined Candidate-B identity transformation, regardless of why the failure occurred.
+
+The preserved PubChem-bare finding for:
+
+KDKCOUBAKDHIMF-UHFFFAOYSA-N
+
+is contextual diagnostic evidence only. It does not create an exclusion, relevance exception, or alternative pass criterion.
+
+#### Scope
+
+This amendment changes only the decision consequence of Candidate-B failures and failed D029 pass criteria.
+
+It does not change:
+
+- Candidate-A normalization;
+- Candidate-B normalization;
+- the D029 population;
+- the D029 sampling scheme;
+- the false-merge definition;
+- the false-split definition;
+- the treatment of successful Candidate-B identities;
+- the preserved diagnostic runs or artifacts.
+
+This decision was made before the continue-and-log Candidate-B run produced any complete failure count.
+
+
+## D029 Post-run outcome and diagnostics
+
+**Run date:** 2026-10-05
+**Status:** Measured outcome and diagnostics recorded
+
+### D029 Candidate-B final measured outcome
+
+Candidate B was evaluated over the full frozen D029 conflicted population under the pinned D026-compatible runtime:
+
+- RDKit: `2023.09.6`
+- conflicted D026 keys: `241,148`
+- conflicted source spellings: `558,907`
+- false merges: `9,975`
+- false splits: `179,219`
+- failed source spellings: `147`
+- affected D026 keys: `77`
+- overall pass: `false`
+
+The frozen 20,000-key / 10,000-pair sample is a separate diagnostic control. It contained zero Candidate-B normalization failures and zero false merges. It does not soften or override the exhaustive full-population result.
+
+Candidate B therefore failed D029 as a sole identity step.
+
+The completed run's continue-and-log failure handling is recorded as executed implementation behavior. The Candidate-B failure-acceptance rule had not been finalized before this run and therefore is not represented as having governed the observed failure handling.
+
+### Failure-log accounting reconciliation
+
+The raw TSV physical-line counts (`1,029` / `882`) are serialization artifacts and are not used as failure counts.
+
+The reconciliation used failure-record blocks delimited by lines whose first field matched a complete 27-character D026 InChIKey. Continuation or fragment lines within a block were not treated as separate failure records.
+
+Against the final structured Candidate-B conflict-results JSON, the reconciliation found:
+
+- `147` failed `(D026 full InChIKey, source SMILES)` pairs on both sides;
+- `0` JSON-only/orphan pairs;
+- `0` TSV-only/orphan pairs;
+- `77` distinct affected D026 keys.
+
+Therefore the authoritative Candidate-B failure counts are `147` failed source spellings across `77` affected D026 keys. The raw TSV line counts are retained only as serialization diagnostics.
+
+### Candidate-B failure-stage and chemistry characterization
+
+All `147` failed source spellings were replayed against the exact Candidate-B pipeline under RDKit `2023.09.6`. All `147/147` reproduced their first failure at `CanonicalTautomer`.
+
+The chemistry characterization is descriptive and overlapping rather than mutually exclusive:
+
+- nitroso: `147`
+- nitro: `140`
+- N-O single: `144`
+- nitrile: `34`
+- azide: `4`
+- azo: `4`
+
+The observed overlapping motif combinations were:
+
+- `104`: N-O single + nitro + nitroso
+- `32`: N-O single + nitrile + nitro + nitroso
+- `4`: N-O single + azide + azo + nitro + nitroso
+- `3`: nitroso
+- `2`: N-O single + nitroso
+- `2`: N-O single + nitrile + nitroso
+
+These chemistry classifications are diagnostic descriptions only. They do not create relevance exclusions, chemical-class exceptions, or a failure threshold.
+
+### RDKit 2026.03.6 diagnostic
+
+The exact `147` failed source spellings were re-parsed using the frozen source SMILES under RDKit `2026.03.6`.
+
+- failed source spellings tested: `147`
+- parse successes: `147`
+- parse failures: `0`
+
+This establishes parse success only. It does not establish successful execution of the complete Candidate-B normalization pipeline under RDKit `2026.03.6`.
+
+The diagnostic therefore supports interpreting the observed failures as runtime-dependent failures of the pinned Candidate-B layer rather than evidence that the source spellings are intrinsically unparseable.
+
+### Per-key blast-radius measurement
+
+Across the `77` D026 keys containing at least one failed source spelling:
+
+- `44` keys lost all source spellings to Candidate-B failure;
+- `33` keys retained at least one successfully normalized source spelling;
+- the `44` all-spellings-lost keys accounted for `92` failed source spellings;
+- the `33` partial-loss keys accounted for `55` failed source spellings.
+
+Thus:
+
+```text
+44 + 33 = 77 affected keys
+92 + 55 = 147 failed source spellings
+```
+
+The failure distribution per affected key was:
+
+- `11` keys with 1 failed spelling;
+- `64` keys with 2 failed spellings;
+- `2` keys with 4 failed spellings.
+
+This blast-radius analysis is descriptive population-sizing information. It does not establish or imply a numerical acceptance threshold and does not determine the D030 design direction.
+
+### D030 ASKCOS standby-routing design option
+
+The current D030 design option under consideration is ASKCOS standby routing for spellings quarantined after Candidate-B failure under the pinned RDKit `2023.09.6` identity layer.
+
+- the frozen source stock remains shared and untouched;
+- quarantined spellings may be offered to the ASKCOS witness in its own containerized runtime;
+- the relevant ASKCOS runtime uses RDKit `2026.03.6`;
+- every key routed this way receives a `witness-only` flag because AiZynthFinder cannot key those molecules under the pinned identity layer and therefore no cross-planner identity check exists for them;
+- single-planner evidence is accepted for this population.
+
+The 147-spelling RDKit `2026.03.6` diagnostic established parse success only. Its wording therefore remains **"parses under RDKit 2026.03.6"**, not "normalizes under RDKit 2026.03.6."
+
+The actual repository/revision and container image used by the deployed ASKCOS witness remain an open deployment fact to verify from the deployment itself.
+
+This ASKCOS standby-routing direction is a design option, not an adopted implementation or final D030 methodology decision.
+
+### Remaining work before D030 adoption
+
+The remaining methodology step is to formulate and review the failure/routing acceptance rule outcome-blind, generic over failure modes and prevalences, and phrased as what would have been preregistered before observing the Candidate-B result.
+
+The actual ASKCOS witness deployment repository/revision and container image remain an open deployment fact and must be established before any witness routing is implemented.
+
+D030 remains closed. No routing implementation or adoption is authorized until the acceptance rule has been formulated and reviewed.
+
+No runtime migration of the identity layer to RDKit `2026.03.6` is authorized. AiZynthFinder `4.4.1` declares an RDKit dependency in the `<2024` window; migration would reopen the D029 measurements. No D026 identity, frozen source stock, or planner stock is modified.
+
+#### Governing principle
+
+> For D029 compatibility measurements, failure of the defined Candidate-B identity step on any member of the evaluated population, or failure of any frozen D029 pass criterion, means Candidate B cannot serve as the sole identity step; the failure cause is diagnostic evidence, not a basis for exclusion.
+
+#### Revisit when
+
+Revisit only if a separately approved D029/D030 methodology changes the identity architecture or changes the authority assigned to Candidate-B compatibility failures.
+
+# D030 — ASKCOS Standby Routing for Candidate-B Identity Failures
+
+**Decision date:** 2026-10-06  
+**Status:** FROZEN DESIGN; IMPLEMENTATION DEFERRED
+
+## Decision
+
+D030 establishes the fallback identity-coverage architecture for frozen source spellings that fail the pinned Candidate-B identity layer.
+
+The frozen D026 full 27-character InChIKey remains the authoritative molecular identity. The frozen source stock remains shared and untouched. D030 does not replace, regenerate, or mutate D026 identities or frozen source representations.
+
+The D030 architecture is:
+
+1. retain all frozen source spellings;
+2. quarantine Candidate-B failures at the individual source-spelling level;
+3. offer the quarantined spellings to the ASKCOS witness;
+4. use explicit witness status and Stage-6 planner-outcome states to distinguish representation, search, stock, and execution outcomes;
+5. preserve asymmetric planner coverage for keys with partial versus complete AiZynth identity loss;
+6. derive key-level coverage and verdict states deterministically from spelling-level evidence.
+
+D030 is a fallback coverage architecture. It is not a new molecular-identity authority.
+
+## 1. Representation mode — KEEP-ALL-FORMS
+
+The quarantine unit is the **individual frozen source spelling**.
+
+Each frozen source spelling remains attached to its authoritative D026 full InChIKey. A Candidate-B normalization failure quarantines that source spelling only.
+
+No representative spelling is selected, substituted, or promoted in its place.
+
+This preserves the existing D028 planner-stock contract and does not introduce a new identity-changing representative-selection mechanism.
+
+The frozen molecular universe and frozen source stock remain unchanged.
+
+## 2. Double-failure disposition — PLANNER_UNREPRESENTED
+
+If neither planner produces a usable identity representation for a frozen source spelling, that spelling remains in the frozen molecular universe and is marked:
+
+```text
+planner_unrepresented
+```
+
+This is a **per-spelling** state.
+
+The spelling is excluded from planner coverage for that spelling, but it is never deleted from the frozen molecular universe or source stock.
+
+`planner_unrepresented` must not be labeled `not_in_stock`.
+
+`not_in_stock` is reserved for a molecule that was successfully ingested by the relevant planner and for which the subsequent stock lookup did not identify an available stock match.
+
+For a multi-spelling D026 key, other spellings may remain planner-represented even when one spelling is `planner_unrepresented`. Therefore an unrepresented spelling does not make the entire D026 key globally unrepresented when other spellings remain represented.
+
+## 3. ASKCOS witness status and `witness_only`
+
+For each frozen source spelling routed to ASKCOS, `askcos_status` has exactly one of:
+
+```text
+not_attempted
+attempted_failed
+errored
+represented
+```
+
+### `not_attempted`
+
+ASKCOS was not attempted for the spelling.
+
+Because the routing set is the frozen set of source spellings that failed AiZynth identity normalization, `not_attempted` maps at Stage 6 to:
+
+```text
+planner_unrepresented
+```
+
+### `attempted_failed`
+
+ASKCOS was attempted for the spelling but did not produce a usable ASKCOS identity/key.
+
+At Stage 6 this maps to:
+
+```text
+planner_unrepresented
+```
+
+### `errored`
+
+ASKCOS execution or infrastructure failed before a representation verdict could be produced.
+
+An execution or infrastructure error must never be converted into representation success.
+
+At Stage 6 this maps to:
+
+```text
+planner_error
+```
+
+and never sets `witness_only = true`.
+
+### `represented`
+
+ASKCOS canonicalization succeeds and produces a usable ASKCOS identity/key for the frozen source spelling.
+
+`witness_only` is true only when:
+
+```text
+askcos_status == represented
+AND
+no AiZynth identity exists for that source spelling
+```
+
+Therefore:
+
+```text
+ASKCOS attempted
+    != ASKCOS represented
+
+ASKCOS represented
+    != cross-planner concordance
+```
+
+A witness-only designation does not create or substitute an AiZynth identity.
+
+### Downstream function of `witness_only`
+
+For a `witness_only` source spelling, the **ASKCOS lane is the coverage source for that spelling**.
+
+The ASKCOS stock/route outcome for that spelling is therefore its Stage-6 planner outcome.
+
+## 4. ASKCOS routing precondition
+
+The ASKCOS routing set is exactly:
+
+> the frozen source spellings that failed AiZynth identity normalization under the pinned RDKit 2023.09.6 identity layer.
+
+The frozen source stock is not filtered, rewritten, or replaced to create the routing set.
+
+Routing operates on the quarantined source spellings while preserving their authoritative D026 identities.
+
+## 5. Stage-6 planner-outcome taxonomy
+
+Every planner output for every frozen source spelling lands in exactly one of five Stage-6 outcome classes.
+
+### `planner_unrepresented`
+
+The planner could not obtain a usable identity/representation for the frozen source spelling.
+
+This is **not** a synthesizability negative.
+
+### `in_stock`
+
+The planner obtained a qualifying route that reaches the planner's stock endpoint.
+
+### `no_route_complete`
+
+The planner completed its defined search procedure without obtaining a qualifying route that reaches the planner's stock endpoint.
+
+This is the **only** Stage-6 outcome that constitutes a genuine synthesizability negative.
+
+### `search_incomplete`
+
+The planner did not complete its defined search procedure because of a computational or execution limit such as an expansion cap or timeout.
+
+This outcome is indeterminate and is **not evidence** that the molecule lacks a synthesizable route.
+
+### `planner_error`
+
+Planner execution or infrastructure failed before a valid planner outcome could be established.
+
+This is an error/indeterminate state and is not evidence of either synthesizability or nonsynthesizability.
+
+The distinction between `no_route_complete` and `search_incomplete` is load-bearing. They must never be pooled, because doing so would convert computational limitations into claims of synthesizability failure.
+
+### Complete mapping from ASKCOS status to Stage 6
+
+```text
+not_attempted
+    -> planner_unrepresented
+
+attempted_failed
+    -> planner_unrepresented
+
+errored
+    -> planner_error
+
+represented
+    + no AiZynth identity
+    -> witness_only = true
+    -> ASKCOS supplies the spelling's Stage-6 planner outcome
+```
+
+For a `witness_only` spelling, the possible ASKCOS planner outcomes are:
+
+```text
+in_stock
+no_route_complete
+search_incomplete
+planner_error
+```
+
+A spelling that has reached `represented` does not return to `planner_unrepresented`.
+
+## 6. Flag granularity and lane routing
+
+Flags describe planner coverage and evidence. They do not themselves attrit a molecule or remove it from the frozen molecular universe.
+
+### Complete-loss keys
+
+For the 44 D026 keys that lose **all** source spellings to the pinned AiZynth identity layer, no AiZynth coverage exists for any spelling.
+
+If ASKCOS represents the routed spellings, ASKCOS becomes the coverage source for those spellings.
+
+Any key-level witness designation is **derived from the spelling-level states and is never stored as an independent key-level fact**.
+
+A complete-loss key is considered witness-only at the derived key level only when all of the source spellings supplying its planner coverage are `witness_only = true`.
+
+If neither planner represents an affected spelling, that spelling is `planner_unrepresented`.
+
+### Partial-loss keys
+
+For the 33 D026 keys that retain at least one successfully normalized AiZynth spelling:
+
+- the key remains on the primary AiZynthFinder Stage-6 lane through its surviving spellings;
+- failed/quarantined spellings carry per-spelling ASKCOS/witness states;
+- a successfully represented quarantined spelling may receive `witness_only = true`;
+- the key itself does not receive a blanket `witness_only` designation merely because one spelling failed.
+
+Thus a partial-loss key may retain AiZynth primary coverage while also carrying ASKCOS witness evidence for individual affected spellings.
+
+## 7. Key-level Stage-6 aggregation
+
+Stage-6 planner outcomes are assigned per source spelling. Key-level coverage and verdicts are deterministic derivations from those spelling-level outcomes and are not stored as independent evidence.
+
+For each D026 key:
+
+### Stock-covered
+
+A key is stock-covered if at least one represented source spelling, through either planner lane, has Stage-6 outcome:
+
+```text
+in_stock
+```
+
+An `in_stock` spelling therefore establishes stock coverage for the key regardless of non-positive or indeterminate outcomes on other spellings.
+
+### Genuine synthesizability negative
+
+A key is a genuine synthesizability negative only when:
+
+1. at least one source spelling has planner representation;
+2. every represented source spelling has outcome `no_route_complete`; and
+3. no represented spelling has outcome `in_stock`, `search_incomplete`, or `planner_error`.
+
+Thus a key-level synthesizability negative requires completed negative searches across **all represented spellings**.
+
+### Search indeterminate
+
+If no `in_stock` spelling exists and any represented spelling has outcome `search_incomplete`, the key retains an indeterminate search state.
+
+A `search_incomplete` spelling must never be converted into `no_route_complete` during key-level aggregation.
+
+### Planner error / indeterminate
+
+If no `in_stock` spelling exists and any represented spelling has outcome `planner_error`, the key retains an error/indeterminate state.
+
+A planner error must never be converted into either `planner_unrepresented` or `no_route_complete`.
+
+### Mixed represented outcomes
+
+When represented spellings have different non-positive outcomes, the key retains the corresponding mixed/indeterminate state.
+
+Mixed outcomes must not be collapsed into a stronger synthesizability negative.
+
+### No planner representation
+
+A key is `planner_unrepresented` at the derived key level only when **no source spelling has planner representation**.
+
+A partial-loss key therefore cannot become globally `planner_unrepresented` merely because one or more spellings are unrepresented.
+
+## 8. D029 evidence informing D030
+
+The completed D029 Candidate-B run under RDKit `2023.09.6` measured:
+
+```text
+241,148 conflicted D026 keys
+558,907 conflicted source spellings
+9,975 false merges
+179,219 false splits
+147 failed source spellings
+77 affected D026 keys
+overall pass = false
+```
+
+The frozen 20,000-key / 10,000-pair sample had zero normalization failures and zero false merges. It remains a separate diagnostic and does not soften the exhaustive full-population result.
+
+Candidate B therefore failed D029 as a sole identity step.
+
+The completed run's continue-and-log failure handling is recorded as executed implementation behavior. The eventual failure/routing rule did not govern that completed run.
+
+### Failure-log reconciliation
+
+The raw TSV physical-line counts (`1,029` / `882`) are serialization artifacts and are not failure counts.
+
+Failure-record blocks were delimited by lines whose first field matched a complete 27-character D026 InChIKey. Continuation or fragment lines within a block were not treated as separate failure records.
+
+Structured reconciliation against the final Candidate-B conflict-results JSON established:
+
+```text
+147 failed (D026 key, source SMILES) pairs in the JSON
+147 corresponding failure-record blocks in the TSV
+147 unique failure pairs in the TSV
+0 JSON-only/orphan pairs
+0 TSV-only/orphan pairs
+77 affected D026 keys
+```
+
+The authoritative failure counts are therefore 147 failed source spellings across 77 affected D026 keys.
+
+### Failure-stage and chemistry characterization
+
+All 147 failed source spellings were replayed against the exact Candidate-B pipeline under RDKit `2023.09.6`.
+
+All `147/147` reproduced their first failure at:
+
+```text
+CanonicalTautomer
+```
+
+The descriptive, overlapping chemistry characterization was:
+
+```text
+nitroso:      147
+nitro:        140
+N-O single:   144
+nitrile:       34
+azide:          4
+azo:            4
+```
+
+These chemistry classifications are diagnostic only and do not create chemical-class exclusions, exceptions, or thresholds.
+
+## 9. Runtime qualification
+
+AiZynthFinder `4.4.1` declares an RDKit dependency of:
+
+```text
+^2023.9.1
+>=2023.9.1,<2024
+```
+
+The D026/D029 identity-layer pin to RDKit `2023.09.6` lies within that supported window.
+
+The exact 147 failed source spellings were subsequently re-parsed under RDKit `2026.03.6`:
+
+```text
+147 tested
+147 parse successes
+0 parse failures
+```
+
+This establishes **parse success only**. It does not establish successful execution of the complete Candidate-B normalization pipeline under RDKit `2026.03.6`.
+
+The result supports interpretation of the observed failures as a version artifact of the pinned identity layer rather than evidence of broken chemistry or intrinsically unparseable source spellings.
+
+The official ASKCOS v2 source is:
+
+```text
+gitlab mlpds_mit/askcosv2
+```
+
+and pins:
+
+```text
+rdkit==2026.3.6
+```
+
+The FourThievesVinegar fork's RDKit `2023.03.3` pin is not treated as authoritative for this project.
+
+The actual repository/revision and container image used by the deployed ASKCOS witness remain an open deployment fact and must be established from the deployment itself before witness routing is implemented.
+
+## 10. Per-key blast-radius reference
+
+The completed D029 failure population has:
+
+```text
+147 unresolved source spellings
+77 affected D026 keys
+44 total-loss keys
+33 partial-loss keys
+```
+
+The 44 total-loss keys account for 92 failed source spellings.
+
+The 33 partial-loss keys account for 55 failed source spellings.
+
+Therefore:
+
+```text
+44 + 33 = 77 affected keys
+92 + 55 = 147 failed source spellings
+```
+
+The failure distribution per affected key was:
+
+```text
+11 keys with 1 failed spelling
+64 keys with 2 failed spellings
+2 keys with 4 failed spellings
+```
+
+These counts are descriptive population-sizing measurements, not numerical acceptance thresholds.
+
+The eventual `planner_unrepresented` population is not known until the ASKCOS witness is run and is bounded above by the 147 quarantined spellings.
+
+## 11. Outcome-blind routing rule
+
+The routing and disposition architecture is defined independently of the observed prevalence, chemistry, or specific exception type of the D029 failures.
+
+For any frozen source spelling:
+
+```text
+AiZynth identity normalization succeeds
+    -> spelling remains represented on the AiZynth lane
+
+AiZynth identity normalization fails
+    -> spelling remains in frozen molecular universe
+    -> spelling is quarantined from AiZynth-dependent identity use
+    -> spelling enters ASKCOS standby routing set
+```
+
+ASKCOS disposition then follows the frozen witness-status vocabulary:
+
+```text
+not_attempted
+    -> planner_unrepresented
+
+attempted_failed
+    -> planner_unrepresented
+
+errored
+    -> planner_error
+
+represented
+    + no AiZynth identity
+    -> witness_only = true
+    -> ASKCOS lane supplies planner coverage/outcome
+```
+
+No numerical failure tolerance is introduced.
+
+No failure-mode-, chemical-class-, source-status-, availability-, or apparent-relevance-based exception is introduced.
+
+The observed counts of 147 failed spellings, 77 affected keys, and the 44/33 blast-radius split are not routing thresholds.
+
+This rule is recorded as the outcome-blind rule that would have been appropriate to preregister before observing the Candidate-B result. It must not be represented as having governed the completed D029 run.
+
+## 12. Authority and explicit non-decisions
+
+D030 does not:
+
+- replace the D026 full InChIKey identity authority;
+- migrate the identity layer to RDKit `2026.03.6`;
+- mutate D026;
+- mutate the frozen source stock;
+- select or substitute representative source spellings;
+- treat parse success under RDKit `2026.03.6` as proof of successful Candidate-B normalization;
+- treat `planner_unrepresented` as a synthesizability negative;
+- pool `no_route_complete` with `search_incomplete`;
+- convert planner or infrastructure errors into representation failures;
+- convert `search_incomplete` into a synthesizability negative;
+- grant diagnostic or routing flags independent attrition authority;
+- infer cross-planner concordance for witness-only spellings.
+
+AiZynthFinder `4.4.1` requires RDKit `<2024`. Migration of the identity layer to RDKit `2026.03.6` is therefore not authorized and would reopen the D029 compatibility measurements.
+
+## 13. Implementation status
+
+The ASKCOS standby-routing architecture and the five D030 review items are frozen as the D030 design.
+
+Implementation remains deferred.
+
+Before implementation, the actual ASKCOS witness repository/revision and container image must be established from the deployment itself.
+
+No planner-stock mutation, D026 mutation, identity-layer migration, or routing implementation is authorized merely by this record.
+
+## Governing principle
+
+Preserve the frozen molecular universe and authoritative D026 identity while distinguishing source-spelling representation, planner coverage, witness evidence, search completion, stock outcome, and execution error.
+
+Spelling-level evidence is authoritative for its own state. Key-level coverage, witness designation, and Stage-6 verdicts are deterministic derivations from spelling-level evidence and are not independently stored facts.
+
+Flags describe evidence and routing state; they do not silently acquire attrition authority.
+
+## Revisit when
+
+Revisit only if a separately approved methodology changes the D026 identity authority, source-spelling quarantine unit, planner coverage semantics, ASKCOS representation criterion, witness-only authority, Stage-6 outcome taxonomy, key-level aggregation rule, or the role assigned to planner-specific identity representations.

@@ -19,3 +19,12 @@ __pycache__/
 
 # VSCode settings
 .vscode/
+# Local docking scratch workspace
+/local_dock_debug/
+
+# External AMSOL compatibility runtime payload
+/references/stage5/dock385/3REY/xac_canonical_db2/amsol_runtime/compat-libf2c-34-3.4.6-32.el7.x86_64.rpm
+/references/stage5/dock385/3REY/xac_canonical_db2/amsol_runtime/extracted/
+
+# External D025 ZINC stock source
+/references/stage6/d025_shared_stock/source/zinc_stock.hdf5

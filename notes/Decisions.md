@@ -7560,7 +7560,7 @@ Revisit only if a separately approved D029/D030 methodology changes the identity
 # D030 — ASKCOS Standby Routing for Candidate-B Identity Failures
 
 **Decision date:** 2026-10-06  
-**Status:** FROZEN DESIGN; IMPLEMENTATION DEFERRED
+**Status:** FROZEN DESIGN; IMPLEMENTATION IN PROGRESS
 
 ## Decision
 
@@ -7933,7 +7933,160 @@ rdkit==2026.3.6
 
 The FourThievesVinegar fork's RDKit `2023.03.3` pin is not treated as authoritative for this project.
 
-The actual repository/revision and container image used by the deployed ASKCOS witness remain an open deployment fact and must be established from the deployment itself before witness routing is implemented.
+### Native ASKCOS representation-runtime amendment — approved 2026-10-09
+
+For the D030 ASKCOS standby lane, molecular representation is defined by the **native molecular representation path of the frozen ASKCOS witness image**, rather than by an externally imposed RDKit `2026.03.6` representation step.
+
+The frozen witness artifact is:
+
+```text
+Image:
+askcos/askcos@sha256:85ae3c1bc0ccaec71b10d157d467763eda0ab604f96565978ddec93a059f03a0
+
+Image ID:
+sha256:551d90c9bf090e992fb971daf95e0cd5f38baf75d4938a4188d25e8de4383f91
+
+Python:
+3.5.9
+
+RDKit:
+2019.03.4
+
+Architecture:
+linux/amd64
+```
+
+A frozen source spelling routed to ASKCOS is `represented` if and only if the frozen ASKCOS runtime successfully performs its native planner-entry representation operation:
+
+```python
+mol = Chem.MolFromSmiles(source_spelling)
+canonical_smiles = Chem.MolToSmiles(mol)
+```
+
+The `Chem.MolToSmiles(mol)` call deliberately uses the **runtime default**, exactly matching the ASKCOS API-entry implementation. No explicit `isomericSmiles` argument is supplied at that API boundary.
+
+No external preprocessing, canonicalization, salt stripping, fragment selection, neutralization, tautomer normalization, stereochemistry removal, or newer-RDKit representation may substitute for successful representation by the frozen ASKCOS runtime.
+
+If `Chem.MolFromSmiles` fails, or native canonicalization cannot be completed, that source spelling receives:
+
+```text
+ASKCOS status = attempted_failed
+D030 representation outcome = planner_unrepresented
+```
+
+If native representation succeeds:
+
+```text
+ASKCOS status = represented
+```
+
+and the spelling may proceed to the ASKCOS planner lane under the existing D030 routing and outcome rules.
+
+#### Native canonicalization signature and stereochemical qualification
+
+The ASKCOS API-entry source was inspected before the representation pilot. Its target-entry path calls:
+
+```python
+mol = Chem.MolFromSmiles(orig_smiles)
+...
+smiles = Chem.MolToSmiles(mol)
+```
+
+Thus, the planner entry uses default `Chem.MolToSmiles(mol)` behavior rather than supplying an explicit `isomericSmiles` setting.
+
+The frozen witness runtime's `Chem.MolToSmiles` signature was then inspected directly under RDKit `2019.03.4`. Its first optional boolean argument, `isomericSmiles`, defaults to `True`.
+
+This was additionally verified empirically in the same frozen image using the stereochemical probe:
+
+```text
+Input:
+C[C@H](O)F
+
+Chem.MolToSmiles(mol):
+C[C@H](O)F
+
+Chem.MolToSmiles(mol, isomericSmiles=True):
+C[C@H](O)F
+
+Chem.MolToSmiles(mol, isomericSmiles=False):
+CC(O)F
+```
+
+Therefore, for this frozen runtime and probe, the literal default operation exercised by the ASKCOS API entry preserved stereochemistry and agreed with the explicit `isomericSmiles=True` operation, while explicit `isomericSmiles=False` removed the stereochemical specification.
+
+The representation pilot consequently used the literal:
+
+```python
+Chem.MolToSmiles(mol)
+```
+
+rather than replacing the planner's call with an explicitly parameterized variant.
+
+#### Native representation pilot
+
+The representation pilot used exactly the frozen D030 routing population derived from the authoritative D029 Candidate-B results:
+
+```text
+147 unique (D026 key, source spelling) pairs
+77 distinct D026 keys
+```
+
+The frozen source spellings were passed **verbatim** to the immutable ASKCOS image. No external molecular transformation was performed before the native representation operation.
+
+The result was:
+
+```text
+represented:         147 / 147
+attempted_failed:      0 / 147
+representation rate: 100%
+```
+
+Therefore, all 147 Candidate-B-failing source spellings are representable by the frozen native ASKCOS runtime and are eligible to proceed to ASKCOS planner execution.
+
+This result establishes **representation only**. It does not establish stock membership, route existence, synthesizability, search completeness, or any other downstream Stage-6 outcome.
+
+#### Preserved evidence and provenance
+
+The representation-pilot artifacts are preserved at:
+
+```text
+/nfs/home/mhuang/stage6_planner_stock_production_2026-10-01/d030_askcos_native_representation_pilot_2026-10-09/
+```
+
+with SHA-256 hashes:
+
+```text
+624e7ebf1b253794b2c0329acc21e7b328ecadc90c2ec286c8dce62a700abaf2  d030_askcos_native_representation_input.json
+6aa5e5620a17b5645139b308a0aa9e5eae47110d3f6a132f628190a5dc5024a1  results.json
+4993bd6a3d228a88debef1029191dd0acd208e5e838221322628ff2859bea22f  results.tsv
+a232312dc1d97bb5cc3c5823893ac7eaf5072ed3b7550d77ae64224c4299e6dd  summary.json
+```
+
+All four preserved pilot artifacts passed `sha256sum -c`.
+
+The API-source inspection, runtime `MolToSmiles` signature inspection, and stereochemical probe described above were performed directly against the same digest-pinned ASKCOS image before the 147-spelling pilot. The stereochemical probe was an interactive qualification check and is recorded explicitly in this amendment; it is **not contained in the four hashed pilot artifacts listed above**. The hashed artifacts preserve the subsequent 147-spelling representation pilot itself.
+
+#### Scope of amendment
+
+This amendment changes only the **ASKCOS witness representation implementation**: the earlier RDKit `2026.03.6` assumption, which arose from the ASKCOSv2 implementation path, is replaced by the native representation runtime of the now-selected immutable **original-ASKCOS witness image**.
+
+This amendment does **not** change:
+
+- D026 as the sole authoritative molecular identity;
+- the frozen set of spellings routed to the ASKCOS standby lane;
+- KEEP-ALL-FORMS per-spelling quarantine;
+- the four-state ASKCOS status model;
+- `witness_only` semantics;
+- the distinction between `planner_unrepresented` and `not_in_stock`;
+- the five mutually exclusive Stage-6 planner outcomes;
+- key-level aggregation rules;
+- the outcome-blind routing rule;
+- the prohibition on ASKCOS changing D026 identity; or
+- the absence of independent attrition authority for flags.
+
+A planner's representation capability must be measured using the molecular representation machinery actually exercised by that frozen planner runtime. Representation by a different external toolkit version cannot substitute for representation by the planner itself.
+
+This amendment should be revisited only if the frozen ASKCOS witness image changes, its image digest changes, its native molecular-representation path changes, or a different ASKCOS/planner implementation is proposed for D030 witness authority.
 
 ## 10. Per-key blast-radius reference
 
@@ -8032,13 +8185,17 @@ AiZynthFinder `4.4.1` requires RDKit `<2024`. Migration of the identity layer to
 
 ## 13. Implementation status
 
-The ASKCOS standby-routing architecture and the five D030 review items are frozen as the D030 design.
+The ASKCOS standby-routing architecture and the five D030 review items remain frozen as the D030 design.
 
-Implementation remains deferred.
+The native-runtime amendment was approved and frozen on 2026-10-09. The original-ASKCOS witness image, immutable image digest, native runtime, representation boundary, and representation-pilot result are established in Section 9.
 
-Before implementation, the actual ASKCOS witness repository/revision and container image must be established from the deployment itself.
+The frozen D030 routing population has completed native-runtime representation qualification: all 147 Candidate-B-failing source spellings across 77 affected D026 keys were represented successfully by the frozen ASKCOS witness runtime, with 0 `attempted_failed` spellings.
 
-No planner-stock mutation, D026 mutation, identity-layer migration, or routing implementation is authorized merely by this record.
+Stage-6 deployment implementation is now **in progress**. The remaining implementation work includes packaging the frozen witness artifact for the execution environment, qualifying that packaged artifact against the frozen runtime, deploying it on CoreHPC, and executing the downstream ASKCOS planner lane under the existing D030 routing and outcome architecture.
+
+Completion of representation qualification does not establish stock membership, route existence, synthesizability, search completeness, or any other downstream Stage-6 planner outcome.
+
+No planner-stock mutation, D026 mutation, identity-layer migration, or change to the frozen routing, authority, status, outcome, or aggregation rules is authorized by the deployment implementation.
 
 ## Governing principle
 

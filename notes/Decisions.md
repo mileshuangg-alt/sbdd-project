@@ -8197,6 +8197,20 @@ Completion of representation qualification does not establish stock membership, 
 
 No planner-stock mutation, D026 mutation, identity-layer migration, or change to the frozen routing, authority, status, outcome, or aggregation rules is authorized by the deployment implementation.
 
+Original-ASKCOS local-execution instrumentation amendment — 2026-10-09
+The canonical digest-pinned original-ASKCOS Docker/SIF artifact remains immutable. D030 planner execution may use a separately versioned derived execution layer containing only the minimum instrumentation and bookkeeping repairs required to preserve the frozen Stage-6 outcome semantics.
+The derived execution layer may:
+1. repair execution-mode-specific bookkeeping in the local MCTS(celery=False) path so that local search exhaustion is evaluated from local multiprocessing state rather than Celery-only pending_results;
+2. record the native reason the existing MCTS coordination loop terminates;
+3. preserve template-expansion exceptions as explicit execution errors rather than converting them into ordinary zero-precursor outcomes; and
+4. expose this execution evidence as a separate structured run-status artifact without changing the legacy tree_status return structure.
+The derived execution layer must not alter molecular representation, rdchiral behavior, template libraries or template selection, relevance predictions, precursor generation, fast filtering, MCTS/UCB selection, buyability determination, stock membership semantics, depth or branching limits, search-time limits, route extraction, route ranking, or any other scientific search behavior.
+For local multiprocessing execution, native search exhaustion is observed only when the existing selector has no active pathway remaining and every submitted local expansion has returned, operationalized by all active_pathways being empty and all active_pathways_pending counters being zero. This records exhaustion under the configured ASKCOS search space; it does not assert universal absence of a synthetic route.
+Natural expiration of expansion_time is recorded as time_limit. An intentional return_first exit is recorded separately as return_first. Any exception arising during a submitted template expansion is preserved with its exception type/message and causes the run to be recorded as an execution error rather than allowing that expansion to masquerade as an ordinary zero-precursor result.
+A legitimate, successfully executed template application that produces zero precursors retains its original behavior and is not an execution error.
+These instrumentation states are measurements. Mapping them to the frozen D030 Stage-6 outcome taxonomy remains outside the ASKCOS planner and retains the authority already specified by D030. In particular, an empty route set alone is never sufficient evidence for no_route_complete.
+The original frozen ASKCOS image/SIF remains the provenance anchor. Any derived execution artifact must have its exact source delta, build procedure, hashes, and qualification results recorded separately before receiving Stage-6 production authority.
+
 ## Governing principle
 
 Preserve the frozen molecular universe and authoritative D026 identity while distinguishing source-spelling representation, planner coverage, witness evidence, search completion, stock outcome, and execution error.

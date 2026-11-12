@@ -1,0 +1,100 @@
+{
+  "qualification": "session016_native_binary_quadratic_representation",
+  "status": "qualified_for_representation_and_construction",
+  "scientific_authority": {
+    "production_split_authorized": false,
+    "real_data_used": false,
+    "optimization_performance_qualified": false,
+    "global_optimality_required": false
+  },
+  "backend": {
+    "primary_candidate": "Gurobi",
+    "gurobi_version": "14.0.0",
+    "python_version": "3.12.16",
+    "license_type": "Academic WLS",
+    "qualified_host": "gpu-dev1 / n4pu04",
+    "fallback_backend": "SCIP"
+  },
+  "representation": {
+    "type": "native_binary_quadratic",
+    "immutable_family_assignment": true,
+    "molecular_count_weights_preserved": true,
+    "numeric_endpoint_counts": [
+      "pka",
+      "clearance"
+    ],
+    "additional_coarsening": false,
+    "pair_pruning": false,
+    "similarity_approximation": false,
+    "overflow": false,
+    "objective": "maximize exact within-partition weighted family similarity, algebraically equivalent to minimizing approved cross-partition leakage"
+  },
+  "tiny_equivalence_qualification": {
+    "stage_a": {
+      "partitions": 2,
+      "families": 4,
+      "assignments_exhaustively_checked": 16,
+      "objective_equivalence_passed": true,
+      "native_quadratic_coefficients_verified": true,
+      "native_linear_constraints_verified": true,
+      "gurobi_optimum_matches_exhaustive_reference": true,
+      "returned_assignment_independently_feasible": true
+    },
+    "stage_b": {
+      "partitions": 5,
+      "families": 5,
+      "assignments_exhaustively_checked": 3125,
+      "feasible_assignments": 1140,
+      "infeasible_assignments": 1985,
+      "best_reference_leakage": 119.20999999999998,
+      "minimizing_assignments": 60,
+      "objective_equivalence_passed": true,
+      "native_quadratic_coefficients_verified": true,
+      "native_linear_constraints_verified": true,
+      "gurobi_optimum_matches_exhaustive_reference": true,
+      "returned_assignment_independently_feasible": true,
+      "fixture_bounds_have_production_authority": false
+    }
+  },
+  "construction_only_qualification": {
+    "optimization_performed": false,
+    "n100": {
+      "families": 100,
+      "binary_variables": 200,
+      "linear_constraints": 112,
+      "quadratic_terms": 9900,
+      "elapsed_seconds": 0.34488413797225803,
+      "rss_before_bytes": 16281600,
+      "rss_after_bytes": 35098624,
+      "peak_rss_bytes": 35098624,
+      "rss_sample_count": 8,
+      "solution_count": 0
+    },
+    "n500": {
+      "families": 500,
+      "binary_variables": 1000,
+      "linear_constraints": 512,
+      "quadratic_terms": 249500,
+      "elapsed_seconds": 1.0773003570502624,
+      "rss_before_bytes": 16068608,
+      "rss_after_bytes": 83038208,
+      "peak_rss_bytes": 83038208,
+      "rss_sample_count": 15,
+      "solution_count": 0
+    }
+  },
+  "comparison_boundary": {
+    "datasail_cvxpy_probe_closed_at": "P1 / 500 synthetic families",
+    "comparison_is_cross_host": true,
+    "controlled_speedup_claim_authorized": false,
+    "conclusion": "The literal uncoarsened CVXPY representation remained executable at 500 synthetic families, but its measured representation costs justified investigating a more direct formulation. The native binary-quadratic representation passed exact tiny-fixture equivalence qualification and constructed the synthetic N=100 and N=500 models with low measured front-end cost. This does not establish full-scale feasibility or optimization performance."
+  },
+  "remaining_open_questions": [
+    "real family-only hard-group construction",
+    "real molecular similarity construction",
+    "production size and endpoint-coverage tolerances",
+    "bounded Gurobi optimization behavior on the real formulation",
+    "independent hard-constraint validation of any real returned assignment",
+    "constrained-random leakage-comparison protocol"
+  ]
+}

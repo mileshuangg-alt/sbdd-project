@@ -28,3 +28,7 @@ __pycache__/
 
 # External D025 ZINC stock source
 /references/stage6/d025_shared_stock/source/zinc_stock.hdf5
+
+# Session 016 deployment/source bundles; canonical extracted files are tracked.
+session016_alias_grouping_payload.tar.gz
+admet/data/source/admet-source-bundle-v5.zip

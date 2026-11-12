@@ -1,0 +1,701 @@
+Supplemental Tables and Figures:
+
+
+Predicting hepatotoxicity using ToxCast in vitro bioactivity
+
+and chemical structure
+
+Jie Liu,†,‡,# Kamel Mansouri,†,# Richard S. Judson,† Matthew T. Martin,† Huixiao Hong, §
+
+Minjun Chen,§ Xiaowei Xu,‡,§ Russell S. Thomas,† Imran Shah*,†
+
+Keywords: machine learning, bioactivity, hybrid descriptors, QSAR, hepatotoxicity.
+
+
+
+†
+National Center for Computational Toxicology, Office of Research and Development, U.S.
+
+Environmental Protection Agency, Research Triangle Park, NC, 27711, USA.
+
+‡
+Department of Information Science, University of Arkansas at Little Rock, AR, 72204, USA.
+
+#
+Oak Ridge Institute for Science and Education, Oak Ridge, TN 37831.
+
+§
+Division of Bioinformatics and Biostatistics, National Center for Toxicological Research, U.S.
+
+Food and Drug Administration, 3900 NCTR Road, Jefferson, AR, 72079, USA
+
+
+
+*Corresponding author information:
+
+Imran Shah: shah.imran@epa.gov
+
+
+
+
+Jie Liu: liu.jie@epa.gov; Kamel Mansouri: mansouri.kamel@epa.gov; Richard S. Judson:
+
+judson.richard@epa.gov; Matthew T. Martin: martin.matt@epa.gov; Huixiao Hong:
+
+huixiao.hong@fda.hhs.gov; Minjun Chen: minjun.chen@fda.hhs.gov; Xiaowei Xu:
+
+xwxu@ualr.edu; Russell S. Thomas: thomas.russell@epa.gov; Imran Shah:
+
+shah.imran@epa.gov.
+
+                                                                                                 1
+                                      Table of contents
+
+        Table S1 description ------------------------------------------------ Page 3
+
+        Table S2 description ------------------------------------------------ Page 3 - 4
+
+        Table S3 description ------------------------------------------------ Page 4
+
+        Table S4 description ------------------------------------------------ Page 4
+
+        Table S5 description ------------------------------------------------ Page 4 - 5
+
+        Figure S1 description ------------------------------------------------ Page 5
+
+        Table S1                   ------------------------------------------------ Page 6 - 9
+
+        Table S2                   ------------------------------------------------ Page 10
+
+        Table S3                   ------------------------------------------------ Page 11
+
+        Table S4                   ------------------------------------------------ Page 12 - 14
+
+        Table S5                   ----------------------------------------------- Page 15
+
+        Figure S1                  ------------------------------------------------ Page 16
+
+
+
+
+Disclaimer: The views expressed in this article are those of the authors and do not necessarily reflect
+
+the views or policies of the U.S. Environmental Protection Agency and the US Food and Drug
+
+Administration. Mention of trade names or commercial products does not constitute endorsement or
+
+recommendation for use.
+
+
+
+                                                                                                          2
+Table S1. The liver effects and curated corresponding lesion categories. The table lists
+
+145 liver histopathology endpoints observed in rats after chronic oral administration of
+
+the test chemicals in ToxRefDB and their corresponding three broad categories,
+
+including hypertrophy, injury and proliferative lesions, based on the terminology defined
+
+by domain experts.
+
+
+
+
+Table S2. The maximum predictive performance of different classification methods for
+
+the balanced data. The table summarizes the results of 10-fold cross-validation testing
+
+for the three imbalanced data sets (Toxicity) including: hypertrophy (Hyp), injury (Inj),
+
+and proliferative lesions (Pro). The results are broken down by different classification
+
+algorithms (Classifier) including: linear discriminant analysis (LDA), support vector
+
+classifier with linear kernel (SVCL0), support vector classifier with radial basis function
+
+kernel (SVCR0), Naïve Bayes (NB), classification and regression trees (CART0), k-
+
+nearest neighbor classification (KNN1) and an ensemble of all classifiers (ENSMB). The
+
+results for each data set and classification method are summarized by the mean
+
+balanced accuracy (BA), the number of descriptors that produced the best BA, mean
+
+sensitivity and mean specificity. The standard deviation is given in parentheses. The
+
+performance results for three types of descriptors are shown: chemical structure
+
+descriptors (CHM), ToxCast bioactivity descriptors (BIO), and hybrid chemical and
+
+bioactivity descriptors (BC). For instance, the first row shows the 10-fold cross-
+
+validation testing performance for predicting rat liver hypertrophy by CART0 using the
+
+imbalanced data sets. The maximum BA of CART0 for predicting hypertrophy was 0.81,
+
+0.79, 0.80 using 45 hybrid descriptors, 60 bioactivity descriptors, and 55 chemical
+
+
+                                                                                              3
+descriptors, respectively. Furthermore, the mean sensitivity/specificity for the hybrid,
+
+bioactivity and chemical by CART0 was 0.80/0.84, 0.73/0.89, and 0.81/0.80,
+
+respectively.
+
+
+
+
+Table S3. 36 bioactivity descriptors most frequently used in classifiers. The table lists
+
+the detailed information for the 36 bioactivity descriptors, including the cluster group of
+
+the heatmap (Figure 4), assay technology platform, assay target gene, assay target
+
+family, and the cell line was used for the assay.
+
+
+
+
+Table S4. 55 chemical descriptors most frequently used in classifiers. The table lists the
+
+detailed information for the 55 chemical descriptors, including the cluster group of the
+
+heatmap (Figure 5), descriptor source, descriptor SMARTS string and graph for the
+
+general structure.
+
+
+
+
+Table S5. The maximum predictive performance of different classification methods for
+
+the imbalanced ToxCast Phase I data. The table summarizes the results of 10-fold
+
+cross-validation testing for the three imbalanced data sets (Toxicity) including:
+
+hypertrophy (Hyp), injury (Inj), and proliferative lesions (Pro). The results are broken
+
+down by different classification algorithms (Classifier) including: linear discriminant
+
+analysis (LDA), support vector classifier with linear kernel (SVCL0), support vector
+
+classifier with radial basis function kernel (SVCR0), Naïve Bayes (NB), classification
+
+and regression trees (CART0), k-nearest neighbor (KNN1) and an ensemble of all
+
+                                                                                              4
+classifiers (ENSMB). The results for each data set and classification method are
+
+summarized by the mean balanced accuracy (BA), the number of descriptors that
+
+produced the best BA, mean sensitivity and mean specificity. The standard deviation is
+
+given in parentheses. The performance results for three types of descriptors are shown:
+
+chemical structure descriptors (CHM), ToxCast bioactivity descriptors (BIO), and hybrid
+
+chemical and bioactivity descriptors (BC).
+
+
+
+
+Figure S1. Cross-validation performance results using ToxCast Phase I data only. The
+
+figure shows the 10-fold cross-validation performance results for the three data sets
+
+(rows) including: hypertrophy (Hyp), injury (Inj), and proliferative lesions (Pro), and three
+
+types of descriptors (columns) including: chemical structure descriptors (chm), ToxCast
+
+bioactivity descriptors (bio), and hybrid chemical and bioactivity descriptors (bc). The x-
+
+axis shows the number of descriptors ( N d ) and the y-axis shows the balanced
+
+accuracy (Bal Acc). Each curve shows the relationship between the balanced accuracy
+
+and number of descriptors for different classification algorithms including: linear
+
+discriminant analysis (LDA), support vector classifier with linear kernel (SVCL0), support
+
+vector classifier with radial basis function kernel (SVCR0), Naïve Bayes (NB),
+
+classification and regression trees (CART0), k-nearest neighbor classification (KNN1)
+
+and an ensemble of all classifiers (ENSMB). The number of observations ( N obs ) used
+
+for each data set are shown in the title.
+
+
+
+
+                                                                                              5
+Table S1.
+
+
+                           Effect                                  Category
+                            Absolute                               Hypertrophy
+                 Accentuated Lobular Pattern                           Injury
+                       Adenocarcinoma                           Proliferative lesion
+                            Adenoma                             Proliferative lesion
+               Adenoma/Carcinoma Combined                       Proliferative lesion
+                           Angiectasis                                 Injury
+                            Apoptosis                                  Injury
+                       areas of collapse                               Injury
+                             Arteritis                                 Injury
+                             Atrophy                                   Injury
+                         Atypia Cellular                        Proliferative lesion
+                         Atypia Nuclear                         Proliferative lesion
+                         Atypical Focus                         Proliferative lesion
+                            Autolysis                                  Injury
+                       Basophilic Focus                         Proliferative lesion
+                    Benign liver cell tumors                    Proliferative lesion
+                           Carcinoma                            Proliferative lesion
+                        Carcinoma NOS                           Proliferative lesion
+                       Cellular Alteration                      Proliferative lesion
+                      Cholangiocarcinoma                        Proliferative lesion
+                         Cholangioma                            Proliferative lesion
+                       Clear Cell Focus                         Proliferative lesion
+   Collapsed interlobular stroma; 1 male; In area of necrosis          Injury
+                           Congestion                                  Injury
+                      Cytologic Alterations                            Injury
+                          Cytomegaly                               Hypertrophy
+                     Cytoplasmic Alteration                     Proliferative lesion
+                            Deformity                                  Injury
+                         Degeneration                                  Injury
+                      Depletion Glycogen                               Injury
+                Diffuse Hepatocellular swelling                        Injury
+                            Dilatation                                 Injury
+                  Disassociation of liver cells                        Injury
+                           Discolored                                  Injury
+             Dissociation of hepatocellular cords                      Injury
+                 dissociation of liver cell plates                     Injury
+                           Distended                               Hypertrophy
+                            Dysplasia                                  Injury
+                             Ectasia                                   Injury
+
+                                                                                       6
+                            Edema                                    Injury
+                      enzyme induction                           Hypertrophy
+                     Eosinophilic Focus                       Proliferative lesion
+                    Erythrophagocytosis                              Injury
+                   Foam Cell Aggregation                             Injury
+                      Focal acidophilic                       Proliferative lesion
+                   Focal Cellular Change                      Proliferative lesion
+                      Focal coagulation                              Injury
+                           Giant Cell                                Injury
+                    Glycogen Deposition                              Injury
+                    Glycogen Liberation                              Injury
+              granular amphophilic cytoplasm                         Injury
+                         Granulation                                 Injury
+               Granules - Terminal sacrifice                         Injury
+                          Granuloma                                  Injury
+                  Granulomatous Hepatitis                            Injury
+                 Ground Glass appearance                             Injury
+                        Hemangioma                            Proliferative lesion
+                     Hemangiosarcoma                          Proliferative lesion
+              Hematopoietic Cell Proliferation                Proliferative lesion
+        Hematopoietic Cell Proliferation Erythrocytic                Injury
+       Hematopoietic Cell Proliferation Granulocytic          Proliferative lesion
+                         Hemorrhage                                  Injury
+             Hemosiderin Laden Macrophages                           Injury
+                       Hemosiderosis                                 Injury
+hepatic disfunction, considered secondary to hepatocellular
+                             injury                                  Injury
+  hepatic dysfunction, secondary to hepatocellular injury            Injury
+                           Hepatitis                                 Injury
+                      Hepatoblastoma                          Proliferative lesion
+                  Hepatocellular Adenoma                      Proliferative lesion
+                 Hepatocellular Carcinoma                     Proliferative lesion
+                 Hepatocholangiocarcinoma                     Proliferative lesion
+                    Hepatocholangioma                         Proliferative lesion
+                 Hepatocyte, Multinucleate                    Proliferative lesion
+                       hepatocytolysis                               Injury
+               Hepatodiaphragmatic Nodule                            Injury
+                          Hepatoma                            Proliferative lesion
+                       hepatoma, NOS                          Proliferative lesion
+                          Hepatomas                           Proliferative lesion
+                     Histiocytic Sarcoma                      Proliferative lesion
+                         Histiocytosis                               Injury
+                        Hyalinization                                Injury
+
+                                                                                     7
+                          Hyperplasia                                 Injury
+            Hyperplastic Nodule (Pre-Neoplastic)               Proliferative lesion
+                          Hypertrophy                             Hypertrophy
+                           Hypoplasia                                 Injury
+              Inclusion Body Intracytoplasmic                         Injury
+increase in number of mice with one or more primary tumors     Proliferative lesion
+               increased Kupffer cell nodules                         Injury
+                       increased ploidy                           Hypertrophy
+                      Infiltration Cellular                           Injury
+                         Inflammation                                 Injury
+               intrahepatic bile duct oval cells               Proliferative lesion
+                         Karyomegaly                              Hypertrophy
+                    Leukemia Lymphocytic                       Proliferative lesion
+                   Leukemia Mononuclear                        Proliferative lesion
+                         Leukocytosis                                 Injury
+   Leukostasis, could reflect nonspecific hepatocyte injury           Injury
+                     Lipofuscin Deposits                              Injury
+                    Lymphoid Aggregation                              Injury
+                 Macrophage Accumulation                              Injury
+                         Macrophages                                  Injury
+                  Malignant liver cell tumors                  Proliferative lesion
+                          Margination                                 Injury
+                              Mass                                    Injury
+       Mass(es)/raised areas/swelling/ nodular areas                  Injury
+                        Megalocytosis                             Hypertrophy
+                           Metaplasia                                 Injury
+ minimal microscopic changes in liver (gender not specified)          Injury
+                              Mitosis                          Proliferative lesion
+                       Mitotic Alteration                      Proliferative lesion
+                       Mixed Cell Focus                        Proliferative lesion
+                   Mixed Tumor Malignant                       Proliferative lesion
+                      Mixed Tumor NOS                          Proliferative lesion
+                        Multinucleated                         Proliferative lesion
+             multple cell foci of the hepatocytes              Proliferative lesion
+                         myelopoiesis                                 Injury
+                          Necrobiosis                                 Injury
+                        Neoplasm NOS                           Proliferative lesion
+                      Neoplastic nodule                        Proliferative lesion
+             Nodules and Carcinoma combined                    Proliferative lesion
+                      Nuclear Alteration                              Injury
+         Parenchymal tumors (benign & malignant)               Proliferative lesion
+                         Pigmentation                                 Injury
+                        Pleiomorphism                          Proliferative lesion
+
+                                                                                      8
+                           Plug                                  Injury
+                       Porphyrins                                Injury
+                  Portal Tract Changes                           Injury
+                       Proliferation                      Proliferative lesion
+pyknotic or karyohectic nuclei with condensed cytoplasm          Injury
+                       Rarefaction                               Injury
+                      Regeneration                        Proliferative lesion
+                Relative to Body Weight                      Hypertrophy
+                Relative to Brain Weight                     Hypertrophy
+                        Sarcoma                           Proliferative lesion
+                    Sinusoidal Space                             Injury
+                   Syncytial Alteration                   Proliferative lesion
+                     Telangiectasis                              Injury
+                        Thickened                                Injury
+                       Thrombosis                                Injury
+                    Tissue alteration                            Injury
+                   Toxic Hepatopathy                             Injury
+               Tubular collapse; 1 dog/sex                       Injury
+          Type A nodule, significant trend only           Proliferative lesion
+               Vacuolization Cytoplasmic                         Injury
+                 Vascular macrophages                            Injury
+
+
+
+
+                                                                                 9
+Table S2.
+
+
+
+                        # desc.                        BA                                     Sensitivity                               Specificity
+                  BIO     CHM BC         BIO          CHM            BC            BIO          CHM            BC            BIO          CHM              BC
+   tox       cl
+   Hyp   CART0    60     55   45      0.79 (0.08)   0.80 (0.09)   0.81 (0.11)   0.73 (0.13)   0.81 (0.16)   0.80 (0.18)   0.89 (0.11)   0.80 (0.17)   0.84 (0.13)
+         ENSMB    60     60   60      0.79 (0.07)   0.79 (0.09)   0.81 (0.10)   0.66 (0.13)   0.77 (0.15)   0.76 (0.18)   0.92 (0.09)   0.81 (0.17)   0.87 (0.11)
+         KNN1     60     60   55      0.72 (0.10)   0.76 (0.09)   0.76 (0.11)   0.77 (0.16)   0.81 (0.18)   0.79 (0.20)   0.76 (0.24)   0.77 (0.22)   0.77 (0.24)
+         LDA      60     60   50      0.75 (0.08)   0.75 (0.09)   0.78 (0.10)   0.68 (0.14)   0.75 (0.15)   0.75 (0.18)   0.85 (0.11)   0.81 (0.16)   0.83 (0.11)
+         NB       15     35   45      0.71 (0.08)   0.69 (0.08)   0.75 (0.10)   0.66 (0.18)   0.84 (0.21)   0.79 (0.18)   0.92 (0.22)   0.86 (0.26)   0.84 (0.18)
+         SVCL0    60     60   50      0.76 (0.08)   0.75 (0.08)   0.79 (0.10)   0.68 (0.13)   0.75 (0.15)   0.76 (0.18)   0.85 (0.13)   0.81 (0.15)   0.83 (0.12)
+         SVCR0    60     50   35      0.76 (0.08)   0.76 (0.08)   0.78 (0.10)   0.82 (0.20)   0.79 (0.17)   0.84 (0.18)   0.96 (0.23)   0.80 (0.18)   0.84 (0.20)
+                          mean (sd)   0.76 (0.24)   0.76 (0.26)   0.78 (0.23)   0.71 (0.39)   0.78 (0.39)   0.77 (0.36)   0.89 (0.40)   0.82 (0.39)   0.85 (0.39)
+
+   Inj   CART0    50     60   60      0.76 (0.10)   0.75 (0.11)   0.79 (0.11)   0.72 (0.18)   0.78 (0.21)   0.80 (0.18)   0.88 (0.14)   0.87 (0.19)   0.82 (0.14)
+         ENSMB    60     60   60      0.78 (0.10)   0.75 (0.11)   0.78 (0.11)   0.66 (0.18)   0.74 (0.20)   0.70 (0.17)   0.89 (0.12)   0.87 (0.18)   0.86 (0.13)
+         KNN1     35     50   50      0.68 (0.12)   0.72 (0.12)   0.71 (0.12)   0.72 (0.21)   0.81 (0.23)   0.78 (0.19)   0.77 (0.25)   0.88 (0.28)   0.80 (0.28)
+         LDA      55     60   60      0.74 (0.10)   0.73 (0.11)   0.74 (0.11)   0.71 (0.18)   0.73 (0.20)   0.71 (0.17)   0.82 (0.16)   0.87 (0.19)   0.81 (0.15)
+         NB       25     10   45      0.69 (0.11)   0.69 (0.11)   0.74 (0.11)   0.64 (0.22)   0.81 (0.22)   0.68 (0.19)   0.90 (0.23)   0.88 (0.26)   0.84 (0.20)
+         SVCL0    60     60   60      0.74 (0.10)   0.72 (0.11)   0.75 (0.11)   0.68 (0.19)   0.72 (0.19)   0.72 (0.16)   0.83 (0.18)   0.87 (0.18)   0.81 (0.16)
+         SVCR0    60     60   60      0.76 (0.11)   0.75 (0.11)   0.76 (0.11)   0.71 (0.22)   0.70 (0.20)   0.79 (0.20)   0.93 (0.21)   0.87 (0.21)   0.92 (0.24)
+                          mean (sd)   0.73 (0.23)   0.73 (0.25)   0.75 (0.22)   0.67 (0.37)   0.74 (0.37)   0.72 (0.34)   0.84 (0.39)   0.87 (0.41)   0.85 (0.39)
+
+   Pro   CART0    40     55   60      0.73 (0.11)   0.76 (0.11)   0.77 (0.11)   0.67 (0.19)   0.77 (0.22)   0.78 (0.19)   0.88 (0.18)   0.75 (0.20)   0.80 (0.20)
+         ENSMB    60     60   60      0.75 (0.10)   0.76 (0.11)   0.77 (0.11)   0.63 (0.18)   0.74 (0.23)   0.73 (0.19)   0.89 (0.14)   0.77 (0.21)   0.81 (0.19)
+         KNN1     25     60   60      0.67 (0.12)   0.71 (0.13)   0.71 (0.13)   0.75 (0.22)   0.85 (0.26)   0.83 (0.25)   0.77 (0.31)   0.66 (0.31)   0.74 (0.30)
+         LDA      50     60   60      0.70 (0.11)   0.71 (0.12)   0.73 (0.11)   0.67 (0.18)   0.72 (0.22)   0.73 (0.19)   0.82 (0.16)   0.73 (0.19)   0.80 (0.20)
+         NB       15     60   55      0.66 (0.11)   0.69 (0.12)   0.70 (0.11)   0.66 (0.24)   0.80 (0.26)   0.74 (0.20)   0.91 (0.31)   0.75 (0.26)   0.81 (0.22)
+         SVCL0    50     60   60      0.72 (0.11)   0.74 (0.12)   0.74 (0.12)   0.63 (0.17)   0.76 (0.23)   0.74 (0.19)   0.86 (0.16)   0.72 (0.21)   0.79 (0.21)
+         SVCR0    60     60   60      0.74 (0.11)   0.76 (0.12)   0.74 (0.11)   0.68 (0.21)   0.71 (0.23)   0.74 (0.19)   0.94 (0.23)   0.86 (0.22)   0.89 (0.21)
+                          mean (sd)   0.71 (0.24)   0.73 (0.24)   0.75 (0.25)   0.65 (0.39)   0.75 (0.38)   0.74 (0.39)   0.87 (0.40)   0.72 (0.36)   0.79 (0.40)
+
+
+
+
+                                                                                                                                                      10
+Table S3.
+
+          Descriptor                 Group Technology         Target/Gene        Target/Family Cell line
+
+      APR_CellLoss_72h_dn              A     Apredica              NA               cell cycle       HepG2
+     APR_MitoMass_72h_up               A     Apredica              NA            cell morphology     HepG2
+    APR_NuclearSize_72h_up             A     Apredica              NA            cell morphology     HepG2
+      ATG_NRF2_ARE_CIS                 A     Attagene            NFE2L2            dna binding       HepG2
+         ATG_PPRE_CIS                  A     Attagene      PPARD; PPARG; PPARA   nuclear receptor    HepG2
+         ATG_PXRE_CIS                  A     Attagene             NR1I2          nuclear receptor    HepG2
+         ATG_VDRE_CIS                  A     Attagene             NR1I1          nuclear receptor    HepG2
+     NVS_ADME_hCYP1A2                  A    Novascreen           CYP1A2                cyp          cell-free
+     NVS_ADME_hCYP2C19                 A    Novascreen          CYP2C19                cyp          cell-free
+         NVS_MP_rPBR                   A    Novascreen            Tspo             transporter      cell-free
+         NVS_NR_hPXR                   A    Novascreen            NR1I2          nuclear receptor   cell-free
+   OT_SRC1_SRC1FXR_1440                A   Odyssey Thera          FXR            nuclear receptor   HEK293T
+         ATG_BRE_CIS                   B     Attagene            SMAD1             dna binding       HepG2
+       ATG_Oct_MLP_CIS                 B     Attagene            POU2F1            dna binding       HepG2
+     NVS_ADME_hCYP2B6                  B    Novascreen           CYP2B6                cyp          cell-free
+         NVS_MP_hPBR                   B    Novascreen            TSPO             transporter      cell-free
+         NVS_TR_hNET                   B    Novascreen           SLC6A2            transporter        NA
+       ATG_RARa_TRANS                  C     Attagene             RARA           nuclear receptor    HepG2
+    NVS_GPCR_hOpiate_mu                C    Novascreen           OPRM1                gpcr          cell-free
+          NVS_NR_hAR                   C    Novascreen             AR            nuclear receptor   cell-free
+     OT_AR_ARSRC1_0960                 C   Odyssey Thera           AR            nuclear receptor   HEK293T
+ Tox21_AR_BLA_Antagonist_ratio         C    Tox21/NCGC             AR            nuclear receptor   HEK293T
+   Tox21_Aromatase_Inhibition          C    Tox21/NCGC          CYP19A1                cyp           MCF-7
+ Tox21_ERa_BLA_Antagonist_ratio        C    Tox21/NCGC            ESR1           nuclear receptor   HEK293T
+ Tox21_MitochondrialToxicity_ratio     C    Tox21/NCGC             NA            cell morphology     HepG2
+ Tox21_PPARg_BLA_Agonist_ch1           C    Tox21/NCGC           PPARG           nuclear receptor   HEK293T
+ Tox21_TR_LUC_GH3_Antagonist           C    Tox21/NCGC            THRB           nuclear receptor    GH3
+    APR_MitoticArrest_72h_up           D     Apredica              NA               cell cycle       HepG2
+       ATG_ERE_CIS_perc                D     Attagene             ESR1           nuclear receptor    HepG2
+       ATG_RXRb_TRANS                  D     Attagene             RXRB           nuclear receptor    HepG2
+          NVS_NR_hER                   D    Novascreen            ESR1           nuclear receptor   cell-free
+         NVS_NR_mERa                   D    Novascreen            Esr1           nuclear receptor     NA
+     OT_ER_ERaERa_0480                 D   Odyssey Thera          ESR1           nuclear receptor   HEK293T
+   Tox21_AR_BLA_Agonist_ch1            D    Tox21/NCGC             AR            nuclear receptor   HEK293T
+  Tox21_ERa_LUC_BG1_Agonist            D    Tox21/NCGC            ESR1           nuclear receptor    BG1
+  OT_NURR1_NURR1RXRa_0480                  Odyssey Thera          RXRA           nuclear receptor   HEK293T
+
+
+
+
+                                                                                                            11
+Table S4.
+
+  Descriptor    Group   Source          SMARTS                General structure
+
+  MACCS_141       A     MACCS              [CH3]
+
+  MACCS_149       A     MACCS            [C;H3,H4]
+
+  MACCS_160       A     MACCS            [C;H3,H4]
+
+  MACCS_164       A     MACCS              [O,o]
+
+  PUBCHEM_17      A     PUBCHEM             [#7]
+
+ PUBCHEM_285      A     PUBCHEM          [#6]~[#7]
+
+
+ PUBCHEM_351      A     PUBCHEM      [#6](~[#6])(~[#7])
+
+
+    QPlogKp       A     QikProp
+
+ PADEL_KR4080     B      PADEL               N
+
+
+ PUBCHEM_340      B     PUBCHEM   [#6](~[#6])(~[#6])(~[#7])
+
+
+ PUBCHEM_376      B     PUBCHEM      [#6](~[#7])(:[#6])
+
+ PUBCHEM_416      B     PUBCHEM          [#6]=,:[#6]
+
+
+ PUBCHEM_464      B     PUBCHEM      [#7][#6][#6]=,:[#6]
+
+
+
+ PUBCHEM_524      B     PUBCHEM      [#6][#6]=,:[#6][#6]
+
+
+ PUBCHEM_556      B     PUBCHEM      [#6]=,:[#6][#6][#6]
+
+
+
+ PUBCHEM_640      B     PUBCHEM    [#6]=,:[#6][#6][#6][#6]
+
+
+
+ PUBCHEM_660      B     PUBCHEM    [#6][#6]=,:[#6][#6][#6]
+
+
+
+   MACCS_86       C     MACCS     [CH2][!C;!c;!#1][CH2]
+
+
+
+  MACCS_102       C     MACCS        [!C;!c;!#1]~[O,o]
+
+
+
+  MACCS_133       C     MACCS            *@*!:[N,n]
+
+
+
+
+                                                                                  12
+PADEL_EStateFP54   C    PADEL              [ClD1]-*
+
+ PADEL_KR2259      C    PADEL              [!#1]Cl
+
+ PADEL_KR3821      C    PADEL                 Cl
+
+
+
+ PADEL_KR3869      C    PADEL            Clc1ccccc1
+
+
+
+PADEL_SubFP171     C    PADEL               [Cl][c]
+
+ PUBCHEM_294       C   PUBCHEM           [#6]~[#17]
+
+ PUBCHEM_342       C   PUBCHEM       [#6](~[#6])(~[#17])
+
+  PUBCHEM_37       C   PUBCHEM              [#17]
+
+
+ PUBCHEM_390       C   PUBCHEM        [#7](~[#6])(~[#6])
+
+
+
+ PUBCHEM_501       C   PUBCHEM        [#17][#6]:[#6][#6]
+
+
+
+ PUBCHEM_591       C   PUBCHEM      [#17][#6][#6][#6][#6]
+
+
+
+ PUBCHEM_598       C   PUBCHEM      [#17][#6]:[#6]:[#6][#6]
+
+
+
+ PUBCHEM_613       C   PUBCHEM       [#6][#7][#6][#6][#6]
+
+
+    FP4_169        C     FP4                [Cl][c]
+
+    QPlogBB        C   QikProp
+
+   QPPMDCK         C   QikProp
+
+     WPSA          C   QikProp
+
+      CNS          C   QikProp
+
+
+
+   MACCS_89        D   MACCS          [O,o]~*~*~*~[O,o]
+
+
+
+
+   MACCS_91        D   MACCS     [!#6;!#1;!H0]~*~*~*~[CH2]~*
+
+
+
+  MACCS_117        D   MACCS            [N,n]~*~[O,o]
+
+
+
+                                                               13
+  MACCS_128        D   MACCS           *~[CH2]~*~*~*~[CH2]~*
+
+
+  MACCS_146        D   MACCS                    [O,o]
+
+
+  PADEL_KR341      D   PADEL             [!#1][CH2][CH2][!#1]
+
+
+
+
+  PADEL_KR344      D   PADEL          [!#1][CH2][CH2][CH2][!#1]
+
+
+
+ PADEL_SubFP2      D   PADEL              [CX4H2]([#6])[#6]
+
+
+     FP4_2         D    FP4               [CX4H2]([#6])[#6]
+
+
+
+  MACCS_138        E   MACCS             [!C;!c;!#1]~[CH2]~*
+
+
+
+PADEL_EStateFP34   E   PADEL                  [OD1H]-*
+
+ PADEL_KR1148      E   PADEL                  [!#1][OH]
+
+
+  PADEL_KR346      E   PADEL       [!#1][CH2][CH2][CH2][CH2][!#1]
+
+
+
+
+  PADEL_KR347      E   PADEL     [!#1][CH2][CH2][CH2][CH2][CH2][!#1]
+
+
+
+     FP3_27        E    FP4                    [#6][OH]
+
+    donorHB        E   QikProp
+
+      FISA         E   QikProp
+
+
+
+
+                                                                       14
+Table S5.
+
+
+                         # desc.                        BA                                  Sensitivity                             Specificity
+Toxicity   Classifier BIO CHM BC           BIO         CHM           BC           BIO         CHM            BC           BIO         CHM            BC
+           CART0    45     55      35   0.51(0.09)   0.52(0.09)   0.53(0.10)   0.39(0.19)   0.42(0.15)    0.42(0.17)   0.63(0.18)   0.62(0.14)    0.63(0.15)
+           ENSMB    50     45      45   0.51(0.10)   0.52(0.09)   0.53(0.10)   0.36(0.16)   0.4(0.16)     0.38(0.16)   0.65(0.15)   0.64(0.14)    0.67(0.14)
+           KNN1     50     35      45   0.51(0.10)   0.53(0.09)   0.52(0.10)   0.53(0.14)   0.6(0.16)     0.55(0.17)   0.49(0.14)   0.45(0.16)    0.48(0.15)
+ Hyp       LDA      50     45      45   0.51(0.10)   0.52(0.10)   0.52(0.09)   0.43(0.15)   0.44(0.16)    0.45(0.15)   0.58(0.15)   0.6(0.14)     0.59(0.14)
+           NB       40     65      50   0.51(0.07)   0.51(0.09)   0.51(0.08)   0.59(0.34)   0.56(0.26)    0.44(0.31)   0.43(0.34)   0.45(0.26)    0.59(0.30)
+           SVCL0    50     35      45   0.50(0.10)   0.52(0.10)   0.52(0.09)   0.39(0.16)   0.43(0.17)    0.44(0.16)   0.62(0.16)   0.61(0.16)    0.6(0.15)
+           SVCR0    50     35      55   0.51(0.09)   0.53(0.09)   0.53(0.10)   0.34(0.15)   0.39(0.16)    0.36(0.15)   0.69(0.13)   0.66(0.15)    0.7(0.13)
+
+
+           CART0    45     45      45   0.57(0.11)   0.58(0.11)   0.59(0.11)   0.33(0.20)   0.35(0.20)    0.37(0.20)   0.8(0.12)    0.81(0.11)    0.8(0.12)
+           ENSMB    60     55      65   0.58(0.10)   0.58(0.11)   0.59(0.11)   0.3(0.19)    0.32(0.20)    0.33(0.19)   0.85(0.11)   0.84(0.10)    0.84(0.11)
+           KNN1     65     45      55   0.58(0.12)   0.58(0.12)   0.59(0.12)   0.42(0.22)   0.45(0.22)    0.42(0.21)   0.73(0.13)   0.72(0.14)    0.76(0.13)
+  Inj      LDA      60     60      65   0.57(0.11)   0.58(0.11)   0.59(0.11)   0.37(0.20)   0.37(0.21)    0.4(0.20)    0.77(0.13)   0.78(0.11)    0.77(0.12)
+           NB       45     60      35   0.55(0.09)   0.56(0.11)   0.56(0.11)   0.71(0.30)   0.61(0.27)    0.5(0.30)    0.39(0.29)   0.5(0.23)     0.61(0.27)
+           SVCL0    60     60      55   0.54(0.10)   0.57(0.11)   0.58(0.11)   0.23(0.17)   0.31(0.20)    0.33(0.20)   0.86(0.11)   0.82(0.11)    0.82(0.11)
+           SVCR0    55     50      65   0.59(0.11)   0.59(0.11)   0.61(0.11)   0.32(0.19)   0.32(0.20)    0.35(0.19)   0.85(0.11)   0.86(0.10)    0.86(0.09)
+
+
+           CART0    35     40      40   0.58(0.10)   0.58(0.11)   0.59(0.11)   0.32(0.20)   0.35(0.21)    0.36(0.21)   0.84(0.11)   0.8(0.12)     0.81(0.11)
+           ENSMB    60     65      60   0.59(0.10)   0.58(0.11)   0.59(0.11)   0.31(0.19)   0.33(0.20)    0.34(0.19)   0.87(0.09)   0.83(0.10)    0.84(0.10)
+           KNN1     45     55      45   0.58(0.12)   0.58(0.12)   0.59(0.12)   0.44(0.22)   0.43(0.21)    0.42(0.21)   0.72(0.13)   0.73(0.13)    0.75(0.13)
+  Pro      LDA      65     60      55   0.58(0.12)   0.57(0.12)   0.58(0.12)   0.38(0.21)   0.35(0.21)    0.37(0.21)   0.78(0.11)   0.79(0.12)    0.79(0.11)
+           NB       40     55      45   0.55(0.09)   0.56(0.10)   0.57(0.10)   0.74(0.30)   0.73(0.23)    0.67(0.30)   0.35(0.29)   0.39(0.20)    0.47(0.26)
+           SVCL0    45     60      55   0.56(0.10)   0.56(0.10)   0.57(0.11)   0.23(0.19)   0.28(0.20)    0.31(0.21)   0.89(0.08)   0.83(0.11)    0.83(0.11)
+           SVCR0    50     55      60   0.6(0.10)    0.59(0.11)   0.6(0.10)    0.32(0.20)   0.31(0.20)    0.33(0.19)   0.87(0.09)   0.86(0.10)    0.86(0.09)
+
+
+
+
+                                                                                                                                                          15
+Figure S1.
+
+
+
+
+             16
+

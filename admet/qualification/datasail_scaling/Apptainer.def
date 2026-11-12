@@ -1,0 +1,37 @@
+Bootstrap: docker
+From: python:3.12-bookworm
+
+%labels
+    org.opencontainers.image.title DataSAIL-S1-scaling-probe
+    org.opencontainers.image.description Synthetic Session 016 DataSAIL v1.2.4 solve_c1 scaling probe
+    org.datasail.version 1.2.4
+    org.datasail.commit a212606c4ad9d847ff94365545392958c2aab7f5
+    org.cvxpy.version 1.5.3
+    org.python.version 3.12
+
+%post
+    set -eu
+    apt-get update
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        cmake \
+        g++ \
+        git \
+        libgmp-dev \
+        libreadline-dev \
+        wget \
+        zlib1g-dev
+    rm -rf /var/lib/apt/lists/*
+    python -m pip install --no-cache-dir --upgrade pip
+    python -m pip install --no-cache-dir \
+        numpy \
+        cvxpy==1.5.3 \
+        pyscipopt==5.1.1
+
+%environment
+    export PYTHONUNBUFFERED=1
+    export OMP_NUM_THREADS=16
+
+%runscript
+    exec python /workspace/admet/qualification/datasail_scaling/probe.py "$@"

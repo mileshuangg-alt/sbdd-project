@@ -1,0 +1,44 @@
+{
+ "CHEMBL3301370": {
+  "assay_chembl_id": "CHEMBL3301370",
+  "description": "ASTRAZENECA: Intrinsic clearance measured in human liver microsomes following incubation at 37C. Experimental range <3 to >150 microL/min/mg. Rapid Commun. Mass Spectrom. 2010, 24, 1730-1736.",
+  "assay_organism": "Homo sapiens",
+  "assay_subcellular_fraction": "Microsome",
+  "assay_test_type": "In vitro",
+  "assay_type": "A",
+  "document_chembl_id": "CHEMBL3301361",
+  "document_journal": null,
+  "document_year": null,
+  "src_id": 27,
+  "target_organism": null,
+  "confidence_score": 0
+ },
+ "CHEMBL3301371": {
+  "assay_chembl_id": "CHEMBL3301371",
+  "description": "ASTRAZENECA: Intrinsic clearance measured in rat hepatocytes following incubation at 37C. Experimental range <3 to >150 microL/min/1E6 cells. Rapid Commun. Mass Spectrom. 2010, 24, 1730-1736",
+  "assay_organism": "Rattus norvegicus",
+  "assay_subcellular_fraction": null,
+  "assay_test_type": "In vitro",
+  "assay_type": "A",
+  "document_chembl_id": "CHEMBL3301361",
+  "document_journal": null,
+  "document_year": null,
+  "src_id": 27,
+  "target_organism": null,
+  "confidence_score": 0
+ },
+ "CHEMBL3301372": {
+  "assay_chembl_id": "CHEMBL3301372",
+  "description": "ASTRAZENECA: Intrinsic clearance measured in human hepatocytes following incubation at 37C. Experimental range <3 to >150 microL/min/1E6 cells. Rapid Commun. Mass Spectrom. 2010, 24, 1730-1736.",
+  "assay_organism": "Homo sapiens",
+  "assay_subcellular_fraction": null,
+  "assay_test_type": "In vitro",
+  "assay_type": "A",
+  "document_chembl_id": "CHEMBL3301361",
+  "document_journal": null,
+  "document_year": null,
+  "src_id": 27,
+  "target_organism": null,
+  "confidence_score": 0
+ }
+}

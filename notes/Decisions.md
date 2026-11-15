@@ -8222,3 +8222,365 @@ Flags describe evidence and routing state; they do not silently acquire attritio
 ## Revisit when
 
 Revisit only if a separately approved methodology changes the D026 identity authority, source-spelling quarantine unit, planner coverage semantics, ASKCOS representation criterion, witness-only authority, Stage-6 outcome taxonomy, key-level aggregation rule, or the role assigned to planner-specific identity representations.
+
+# D031 — ADMET Production Split Units, Constraints and Leakage Objective (Retrospective Consolidation)
+
+**Decision date:** Original approval date not recovered; recorded retrospectively 2026-11-14 (Session 017) on Miles's authorization  
+**Status:** FROZEN DESIGN; RECORDED AS RETROSPECTIVE CONSOLIDATION
+
+## Decision
+
+D031 records, retrospectively, the existing ADMET production split design that the recovered records describe as previously approved/frozen. It consolidates four foundations:
+
+1. immutable `family_key` units;
+2. the exact L_cross objective;
+3. epsilon = delta = 0.05 with the recorded lower-bound semantics;
+4. eligibility of independently feasible time-limited incumbents, without requiring global optimality and with no MIP-gap acceptance threshold.
+
+Miles's authorization for this record (chat, 2026-11-14, verbatim):
+
+> "Use this recovered history to finish the bookkeeping, not restart the design review. Stop the D031 grill-me discussion.
+>
+> I authorize recording D031 as a retrospective consolidation of the existing design: immutable family_key units, the exact L_cross objective, epsilon = delta = 0.05 with the recorded lower-bound semantics, and eligibility of independently feasible time-limited incumbents without requiring global optimality or inventing a MIP-gap threshold."
+
+The original first-person approval messages for these four foundations are not available. No approval quote or approval date is reconstructed here. D031 is not a new methodological choice made on 2026-11-14; it records the existing design.
+
+## 1. Historical amendment of pilot setup decision 3
+
+Setup decision 3 of the ADMET pilot plan (`admet-pilot-gpt-handoff-1.md`, outside the repository, heading "## Setup decisions - APPROVED by Miles, 5 Nov (settled; do not reopen)", item 3(b), and the split-generation rule under "## Hard rules") defined production fold groups as typed Bemis-Murcko scaffold groups united with structure-family-key alias groups via connected components.
+
+The recovered Session 016/017 records operate on immutable families instead, with scaffold-plus-family components treated as diagnostic only. `notes/Session_016.md` §3 (line 93) states that these components "motivated further split-representation investigation; they are not themselves a frozen production split", and §5 operates on immutable families.
+
+This amendment is historical. The records show that the design had already moved to family units; the moment and wording of that approval are not recovered. It is not newly chosen in D031.
+
+Retained from decision 3:
+
+- family-key inputs: largest fragment, stereo removed, conservative uncharge, tautomer canonicalization;
+- RDKit 2023.09.6;
+- source-recorded SMILES with stereochemistry as model inputs;
+- one assignment shared across both pKa sides and both model arms;
+- the test side never read during the pilot.
+
+Scaffold keys remain computed and reported as diagnostics.
+
+## 2. Units and per-family fields
+
+Each immutable `family_key` family F_i is assigned exactly once per stage.
+
+Per-family fields:
+
+- family identifier;
+- w_i = |F_i| (molecular identities);
+- pKa identity count (source-ID `unique_ID`, not molecule-steps);
+- clearance identity count (source-ID `molecule_chembl_id`);
+- complete S_ij to every other family.
+
+These count names match `pka_identities` / `clearance_identities` in `admet/qualification/native_quadratic/equivalence.py`.
+
+The molecule-to-family similarity construction (complete family-mean pairwise Tanimoto over Morgan fingerprints, radius 2, 2048 bits, chirality, from preserved prepared-source SMILES, no representative substitution) is described in `notes/Session_017.md` §4 and is to be recorded as a separate decision. It is not recorded by D031.
+
+## 3. Leakage objective
+
+```text
+L_cross = sum_{i<j} w_i w_j S_ij 1[z_i != z_j]
+```
+
+L_cross is optimized through the equivalent within-partition maximization qualified in `notes/Session_016.md` §5–§6.
+
+Not authorized: pair pruning, thresholding, sampling, coarsening, approximation, changed weighting, objective normalization, or a replacement objective.
+
+Family integrity comes from indivisible units, not from the objective. L_cross penalizes cross-partition similarity but sets no explicit overlap cap.
+
+## 4. Lower-bound specification (historical)
+
+The formulas are exactly as recorded in `admet/qualification/datasail_scaling/probe.py` lines 220–228 ("Pinned DataSAIL v1.2.4 lower-bound semantics"). For partition s with nominal fraction p_s within a stage:
+
+```text
+molecular identities:   N_s     >= int(p_s * (1 - epsilon) * N)    (truncated by int())
+endpoint e identities:  C_{s,e} >= p_s * (1 - delta) * C_e         (not rounded)
+```
+
+with epsilon = delta = 0.05. N and C_e are totals over the stage's scope. The different rounding semantics are preserved deliberately.
+
+Stage A: all families, nominal (dev 0.8, test 0.2).
+
+Stage B: development side only. Only families that Stage A places in development are included; five folds, nominal 0.2 each; the same lower-bound formulas apply, with N and C_e taken over the development partition. Test-side families are excluded and never read. (Source: Session-017 handoff §6, "Development identities only are assigned across five folds".)
+
+Evidence for epsilon = delta = 0.05:
+
+- the committed Session-016 artifact `admet/qualification/native_quadratic/artifacts/session016_native_quadratic_qualification.json` lists "production size and endpoint-coverage tolerances" under `remaining_open_questions`;
+- the later Session-017 handoff (§1, §6) and GPT export (§3.2) report the values as settled/qualified, citing pasted text that is not available locally;
+- 0.05 also appears as the synthetic probe constants `EPSILON` / `DELTA` in `probe.py` lines 56–57.
+
+The original approval moment is not recovered. On Miles's 2026-11-14 authorization, this entry records these as the production values.
+
+## 5. Native-interface upper bounds (interface detail, distinct from §4)
+
+The qualified native formulation (`equivalence.py` `build_native_gurobi_model`, lines 247–287) requires an upper bound per partition and metric, and rejects only lower > upper (lines 268–272).
+
+Each partition's upper bound is the stage's total (Stage A: totals over all families; Stage B: totals over the development partition) for molecular identities, pKa identities and clearance identities.
+
+Because each family is assigned exactly once and counts are non-negative, these bounds exclude no valid assignment, although they may hold at equality. They add no scientific constraint. No symmetric upper tolerance is introduced.
+
+The interface annotates bounds as `int`, while the endpoint lower bound may be fractional; it is passed unrounded.
+
+(Verified by read-only inspection of the code on 2026-11-14, local Mac; nothing executed.)
+
+## 6. Incumbent eligibility
+
+Any returned assignment has its leakage recomputed independently.
+
+A time-limited incumbent is eligible only if it independently satisfies every hard constraint.
+
+Feasibility and optimization quality are assessed separately.
+
+Global optimality is not required. No MIP-gap acceptance threshold is authorized or invented.
+
+Evidence: exact wording only in the Session-017 handoff §6 lines 368–369, citing pasted text not available locally. Related repository records: `session016_native_quadratic_qualification.json` `"global_optimality_required": false` (representation-qualification scope); `notes/Session_016.md` §10 ("independently validate any returned assignment") and line 141.
+
+## 7. Unresolved production settings (not decided by D031)
+
+- production Gurobi seed/determinism (synthetic seeds are not inherited);
+- production optimization time budget (Session-016 P0 1,800 s and P1 600 s were engineering-probe limits);
+- constrained-random comparison protocol (sampling method, constraint handling, seeds, number of allocations, summary statistic);
+- full-scale production feasibility and performance (unmeasured).
+
+D031 does not authorize fingerprint computation, matrix generation, optimization runs or split execution.
+
+## 8. Evidence and provenance
+
+Repository records:
+
+- `notes/Session_016.md` §3, §5, §6, §9, §10;
+- `notes/Session_017.md` §3, §4, §15;
+- `admet/qualification/datasail_scaling/probe.py`;
+- `admet/qualification/native_quadratic/equivalence.py`;
+- `admet/qualification/native_quadratic/artifacts/session016_native_quadratic_qualification.json`.
+
+External records (outside the repository):
+
+```text
+/Users/mileshuang/Downloads/admet-pilot-gpt-handoff-1.md
+/Users/mileshuang/Downloads/liggate-session-017-handoff.md
+    SHA-256 e39cfa56833b5f3aa241070facc0c52c11c1919d08ed8b3272f112e621085d32
+/Users/mileshuang/Downloads/LigGate_Session_017_Record_So_Far.md
+    SHA-256 9b1f372ff198fb31497c20a46d2280c3f728ecb1facaca43882f9beb2740866a
+```
+
+The external handoff and export are recovered secondary records, not first-person approvals.
+
+## Revisit when
+
+Undecided. Revisit conditions have not been set by Miles.
+
+# D032 — ADMET Alias Grouping: Equal-Largest Duplicate-Fragment Tie Resolution
+
+**Decision date:** Original approval date not recovered; recording authorized 2026-11-14 (Session 017)  
+**Status:** FROZEN; RECORDED RETROSPECTIVELY
+
+## Decision
+
+When fragments tie for the largest heavy-atom count, tied fragments that reduce to one distinct canonical isomeric representation are resolved as duplicate multiplicity, not held as fragment ambiguity.
+
+This narrows the failure handling of pilot setup decision 3 (`admet-pilot-gpt-handoff-1.md`, "## Setup decisions - APPROVED by Miles, 5 Nov (settled; do not reopen)", item 3, failure-handling bullet), which holds cases where "the largest-fragment selection is ambiguous (equal-size fragments)". It also refines, for continuation, the Session-016 "do not reopen" items "approved alias failure handling" and "authoritative alias diagnostic counts" (`notes/Session_016.md` §9). It determines the family membership used by D031.
+
+Original approval: export-reported, not first-person evidence. The GPT export (`LigGate_Session_017_Record_So_Far.md` §3.6) reports the user saying "yep approved lets move forward" after discussion; the Session-017 handoff §1B reports the refinement as "approved in this chat" without quoting wording. The original approval date is not recovered.
+
+Recording authorization (Miles, chat, 2026-11-14, verbatim):
+
+> "A. I authorize recording D032 retrospectively, with the rule and evidence as shown. Use FROZEN; RECORDED RETROSPECTIVELY. Keep the original approval wording labeled as export-reported, and the original approval date as not recovered. Date today's authorization to record separately; don't infer a historical approval date from the session range."
+
+This entry records the refinement retrospectively; it is not a new scientific amendment made on 2026-11-14.
+
+## 1. Rule
+
+1. Compare all tied-largest fragments by canonical isomeric SMILES under RDKit 2023.09.6.
+2. One distinct representation means duplicate multiplicity. The existing family-key computation continues on that structure: copy fragment → remove stereochemistry → RDKit Uncharger → tautomer canonicalization → canonical non-isomeric SMILES.
+3. Multiple distinct representations, or a parse or canonicalization failure, stay held. Nothing is guessed.
+4. Grouping-only. Prepared-source SMILES, model inputs and the similarity input are unchanged.
+5. A successful resolution is not an ambiguity or problem flag. Audit provenance is kept as `duplicate_equal_largest_fragments_resolved`.
+
+## 2. Rejected alternatives
+
+- an arbitrary first/second-fragment tie break;
+- a one-record exception for `clearance:CHEMBL5315124`.
+
+## 3. Effect on records
+
+- Session-016 counts stay preserved, unrewritten, as pre-amendment evidence: 5,882 identities / 5,881 grouped / 1 failure / 5,446 family keys / 893 scaffold keys, with `clearance:CHEMBL5315124` held under `fragment_ambiguity_equal_largest_heavy_atom_count`.
+- Continuation population, as reported from gpu-dev1 (host `n4pu04`; user-pasted output, `notes/Session_017.md` §8.3): 5,882 identities / 5,882 grouped / 0 failures / 5,447 family keys / 894 scaffold keys. `CHEMBL5315124` is the only resolution: family_key `CC1COc2c(N3CCN(C)CC3)c(F)cc3c(=O)c(C(=O)O)cn1c23`, notes `('duplicate_equal_largest_fragments_resolved',)`.
+
+## 4. Evidence and provenance
+
+- Source record: `CHEMBL5315124` is two copies of one large organic fragment plus water (`notes/Session_017.md` §5.1).
+- Implementation: `admet/scripts/alias_grouping.py`, modified and uncommitted on `stage6-wip` (HEAD `f616bab`). Mac SHA-256 `dd604914ab88c9fd9e0475f0bbbecbef223b7dfd6667bfa9ebdb810f24dfe9c5` (local Mac observation, 2026-11-14). Pre-amendment backup `admet/scripts/alias_grouping.py.pre_duplicate_tie_refinement`.
+- Tests: `tests/test_admet_alias_grouping.py`, Mac SHA-256 `2a11e59f0b672e3792172fd58d4de68da4194b47350c11eadcddfcd0a25b46a1` (local Mac observation, 2026-11-14). Mac result user-reported as 23 passed: a mechanical smoke test, not pinned-runtime qualification (`notes/Session_017.md` §6.7).
+- gpu-dev1 pinned-runtime qualification (user-reported): under RDKit 2023.09.6, the `CHEMBL5315124` witness passed and the built-in assertions reported "all pass". pytest was not installed (`notes/Session_017.md` §7.2–§7.3).
+- Limitation: the hashes of the bytes staged to and run on gpu-dev1 are not recoverable. The Mac hashes describe only the local files and do not establish what ran remotely.
+
+## Revisit when
+
+Undecided. Revisit conditions have not been set by Miles.
+
+# D033 — ADMET Molecular-Similarity Specification for Split Construction
+
+**Decision date:** Original approval date not recovered; recording authorized 2026-11-14 (Session 017)  
+**Status:** FROZEN; RECORDED RETROSPECTIVELY
+
+## Decision
+
+This records the molecule-to-family similarity construction that supplies `S_ij` to the D031 leakage objective, applied to the D032 family membership.
+
+Original approval: export-reported, not first-person evidence. The GPT export (`LigGate_Session_017_Record_So_Far.md` §3.4) reports this user wording:
+
+> "Approve the proposed Task-2 similarity mapping, incorporating the earlier input contract explicitly: pKa unique_ID and clearance molecule_chembl_id, preserving the same prepared-source SMILES string across steps; Environment A with RDKit 2023.09.6; direct sanitized MolFromSmiles parsing, no family-key normalization or representative substitution. A parse failure halts rather than skipping an identity. Freeze Morgan radius 2, 2048 bits, chirality enabled, Tanimoto, and the complete family-mean S_ij mapping as proposed. State explicitly that w_i = |F_i| is what makes w_iw_jS_ij equal the sum of the between-family molecular-pair similarities. Carry all other qualified choices forward unchanged. clearance:CHEMBL5315124 remains held and unresolved. This approval freezes the similarity specification only; it does not authorize fingerprint computation, pair-matrix generation, or split execution."
+
+The Session-017 handoff §1A reports the same content as approved without quoting it. The original approval date is not recovered.
+
+Historical notes on that wording:
+- "clearance:CHEMBL5315124 remains held and unresolved" described the state before the duplicate-tie refinement; D032 records its resolution.
+- "Environment A" is not defined in any recovered record and remains undefined here. Separately, the pinned RDKit 2023.09.6 runtime was verified in `/mnt/nfs/CX900004_DS1/conda-envs/liggate-admet-pilot` (`notes/Session_017.md` §7.1); D033 does not equate the two.
+
+Recording authorization (Miles, chat, 2026-11-14, verbatim): "Yes, record D033". This entry records the specification retrospectively; it is not a new methodological choice.
+
+## 1. Identity and input contract
+
+- pKa identity: `unique_ID`; input column `smiles` of `admet/data/prepared/pka_v2.4a_session016.csv`.
+- Clearance identity: `molecule_chembl_id`; input column `smiles` of `admet/data/prepared/human_hepa_408_session016.csv`.
+- The existing identity loader (`admet/scripts/session016_alias_edge_diagnostic.py`, lines 200–236) requires exactly one `smiles` value per identity across the rows it reads, and raises otherwise. This is the existing enforcement of one SMILES per identity; it does not cover arbitrary pipeline stages.
+- The same prepared-source SMILES string is the input to grouping and to similarity.
+- RDKit 2023.09.6.
+- Direct sanitized `Chem.MolFromSmiles(prepared_source_smiles)`; no family-key normalization; no representative substitution.
+- A parse failure halts; no identity is skipped.
+
+## 2. Molecular similarity
+
+- Fingerprint input is the complete parsed prepared-source SMILES, with no fragment selection or desalting. Largest-fragment selection (D032) applies only to grouping.
+- Morgan fingerprint, radius 2, 2048 bits, chirality enabled; Tanimoto similarity `s(a,b)`.
+
+## 3. Family similarity and weights
+
+```text
+S_ij = (1 / (|F_i| |F_j|)) * sum_{a in F_i} sum_{b in F_j} s(a,b)
+w_i  = |F_i|
+=>  w_i w_j S_ij = sum_{a in F_i} sum_{b in F_j} s(a,b)
+```
+
+The identity `w_i = |F_i|` is what makes `w_i w_j S_ij` equal the sum of the between-family molecular-pair similarities. Complete family-pair similarities are retained, with no thresholding, pruning, approximation, coarsening or representative substitution.
+
+## 4. Implementation primitives
+
+- Reuse Stage-4 `make_morgan_generator()` and `calculate_tanimoto()` from `evaluation/novelty.py`. Local Mac reference bytes: SHA-256 `ba09443a67eae67ad08211299ea1f3484d9cfeda6676c047a7d159013eec9493` (observed 2026-11-14; reference bytes, not proof of review). The local file defines `MORGAN_RADIUS = 2`, `MORGAN_FP_SIZE = 2048`, `MORGAN_USE_CHIRALITY = True` (lines 9–11); `make_morgan_generator()` passes them to `rdFingerprintGenerator.GetMorganGenerator` (lines 81–89); `calculate_tanimoto()` wraps `DataStructs.TanimotoSimilarity` (lines 106–111). Byte-identity with the `novelty.py` uploaded in the original chat is not established.
+- These parameters match D005's Stage-4 representation. D033 reuses them for ADMET splitting; it does not amend D005.
+- Stage-4 collection/evaluation functions (`fingerprint_molecules()`, `evaluate_internal_similarity()`) are not used for family aggregation.
+- The Morgan/Tanimoto primitive is not duplicated in a new ADMET module; no shared-module refactor is authorized now.
+- Source: export §3.21 ("Implementation direction accepted in conversation") and handoff §2.7 ("The continuation decision in this chat was"); no verbatim user wording is preserved.
+
+## 5. Rejected alternatives
+
+- a grouping-only molecular representation as fingerprint input (proposed by an assistant and withdrawn; export §3.3);
+- repeating a full alternatives pass solely because the final freeze was missing (export §4).
+
+## 6. Scope
+
+Specification only. D033 does not authorize fingerprint computation, pair-matrix generation or split execution. Current state: `admet/scripts/build_split_input.py` is a local, untracked, incomplete draft that has not been run (`notes/Session_017.md` §11, §17.4).
+
+## 7. Evidence and provenance
+
+`notes/Session_017.md` §4, §7.1, §9, §11, §17; `notes/Decisions.md` D005, D031, D032; `notes/Session_016.md` §5; `admet/scripts/session016_alias_edge_diagnostic.py` lines 200–236; `admet/scripts/alias_grouping.py` lines 75–81 (sanitized `Chem.MolFromSmiles` parser). External: the GPT export and Session-017 handoff (hashes as recorded in D031 §8), which are recovered secondary records, not first-person approvals.
+
+## Revisit when
+
+Undecided. Revisit conditions have not been set by Miles.
+
+# D034 — ADMET Production Optimization Settings and Constrained-Random Comparison
+
+**Decision date:** 2026-11-14 (Session 017)  
+**Status:** FROZEN
+
+## Decision
+
+Sets the production settings that D031 §7 left open: solver determinism and seed, optimization budget, execution host, and the constrained-random comparison protocol. Nothing in D031–D033 is changed. This is a new decision made in Session 017, not a retrospective record.
+
+Approval (Miles, chat, 2026-11-14, verbatim):
+
+> "have there been any previously established seeds in the project history, if not, i propose using seed 20261114. I agree with the other choice recommentations"
+
+> "lets keep the ongoing seed convention, other than that lats authorize d034."
+
+The main conversation reads "the ongoing seed convention" as the project's practice of a single date-style `YYYYMMDD` integer seed used directly (D005 `20260816`; Stage-5 `20260816` and `20260906`; D029 `20261002`). No earlier seed was found for ADMET splitting or Gurobi; none is inherited.
+
+## 1. Solver determinism and seed
+
+- Gurobi 14.0.0, Academic WLS, environment `/mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual`, using the qualified native formulation (`admet/qualification/native_quadratic/equivalence.py`).
+- One fixed seed: Gurobi `Seed = 20261114` for both the Stage-A and Stage-B solves. One optimization run per stage; no multi-seed best-of selection.
+- `Threads` fixed to a single recorded value for both stages, set from the gpu-dev1 core count observed before the run.
+- Each run records Gurobi version, every non-default parameter, thread count, host, status, objective, bound, gap and work units used.
+
+## 2. Optimization budget
+
+- The stopping criterion is Gurobi `WorkLimit` (deterministic), with a wall-clock `TimeLimit` set higher as a safety cap only.
+- Budget values W_A (Stage A) and W_B (Stage B) are set from the §4 step 3 calibration and recorded before each production solve.
+- An incumbent stopped by `WorkLimit` or the safety `TimeLimit` is treated as the time-limited incumbent of D031 §6: eligible only if it independently satisfies every hard constraint; leakage recomputed independently; no MIP-gap threshold.
+- If no independently feasible incumbent exists at the budget, the stage halts and the outcome is reported to Miles; nothing is relaxed automatically.
+
+## 3. Constrained-random comparison (descriptive; no gate)
+
+- Purpose: to place the optimized assignment's L_cross against random assignments that satisfy the same hard constraints.
+- Stage A: each sample assigns every family independently to dev with probability 0.8 (test 0.2); a sample is kept only if it satisfies every D031 §4 lower bound (rejection sampling; no repair).
+- Stage B: the same, within the frozen Stage-A development partition, five folds with probability 0.2 each.
+- Allocations: 1,000 accepted samples per stage.
+- Seed: NumPy PCG64 generator seeded directly with `20261114`, one generator per stage, following the project seed convention.
+- Summary: the full distribution of random L_cross (min, 5th/50th/95th percentiles, max) and the empirical percentile of the optimized L_cross within it. Descriptive only; it does not accept, reject or re-run any assignment.
+- The test side is never read: only family weights, endpoint identity counts and S_ij are used.
+
+## 4. Execution order and host
+
+1. All runs are interactive on gpu-dev1 (where the Gurobi licence is qualified), not Slurm.
+2. Before any solve: a full-size construction-only measurement of the Stage-A model (time, peak memory), using the existing construction pattern. If it exceeds available memory, halt and report.
+3. A short work-limited calibration solve sets W_A; W_B is set from the same calibration scaled by model size and recorded before the Stage-B solve.
+4. Stage A production solve → independent validation → constrained-random comparison.
+5. Stage B on the frozen Stage-A development partition, same sequence.
+
+Freezing the resulting split and CV is a separate later decision. D034 authorizes no run by itself; each run requires its own exact commands and Miles's go-ahead.
+
+## 5. Rejected alternatives
+
+- Wall-clock TimeLimit as the primary budget (results depend on machine load).
+- Multi-seed best-of selection (more compute and a selection step; one deterministic run is reproducible).
+- Using the random comparison as an acceptance gate (would be a new requirement).
+- Repairing random samples to fit the constraints (changes the reference distribution).
+- Spawned NumPy SeedSequence streams (dropped in favour of the project's direct-seed convention).
+
+## Revisit when
+
+Undecided. Revisit conditions have not been set by Miles.
+
+## D034 Amendment 1 — Stage-A Freeze, Calibration Budgets, Stage-B Construction Measurement and Sampling Cap
+
+**Amendment date:** 2026-11-14 (Session 017)  
+**Status:** Approved amendment
+
+Approval (Miles, chat, 2026-11-14, verbatim), answering six review questions on D034 (A1–A4 below are the four amendments; the other two answers are logged in `notes/Session_017.md` §17.12):
+
+> "yes to all six. let me commit changes to the rpeo before you propose code"
+
+### A1. Stage-A freeze before Stage B (amends §3 and §4)
+
+A validated Stage-A assignment receives its own short freeze decision, made by Miles after he sees its independent validation and constrained-random comparison, before any Stage-B construction, calibration or solve. "The frozen Stage-A development partition" in §3 and §4 means the partition frozen by that decision. The final split-and-CV freeze remains a separate later decision.
+
+### A2. Calibration reports; Miles sets the budgets (amends §2 and §4 step 3)
+
+The calibration solve only reports the incumbent-improvement trajectory against Gurobi work units, plus wall time. Miles sets W_A, W_B and each safety TimeLimit explicitly; each is recorded before the corresponding production solve. No scaling rule from Stage A to Stage B is implied. A run that stops on the safety TimeLimit before reaching its WorkLimit is reported as not reproducible.
+
+### A3. Stage-B construction measurement (amends §4)
+
+Before the Stage-B calibration and solve, a construction-only measurement of the Stage-B model (time, peak memory) is made on the frozen Stage-A development partition. If it exceeds available memory, halt and report.
+
+### A4. Constrained-random sampling cap and percentile (amends §3)
+
+Each stage records its number of sampling attempts. If 1,000 accepted samples are not reached within 100,000 attempts, sampling halts and the outcome is reported to Miles. The empirical percentile is defined as the fraction of accepted random samples whose L_cross is less than or equal to the optimized L_cross.
+
+### Scope
+
+Everything else in D034 is unchanged. The amendment authorizes no run.

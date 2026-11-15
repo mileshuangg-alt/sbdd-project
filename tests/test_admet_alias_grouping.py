@@ -1,6 +1,7 @@
 import pytest
 
 from admet.scripts import alias_grouping as aliases
+from admet.scripts.alias_grouping import DUPLICATE_EQUAL_LARGEST_RESOLVED, FRAGMENT_AMBIGUITY, build_alias_grouping_result
 
 
 def _record(identity, scaffold_key=None, family_key=None, failures=()):
@@ -248,3 +249,51 @@ def test_non_authoritative_runtime_is_reported_without_claiming_authority(monkey
     assert output["alias_grouping"]["rdkit_version"] == "NOT.2023.09.6"
     assert output["alias_grouping"]["authoritative_rdkit_behavior"] == "2023.09.6"
     assert output["alias_grouping"]["is_authoritative_rdkit_runtime"] is False
+
+
+def test_duplicate_equal_largest_fragments_resolve_with_audit_note():
+    source = "CC.CC.O"
+
+    result = build_alias_grouping_result(source)
+
+    assert result.success
+    assert result.source_smiles == source
+    assert result.largest_fragment_smiles == "CC"
+    assert FRAGMENT_AMBIGUITY not in result.failures
+    assert DUPLICATE_EQUAL_LARGEST_RESOLVED in result.notes
+
+
+def test_distinct_equal_largest_fragments_remain_ambiguous():
+    result = build_alias_grouping_result("CC.CN")
+
+    assert not result.success
+    assert result.family_key is None
+    assert FRAGMENT_AMBIGUITY in result.failures
+    assert DUPLICATE_EQUAL_LARGEST_RESOLVED not in result.notes
+
+
+def test_duplicate_equal_largest_resolution_is_fragment_order_independent():
+    left = build_alias_grouping_result("CC.CC.O")
+    right = build_alias_grouping_result("O.CC.CC")
+
+    assert left.success
+    assert right.success
+    assert left.largest_fragment_smiles == right.largest_fragment_smiles
+    assert left.family_key == right.family_key
+    assert DUPLICATE_EQUAL_LARGEST_RESOLVED in left.notes
+    assert DUPLICATE_EQUAL_LARGEST_RESOLVED in right.notes
+
+
+def test_chembl5315124_duplicate_tie_resolves_without_rewriting_source():
+    source = (
+        "C[C@H]1COc2c(N3CCN(C)CC3)c(F)cc3c(=O)c(C(=O)O)cn1c23."
+        "C[C@H]1COc2c(N3CCN(C)CC3)c(F)cc3c(=O)c(C(=O)O)cn1c23.O"
+    )
+
+    result = build_alias_grouping_result(source)
+
+    assert result.success
+    assert result.source_smiles == source
+    assert result.family_key is not None
+    assert FRAGMENT_AMBIGUITY not in result.failures
+    assert DUPLICATE_EQUAL_LARGEST_RESOLVED in result.notes

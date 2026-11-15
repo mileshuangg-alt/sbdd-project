@@ -1,0 +1,36 @@
+{
+  "schema_version": "admet_split_input_config.v1",
+  "governing_decisions": ["D031", "D032", "D033"],
+  "authoritative_rdkit_version": "2023.09.6",
+  "prepared_manifest": "admet/data/prepared/MANIFEST.sha256",
+  "endpoints": [
+    {
+      "endpoint": "pka",
+      "path": "admet/data/prepared/pka_v2.4a_session016.csv",
+      "identity_column": "unique_ID",
+      "smiles_column": "smiles"
+    },
+    {
+      "endpoint": "clearance",
+      "path": "admet/data/prepared/human_hepa_408_session016.csv",
+      "identity_column": "molecule_chembl_id",
+      "smiles_column": "smiles"
+    }
+  ],
+  "expected_counts": {
+    "endpoint_identities": {
+      "pka": 5474,
+      "clearance": 408
+    },
+    "endpoint_qualified_identities": 5882,
+    "successfully_grouped": 5882,
+    "grouping_failures": 0,
+    "distinct_family_keys": 5447,
+    "distinct_scaffold_keys": 894
+  },
+  "expected_counts_sources": {
+    "endpoint_identities": "notes/Session_016.md section 2 (5,474 pKa source-ID compounds; 408 clearance identities)",
+    "grouping": "D032 section 3 continuation population (console-reported; notes/Session_017.md sections 8.3 and 17.3)"
+  },
+  "output_dir": "admet/data/splits/split_input_v1"
+}

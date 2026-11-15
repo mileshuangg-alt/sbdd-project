@@ -24,17 +24,19 @@ FRAGMENT_AMBIGUITY = "fragment_ambiguity_equal_largest_heavy_atom_count"
 SCAFFOLD_KEY_FAILURE = "scaffold_key_generation_failure"
 FAMILY_KEY_FAILURE = "family_key_generation_failure"
 RING_FREE_NO_SCAFFOLD = "ring_free_no_scaffold_key"
+DUPLICATE_EQUAL_LARGEST_RESOLVED = "duplicate_equal_largest_fragments_resolved"
 
 
 @dataclass(frozen=True)
 class FragmentSelection:
-    """Auditable result for unique-largest-fragment selection."""
+    """Auditable result for largest-fragment selection."""
 
     fragment_mol: Chem.Mol | None
     fragment_smiles: str | None
     heavy_atom_count: int | None
     fragment_heavy_atom_counts: tuple[int, ...]
     failure_reason: str | None
+    resolution_note: str | None
 
 
 @dataclass(frozen=True)
@@ -91,17 +93,21 @@ def assert_authoritative_rdkit_runtime() -> None:
 
 
 def select_unique_largest_fragment(mol: Chem.Mol) -> FragmentSelection:
-    """Select the uniquely largest fragment by heavy-atom count.
+    """Select the largest fragment, resolving duplicate equal-largest ties.
 
-    Equal-largest ties are reported as failures instead of being broken by
-    SMILES ordering, input order, charge, or any other scientific rule.
+    Equal-largest fragments are compared by canonical isomeric SMILES.
+    A tie is resolved only when every tied-largest fragment represents the
+    same canonical isomeric molecular structure. Chemically distinct ties
+    remain grouping failures.
     """
 
     fragments = Chem.GetMolFrags(mol, asMols=True, sanitizeFrags=True)
     counts = tuple(fragment.GetNumHeavyAtoms() for fragment in fragments)
 
     if not fragments:
-        return FragmentSelection(None, None, None, counts, NO_FRAGMENTS)
+        return FragmentSelection(
+            None, None, None, counts, NO_FRAGMENTS, None
+        )
 
     largest_count = max(counts)
     largest = [
@@ -110,16 +116,67 @@ def select_unique_largest_fragment(mol: Chem.Mol) -> FragmentSelection:
         if count == largest_count
     ]
 
-    if len(largest) != 1:
-        return FragmentSelection(None, None, largest_count, counts, FRAGMENT_AMBIGUITY)
+    canonical_largest: list[tuple[str, Chem.Mol]] = []
+    try:
+        for fragment in largest:
+            canonical_smiles = Chem.MolToSmiles(
+                fragment,
+                canonical=True,
+                isomericSmiles=True,
+            )
+            if not canonical_smiles:
+                return FragmentSelection(
+                    None,
+                    None,
+                    largest_count,
+                    counts,
+                    FRAGMENT_AMBIGUITY,
+                    None,
+                )
+            canonical_largest.append((canonical_smiles, fragment))
+    except Exception:
+        return FragmentSelection(
+            None,
+            None,
+            largest_count,
+            counts,
+            FRAGMENT_AMBIGUITY,
+            None,
+        )
 
-    fragment = largest[0]
-    fragment_smiles = Chem.MolToSmiles(
-        fragment,
-        canonical=True,
-        isomericSmiles=True,
+    distinct_canonical_smiles = {
+        canonical_smiles
+        for canonical_smiles, _ in canonical_largest
+    }
+
+    if len(distinct_canonical_smiles) != 1:
+        return FragmentSelection(
+            None,
+            None,
+            largest_count,
+            counts,
+            FRAGMENT_AMBIGUITY,
+            None,
+        )
+
+    fragment_smiles = canonical_largest[0][0]
+    fragment = canonical_largest[0][1]
+
+    resolution_note = (
+        DUPLICATE_EQUAL_LARGEST_RESOLVED
+        if len(largest) > 1
+        else None
     )
-    return FragmentSelection(fragment, fragment_smiles, largest_count, counts, None)
+
+    result = FragmentSelection(
+        fragment,
+        fragment_smiles,
+        largest_count,
+        counts,
+        None,
+        resolution_note,
+    )
+    return result
 
 
 def make_typed_bemis_murcko_scaffold_key(fragment_mol: Chem.Mol) -> tuple[str | None, str | None]:
@@ -212,6 +269,9 @@ def build_alias_grouping_result(smiles: str) -> AliasGroupingResult:
             failures=tuple(failures),
             notes=tuple(notes),
         )
+
+    if fragment_selection.resolution_note is not None:
+        notes.append(fragment_selection.resolution_note)
 
     scaffold_key, scaffold_failure = make_typed_bemis_murcko_scaffold_key(
         fragment_selection.fragment_mol

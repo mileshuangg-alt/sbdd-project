@@ -1,0 +1,39 @@
+{
+  "schema_version": "admet_split_optimization_config.v1",
+  "governing_decisions": ["D031", "D034", "D034 Amendment 1"],
+  "split_input": {
+    "directory": "admet/data/splits/split_input_v1",
+    "family_count": 5447,
+    "similarity_length": 14832181,
+    "expected_sha256": {
+      "families.csv": "286f5cbdcbd8af10ce845dda1a6a53d40feba93b0214a35300e18efc4d0e3abc",
+      "memberships.csv": "95d8318413b9b89294e25ceaded99c251ce1a55fc3c2dd458afe9de1e45c9044",
+      "family_similarity_upper.npy": "478daa50f65111b673337805699b086be9451e21eb5caf61ce14d4b137051185",
+      "run_metadata.json": "dd6cdcf373db6177844df3413d655a78b2a16219916b79d4c352aedbe347f53a",
+      "SHA256SUMS.txt": "f6081b95fe808125f8f9f90068626541415f5dcb347f7bb20183020d0dee5276"
+    },
+    "expected_sha256_source": "sha256sum output from gpu-dev1 (n4pu04), pasted by Miles on 2026-11-14 (notes/Session_017.md section 17.14)"
+  },
+  "endpoints": ["pka", "clearance"],
+  "epsilon": 0.05,
+  "delta": 0.05,
+  "stages": {
+    "stage_a": {
+      "family_scope": "all",
+      "partitions": {
+        "dev": 0.8,
+        "test": 0.2
+      }
+    }
+  },
+  "gurobi": {
+    "environment": "/mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual",
+    "seed": 20261114
+  },
+  "construction_measurement": {
+    "rss_cap_bytes": 137438953472,
+    "rss_cap_source": "128 GiB, set by Miles on 2026-11-14 after gpu-dev1 (n4pu04) reported 503 GB total memory (notes/Session_017.md section 17.16)",
+    "sample_interval_seconds": 0.1,
+    "output_root": "admet/artifacts/split_optimization"
+  }
+}

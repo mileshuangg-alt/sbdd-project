@@ -605,3 +605,181 @@ Scope: this produced D031 optimizer input only. No Stage-A or Stage-B assignment
 - Pending (approved, not yet done): Miles to paste the `split_input_v1/SHA256SUMS.txt` values from gpu-dev1, to be recorded as D034's identified input and checked by each optimizer run before it starts. Until then the output hash values remain unrecorded (§17.9).
 - Reproducibility scope: D034's reproducibility claims cover only the same Gurobi version, parameters, `Threads` and host CPU. Each run records the host CPU model. The observed hostname (`n4pu04`) is execution-state-specific (§12), so a later run may land on different hardware and produce a different, equally valid result.
 - Miles stated he will commit the repository changes himself before code for D034 is proposed.
+
+### 17.13 Commit, and Stage-A construction-measurement code
+
+- [Mac obs 2026-11-14] On Miles's instruction ("Commit the working tree changes with a sensible message."), the main Claude Code conversation committed seven files on `stage6-wip` as `9b0efa7e20e186f7ebf1a726f2c5a2cac540f42a` ("Session 017: record D031-D034 and add ADMET split-input builder"): `notes/Decisions.md`, `notes/Session_017.md`, `admet/scripts/alias_grouping.py`, `tests/test_admet_alias_grouping.py`, `admet/scripts/build_split_input.py`, `tests/test_admet_build_split_input.py`, `admet/data/splits/split_input_config.json`. Left untracked: `CLAUDE.md`, `.claude/agents/bookkeeper.md`, and the two `.pre_*` backups (pre-amendment versions are preserved at `f616bab`). Not pushed.
+- [Miles, chat, 2026-11-14] Approval of the construction-measurement proposal, verbatim: "okay, I approve this proposal. I cannot find the shasums.txt file you referred to". The main conversation clarified that `SHA256SUMS.txt` is on gpu-dev1 at `/mnt/nfs/CX900004_DS117/sbdd-project/session017_split_input_builder/admet/data/splits/split_input_v1/SHA256SUMS.txt` (outputs were not copied to the Mac) and gave the command to print all five split-input hashes there.
+- [Mac obs 2026-11-14] Code edits made on that approval (D034 §4 step 2; reusable for D034 Amendment 1 A3); untracked, not run on real data:
+  - `admet/data/splits/split_optimization_config.json` (SHA-256 `e44f088bdfca270448cff4fe7d3346eac4c69dc577fd64b3e202437ef7f5a275`): split-input path and family/similarity sizes; ε = δ = 0.05; endpoints; Stage A partitions dev 0.8 / test 0.2; Gurobi environment and Seed 20261114; construction sampling interval; output root `admet/artifacts/split_optimization`. The five expected split-input hashes and `rss_cap_bytes` are null (PENDING); the script refuses to run until they are set.
+  - `admet/scripts/measure_split_model_construction.py` (484 lines, SHA-256 `afb399ed206031732d075507a1ae3217c7af0a5d653a5e0a5ce91f7684f61055`): verifies split-input hashes; memory-maps the similarity array behind a read-only upper-triangle mapping; lower bounds via `probe.compute_limits()` and `probe.stratification_lower_bounds()`, upper bounds at stage totals; builds the model with the unchanged `equivalence.build_native_gurobi_model()`; samples RSS with an abort at the cap; checks 10,894 binaries, 5,459 linear constraints and 29,664,362 quadratic terms for Stage A and `SolCount == 0`; never calls `optimize()`; writes `construction_report.json` and `SHA256SUMS.txt` atomically under `admet/artifacts/split_optimization/stage_a_construction/`, refusing to overwrite.
+  - `tests/test_measure_split_model_construction.py` (204 lines, SHA-256 `c3e9f0d96a1e3d83a296f6974aa4721fa97e8192ae3ee56c1530401bc41e414c`).
+- [Mac obs 2026-11-14] `python3 -m pytest tests/test_measure_split_model_construction.py tests/test_admet_build_split_input.py tests/test_admet_alias_grouping.py -q -rs` → `49 passed, 1 skipped in 2.01s`. The skipped test is the tiny Gurobi model build (`gurobipy` is not installed on the Mac). Mechanical smoke test under local RDKit 2026.03.6 only; Gurobi construction is untested.
+- Not done: Miles's review of these bytes; recording of the split-input hashes; setting the RSS cap; staging; gpu-dev1 pre-run checks; any run.
+
+### 17.14 Split-input hashes recorded; gpu-dev1 pre-run checks
+
+[gpu-dev1, user-pasted] Miles ran `sha256sum families.csv memberships.csv family_similarity_upper.npy run_metadata.json SHA256SUMS.txt` in `/mnt/nfs/CX900004_DS117/sbdd-project/session017_split_input_builder/admet/data/splits/split_input_v1` on host `n4pu04` and pasted (2026-11-14):
+
+```text
+286f5cbdcbd8af10ce845dda1a6a53d40feba93b0214a35300e18efc4d0e3abc  families.csv
+95d8318413b9b89294e25ceaded99c251ce1a55fc3c2dd458afe9de1e45c9044  memberships.csv
+478daa50f65111b673337805699b086be9451e21eb5caf61ce14d4b137051185  family_similarity_upper.npy
+dd6cdcf373db6177844df3413d655a78b2a16219916b79d4c352aedbe347f53a  run_metadata.json
+f6081b95fe808125f8f9f90068626541415f5dcb347f7bb20183020d0dee5276  SHA256SUMS.txt
+```
+
+These are recorded as D034's identified split input (approved Q1, §17.12) and were entered by the main conversation as `split_input.expected_sha256` in `admet/data/splits/split_optimization_config.json` [Mac obs 2026-11-14]. They close the "output hash values not recorded" gap noted in §17.9.
+
+[gpu-dev1, user-pasted] Pre-run checks on `n4pu04`, 2026-11-14:
+
+- `nproc` → `128`
+- `free -g` → Mem total 503, used 7, free 262, buff/cache 233, available 492; Swap total 507, used 0.
+- In `/mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual`: `python -s -c "import numpy, psutil, gurobipy; ..."` → `ModuleNotFoundError: No module named 'numpy'`. numpy is not installed in the qualified Gurobi environment. Whether psutil and gurobipy import there was not reached by this check.
+
+Consequence (main conversation): `admet/scripts/measure_split_model_construction.py` (§17.13) imports numpy at module level and imports `admet/qualification/datasail_scaling/probe.py`, which also imports numpy, so it cannot run in that environment as written. No environment was changed. A fix is pending Miles's choice.
+
+### 17.15 numpy added to the Gurobi environment
+
+- [Miles, chat, 2026-11-14] Offered (A) removing numpy from the construction script or (B) installing numpy into the qualified Gurobi environment, Miles chose, verbatim: "Option B, install numpy". He also pasted `7.2.2 (14, 0, 0)` for `psutil` and `gurobipy` in that environment.
+- [gpu-dev1, user-pasted] Environment composition (`conda list -p /mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual`): `python 3.12.16 h5f976f7_0_cpython conda-forge`; `psutil 7.2.2 pypi_0 pypi`; `gurobipy 14.0.0 pypi_0 pypi`. The environment is mixed: Python from conda-forge, add-on packages from PyPI via pip.
+- [gpu-dev1, user-pasted] A conda dry run (`conda install -p … numpy=1.26.4 --dry-run`) failed with `LockError: Failed to acquire lock.`; nothing was changed. The pip route was used instead, matching how `psutil` and `gurobipy` were installed: `python -s -m pip install --dry-run numpy==1.26.4` → `Would install numpy-1.26.4`.
+- [gpu-dev1, user-pasted] Snapshots saved on gpu-dev1 under `/mnt/nfs/CX900004_DS117/sbdd-project/`: `liggate-gurobi-qual.before_numpy.txt` (conda `--explicit`), `liggate-gurobi-qual.before_numpy.pip.txt` (`pip freeze`), `liggate-gurobi-qual.after_numpy.txt`, `liggate-gurobi-qual.after_numpy.pip.txt`. After the install, `python -s -c "import numpy, psutil, gurobipy; ..."` printed `1.26.4 7.2.2 (14, 0, 0)`, and `diff` of the before/after pip snapshots showed only `> numpy==1.26.4`. The output of the install command itself and a diff of the conda snapshots were not pasted.
+- Consequence: the Session-016 Gurobi qualification (`notes/Session_016.md` §5; `session016_native_quadratic_qualification.json`) describes this environment before numpy was added. The environment path in D034 §1 is unchanged. To keep conda and pip from conflicting, further packages, if any, should not be added to this environment with conda.
+
+### 17.16 Memory cap set; construction config complete
+
+- [Miles, chat, 2026-11-14] Asked what memory cap the construction measurement should use (proposed 128 GiB, about a quarter of the 503 GB on `n4pu04`, §17.14), Miles answered, verbatim: "128 GiB".
+- [Mac obs 2026-11-14] `admet/data/splits/split_optimization_config.json` now sets `construction_measurement.rss_cap_bytes` = `137438953472` (128 GiB) and carries the five split-input hashes from §17.14. Config SHA-256: `f074888a283a80dbbd13d7571e6698104377749bff169e38ae44ad464dbd73c0`. This supersedes the config hash in §17.13 (`e44f088b…`) and the intermediate hash after the split-input hashes were entered (`bbb54635…`).
+- [Mac obs 2026-11-14] One test, `test_measurement_refuses_pending_config`, read the live config and failed once the cap was set; it was changed to null the cap in its own copy of the config. `tests/test_measure_split_model_construction.py` SHA-256 is now `d8059c50c2417d7c6ef9b0b205b1a13422bf85c8f79b6a4179ad0173f00e512b` (supersedes §17.13's `c3e9f0d9…`). `admet/scripts/measure_split_model_construction.py` is unchanged (`afb399ed206031732d075507a1ae3217c7af0a5d653a5e0a5ce91f7684f61055`).
+- [Mac obs 2026-11-14] `python3 -m pytest tests/test_measure_split_model_construction.py tests/test_admet_build_split_input.py tests/test_admet_alias_grouping.py -q -rs` → `49 passed, 1 skipped in 1.63s` (the skipped test is the Gurobi model build; `gurobipy` is not on the Mac). Mechanical only.
+- Not done: Miles's review of the construction script bytes; staging; any run.
+
+### 17.17 Code review of the construction-measurement script and fixes
+
+[Mac obs 2026-11-14] On Miles's instruction "Run /code-review first", the main Claude Code conversation ran `/code-review` (high effort, single pass, no verify stage) on `admet/scripts/measure_split_model_construction.py`, `admet/data/splits/split_optimization_config.json` and `tests/test_measure_split_model_construction.py`. It reported 6 findings. None affected the bounds, the model-dimension checks or the no-`optimize()` rule. On Miles's instruction "Fix all findings", all 6 were fixed:
+
+1. The run now refuses to start if `<stage>_construction_ABORTED.json` exists from an earlier aborted run, and the abort report records its sample interval and creation time.
+2. The memory cap is documented as sample-based (not a hard limit) in the script and in the report (`rss_cap_enforcement`), and the config's sample interval was shortened from 0.5 s to 0.1 s.
+3. The abort path (cap exceeded → abort report → exit code 3), normal sampling and the host description are now tested on the Mac, using an injected RSS reader, exit function, memory total and `/proc/cpuinfo` file.
+4. The test that reads the live config now locates it relative to the test file, not the working directory.
+5. The similarity mapping reuses the offset when the qualified builder checks `pair in mapping` and then reads `mapping[pair]`.
+6. `RssSampler` now cross-references `construction_probe.measure_native_construction()`, whose sampling loop it mirrors (the qualified module is left unedited).
+
+Reference bytes after fixes [Mac obs 2026-11-14; reference bytes, not proof of review]:
+- `admet/scripts/measure_split_model_construction.py`: 534 lines, SHA-256 `9e114432ff6db8de75c7b21882f11ec3484da57554480a16a601c1e3464987ee` (supersedes `afb399ed…`).
+- `admet/data/splits/split_optimization_config.json`: SHA-256 `f20f1d187e90c0bd33576396cc25f78e98d9e3ceae6f12e17c34a577d37f4fd4` (supersedes `f074888a…` in §17.16; only the sample interval changed).
+- `tests/test_measure_split_model_construction.py`: 289 lines, SHA-256 `109bef0789ad3c676399f7131058d15eda1e2961f638a2d66251fe49b622e6a8` (supersedes `d8059c50…`).
+
+Mac test results [Mac obs 2026-11-14]: from the repository root, `python3 -m pytest tests/test_measure_split_model_construction.py tests/test_admet_build_split_input.py tests/test_admet_alias_grouping.py -q -rs` → `54 passed, 1 skipped in 1.58s`; from `tests/` with `PYTHONPATH=..`, the construction tests alone → `15 passed, 1 skipped`. The skipped test is the Gurobi model build (`gurobipy` is not on the Mac). Mechanical only.
+
+Not done: Miles's review of the fixed bytes; staging; any run.
+
+### 17.18 Construction script reviewed; second staging bundle built
+
+- [Miles, chat, 2026-11-14] Asked whether he had reviewed the fixed construction-script bytes (§17.17), Miles answered, verbatim: "Reviewed, stage it". This records his review of `admet/scripts/measure_split_model_construction.py` `9e114432ff6db8de75c7b21882f11ec3484da57554480a16a601c1e3464987ee`, config `f20f1d187e90c0bd33576396cc25f78e98d9e3ceae6f12e17c34a577d37f4fd4` and tests `109bef0789ad3c676399f7131058d15eda1e2961f638a2d66251fe49b622e6a8`.
+- [Mac obs 2026-11-14] Second staging bundle built in the Mac scratch directory (not the repository): `session017_stage_a_construction.tar.gz` (17,742 bytes, SHA-256 `b73c3bb9d48b610ebce35d80e36c555efd54e0b7a0f69c05a1f5b4bcfef55c8c`) with `session017_stage_a_construction.SHA256SUMS.txt`. It was built with `--no-xattrs --no-mac-metadata` (no `LIBARCHIVE.xattr` headers found in the archive). Its members unpack under `session017_split_input_builder/`, into the existing staged bundle, with `FILES_construction.sha256` listing:
+  - `admet/qualification/__init__.py` `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` (empty)
+  - `admet/qualification/datasail_scaling/__init__.py` `319f1b3b1b85eacce1197a82eb6494e909db71667daa95d57d2a7237c3f7b564` (docstring only)
+  - `admet/qualification/datasail_scaling/probe.py` `cc5af684e4c99eb9eeba84e4dc53155402dda5dbff4280b178526bc347ae4410` (unmodified from HEAD; no separately recorded qualified hash for this file was found)
+  - `admet/qualification/native_quadratic/__init__.py` `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` (empty)
+  - `admet/qualification/native_quadratic/equivalence.py` `58c0df783e9222203e2be68ac28b28de5b803e40bae31689bfd8591a64aac133`, equal to the Session-016 qualified hash in `admet/qualification/native_quadratic/artifacts/SHA256SUMS.txt`
+  - `admet/scripts/measure_split_model_construction.py` `9e114432ff6db8de75c7b21882f11ec3484da57554480a16a601c1e3464987ee`
+  - `admet/data/splits/split_optimization_config.json` `f20f1d187e90c0bd33576396cc25f78e98d9e3ceae6f12e17c34a577d37f4fd4`
+
+  None of these paths exists in the first bundle. A Mac extraction check verified the tarball hash and all 7 file hashes, with no `._*` files.
+- Not done: transfer to gpu-dev1; any run. Transfer verification is not run permission.
+
+### 17.19 Second bundle transferred to gpu-dev1 (verified; not run)
+
+[gpu-dev1, user-pasted] Miles transferred `session017_stage_a_construction.tar.gz` and pasted, from host `n4pu04` with `/mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual` active (2026-11-14):
+
+```text
+$ cd session017_split_input_builder && sha256sum -c FILES_construction.sha256 && sha256sum -c FILES.sha256
+admet/qualification/__init__.py: OK
+admet/qualification/datasail_scaling/__init__.py: OK
+admet/qualification/datasail_scaling/probe.py: OK
+admet/qualification/native_quadratic/__init__.py: OK
+admet/qualification/native_quadratic/equivalence.py: OK
+admet/scripts/measure_split_model_construction.py: OK
+admet/data/splits/split_optimization_config.json: OK
+admet/__init__.py: OK
+admet/scripts/__init__.py: OK
+admet/scripts/build_split_input.py: OK
+admet/scripts/alias_grouping.py: OK
+evaluation/__init__.py: OK
+evaluation/novelty.py: OK
+admet/data/splits/split_input_config.json: OK
+admet/data/prepared/MANIFEST.sha256: OK
+admet/data/prepared/pka_v2.4a_session016.csv: OK
+admet/data/prepared/human_hepa_408_session016.csv: OK
+```
+
+- All 7 second-bundle files match `FILES_construction.sha256` (§17.18), and all 10 first-bundle files still match `FILES.sha256` (§17.8), so the first bundle was not altered by the extraction.
+- The pasted output starts at the final command. The earlier steps given to Miles (pre-extraction path check, tarball `sha256sum -c`, `tar -xzkf`) were not pasted; the file-level hashes above verify the extracted contents regardless.
+- Transfer verification is not run permission. The construction measurement has not been run.
+
+### 17.20 Stage-A construction run halted on the quadratic-term check; cause identified
+
+[gpu-dev1, user-pasted] Miles ran the Stage-A construction measurement (`python -s -m admet.scripts.measure_split_model_construction --config admet/data/splits/split_optimization_config.json --stage stage_a`) in `liggate-gurobi-qual` on `n4pu04` (2026-11-14). It built the model and then halted on its own dimension check:
+
+```text
+Restricted license - for non-production use only - expires 2028-11-29
+...
+AssertionError: quadratic_terms: observed 27815294, expected 29664362
+exit=1
+```
+
+No report was written and `optimize()` was not called. The script's sampled peak memory and build time were not reported, because the halt came before the report.
+
+Diagnosis [gpu-dev1, user-pasted; analysis by the main Claude Code conversation]:
+- Missing terms: 29,664,362 − 27,815,294 = 1,849,068 = 2 × 924,534 (two partitions).
+- Zero-similarity pairs in `family_similarity_upper.npy`: `zero_pairs 924534 x2 1849068 nonzero_pairs 13907647 min_nonzero 0.0028169014084507044`. The missing terms equal exactly the zero-similarity family pairs counted over both partitions.
+- Minimal Gurobi check (two binary variables, terms 0.0·x·y and 0.5·x·y): `expr_terms 2`, then after `setObjective` and `update()`, `objective_terms 1`.
+- Root cause (confirmed): Gurobi keeps a zero-coefficient term in a `QuadExpr` but drops it when the expression is set as the model objective. The script counts `model.getObjective().size()`, while its expected count assumed one term per family pair per partition. The Session-016 synthetic fixtures contained no zero similarities, so the qualified count rule never met one.
+- Consequence for the model: a pair with S_ij = 0 has coefficient w_i·w_j·S_ij = 0 and contributes nothing to L_cross in any assignment, so the stored objective is mathematically identical. The split-input artifact still holds the complete S_ij for all 14,832,181 pairs.
+
+Separate finding: the run printed `Restricted license - for non-production use only - expires 2028-11-29`, so this shell used the size-limited licence bundled with pip `gurobipy`, not the Academic WLS licence recorded for the Session-016 qualification. Construction succeeded under it, but optimizing a model of this size would be refused. How the WLS licence was configured for Session 016 is not in the recovered records. Unresolved.
+
+No code has been changed. A fix is pending Miles's approval.
+
+### 17.21 Zero-similarity term-count fix
+
+- [Miles, chat, 2026-11-14] Shown the confirmed root cause (§17.20) and the planned fix, Miles answered, verbatim: "Approve the fix".
+- [Mac obs 2026-11-14] Changes to `admet/scripts/measure_split_model_construction.py`:
+  - the expected quadratic-term count is now partitions × non-zero similarity pairs (Stage A on `split_input_v1`: 2 × 13,907,647 = 27,815,294); binary-variable and linear-constraint checks are unchanged;
+  - the non-zero count is measured from the similarity array at run time;
+  - the report records `similarity_pairs` (total, nonzero, zero) with a note that Gurobi does not store zero-coefficient objective terms and that zero-similarity pairs contribute 0 to L_cross in every assignment, plus the expected dimensions next to the observed ones.
+- [Mac obs 2026-11-14] Test changes in `tests/test_measure_split_model_construction.py`: the dimension test now uses the real Stage-A counts (27,815,294 expected terms), and the tiny-fixture similarity array now contains one zero pair, so the Gurobi build test expects 10 stored terms (5 non-zero pairs × 2 partitions) rather than 12. That Gurobi test is skipped on the Mac (`gurobipy` not installed) and pytest is not installed in the gpu-dev1 Gurobi environment, so no test runner currently exercises the corrected Gurobi path; the gpu-dev1 construction re-run is the check.
+- Reference bytes after the fix [Mac obs 2026-11-14; reference bytes, not proof of review]:
+  - `admet/scripts/measure_split_model_construction.py`: 564 lines, SHA-256 `cfb6d08facb9e31d0652e665e4720705dd18cd1ff36653b2cff6a1182377d2e6` (supersedes `9e114432…` in §17.17 and §17.18).
+  - `tests/test_measure_split_model_construction.py`: 303 lines, SHA-256 `61bad0eb85179a3dd92dae3715e45b5d2956f5d09b884ed086f9f7e3026f3226` (supersedes `109bef07…`).
+  - `admet/data/splits/split_optimization_config.json`: unchanged, `f20f1d187e90c0bd33576396cc25f78e98d9e3ceae6f12e17c34a577d37f4fd4`.
+- [Mac obs 2026-11-14] `python3 -m pytest tests/test_measure_split_model_construction.py tests/test_admet_build_split_input.py tests/test_admet_alias_grouping.py -q -rs` → `54 passed, 1 skipped in 2.53s` (skipped: the Gurobi build test). Mechanical only.
+- D031 handling: recorded here as a fact, with no amendment to D031. The solver omits only exactly-zero objective terms (smallest non-zero S_ij 0.0028169014084507044, §17.20), the objective is mathematically unchanged, and the complete S_ij for all 14,832,181 pairs remains in the split-input artifact.
+- Not done: Miles's review of the fixed bytes; re-staging the changed script; the construction re-run; the WLS licence issue (§17.20), still unresolved.
+
+### 17.22 Fixed construction script reviewed; third staging bundle built
+
+- [Miles, chat, 2026-11-15] Asked whether he had reviewed the fixed construction script (§17.21), Miles answered, verbatim: "Reviewed, stage it". This records his review of `admet/scripts/measure_split_model_construction.py` `cfb6d08facb9e31d0652e665e4720705dd18cd1ff36653b2cff6a1182377d2e6`.
+- [Mac obs 2026-11-15] Third staging bundle built in the Mac scratch directory (not the repository): `session017_zero_fix.tar.gz` (6,361 bytes, SHA-256 `8b78cf97775fbcea502489b2c4088820817ffff074e7a138f97725eea5e58c41`) with `session017_zero_fix.SHA256SUMS.txt`, built with `--no-xattrs --no-mac-metadata` (no `LIBARCHIVE.xattr` headers). It unpacks to its own directory `session017_zero_fix/`, containing only `admet/scripts/measure_split_model_construction.py` (`cfb6d08f…`) and `FILES_zero_fix.sha256`. A Mac extraction check verified the file hash.
+- Planned replacement on gpu-dev1 (given to Miles, not yet done): verify the tarball, extract to `session017_zero_fix/`, verify the file, keep the staged pre-fix script (`9e114432…`) as `measure_split_model_construction.py.pre_zero_fix`, then copy in the fixed script and verify its hash in place.
+- Not done: transfer, replacement, construction re-run; WLS licence issue (§17.20) still unresolved.
+
+### 17.23 Stage-A construction measurement completed (D034 §4 step 2)
+
+[gpu-dev1, user-pasted] On 2026-11-15 Miles reported that the destination check passed and that, before the swap, `admet/artifacts/split_optimization` did not exist and the staged script hash was `9e114432ff6db8de75c7b21882f11ec3484da57554480a16a601c1e3464987ee`. He then swapped in the fixed script (the swap command's output was not pasted; the executed-code hash below confirms the fixed script ran) and re-ran the Stage-A construction measurement in `/mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual` on `n4pu04`. Pasted result:
+
+- `exit=0`. Report `admet/artifacts/split_optimization/stage_a_construction/construction_report.json`, SHA-256 `5701bc34512232dcf278e9a887423aefe7f8c2249e5f3ffd5f948bbdc8459fe0`; `sha256sum -c SHA256SUMS.txt` → `construction_report.json: OK`.
+- Dimensions (observed = expected): binary variables 10,894; variables 10,894; linear constraints 5,459; quadratic terms 27,815,294.
+- Similarity pairs: total 14,832,181; non-zero 13,907,647; zero 924,534.
+- Construction time 109.53128896607086 s; peak RSS 2,272,206,848 bytes (about 2.12 GiB; cap 128 GiB, sample-based).
+- `optimize_called: false`; `solution_count: 0`.
+- Host: `n4pu04`; CPU `INTEL(R) XEON(R) GOLD 6548Y+`; 128 logical CPUs; total memory 540,498,747,392 bytes; platform `Linux-5.15.0-202-generic-x86_64-with-glibc2.35`.
+- Runtime: Gurobi 14.0.0; NumPy 1.26.4; Python 3.12.16.
+- Executed code (all under `/mnt/nfs/CX900004_DS117/sbdd-project/session017_split_input_builder/`): `measure_split_model_construction.py` `cfb6d08facb9e31d0652e665e4720705dd18cd1ff36653b2cff6a1182377d2e6`; `equivalence.py` `58c0df783e9222203e2be68ac28b28de5b803e40bae31689bfd8591a64aac133` (Session-016 qualified hash); `probe.py` `cc5af684e4c99eb9eeba84e4dc53155402dda5dbff4280b178526bc347ae4410`.
+
+Notes (main Claude Code conversation):
+- This completes D034 §4 step 2 for Stage A: the full Stage-A model fits easily in memory (about 2.1 GiB peak, against 503 GB on the host). The earlier rough extrapolation of about 10 GB was an overestimate.
+- The run log tail was not pasted, so whether the restricted-licence line appeared again is not shown here. The WLS licence issue (§17.20) is unresolved. Under the restricted licence, optimizing a 10,894-variable model would be refused, so D034 §4 step 3 (calibration solve) is blocked until the WLS licence is active.
+- Whether `measure_split_model_construction.py.pre_zero_fix` was kept on gpu-dev1 is not shown in the pasted output.

@@ -28,7 +28,14 @@
   },
   "gurobi": {
     "environment": "/mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual",
-    "seed": 20261114
+    "seed": 20261114,
+    "license_file": "/mnt/nfs/CX900004_DS117/private/gurobi/gurobi.lic",
+    "license_file_source": "Academic WLS licence confirmed on gpu-dev1 (n4pu04) on 2026-11-15 (notes/Session_017.md section 17.24)"
+  },
+  "calibration": {
+    "threads": 32,
+    "threads_source": "approved by Miles, chat, 2026-11-19 (Approve, Threads 32); Gurobi's default on gpu-dev1 (n4pu04) is up to 32 threads",
+    "output_root": "admet/artifacts/split_optimization"
   },
   "construction_measurement": {
     "rss_cap_bytes": 137438953472,

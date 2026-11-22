@@ -15,7 +15,17 @@ gpu-dev1; never through Slurm):
     GRB_LICENSE_FILE=<gurobi.license_file from the config> \
     python -s -m admet.scripts.calibrate_split_solve \
         --config admet/data/splits/split_optimization_config.json \
-        --stage stage_a --work-limit-cap <W> --time-limit-cap <T>
+        --stage stage_a --work-limit-cap <W> --time-limit-cap <T> \
+        --soft-mem-limit-gb <G>
+
+`--soft-mem-limit-gb` is Gurobi's SoftMemLimit in decimal gigabytes (10^9
+bytes). It must lie below the RSS cap in the config; the harness cap is a hard
+exit checked per sample, whereas SoftMemLimit asks Gurobi to stop cleanly and
+may overshoot, so neither guarantees a clean exit.
+
+While the solve runs, every new incumbent is appended to
+`<output_root>/<stage>_calibration_inprogress/trajectory.jsonl` (fsynced) and
+the Gurobi log is written beside it, so a hard abort leaves a progress record.
 """
 
 from __future__ import annotations
@@ -43,6 +53,8 @@ SCHEMA_VERSION = "admet_split_calibration.v1"
 REPORT_FILENAME = "calibration_report.json"
 LOG_FILENAME = "gurobi.log"
 LICENSE_ENV_VAR = "GRB_LICENSE_FILE"
+TRAJECTORY_FILENAME = "trajectory.jsonl"
+BYTES_PER_GB = 10**9  # Gurobi's GB is decimal
 
 
 def check_license_environment(config: Mapping, environ: Mapping[str, str]) -> str:
@@ -74,6 +86,20 @@ def check_caps(work_limit_cap: float, time_limit_cap: float) -> None:
             raise ValueError(f"--{name} must be a positive finite number, got {value}")
 
 
+def check_soft_mem_limit(soft_mem_limit_gb: float, rss_cap_bytes: int) -> None:
+    """SoftMemLimit (decimal GB) must be positive, finite and below the RSS cap."""
+
+    if not math.isfinite(soft_mem_limit_gb) or soft_mem_limit_gb <= 0:
+        raise ValueError(
+            f"--soft-mem-limit-gb must be a positive finite number, got {soft_mem_limit_gb}"
+        )
+    if soft_mem_limit_gb * BYTES_PER_GB >= rss_cap_bytes:
+        raise ValueError(
+            f"--soft-mem-limit-gb {soft_mem_limit_gb} ({soft_mem_limit_gb * BYTES_PER_GB:.0f} "
+            f"bytes) must be below the RSS cap of {rss_cap_bytes} bytes"
+        )
+
+
 def total_pair_weight(weights: np.ndarray, values: np.ndarray) -> float:
     """Sum over i<j of w_i w_j S_ij from the upper-triangle array (float64)."""
 
@@ -97,16 +123,58 @@ def l_cross_from_within(total_weight: float, within_objective: float) -> float:
     return total_weight - within_objective
 
 
+class TrajectorySink:
+    """Append-only JSON-lines progress record, fsynced after every line.
+
+    The first line is a header. A failure while writing an event is kept in
+    `write_error` and does not stop the solve; a failure writing the header
+    raises, before any solve work starts. An existing file is never opened.
+    """
+
+    def __init__(self, path: Path, header: dict):
+        self.path = path
+        self.write_error: str | None = None
+        self._handle = open(path, "x", encoding="utf-8")
+        self._write({"record": "header", **header})
+
+    def _write(self, record: dict) -> None:
+        self._handle.write(json.dumps(record, sort_keys=True) + "\n")
+        self._handle.flush()
+        os.fsync(self._handle.fileno())
+
+    def append(self, event: dict) -> None:
+        if self.write_error is not None:
+            return
+        try:
+            self._write({"record": "incumbent", **event})
+        except OSError as error:
+            self.write_error = repr(error)
+
+    def close(self) -> None:
+        try:
+            self._handle.close()
+        except OSError as error:
+            if self.write_error is None:
+                self.write_error = repr(error)
+
+
 class TrajectoryRecorder:
     """Gurobi callback that records each new incumbent.
 
     `codes` maps the callback names used here to Gurobi's integer codes
-    (`GRB.MIPSOL`, `GRB.Callback.RUNTIME`, ...) so tests need no Gurobi.
+    (`GRB.Callback.MIPSOL`, `GRB.Callback.RUNTIME`, ...) so tests need no
+    Gurobi. If a `sink` is given, each event is also persisted as it happens.
     """
 
-    def __init__(self, total_weight: float, codes: Mapping[str, int]):
+    def __init__(
+        self,
+        total_weight: float,
+        codes: Mapping[str, int],
+        sink: TrajectorySink | None = None,
+    ):
         self._total = total_weight
         self._codes = codes
+        self._sink = sink
         self.events: list[dict] = []
 
     def __call__(self, model, where: int) -> None:
@@ -114,18 +182,19 @@ class TrajectoryRecorder:
             return
         within = model.cbGet(self._codes["MIPSOL_OBJ"])
         bound = model.cbGet(self._codes["MIPSOL_OBJBND"])
-        self.events.append(
-            {
-                "runtime_seconds": model.cbGet(self._codes["RUNTIME"]),
-                "work_units": model.cbGet(self._codes["WORK"]),
-                "incumbent_within_objective": within,
-                "incumbent_l_cross": l_cross_from_within(self._total, within),
-                "best_bound_within_objective": bound,
-                "best_bound_l_cross": l_cross_from_within(self._total, bound),
-                "node_count": model.cbGet(self._codes["MIPSOL_NODCNT"]),
-                "solution_count": model.cbGet(self._codes["MIPSOL_SOLCNT"]),
-            }
-        )
+        event = {
+            "runtime_seconds": model.cbGet(self._codes["RUNTIME"]),
+            "work_units": model.cbGet(self._codes["WORK"]),
+            "incumbent_within_objective": within,
+            "incumbent_l_cross": l_cross_from_within(self._total, within),
+            "best_bound_within_objective": bound,
+            "best_bound_l_cross": l_cross_from_within(self._total, bound),
+            "node_count": model.cbGet(self._codes["MIPSOL_NODCNT"]),
+            "solution_count": model.cbGet(self._codes["MIPSOL_SOLCNT"]),
+        }
+        self.events.append(event)
+        if self._sink is not None:
+            self._sink.append(event)
 
 
 def gurobi_codes(grb) -> dict[str, int]:
@@ -150,7 +219,54 @@ def classify_stop(status: int, grb) -> str:
     work_limit = getattr(grb, "WORK_LIMIT", None)
     if work_limit is not None and status == work_limit:
         return "work_limit_cap"
+    mem_limit = getattr(grb, "MEM_LIMIT", None)
+    if mem_limit is not None and status == mem_limit:
+        return "soft_mem_limit"
     return f"other_status_{status}"
+
+
+def read_final_state(model, total_weight: float, error_types=(Exception,)) -> dict:
+    """Incumbent and bound after the solve, whatever state it stopped in.
+
+    With an incumbent: `final` holds incumbent, bound and gap. Without one:
+    `final` is empty. The bound is read on its own and reported as unavailable
+    (with the reason) if Gurobi cannot supply a finite value.
+    """
+
+    best_bound: dict
+    bound = None
+    try:
+        candidate = model.ObjBound
+    except error_types as error:
+        best_bound = {"available": False, "reason": repr(error)}
+    else:
+        if math.isfinite(candidate):
+            bound = candidate
+            best_bound = {
+                "available": True,
+                "within_objective": bound,
+                "l_cross": l_cross_from_within(total_weight, bound),
+            }
+        else:
+            best_bound = {"available": False, "reason": f"non-finite bound {candidate}"}
+
+    final: dict = {}
+    if model.SolCount > 0:
+        within = model.ObjVal
+        final = {
+            "incumbent_within_objective": within,
+            "incumbent_l_cross": l_cross_from_within(total_weight, within),
+        }
+        if bound is not None:
+            final["best_bound_within_objective"] = bound
+            final["best_bound_l_cross"] = l_cross_from_within(total_weight, bound)
+        try:
+            gap = model.MIPGap
+        except error_types:
+            gap = None
+        if gap is not None and math.isfinite(gap):
+            final["mip_gap"] = gap
+    return {"final": final, "best_bound": best_bound}
 
 
 def nondefault_parameters(model) -> str:
@@ -224,9 +340,15 @@ def executed_code_hashes() -> dict:
     }
 
 
-def write_report(output_dir: Path, report: dict, log_path: Path) -> dict[str, str]:
-    """Write report, Gurobi log and checksums to a temporary sibling, then move
-    the directory into place. Existing output is never overwritten."""
+def write_report(
+    output_dir: Path,
+    report: dict,
+    log_path: Path,
+    trajectory_path: Path | None = None,
+) -> dict[str, str]:
+    """Write report, Gurobi log, optional trajectory file and checksums to a
+    temporary sibling, then move the directory into place. Existing output is
+    never overwritten."""
 
     if output_dir.exists():
         raise FileExistsError(f"{output_dir} exists; reports are not overwritten")
@@ -240,10 +362,11 @@ def write_report(output_dir: Path, report: dict, log_path: Path) -> dict[str, st
             json.dumps(report, indent=2, sort_keys=True) + "\n"
         )
         (staging / LOG_FILENAME).write_bytes(log_path.read_bytes())
-        digests = {
-            name: measure.sha256_file(staging / name)
-            for name in (REPORT_FILENAME, LOG_FILENAME)
-        }
+        names = [REPORT_FILENAME, LOG_FILENAME]
+        if trajectory_path is not None:
+            (staging / TRAJECTORY_FILENAME).write_bytes(trajectory_path.read_bytes())
+            names.append(TRAJECTORY_FILENAME)
+        digests = {name: measure.sha256_file(staging / name) for name in names}
         (staging / measure.CHECKSUMS_FILENAME).write_text(
             "".join(f"{digest}  {name}\n" for name, digest in digests.items())
         )
@@ -260,6 +383,7 @@ def run_calibration(
     repo_root: Path,
     work_limit_cap: float,
     time_limit_cap: float,
+    soft_mem_limit_gb: float,
     environ: Mapping[str, str] = os.environ,
 ) -> dict:
     check_caps(work_limit_cap, time_limit_cap)
@@ -275,11 +399,13 @@ def run_calibration(
     measurement = config["construction_measurement"]
     if not measurement.get("rss_cap_bytes"):
         raise RuntimeError("rss_cap_bytes is not set in the config")
+    check_soft_mem_limit(soft_mem_limit_gb, measurement["rss_cap_bytes"])
 
     output_root = repo_root / calibration["output_root"]
     output_dir = output_root / f"{stage}_calibration"
     abort_path = output_root / f"{stage}_calibration_ABORTED.json"
-    for path in (output_dir, abort_path):
+    inprogress_dir = output_root / f"{stage}_calibration_inprogress"
+    for path in (output_dir, abort_path, inprogress_dir):
         if path.exists():
             raise FileExistsError(f"{path} exists; it is not overwritten")
 
@@ -294,6 +420,22 @@ def run_calibration(
     import gurobipy as gp
     from gurobipy import GRB
 
+    inprogress_dir.mkdir(parents=True)
+    sink = TrajectorySink(
+        inprogress_dir / TRAJECTORY_FILENAME,
+        {
+            "schema_version": SCHEMA_VERSION,
+            "stage": stage,
+            "created_utc": datetime.now(timezone.utc).isoformat(),
+            "total_pair_weight": total_weight,
+            "Seed": seed,
+            "Threads": threads,
+            "WorkLimit_cap": work_limit_cap,
+            "TimeLimit_cap": time_limit_cap,
+            "SoftMemLimit_gb": soft_mem_limit_gb,
+            "rss_cap_bytes": measurement["rss_cap_bytes"],
+        },
+    )
     sampler = measure.RssSampler(
         measurement["rss_cap_bytes"], measurement["sample_interval_seconds"], abort_path
     )
@@ -328,36 +470,28 @@ def run_calibration(
             if observed[name] != value:
                 raise AssertionError(f"{name}: observed {observed[name]}, expected {value}")
 
-        # The log is written into a temporary location and moved with the report.
-        log_dir = Path(tempfile.mkdtemp(prefix="calibration_log_"))
-        log_path = log_dir / LOG_FILENAME
+        # The log lives in the in-progress directory so a hard abort keeps it;
+        # it is also copied into the report directory.
+        log_path = inprogress_dir / LOG_FILENAME
         model.Params.LogFile = str(log_path)
         model.Params.OutputFlag = 1
         model.Params.Seed = seed
         model.Params.Threads = threads
         model.Params.WorkLimit = work_limit_cap
         model.Params.TimeLimit = time_limit_cap
+        model.Params.SoftMemLimit = soft_mem_limit_gb
 
-        recorder = TrajectoryRecorder(total_weight, gurobi_codes(GRB))
+        recorder = TrajectoryRecorder(total_weight, gurobi_codes(GRB), sink)
         solve_started = time.perf_counter()
         model.optimize(recorder)
         solve_seconds = time.perf_counter() - solve_started
     finally:
         sampler.stop()
+        sink.close()
 
     status = model.Status
-    has_solution = model.SolCount > 0
-    final = {}
-    if has_solution:
-        within = model.ObjVal
-        bound = model.ObjBound
-        final = {
-            "incumbent_within_objective": within,
-            "incumbent_l_cross": l_cross_from_within(total_weight, within),
-            "best_bound_within_objective": bound,
-            "best_bound_l_cross": l_cross_from_within(total_weight, bound),
-            "mip_gap": model.MIPGap,
-        }
+    state = read_final_state(model, total_weight, (gp.GurobiError, AttributeError))
+    final = state["final"]
 
     stop_reason = classify_stop(status, GRB)
     report = {
@@ -384,6 +518,7 @@ def run_calibration(
             "Threads": threads,
             "WorkLimit_cap": work_limit_cap,
             "TimeLimit_cap": time_limit_cap,
+            "SoftMemLimit_gb": soft_mem_limit_gb,
             "nondefault_prm": nondefault_parameters(model),
         },
         "dimensions": observed,
@@ -402,17 +537,30 @@ def run_calibration(
             if stop_reason == "time_limit_cap"
             else None
         ),
+        "stopped_on_soft_mem_limit": stop_reason == "soft_mem_limit",
+        "soft_mem_limit_note": (
+            "Gurobi stopped on SoftMemLimit: the run is partial and its stop point "
+            "is memory-dependent, not work-deterministic, so it is not reproducible. "
+            "Incumbent and bound are those held at the stop."
+            if stop_reason == "soft_mem_limit"
+            else None
+        ),
+        "soft_mem_limit_bytes": soft_mem_limit_gb * BYTES_PER_GB,
         "solution_count": model.SolCount,
         "node_count": model.NodeCount,
         "final": final,
+        "best_bound": state["best_bound"],
         "trajectory_event": "each new incumbent (MIPSOL callback)",
         "trajectory": recorder.events,
+        "trajectory_write_error": sink.write_error,
+        "inprogress_directory": str(inprogress_dir),
         "peak_rss_bytes": max(sample["rss_bytes"] for sample in sampler.samples),
+        "last_rss_bytes": sampler.samples[-1]["rss_bytes"],
         "rss_cap_bytes": measurement["rss_cap_bytes"],
         "rss_sample_count": len(sampler.samples),
     }
 
-    checksums = write_report(output_dir, report, log_path)
+    checksums = write_report(output_dir, report, log_path, sink.path)
     return {"report": report, "output_sha256": checksums}
 
 
@@ -422,11 +570,17 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--stage", required=True)
     parser.add_argument("--work-limit-cap", required=True, type=float)
     parser.add_argument("--time-limit-cap", required=True, type=float)
+    parser.add_argument("--soft-mem-limit-gb", required=True, type=float)
     parser.add_argument("--repo-root", type=Path, default=Path.cwd())
     args = parser.parse_args(argv)
 
     result = run_calibration(
-        args.config, args.stage, args.repo_root, args.work_limit_cap, args.time_limit_cap
+        args.config,
+        args.stage,
+        args.repo_root,
+        args.work_limit_cap,
+        args.time_limit_cap,
+        args.soft_mem_limit_gb,
     )
     report = result["report"]
     print(
@@ -435,6 +589,7 @@ def main(argv: list[str] | None = None) -> int:
                 "status": report["status"],
                 "stop_reason": report["stop_reason"],
                 "stopped_on_safety_time_limit": report["stopped_on_safety_time_limit"],
+                "stopped_on_soft_mem_limit": report["stopped_on_soft_mem_limit"],
                 "solution_count": report["solution_count"],
                 "gurobi_work_units": report["gurobi_work_units"],
                 "solve_wall_seconds": report["solve_wall_seconds"],

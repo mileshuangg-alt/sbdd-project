@@ -539,3 +539,55 @@ Findings (Claude Code's reading, not a measurement): the licence guard passed an
 **Fix on the Mac (uncommitted)** [Mac obs, Claude Code 2026-11-19]. One-line fix `"MIPSOL": grb.Callback.MIPSOL`, plus new test `test_gurobi_codes_read_callback_constants_from_grb_callback`. SHA-256: `calibrate_split_solve.py` `f72ec9a1b40adbbe17fadfa6f00268947f3ddb0af8f315f1828af85406942edf` (supersedes `64786648…`); `tests/test_calibrate_split_solve.py` `2e27d31842d771bb6bffb4b6078f5e74fdaab16e60595968860a250dbd5b4c3f` (supersedes `e4f72f7c…`); `split_optimization_config.json` unchanged, `575b6bd2ad7e8797622aa270ad390a07987fae2623acf221accc512981dca804`.
 
 Status: not yet re-tested on the Mac, not reviewed by Miles, not re-staged to gpu-dev1.
+
+### 17.27 Benchmark run 1 (second attempt): stopped by RSS memory guard during branch-and-bound
+
+Session 017 remains ongoing (entries dated 2026-11-20; times are gpu-dev1 local clock, Nov 20, plus UTC where given).
+
+**Context.** The first attempt (Nov 19, tmp log dir `/tmp/calibration_log_xec7q8gi`, 15:23) crashed on the `GRB.MIPSOL` bug (§17.26). The fixed script (committed in `b0a01db`, SHA-256 `f72ec9a1b40adbbe17fadfa6f00268947f3ddb0af8f315f1828af85406942edf`) was then staged. The staging steps (tarball check, extraction, load check) were run by Miles but their output was not pasted, so they are not recorded as verified; the run itself shows the staged script loading and reaching `optimize()`.
+
+**Run** [gpu-dev1, pasted by Miles 2026-11-20, host `n4pu04`; interactive, not Slurm]. Command: `cd /mnt/nfs/CX900004_DS117/sbdd-project/session017_split_input_builder && GRB_LICENSE_FILE=/mnt/nfs/CX900004_DS117/private/gurobi/gurobi.lic /mnt/nfs/CX900004_DS117/conda-envs/liggate-gurobi-qual/bin/python -s -m admet.scripts.calibrate_split_solve --config admet/data/splits/split_optimization_config.json --stage stage_a --work-limit-cap 100000 --time-limit-cap 900`. Caps 100000 and 900 were Claude Code's provisional proposal (§17.26), accepted by Miles by running it.
+
+Gurobi console (partial, as pasted):
+- Gurobi 14.0.0 build v14.0.0rc1, Academic licence 2883397; non-default parameters TimeLimit 900, WorkLimit 100000, Seed 20261114, Threads 32 (64 physical cores, 128 logical processors; Intel Xeon Gold 6548Y+).
+- Model 5459 rows, 10894 columns, 27,815,294 quadratic objective terms (matches §17.23); first heuristic incumbent 974049.93454 before presolve.
+- Presolve 104.27 s, to 6 rows / 5447 columns / 13,913,094 quadratic terms; root relaxation objective 1.535538e+06, 5455 iterations, 211.08 s, 366.09 work units.
+- Incumbent 1,269,255.30 by 619 s (within-partition objective, maximize; not L_cross), best bound 1,535,222.28 (gap 21.0%) at 626 s, 803 nodes, still improving.
+- Pasted console output stops at 626 s (Gurobi clock); no end-of-solve summary and no traceback in the paste.
+
+**Outcome** [gpu-dev1, pasted by Miles]. No calibration report directory was created (written only after `optimize()` returns). Instead `admet/artifacts/split_optimization/stage_a_calibration_ABORTED.json` (583,793 bytes, 15:41 Nov 20; created_utc 2026-11-20T23:41:31.643068+00:00) exists: status `aborted_rss_cap_exceeded`, rss_cap_bytes 137438953472 (128 GiB), 7158 samples; last sample t_seconds 760.78, rss_bytes 138467860480 (about 128.96 GiB; the cap is checked per sample, not a hard limit). The RssSampler exit code would be 3 (not shown in the paste; the abort file and status establish the cap abort).
+- RSS (sampler t_seconds, which precedes model build; GiB), about 60 s spacing: (0, 0.2), (69, 1.4), (164, 7.8), (224, 6.3), (284, 6.2), (344, 7.0), (404, 8.4), (464, 7.4), (525, 15.9), (585, 91.6), (645, 75.8), (705, 73.2).
+- Gurobi log preserved by Miles from `/tmp/calibration_log_b4_b3rep/gurobi.log` to `admet/artifacts/split_optimization/stage_a_calibration_benchmark1_gurobi.log`, SHA-256 `cc24e2f9983ab00e2c351973c43cf271fc5812bb2cae299326ad50e6a74236a3`. Line count and the ABORTED.json SHA-256 were cut off in the original paste; previously missing, recovered 2026-11-20 [gpu-dev1, user-pasted by Miles 2026-11-20, host `n4pu04`; `sha256sum` and `wc -l` run in `/mnt/nfs/CX900004_DS117/sbdd-project/session017_split_input_builder`]: Gurobi log line count 159 (recovered 2026-11-20); `stage_a_calibration_ABORTED.json` SHA-256 `e9a437984c02395580e455b5081295a15d5bd2f45b41033017eede5fbef83bd0` (recovered 2026-11-20).
+
+**Claude Code's reading** (observations, not measurements).
+- The run was stopped by the memory guard, not a crash.
+- Sampler clock (760.8 s) minus Gurobi clock (626 s) is about 134 s, taken as model-build/loading time before `optimize()` (consistent with the 109.5 s construction measurement plus loading).
+- On that alignment, RSS stayed about 6-8 GiB through presolve and root relaxation, rose steeply during early branch-and-bound (sampler 525-585 s, roughly Gurobi 390-450 s) to about 92 GiB, then fluctuated near 73-76 GiB until the cap. Cause of the growth is not established.
+- The incumbent trajectory (callback events) was not saved because the report is written only after `optimize()` returns; the preserved Gurobi log holds every incumbent line. No exception appeared across roughly 100 incumbent events, so the MIPSOL/WORK callbacks probably ran without error, but the recorded events were lost, so this is unverified.
+- Work units per second cannot be read from the report; the only work figure in the log is the root relaxation (366.09 work units in 211.08 s).
+
+**Not done / open.** No completed calibration solve; W_A and the safety TimeLimit not set (Miles sets them, D034 Amendment 1 A2). How to handle the memory result is Miles's decision; options listed by Claude Code, none chosen: raise the calibration memory cap, lower Threads, shorter benchmark, or a script change so an abort still saves the incumbent trajectory; also a possible Gurobi SoftMemLimit (availability in 14.0.0 not yet checked).
+
+### 17.28 Calibration script: persist the incumbent trajectory and add a Gurobi SoftMemLimit (Mac edit, not yet run)
+
+Session 017 remains ongoing. Design proposal presented in chat 2026-11-20; approval, edit and Mac test 2026-11-21.
+
+**Motivation and scope** [Miles's statement in chat, 2026-11-20]. Keep the calibration memory cap at 128 GiB and Threads at 32 for now; before another attempt, prevent a memory abort from taking the incumbent trajectory and final report with it (benchmark run 1 aborted at the RSS cap, §17.27). This is preparation, not a fix for the unexplained memory growth. No change to thread count, model, seed or other calibration settings. Miles approved the proposal in chat on 2026-11-21 (scope: the two files below, SoftMemLimit 110 GB passed per run as a CLI argument, config unchanged).
+
+**Edit** [Mac obs, Claude Code 2026-11-21; edit only, no gpu-dev1 run].
+1. `admet/scripts/calibrate_split_solve.py`, SHA-256 `c82d3f24af7cfe72b98ba4930f9c6cabaca08e842e2024d047e385eb9b343da1` (supersedes `f72ec9a1…`).
+   - `TrajectorySink`: append-only JSON-lines file, header line then one line per incumbent, flushed and fsynced per line; opened exclusively (never overwrites); a write failure is stored in `write_error` and does not stop the solve.
+   - Output goes to `admet/artifacts/split_optimization/<stage>_calibration_inprogress/` (`trajectory.jsonl`, and `gurobi.log` moved from `/tmp`). The run refuses if this directory, the final directory or the ABORTED.json exists. On normal exit both files are also copied into the final report directory and listed in `SHA256SUMS.txt`; the in-progress directory is left in place.
+   - New required CLI argument `--soft-mem-limit-gb`, set as Gurobi `Params.SoftMemLimit`; validated positive, finite and below the config `rss_cap_bytes` (128 GiB = 137,438,953,472 bytes = 137.44 GB decimal).
+   - `classify_stop` returns `soft_mem_limit` for `GRB.MEM_LIMIT` (status 17). New `read_final_state` reports incumbent, bound and gap when an incumbent exists; an empty final plus bound when none; bound marked unavailable (with reason) if Gurobi gives none or a non-finite value.
+   - Report gains `stopped_on_soft_mem_limit`, `soft_mem_limit_note` (partial, memory-dependent stop, not reproducible), `soft_mem_limit_bytes`, `best_bound`, `last_rss_bytes`, `trajectory_write_error`, `inprogress_directory`, and `SoftMemLimit_gb` in parameters.
+2. `tests/test_calibrate_split_solve.py`, SHA-256 `8e84008e7166ae279c93a6a1d2fb40a5569d3f5344188af1864604f9bc5a6fe5` (supersedes `2e27d318…`): 14 new tests (soft-limit validation; sink persistence, refusal and write failure; a subprocess calling `os._exit(3)` with all lines surviving; `read_final_state` cases; trajectory copy in `write_report`); the `classify_stop` test now uses 16 for WORK_LIMIT and 17 for MEM_LIMIT; `run_calibration` test calls take the new argument.
+Unchanged: `admet/data/splits/split_optimization_config.json` (`575b6bd2ad7e8797622aa270ad390a07987fae2623acf221accc512981dca804`), `measure_split_model_construction.py`, `equivalence.py`; Threads 32, seed, model.
+
+**Test** [Mac obs, output pasted by Miles 2026-11-21]. `/opt/homebrew/Caskroom/miniforge/base/bin/python3 -m pytest tests/test_calibrate_split_solve.py -v` gave `30 passed, 1 skipped in 2.15s`; the skip is `test_tiny_calibration_solve_when_gurobi_is_available` (gurobipy not installed on the Mac). This is test evidence for the edit only; the real Gurobi path and any gpu-dev1 run are untested.
+
+**Threshold basis** [proposal, approved as above]. SoftMemLimit 110 GB (= 102.4 GiB), about 27.4 GB (about 25.5 GiB, 20%) below the 137.44 GB harness cap. Rationale: room for non-Gurobi RSS (unmeasured; total RSS was 6-8 GiB at presolve in run 1), overshoot between Gurobi's checks, and allocator retention. It is a judgment, not a derived number, and guarantees no clean exit. Documentation-derived, not measured on gpu-dev1: SoftMemLimit is in decimal GB (10^9 bytes); status MEM_LIMIT = 17; it is checked only where Gurobi can stop cleanly, so memory can overshoot; it counts memory Gurobi allocates across models in the environment, whereas the harness sampler uses psutil whole-process RSS (Python, numpy, the 118 MB mmap'd similarity file, allocator-retained memory). Sources: docs.gurobi.com parameter reference and status-code pages; support.gurobi.com article "Managing Threads and Memory Usage in Gurobi". The ratio between Gurobi's accounting and RSS on this model is unmeasured.
+
+**Correction.** The proposal text said the RSS sampler keeps running during post-processing; in the code `sampler.stop()` runs right after `optimize()`, so the hard abort cannot fire during report building.
+
+**Open / not done.** The MEM_LIMIT path is not exercised against real Gurobi. A read-only gpu-dev1 check (`GRB.MEM_LIMIT`, SoftMemLimit parameter info, whether MemUsed/MaxMemUsed attributes or callback codes exist in 14.0.0) is pending, to be run by Miles. Next-attempt caps and whether a higher RSS cap is justified are undecided. A rerun requires renaming the existing `stage_a_calibration_ABORTED.json` on gpu-dev1. No bundle built or transferred; nothing run on gpu-dev1.
